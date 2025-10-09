@@ -556,13 +556,18 @@ export default async function seedDemoData({ container }: ExecArgs) {
               title: "Size",
               values: ["S", "M", "L", "XL"],
             },
+            {
+              title: "Color",
+              values: ["Navy", "Gray"],
+            },
           ],
           variants: [
             {
-              title: "S",
-              sku: "SWEATSHIRT-S",
+              title: "S / Navy",
+              sku: "SWEATSHIRT-S-NAVY",
               options: {
                 Size: "S",
+                Color: "Navy",
               },
               prices: [
                 {
@@ -576,10 +581,29 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "M",
-              sku: "SWEATSHIRT-M",
+              title: "S / Gray",
+              sku: "SWEATSHIRT-S-GRAY",
+              options: {
+                Size: "S",
+                Color: "Gray",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "M / Navy",
+              sku: "SWEATSHIRT-M-NAVY",
               options: {
                 Size: "M",
+                Color: "Navy",
               },
               prices: [
                 {
@@ -593,10 +617,29 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "L",
-              sku: "SWEATSHIRT-L",
+              title: "M / Gray",
+              sku: "SWEATSHIRT-M-GRAY",
+              options: {
+                Size: "M",
+                Color: "Gray",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "L / Navy",
+              sku: "SWEATSHIRT-L-NAVY",
               options: {
                 Size: "L",
+                Color: "Navy",
               },
               prices: [
                 {
@@ -610,10 +653,47 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "XL",
-              sku: "SWEATSHIRT-XL",
+              title: "L / Gray",
+              sku: "SWEATSHIRT-L-GRAY",
+              options: {
+                Size: "L",
+                Color: "Gray",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "XL / Navy",
+              sku: "SWEATSHIRT-XL-NAVY",
               options: {
                 Size: "XL",
+                Color: "Navy",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "XL / Gray",
+              sku: "SWEATSHIRT-XL-GRAY",
+              options: {
+                Size: "XL",
+                Color: "Gray",
               },
               prices: [
                 {
@@ -657,13 +737,18 @@ export default async function seedDemoData({ container }: ExecArgs) {
               title: "Size",
               values: ["S", "M", "L", "XL"],
             },
+            {
+              title: "Color",
+              values: ["Gray", "Charcoal"],
+            },
           ],
           variants: [
             {
-              title: "S",
-              sku: "SWEATPANTS-S",
+              title: "S / Gray",
+              sku: "SWEATPANTS-S-GRAY",
               options: {
                 Size: "S",
+                Color: "Gray",
               },
               prices: [
                 {
@@ -677,10 +762,29 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "M",
-              sku: "SWEATPANTS-M",
+              title: "S / Charcoal",
+              sku: "SWEATPANTS-S-CHARCOAL",
+              options: {
+                Size: "S",
+                Color: "Charcoal",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "M / Gray",
+              sku: "SWEATPANTS-M-GRAY",
               options: {
                 Size: "M",
+                Color: "Gray",
               },
               prices: [
                 {
@@ -694,10 +798,29 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "L",
-              sku: "SWEATPANTS-L",
+              title: "M / Charcoal",
+              sku: "SWEATPANTS-M-CHARCOAL",
+              options: {
+                Size: "M",
+                Color: "Charcoal",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "L / Gray",
+              sku: "SWEATPANTS-L-GRAY",
               options: {
                 Size: "L",
+                Color: "Gray",
               },
               prices: [
                 {
@@ -711,10 +834,47 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "XL",
-              sku: "SWEATPANTS-XL",
+              title: "L / Charcoal",
+              sku: "SWEATPANTS-L-CHARCOAL",
+              options: {
+                Size: "L",
+                Color: "Charcoal",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "XL / Gray",
+              sku: "SWEATPANTS-XL-GRAY",
               options: {
                 Size: "XL",
+                Color: "Gray",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "XL / Charcoal",
+              sku: "SWEATPANTS-XL-CHARCOAL",
+              options: {
+                Size: "XL",
+                Color: "Charcoal",
               },
               prices: [
                 {
@@ -758,13 +918,18 @@ export default async function seedDemoData({ container }: ExecArgs) {
               title: "Size",
               values: ["S", "M", "L", "XL"],
             },
+            {
+              title: "Color",
+              values: ["Beige", "Brown"],
+            },
           ],
           variants: [
             {
-              title: "S",
-              sku: "SHORTS-S",
+              title: "S / Beige",
+              sku: "SHORTS-S-BEIGE",
               options: {
                 Size: "S",
+                Color: "Beige",
               },
               prices: [
                 {
@@ -778,10 +943,29 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "M",
-              sku: "SHORTS-M",
+              title: "S / Brown",
+              sku: "SHORTS-S-BROWN",
+              options: {
+                Size: "S",
+                Color: "Brown",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "M / Beige",
+              sku: "SHORTS-M-BEIGE",
               options: {
                 Size: "M",
+                Color: "Beige",
               },
               prices: [
                 {
@@ -795,10 +979,29 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "L",
-              sku: "SHORTS-L",
+              title: "M / Brown",
+              sku: "SHORTS-M-BROWN",
+              options: {
+                Size: "M",
+                Color: "Brown",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "L / Beige",
+              sku: "SHORTS-L-BEIGE",
               options: {
                 Size: "L",
+                Color: "Beige",
               },
               prices: [
                 {
@@ -812,10 +1015,47 @@ export default async function seedDemoData({ container }: ExecArgs) {
               ],
             },
             {
-              title: "XL",
-              sku: "SHORTS-XL",
+              title: "L / Brown",
+              sku: "SHORTS-L-BROWN",
+              options: {
+                Size: "L",
+                Color: "Brown",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "XL / Beige",
+              sku: "SHORTS-XL-BEIGE",
               options: {
                 Size: "XL",
+                Color: "Beige",
+              },
+              prices: [
+                {
+                  amount: 10,
+                  currency_code: "eur",
+                },
+                {
+                  amount: 15,
+                  currency_code: "usd",
+                },
+              ],
+            },
+            {
+              title: "XL / Brown",
+              sku: "SHORTS-XL-BROWN",
+              options: {
+                Size: "XL",
+                Color: "Brown",
               },
               prices: [
                 {
