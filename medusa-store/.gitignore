@@ -24,3 +24,12 @@ build
 !.yarn/versions
 
 .medusa
+
+.vscode/
+npm-debug.log*
+.pnp*
+.pnp.js
+.DS_Store
+.next/
+.nuxt/
+.parcel-cache/
