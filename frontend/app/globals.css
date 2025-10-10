@@ -21,31 +21,54 @@
   --color-error: #DF4718;
   
   /* Colors - Additional */
-  --color-yellow: #FFEFB7;
+  --color-yellow: #FFFBB7;
   
   /* Typography - Font Family */
   --font-family-sans: "Mona Sans", system-ui, -apple-system, sans-serif;
   
   /* Typography - Font Sizes */
-  --font-size-sm: 0.875rem;    /* 14px - Small */
-  --font-size-base: 1rem;       /* 16px - Body */
-  --font-size-lg: 1.5rem;       /* 24px - H3 */
-  --font-size-xl: 2rem;         /* 32px - H2 */
-  --font-size-2xl: 2.5rem;      /* 40px - H1 */
-  --font-size-3xl: 3rem;        /* 48px - Large Heading */
-  --font-size-4xl: 4rem;        /* 64px - Display */
+  --font-size-xs: 0.75rem;      /* 12px - Small, Button Small */
+  --font-size-sm: 0.875rem;     /* 14px - Links Small */
+  --font-size-base: 1rem;       /* 16px - Button, Links */
+  --font-size-body: 1.125rem;   /* 18px - Body */
+  --font-size-button-big: 1.25rem; /* 20px - Button Big */
+  --font-size-big: 1.5rem;      /* 24px - Big, Links Big */
+  --font-size-h4: 2rem;         /* 32px - H4 */
+  --font-size-h3: 2.5rem;       /* 40px - H3 */
+  --font-size-h2: 3rem;         /* 48px - H2 */
+  --font-size-h1: 3.5rem;       /* 56px - H1 */
   
   /* Typography - Line Heights */
-  --line-height-tight: 1.4;     /* 1.4 */
-  --line-height-normal: 1.5;    /* 1.5 */
-  --line-height-relaxed: 1.6;   /* 1.6 */
-  --line-height-loose: 1.75;    /* 1.75 */
+  --line-height-none: 1;        /* 100% - Buttons */
+  --line-height-tight: 1.1;     /* 110% */
+  --line-height-normal: 1.4;    /* 140% - Headings, Big, Body, Small, Links */
+  --line-height-relaxed: 1.6;   /* 160% */
   
   /* Typography - Font Weights */
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+
+  /* Button styles */
+  --button-radius: 4px;
+  --button-padding-sm: 8px 16px;
+  --button-padding-lg: 12px 24px;
+  --button-transition: all 0.2s ease-in-out;
+  
+  /* Button colors */
+  --button-primary-bg: #050505;
+  --button-primary-text: #FDFDFD;
+  --button-primary-hover-bg: #333333;
+  
+  --button-secondary-bg: transparent;
+  --button-secondary-border: #050505;
+  --button-secondary-text: #050505;
+  --button-secondary-hover-bg: #F4F4F4;
+  
+  --button-disabled-bg: #D1D1D1;
+  --button-disabled-text: #808080;
+  --button-disabled-border: #D1D1D1;
 }
 
 /* Reset */
@@ -57,9 +80,34 @@
 
 body {
   font-family: var(--font-family-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-body);   
   font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-normal);
+  line-height: var(--line-height-normal); 
   color: var(--color-black);
   background-color: var(--color-white);
+}
+
+/* Typography Classes */
+h1 {
+  font-size: var(--font-size-h1);     
+  line-height: var(--line-height-normal); 
+  font-weight: var(--font-weight-medium);
+}
+
+h2 {
+  font-size: var(--font-size-h2);     
+  line-height: var(--line-height-normal); 
+  font-weight: var(--font-weight-medium);
+}
+
+h3 {
+  font-size: var(--font-size-h3);     
+  line-height: var(--line-height-normal); 
+  font-weight: var(--font-weight-medium);
+}
+
+h4 {
+  font-size: var(--font-size-h4);   
+  line-height: var(--line-height-normal); 
+  font-weight: var(--font-weight-medium);
 }
