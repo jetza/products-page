@@ -140,3 +140,8 @@ h4 {
   padding-right: 32px;
   gap: 24px;
 }
+
+.user-data-field-padding {
+  padding-left: 32px;
+  padding-right: 32px;
+}
