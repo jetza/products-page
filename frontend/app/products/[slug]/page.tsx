@@ -2,6 +2,8 @@ import { getProductBySlug } from "@/lib/products-service";
 import { getColorHex } from "@/lib/color-mapping";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 export default async function ProductPage({
   params,
@@ -28,12 +30,12 @@ export default async function ProductPage({
   );
 
   return (
-    <div className="min-h-screen p-8 bg-gray-50">
+    <div className="p-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
 
-        <a href="/products" className="text-blue-600 hover:underline mb-4 inline-block">
+        <Link href="/products" className="text-black hover:text-gray-600 mb-4 inline-block">
           ← Back to products
-        </a>
+        </Link>
 
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -56,7 +58,7 @@ export default async function ProductPage({
               <p className="text-gray-600 mb-6">{product.description}</p>
 
               {product.variants?.[0]?.prices?.[0] && (
-                <p className="text-2xl font-bold text-blue-600 mb-6">
+                <p className="text-2xl font-bold text-black mb-6">
                   €{(product.variants[0].prices[0].amount / 100).toFixed(2)}
                 </p>
               )}
@@ -68,7 +70,7 @@ export default async function ProductPage({
                     {colors.map((colorName) => (
                       <div key={colorName as string} className="text-center">
                         <div
-                          className="w-12 h-12 rounded-full border-2 border-gray-300 hover:border-blue-500 cursor-pointer transition"
+                          className="w-12 h-12 rounded-full border-2 border-gray-300 hover:border-black cursor-pointer transition"
                           style={{ backgroundColor: getColorHex(colorName as string) }}
                           title={colorName as string}
                         />
@@ -86,7 +88,7 @@ export default async function ProductPage({
                     {sizes.map((size) => (
                       <button
                         key={size as string}
-                        className="px-4 py-2 border-2 border-gray-300 rounded-md hover:border-blue-500 hover:bg-blue-50 transition"
+                        className="px-4 py-2 border-2 border-gray-300 rounded-md hover:border-black transition"
                       >
                         {size as string}
                       </button>
@@ -95,9 +97,9 @@ export default async function ProductPage({
                 </div>
               )}
 
-              <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              <Button variant="primary" size="lg" className="w-full">
                 Add to Cart
-              </button>
+              </Button>
 
               <div className="mt-6 text-sm text-gray-500">
                 <p>{product.variants?.length || 0} variants available</p>
