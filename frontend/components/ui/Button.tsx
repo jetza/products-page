@@ -61,10 +61,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             "border border-[var(--button-secondary-border)]",
             "hover:bg-[var(--button-secondary-hover-bg)]",
             "disabled:border-[var(--button-disabled-border)] disabled:text-[var(--button-disabled-text)]",
-
-            "dark:border-white dark:text-white",
-            "dark:hover:bg-white/10",
-            "dark:disabled:border-gray-600 dark:disabled:text-gray-600",
           ],
           variant === "ghost" && [
             "bg-gray-50 text-black",
