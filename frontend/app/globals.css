@@ -145,3 +145,19 @@ h4 {
   padding-left: 32px;
   padding-right: 32px;
 }
+
+/* Account Navigation */
+.account-navigation {
+  width: 372px;
+  height: 794px;
+  padding: 80px;
+  background: var(--color-gray-50);
+}
+
+.account-navigation-inner {
+  width: 212px;
+  height: 634px;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
