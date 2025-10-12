@@ -32,24 +32,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const isDisabled = disabled || loading;
 
-    const sizeStyles = {
-      sm: { height: "32px", padding: "8px 16px", gap: "8px", fontSize: "12px" },
-      md: { height: "40px", padding: "8px 24px", gap: "8px", fontSize: "16px" },
-      lg: { height: "48px", padding: "12px 24px", gap: "16px", fontSize: "16px" },
-    };
-
-    const backgroundStyle = variant === "ghost" ? { background: "var(--color-gray-50)" } : {};
-
     return (
       <button
         ref={ref}
         disabled={isDisabled}
         type={type}
-        style={{
-          ...sizeStyles[size],
-          ...backgroundStyle,
-          ...style,
-        }}
+        style={style}
         className={cn(
           "inline-flex items-center justify-center",
           "font-medium transition-all duration-200 ease-in-out",
@@ -57,6 +45,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           "disabled:cursor-not-allowed",
           "rounded",
           "leading-none",
+
+          // Size styles
+          size === "sm" && "h-8 px-4 gap-2 text-xs",
+          size === "md" && "h-10 px-6 gap-2 text-base",
+          size === "lg" && "h-12 px-6 gap-4 text-base",
 
           variant === "primary" && [
             "bg-[var(--button-primary-bg)] text-[var(--button-primary-text)]",
@@ -74,7 +67,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             "dark:disabled:border-gray-600 dark:disabled:text-gray-600",
           ],
           variant === "ghost" && [
-            "text-black",
+            "bg-gray-50 text-black",
             "hover:bg-gray-300",
             "disabled:text-gray-400",
           ],

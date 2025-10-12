@@ -42,17 +42,18 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
     return (
       <div 
         ref={ref} 
-        className={cn("bg-white", className)}
-        style={{
-          width: isMobile ? "375px" : "636px",
-          height: isMobile ? "560px" : "900px",
-          padding: isMobile ? "32px" : "0",
-        }}
+        className={cn(
+          "bg-white",
+          isMobile ? "w-[375px] h-[560px] p-8" : "w-[636px] h-[900px]",
+          className
+        )}
       >
 
         <div
-          className="flex items-center justify-between border-b border-gray-200"
-          style={{ padding: isMobile ? "0 0 32px 0" : "32px 32px 24px 32px" }}
+          className={cn(
+            "flex items-center justify-between border-b border-gray-200",
+            isMobile ? "pb-8" : "px-8 pt-8 pb-6"
+          )}
         >
           <span className="text-base font-normal text-black">
             {title} – {itemCount} item{itemCount !== 1 ? "s" : ""}
@@ -68,20 +69,19 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
         </div>
 
         {children && (
-          <div style={{ padding: isMobile ? "32px 0" : "32px 32px 24px 32px" }}>
+          <div className={isMobile ? "py-8" : "px-8 pt-8 pb-6"}>
             {children}
           </div>
         )}
 
-        <div style={{ padding: isMobile ? "0 0 32px 0" : "0 32px 24px 32px" }}>
-          <div className="flex" style={{ gap: "8px" }}>
+        <div className={isMobile ? "pb-8" : "px-8 pb-6"}>
+          <div className="flex gap-2">
             <input
               type="text"
               placeholder="Discount code"
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="flex-1 h-[40px] px-4 text-base border border-gray-200 rounded focus:outline-none focus:border-black"
-              style={{ background: "var(--color-gray-50)" }}
+              className="flex-1 h-10 px-4 text-base border border-gray-200 rounded focus:outline-none focus:border-black bg-gray-50"
             />
             <Button
               onClick={() => {
@@ -97,8 +97,8 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
           </div>
         </div>
 
-        <div style={{ padding: isMobile ? "0" : "0 32px 32px 32px" }}>
-          <div style={{ gap: isMobile ? "32px" : "8px" }} className="flex flex-col">
+        <div className={isMobile ? "" : "px-8 pb-8"}>
+          <div className={cn("flex flex-col", isMobile ? "gap-8" : "gap-2")}>
             <div className="flex items-center justify-between">
               <span className="text-base font-normal text-gray-600">
                 Subtotal
@@ -124,8 +124,10 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
           </div>
 
           <div
-            className="flex items-center justify-between border-t border-gray-200"
-            style={{ marginTop: isMobile ? "32px" : "16px", paddingTop: isMobile ? "32px" : "16px" }}
+            className={cn(
+              "flex items-center justify-between border-t border-gray-200",
+              isMobile ? "mt-8 pt-8" : "mt-4 pt-4"
+            )}
           >
             <span className="text-xl font-bold text-black">Total</span>
             <span className="text-xl font-bold text-black">

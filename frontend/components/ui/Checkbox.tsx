@@ -9,7 +9,7 @@ export interface CheckboxProps
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, disabled, variant = "checkbox", ...props }, ref) => {
+  ({ label, disabled, variant = "checkbox", ...props }, ref) => {
     const isRadioVariant = variant === "radio";
 
     return (
@@ -19,28 +19,26 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           disabled && "cursor-not-allowed opacity-50"
         )}
       >
-        <div className="relative">
+        <div className="relative w-4 h-4">
           <input
             type="checkbox"
             ref={ref}
             disabled={disabled}
+            className="absolute inset-0 w-full h-full opacity-0 appearance-none cursor-pointer disabled:cursor-not-allowed z-10 m-0 p-0"
+            style={{ width: 0, height: 0 }}
+            {...props}
+          />
+          <div
             className={cn(
-              "w-4 h-4",
+              "absolute inset-0",
               "border border-black",
               isRadioVariant ? "rounded-full" : "rounded-[2px]",
               "bg-white",
-              "appearance-none cursor-pointer",
-              "focus:outline-none focus:ring-0",
-              isRadioVariant
-                ? "checked:bg-black checked:border-black"
-                : "checked:bg-black checked:border-black",
-              "hover:border-gray-400",
-              "checked:hover:bg-gray-900 checked:hover:border-gray-900",
-              "disabled:cursor-not-allowed disabled:bg-gray-100 disabled:border-gray-300",
-              "disabled:checked:bg-gray-300 disabled:checked:border-gray-300",
-              className
+              "pointer-events-none",
+              props.checked && "bg-black border-black",
+              disabled && "bg-gray-100 border-gray-300",
+              disabled && props.checked && "bg-gray-300 border-gray-300"
             )}
-            {...props}
           />
           {isRadioVariant ? (
             <div

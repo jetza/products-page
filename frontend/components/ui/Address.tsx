@@ -47,58 +47,55 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
         <div
           ref={ref}
           className={cn(
-            "w-full",
-            "bg-white border border-gray-200 rounded",
+            "w-full p-6 bg-white border border-gray-200 rounded",
             className
           )}
-          style={{ padding: "24px" }}
         >
           <div className="flex">
-            <div className="flex-shrink-0 w-[24px] h-[24px] flex items-center justify-start" style={{ marginRight: "24px" }}>
+            <div className="flex-shrink-0 w-6 h-6 flex items-center justify-start mr-6">
               {icon}
             </div>
 
-            <div className="flex-1 flex" style={{ gap: "24px" }}>
-              <div className="flex-1 flex flex-col" style={{ gap: "16px" }}>
-                <div className="flex flex-col" style={{ gap: "4px" }}>
+            <div className="flex-1 flex gap-6">
+              <div className="flex-1 flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
                   <span className="text-sm font-normal text-gray-400">{address}</span>
                   <span className="text-base font-normal text-black">{addressValue}</span>
                 </div>
                 {apartment && apartmentValue && (
-                  <div className="flex flex-col" style={{ gap: "4px" }}>
+                  <div className="flex flex-col gap-1">
                     <span className="text-sm font-normal text-gray-400">{apartment}</span>
                     <span className="text-base font-normal text-black">{apartmentValue}</span>
                   </div>
                 )}
-                <div className="flex flex-col" style={{ gap: "4px" }}>
+                <div className="flex flex-col gap-1">
                   <span className="text-sm font-normal text-gray-400">{postalCode}</span>
                   <span className="text-base font-normal text-black">{postalCodeValue}</span>
                 </div>
               </div>
 
-              <div className="flex-1 flex flex-col" style={{ gap: "16px" }}>
-                <div className="flex flex-col" style={{ gap: "4px" }}>
+              <div className="flex-1 flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
                   <span className="text-sm font-normal text-gray-400">{country}</span>
                   <span className="text-base font-normal text-black">{countryValue}</span>
                 </div>
 
-                {apartment && apartmentValue && <div style={{ height: "47px" }} />}
+                {apartment && apartmentValue && <div className="h-[47px]" />}
 
-                <div className="flex flex-col" style={{ gap: "4px" }}>
+                <div className="flex flex-col gap-1">
                   <span className="text-sm font-normal text-gray-400">{city}</span>
                   <span className="text-base font-normal text-black">{cityValue}</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-start" style={{ gap: "8px", marginLeft: "24px" }}>
+            <div className="flex items-start gap-2 ml-6">
               {onDelete && <DeleteButton onDelete={onDelete} />}
               {onEdit && (
                 <button
                   type="button"
                   onClick={onEdit}
-                  className="flex-shrink-0 h-[40px] text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
-                  style={{ padding: "8px 16px" }}
+                  className="flex-shrink-0 h-10 px-4 text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
                 >
                   Label
                 </button>
@@ -114,24 +111,22 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
       <div
         ref={ref}
         className={cn(
-          "w-full",
-          "bg-white border border-gray-200 rounded",
+          "w-full p-6 bg-white border border-gray-200 rounded",
           className
         )}
-        style={{ padding: "24px" }}
       >
-        <div className="flex items-start" style={{ marginBottom: "16px" }}>
-          <div className="flex-shrink-0 w-[24px] h-[24px] flex items-center justify-center" style={{ marginRight: "16px" }}>
+        <div className="flex items-start mb-4">
+          <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mr-4">
             {icon}
           </div>
 
-          <div className="flex flex-1" style={{ gap: "24px" }}>
-            <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+          <div className="flex flex-1 gap-6">
+            <div className="flex flex-col flex-1 gap-1">
               <span className="text-sm font-normal text-gray-400">{address}</span>
               <span className="text-base font-normal text-black">{addressValue}</span>
             </div>
 
-            <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+            <div className="flex flex-col flex-1 gap-1">
               <span className="text-sm font-normal text-gray-400">{country}</span>
               <span className="text-base font-normal text-black">{countryValue}</span>
             </div>
@@ -139,32 +134,31 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
         </div>
 
         {apartment && apartmentValue && (
-          <div className="flex flex-col" style={{ marginBottom: "16px", marginLeft: "40px", gap: "4px" }}>
+          <div className="flex flex-col mb-4 ml-10 gap-1">
             <span className="text-sm font-normal text-gray-400">{apartment}</span>
             <span className="text-base font-normal text-black">{apartmentValue}</span>
           </div>
         )}
 
-        <div className="flex" style={{ marginBottom: "16px", marginLeft: "40px", gap: "24px" }}>
-          <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+        <div className="flex mb-4 ml-10 gap-6">
+          <div className="flex flex-col flex-1 gap-1">
             <span className="text-sm font-normal text-gray-400">{postalCode}</span>
             <span className="text-base font-normal text-black">{postalCodeValue}</span>
           </div>
 
-          <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+          <div className="flex flex-col flex-1 gap-1">
             <span className="text-sm font-normal text-gray-400">{city}</span>
             <span className="text-base font-normal text-black">{cityValue}</span>
           </div>
         </div>
 
-        <div className="flex items-center" style={{ gap: "8px", marginLeft: "40px" }}>
+        <div className="flex items-center gap-2 ml-10">
           {onDelete && <DeleteButton onDelete={onDelete} />}
           {onEdit && (
             <button
               type="button"
               onClick={onEdit}
-              className="flex-shrink-0 h-[40px] text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
-              style={{ padding: "8px 16px" }}
+              className="flex-shrink-0 h-10 px-4 text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
             >
               Label
             </button>

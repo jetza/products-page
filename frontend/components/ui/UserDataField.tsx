@@ -21,23 +21,22 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
           ref={ref}
           className={cn(
             "w-[600px] min-h-[79px]",
-            "flex items-center",
+            "flex items-center p-4 gap-6",
             "bg-white border border-gray-200 rounded",
             className
           )}
-          style={{ padding: "16px", gap: "24px" }}
         >
-          <div className="flex-shrink-0 w-[24px] h-[24px] flex items-center justify-center">
+          <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
             {icon}
           </div>
 
-          <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+          <div className="flex flex-col flex-1 gap-1">
             <span className="text-sm font-normal text-gray-400">{label}</span>
             <span className="text-base font-normal text-black">{value}</span>
           </div>
 
           {number && (
-            <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+            <div className="flex flex-col flex-1 gap-1">
               {numberLabel && (
                 <span className="text-sm font-normal text-gray-400">{numberLabel}</span>
               )}
@@ -49,8 +48,7 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
             <button
               type="button"
               onClick={onEdit}
-              className="flex-shrink-0 h-[40px] text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
-              style={{ padding: "8px 16px" }}
+              className="flex-shrink-0 h-10 px-4 text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
             >
               Label
             </button>
@@ -64,26 +62,24 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
       <div
         ref={ref}
         className={cn(
-          "w-full",
-          "flex flex-col",
+          "w-full p-4 flex flex-col",
           "bg-white border border-gray-200 rounded",
           className
         )}
-        style={{ padding: "16px" }}
       >
 
-        <div className="flex items-start" style={{ gap: "16px", marginBottom: "16px" }}>
+        <div className="flex items-start gap-4 mb-4">
 
-          <div className="flex-shrink-0 w-[24px] h-[24px] flex items-center justify-center">
+          <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
             {icon}
           </div>
 
-          <div className="flex-1 flex flex-col" style={{ gap: "4px" }}>
+          <div className="flex-1 flex flex-col gap-1">
             <span className="text-sm font-normal text-gray-400">{label}</span>
             <span className="text-base font-normal text-black">{value}</span>
 
             {number && (
-              <div className="flex flex-col" style={{ gap: "4px", marginTop: "8px" }}>
+              <div className="flex flex-col gap-1 mt-2">
                 {numberLabel && (
                   <span className="text-sm font-normal text-gray-400">{numberLabel}</span>
                 )}

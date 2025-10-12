@@ -31,14 +31,10 @@ export const OrderItem = React.forwardRef<HTMLDivElement, OrderItemProps>(
     return (
       <div
         ref={ref}
-        className={cn("flex", className)}
-        style={{ gap: "16px", marginBottom: "24px" }}
+        className={cn("flex gap-4 mb-6", className)}
       >
-        {/* Product Image */}
-        <div
-          className="flex-shrink-0 bg-gray-100 rounded overflow-hidden"
-          style={{ width: "80px", height: "80px" }}
-        >
+
+        <div className="flex-shrink-0 w-20 h-20 bg-gray-100 rounded overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={image}
@@ -47,7 +43,6 @@ export const OrderItem = React.forwardRef<HTMLDivElement, OrderItemProps>(
           />
         </div>
 
-        {/* Product Info */}
         <div className="flex-1 flex flex-col justify-between">
           <div>
             <h3 className="text-base font-normal text-black mb-1">{title}</h3>
@@ -60,7 +55,6 @@ export const OrderItem = React.forwardRef<HTMLDivElement, OrderItemProps>(
           </div>
         </div>
 
-        {/* Price */}
         <div className="flex flex-col items-end">
           <span className="text-base font-normal text-black">
             {currency}{price}

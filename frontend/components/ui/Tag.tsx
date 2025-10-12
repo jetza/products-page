@@ -22,11 +22,11 @@ export const Tag = React.forwardRef<HTMLDivElement, TagProps>(
           "py-1.5 px-4",
           "gap-2",
           "rounded-full",
-          "text-[12px] leading-[1.1] font-semibold",
+          "text-xs leading-none font-semibold",
           isClickable && "cursor-pointer",
           variant === "primary" && "bg-black text-white",
           variant === "informative" && "bg-yellow text-black",
-          variant === "disabled" && "bg-gray-200 text-gray-400",
+          variant === "disabled" && "bg-gray-100 text-gray-400",
           variant === "discount" && "bg-error text-white",
           className
         )}

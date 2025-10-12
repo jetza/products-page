@@ -36,7 +36,8 @@ export const Select: React.FC<SelectProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
-  const selectId = id || 'select-' + Math.random().toString(36).substr(2, 9);
+  const generatedId = React.useId();
+  const selectId = id || generatedId;
 
   const selectedOption = options.find((opt) => opt.value === value);
 

@@ -36,40 +36,22 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     return (
       <label
         className={cn(
-          "inline-flex items-center cursor-pointer",
+          "inline-flex items-center gap-2 cursor-pointer",
           disabled && "cursor-not-allowed"
         )}
-        style={{ gap: "8px" }}
         onMouseEnter={() => !disabled && setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative" style={{ width: "16px", height: "16px" }}>
+        <div className="relative w-4 h-4">
           <input
             type="checkbox"
             ref={ref}
             disabled={disabled}
-            className="absolute cursor-pointer disabled:cursor-not-allowed"
-            style={{ 
-              opacity: 0,
-              width: "16px", 
-              height: "16px",
-              margin: 0,
-              padding: 0,
-              border: "none",
-              outline: "none",
-              appearance: "none",
-            }}
+            className="absolute inset-0 w-full h-full opacity-0 appearance-none cursor-pointer disabled:cursor-not-allowed z-10 m-0 p-0"
+            style={{ width: 0, height: 0 }}
             {...props}
           />
-          <div 
-            className="absolute pointer-events-none" 
-            style={{ 
-              top: 0, 
-              left: 0, 
-              width: "16px", 
-              height: "16px" 
-            }}
-          >
+          <div className="absolute inset-0 pointer-events-none z-0">
             {renderRadioIcon()}
           </div>
         </div>

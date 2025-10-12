@@ -48,27 +48,26 @@ export const DefaultAddress = React.forwardRef<HTMLDivElement, DefaultAddressPro
       <div
         ref={ref}
         className={cn(
-          "bg-white border border-gray-200 rounded",
+          "bg-white border border-gray-200 rounded p-6 w-72",
           className
         )}
-        style={{ padding: "24px", width: "288px" }}
       >
-        <div className="flex items-center" style={{ marginBottom: "24px" }}>
+        <div className="flex items-center mb-6">
           <Radio
             checked={isDefault}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => onDefaultChange?.(e.target.checked)}
-            className="mr-[16px]"
+            className="mr-4"
           />
           <span className="text-base font-normal text-black">{label}</span>
         </div>
 
         {address && country && (
-          <div className="flex" style={{ marginBottom: "16px", gap: "24px" }}>
-            <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+          <div className="flex mb-4 gap-6">
+            <div className="flex flex-col flex-1 gap-1">
               <span className="text-sm font-normal text-gray-400">{address}</span>
               <span className="text-base font-normal text-black">{addressValue}</span>
             </div>
-            <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+            <div className="flex flex-col flex-1 gap-1">
               <span className="text-sm font-normal text-gray-400">{country}</span>
               <span className="text-base font-normal text-black">{countryValue}</span>
             </div>
@@ -76,33 +75,32 @@ export const DefaultAddress = React.forwardRef<HTMLDivElement, DefaultAddressPro
         )}
 
         {apartment && apartmentValue && (
-          <div className="flex flex-col" style={{ marginBottom: "16px", gap: "4px" }}>
+          <div className="flex flex-col mb-4 gap-1">
             <span className="text-sm font-normal text-gray-400">{apartment}</span>
             <span className="text-base font-normal text-black">{apartmentValue}</span>
           </div>
         )}
 
         {postalCode && city && (
-          <div className="flex" style={{ marginBottom: "24px", gap: "24px" }}>
-            <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+          <div className="flex mb-6 gap-6">
+            <div className="flex flex-col flex-1 gap-1">
               <span className="text-sm font-normal text-gray-400">{postalCode}</span>
               <span className="text-base font-normal text-black">{postalCodeValue}</span>
             </div>
-            <div className="flex flex-col flex-1" style={{ gap: "4px" }}>
+            <div className="flex flex-col flex-1 gap-1">
               <span className="text-sm font-normal text-gray-400">{city}</span>
               <span className="text-base font-normal text-black">{cityValue}</span>
             </div>
           </div>
         )}
 
-        <div className="flex items-center" style={{ gap: "8px" }}>
+        <div className="flex items-center gap-2">
           {onDelete && <DeleteButton onDelete={onDelete} />}
           {onEdit && (
             <button
               type="button"
               onClick={onEdit}
-              className="flex-shrink-0 h-[40px] text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
-              style={{ padding: "8px 16px" }}
+              className="flex-shrink-0 h-10 px-4 text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
             >
               Label
             </button>

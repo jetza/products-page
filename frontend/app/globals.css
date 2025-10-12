@@ -1,6 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+:root {
   /* Spacing Scale */
   --spacing-0: 0;
   --spacing-1: 0.25rem;    /* 4px */

@@ -24,13 +24,7 @@ export const AccountNavigation = React.forwardRef<
 
         <h2 className="text-2xl font-normal text-black">{title}</h2>
 
-        <nav
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "24px",
-          }}
-        >
+        <nav className="flex flex-col gap-6">
           {items.map((item, index) => (
             <button
               key={index}
