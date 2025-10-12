@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils/cn";
-import { ChevronDown } from "@/components/icons/ChevronIcons";
+import { ChevronDownIcon } from "@/components/icons";
 
 export interface SelectFilterOption {
   value: string;
@@ -92,7 +92,7 @@ export const SelectFilter: React.FC<SelectFilterProps> = ({
         <span className={cn(!selectedOption && "text-gray-500")}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
-        <ChevronDown 
+        <ChevronDownIcon 
           className={cn(
             "w-4 h-4 transition-transform duration-200",
             isOpen && "rotate-180",

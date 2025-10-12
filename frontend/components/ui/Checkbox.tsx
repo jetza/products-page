@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { CheckmarkIcon } from "@/components/icons/ChevronIcons";
+import { CheckmarkIcon } from "@/components/icons";
 
 export interface CheckboxProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {

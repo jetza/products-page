@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils/cn";
-import { ChevronDown } from "@/components/icons/ChevronIcons";
+import { ChevronDownIcon } from "@/components/icons";
 
 export interface SelectOption {
   value: string;
@@ -92,7 +92,7 @@ export const Select: React.FC<SelectProps> = ({
           <span className={cn(!selectedOption && "text-gray-400")}>
             {selectedOption ? selectedOption.label : placeholder}
           </span>
-          <ChevronDown className={cn("transition-transform duration-200", isOpen && "rotate-180", disabled && "text-gray-400")} />
+          <ChevronDownIcon className={cn("transition-transform duration-200", isOpen && "rotate-180", disabled && "text-gray-400")} />
         </button>
         {isOpen && !disabled && (
           <div className={cn("absolute z-50 w-full mt-2 bg-white border border-gray-300 rounded shadow-lg max-h-[448px] overflow-y-auto")}>

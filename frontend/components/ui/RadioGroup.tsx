@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { RadioDot } from "@/components/icons/ChevronIcons";
+import { RadioDot } from "@/components/icons/RadioDot";
 
 export interface RadioOption {
   value: string;
