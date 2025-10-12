@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { RadioDot } from "@/components/icons/RadioDot";
+import {
+  RadioDefault,
+  RadioSelected,
+  RadioHover,
+  RadioSelectedHoverDark,
+} from "@/components/icons";
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
@@ -8,42 +13,65 @@ export interface RadioProps
 }
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
-  ({ className, label, disabled, ...props }, ref) => {
+  ({ label, disabled, ...props }, ref) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const renderRadioIcon = () => {
+      if (disabled) {
+        // Disabled state - koristimo default SVG sa smanjenom opacity
+        return props.checked ? (
+          <RadioSelected className="opacity-40" />
+        ) : (
+          <RadioDefault className="opacity-40" />
+        );
+      }
+
+      if (props.checked) {
+        return isHovered ? <RadioSelectedHoverDark /> : <RadioSelected />;
+      }
+
+      return isHovered ? <RadioHover /> : <RadioDefault />;
+    };
+
     return (
       <label
         className={cn(
-          "inline-flex items-center gap-2 cursor-pointer",
-          disabled && "cursor-not-allowed opacity-50"
+          "inline-flex items-center cursor-pointer",
+          disabled && "cursor-not-allowed"
         )}
+        style={{ gap: "8px" }}
+        onMouseEnter={() => !disabled && setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative">
+        <div className="relative" style={{ width: "16px", height: "16px" }}>
           <input
-            type="radio"
+            type="checkbox"
             ref={ref}
             disabled={disabled}
-            className={cn(
-              "w-4 h-4",
-              "border border-black rounded-full",
-              "bg-white",
-              "appearance-none cursor-pointer",
-              "focus:outline-none focus:ring-0",
-              "checked:border-black",
-              "hover:border-gray-400",
-              "checked:hover:border-gray-900",
-
-              "disabled:cursor-not-allowed disabled:bg-gray-100 disabled:border-gray-300",
-              "disabled:checked:border-gray-300",
-              className
-            )}
+            className="absolute cursor-pointer disabled:cursor-not-allowed"
+            style={{ 
+              opacity: 0,
+              width: "16px", 
+              height: "16px",
+              margin: 0,
+              padding: 0,
+              border: "none",
+              outline: "none",
+              appearance: "none",
+            }}
             {...props}
           />
-          <RadioDot
-            className={cn(
-              "absolute inset-0 flex items-center justify-center pointer-events-none",
-              props.checked ? "opacity-100" : "opacity-0"
-            )}
-            disabled={disabled}
-          />
+          <div 
+            className="absolute pointer-events-none" 
+            style={{ 
+              top: 0, 
+              left: 0, 
+              width: "16px", 
+              height: "16px" 
+            }}
+          >
+            {renderRadioIcon()}
+          </div>
         </div>
         {label && (
           <span
