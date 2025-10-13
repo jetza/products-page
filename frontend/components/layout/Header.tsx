@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils/cn";
 import { SearchIcon, MenuIcon, BagIcon } from "@/components/icons";
 import { Search } from "@/components/ui/Search";
+import { CartDrawer } from "@/components/ui/CartDrawer";
+import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
 
 interface HeaderProps {
@@ -24,8 +26,11 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("HR");
+  
+  const { items, updateQuantity, removeFromCart } = useCart();
 
   if (variant === "mobile") {
     return (
@@ -44,7 +49,13 @@ export const Header: React.FC<HeaderProps> = ({
               SofaSocietyCo.
             </Link>
 
-            <div className="w-10" />
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="p-2 -mr-2"
+              aria-label="Shopping cart"
+            >
+              <BagIcon className="w-6 h-6" />
+            </button>
           </div>
         </header>
 
@@ -136,20 +147,25 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </>
         )}
+
+        <CartDrawer
+          isOpen={isCartOpen}
+          onClose={() => setIsCartOpen(false)}
+          items={items}
+          onQuantityChange={updateQuantity}
+          onRemoveItem={removeFromCart}
+        />
       </>
     );
   }
 
-  // Desktop Header
   return (
     <header className={cn("bg-white border-b border-gray-200", className)}>
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
         <Link href="/" className="text-xl font-semibold">
           SofaSocietyCo.
         </Link>
 
-        {/* Navigation Links */}
         <nav className="flex items-center gap-8">
           <Link href="/about" className="text-base text-black hover:text-gray-600">
             About
@@ -162,9 +178,7 @@ export const Header: React.FC<HeaderProps> = ({
           </Link>
         </nav>
 
-        {/* Right Actions */}
         <div className="flex items-center gap-6">
-          {/* Country Selector */}
           <div className="relative">
             <button
               onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
@@ -208,7 +222,6 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Search */}
           <button
             onClick={() => setIsSearchOpen(!isSearchOpen)}
             className="p-2"
@@ -217,18 +230,28 @@ export const Header: React.FC<HeaderProps> = ({
             <SearchIcon className="w-5 h-5" />
           </button>
 
-          {/* Cart */}
-          <button className="p-2" aria-label="Shopping cart">
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="p-2"
+            aria-label="Shopping cart"
+          >
             <BagIcon className="w-5 h-5" />
           </button>
         </div>
       </div>
 
-      {/* Search Component */}
       <Search
         variant="desktop"
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
+      />
+
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        items={items}
+        onQuantityChange={updateQuantity}
+        onRemoveItem={removeFromCart}
       />
     </header>
   );
