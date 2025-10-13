@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils/cn";
-import { ChevronDownIcon } from "@/components/icons";
+import { DropdownButton } from "@/components/ui/DropdownButton";
 
 export interface SelectFilterOption {
   value: string;
@@ -65,41 +65,17 @@ export const SelectFilter: React.FC<SelectFilterProps> = ({
 
   return (
     <div ref={selectRef} className={cn("relative inline-block", className)}>
-      <button
-        type="button"
-        disabled={disabled}
+      <DropdownButton
+        isOpen={isOpen}
         onClick={toggleDropdown}
-        className={cn(
-          "inline-flex items-center justify-between",
-          "text-sm font-normal text-left",
-          "border border-black rounded",
-          "transition-all duration-200",
-          "focus:outline-none",
-          "bg-white",
-          size === "lg" && "h-10 px-4 gap-2",
-          size === "sm" && "h-[33px] px-3 gap-1",
-          !disabled && [
-            "hover:bg-gray-50",
-            isOpen && "bg-gray-50",
-          ],
-          
-          disabled && [
-            "border-gray-300 text-gray-400 bg-gray-50",
-            "cursor-not-allowed",
-          ],
-        )}
+        variant="selectFilter"
+        disabled={disabled}
+        size={size}
       >
         <span className={cn(!selectedOption && "text-gray-500")}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
-        <ChevronDownIcon 
-          className={cn(
-            "w-4 h-4 transition-transform duration-200",
-            isOpen && "rotate-180",
-            disabled && "text-gray-400"
-          )} 
-        />
-      </button>
+      </DropdownButton>
 
       {isOpen && !disabled && (
         <div className={cn(

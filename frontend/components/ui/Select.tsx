@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils/cn";
-import { ChevronDownIcon } from "@/components/icons";
+import { DropdownButton } from "@/components/ui/DropdownButton";
 
 export interface SelectOption {
   value: string;
@@ -78,23 +78,18 @@ export const Select: React.FC<SelectProps> = ({
         </label>
       )}
       <div className="relative">
-        <button
-          type="button"
+        <DropdownButton
           id={selectId}
-          disabled={disabled}
+          isOpen={isOpen}
           onClick={toggleDropdown}
-          className={cn(
-            "h-12 px-4 pr-10 text-base font-normal text-left border rounded transition-all duration-200 focus:outline-none w-full flex items-center justify-between",
-            !error && !disabled && ["border-gray-300 bg-white text-gray-900", "hover:border-gray-400", isOpen && "border-black"],
-            error && !disabled && ["border-error bg-white text-gray-900", isOpen && "border-error"],
-            disabled && ["border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"]
-          )}
+          variant="select"
+          disabled={disabled}
+          error={error}
         >
           <span className={cn(!selectedOption && "text-gray-400")}>
             {selectedOption ? selectedOption.label : placeholder}
           </span>
-          <ChevronDownIcon className={cn("transition-transform duration-200", isOpen && "rotate-180", disabled && "text-gray-400")} />
-        </button>
+        </DropdownButton>
         {isOpen && !disabled && (
           <div className={cn("absolute z-50 w-full mt-2 bg-white border border-gray-300 rounded shadow-lg max-h-[448px] overflow-y-auto")}>
             {options.map((option) => (

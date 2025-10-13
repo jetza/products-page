@@ -48,13 +48,11 @@ export default function ProductPage({
   );
 
   const handleAddToCart = () => {
-
     let variantText = '';
     
     if (selectedColor || selectedSize) {
       variantText = `${selectedColor || ''} ${selectedSize || ''}`.trim();
     } else if (product.variants?.[0]?.options) {
-
       const options = product.variants[0].options;
       const parts = [];
       if (options.Material) parts.push(options.Material);
@@ -78,14 +76,12 @@ export default function ProductPage({
   return (
     <div className="p-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-
-        <Link href="/products" className="text-black hover:text-gray-600 mb-4 inline-block">
-          ← Back to products
+        <Link href="/shop" className="text-black hover:text-gray-600 mb-4 inline-block">
+          ← Back to shop
         </Link>
 
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
             <div>
               {product.thumbnail && (
                 <div className="w-full h-96 bg-gray-100 rounded-lg overflow-hidden relative">
