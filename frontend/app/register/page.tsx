@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { Header } from "@/components/layout/Header";
+import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState("");
@@ -22,7 +22,7 @@ export default function RegisterPage() {
 
   return (
     <div className="fixed inset-0 bg-white flex flex-col">
-      <Header />
+      <ResponsiveHeader />
       <div className="grid grid-cols-1 lg:grid-cols-2 flex-1">
         <div className="hidden lg:block relative">
           <Image

@@ -11,6 +11,8 @@ import { useCart } from "@/lib/cart-context";
 import { useState, useEffect } from "react";
 import type { Product } from "@/types/product";
 import { getProductColors, getProductSizes, getProductMaterials, getProductPrice, formatPrice } from "@/lib/utils/product-utils";
+import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
+import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 
 export default function ProductPage({
   params,
@@ -65,11 +67,13 @@ export default function ProductPage({
   };
 
   return (
-    <div className="p-8 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
-        <Link href="/shop" className="text-black hover:text-gray-600 mb-4 inline-block">
-          ← Back to shop
-        </Link>
+    <>
+      <ResponsiveHeader />
+      <main className="flex-1 p-8 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <Link href="/shop" className="text-black hover:text-gray-600 mb-4 inline-block">
+            ← Back to shop
+          </Link>
 
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -138,6 +142,8 @@ export default function ProductPage({
           </div>
         </div>
       </div>
-    </div>
+      </main>
+      <ResponsiveFooter />
+    </>
   );
 }

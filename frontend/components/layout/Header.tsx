@@ -38,12 +38,12 @@ export const Header: React.FC<HeaderProps> = ({
   const isTransparent = theme === "transparent";
   const bgClass = isTransparent ? "bg-transparent" : "bg-white";
   const textClass = isTransparent ? "text-white" : "text-black";
-  const borderClass = isTransparent ? "border-white/20" : "border-gray-200";
+  const borderClass = isTransparent ? "" : "border-b border-gray-200";
 
   if (variant === "mobile") {
     return (
       <>
-        <header className={cn(bgClass, "border-b", borderClass, className)}>
+        <header className={cn(bgClass, borderClass, className)}>
           <div className="flex items-center justify-between px-4 h-16">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -168,7 +168,7 @@ export const Header: React.FC<HeaderProps> = ({
   }
 
   return (
-    <header className={cn(bgClass, "border-b", borderClass, className)}>
+    <header className={cn(bgClass, borderClass, className)}>
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
           SofaSocietyCo.

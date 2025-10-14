@@ -3,7 +3,11 @@
 import { Header } from "./Header";
 import { useEffect, useState } from "react";
 
-export const ResponsiveHeader = () => {
+interface ResponsiveHeaderProps {
+  theme?: "solid" | "transparent";
+}
+
+export const ResponsiveHeader: React.FC<ResponsiveHeaderProps> = ({ theme = "solid" }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -17,10 +21,10 @@ export const ResponsiveHeader = () => {
   return (
     <>
       <div className="hidden md:block">
-        <Header variant="desktop" />
+        <Header variant="desktop" theme={theme} />
       </div>
       <div className="block md:hidden">
-        <Header variant="mobile" />
+        <Header variant="mobile" theme={theme} />
       </div>
     </>
   );
