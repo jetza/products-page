@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({
 
   if (variant === "mobile") {
     return (
-      <footer className={cn("bg-white border-t border-gray-200 py-6 px-6", className)}>
+      <footer className={cn("bg-gray-50 py-6 px-6", className)}>
         <div className="max-w-md mx-auto">
           <div className="mb-6">
             <h2 className="text-big font-semibold">
@@ -102,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({
   }
 
   return (
-    <footer className={cn("bg-white border-t border-gray-200 py-6", className)}>
+    <footer className={cn("bg-gray-50 py-6", className)}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-5 gap-8">
           <div>
