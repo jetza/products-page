@@ -52,15 +52,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           size === "lg" && "h-12 px-6 gap-4 text-base",
 
           variant === "primary" && [
-            "bg-[var(--button-primary-bg)] text-[var(--button-primary-text)]",
-            "hover:bg-[var(--button-primary-hover-bg)]",
-            "disabled:bg-[var(--button-disabled-bg)] disabled:text-[var(--button-disabled-text)]",
+            "bg-button-primary-bg text-button-primary-text",
+            "hover:bg-button-primary-hover",
+            "disabled:bg-button-disabled-bg disabled:text-button-disabled-text",
           ],
           variant === "secondary" && [
-            "bg-[var(--button-secondary-bg)] text-[var(--button-secondary-text)]",
-            "border border-[var(--button-secondary-border)]",
-            "hover:bg-[var(--button-secondary-hover-bg)]",
-            "disabled:border-[var(--button-disabled-border)] disabled:text-[var(--button-disabled-text)]",
+            "bg-button-secondary-bg text-button-secondary-text",
+            "border border-button-secondary-border",
+            "hover:bg-button-secondary-hover",
+            "disabled:border-button-disabled-border disabled:text-button-disabled-text",
           ],
           variant === "ghost" && [
             "bg-gray-50 text-black",

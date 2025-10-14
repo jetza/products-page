@@ -1,11 +1,12 @@
+import { getColorClass } from "@/lib/color-mapping";
+
 interface ColorPickerProps {
   colors: string[];
   selectedColor: string;
   onColorSelect: (color: string) => void;
-  getColorHex: (color: string) => string;
 }
 
-export function ColorPicker({ colors, selectedColor, onColorSelect, getColorHex }: ColorPickerProps) {
+export function ColorPicker({ colors, selectedColor, onColorSelect }: ColorPickerProps) {
   if (colors.length === 0) return null;
 
   return (
@@ -20,8 +21,7 @@ export function ColorPicker({ colors, selectedColor, onColorSelect, getColorHex 
         {colors.map((colorName) => (
           <div key={colorName} className="relative w-8 h-8 flex flex-col">
             <button
-              className="w-full h-full cursor-pointer transition-all hover:opacity-80"
-              style={{ backgroundColor: getColorHex(colorName) }}
+              className={`w-full h-full cursor-pointer transition-all hover:opacity-80 ${getColorClass(colorName)}`}
               title={colorName}
               onClick={() => onColorSelect(colorName)}
               aria-label={`Select ${colorName} color`}

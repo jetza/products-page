@@ -37,8 +37,7 @@ export const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownPro
             />
             
             <div 
-              className="absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded shadow-lg z-20 p-6"
-              style={{ width: '243px' }}
+              className="absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded shadow-lg z-20 p-6 w-[243px]"
             >
               {children}
             </div>

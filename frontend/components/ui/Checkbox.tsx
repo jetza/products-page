@@ -24,8 +24,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             type="checkbox"
             ref={ref}
             disabled={disabled}
-            className="absolute inset-0 w-full h-full opacity-0 appearance-none cursor-pointer disabled:cursor-not-allowed z-10 m-0 p-0"
-            style={{ width: 0, height: 0 }}
+            className="absolute inset-0 opacity-0 appearance-none cursor-pointer disabled:cursor-not-allowed z-10 m-0 p-0 w-0 h-0"
             {...props}
           />
           <div
@@ -43,18 +42,12 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           {isRadioVariant ? (
             <div
               className={cn(
-                "absolute pointer-events-none",
+                "absolute pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
                 props.checked ? "opacity-100" : "opacity-0"
               )}
-              style={{
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
             >
               <div
-                className="rounded-full bg-white"
-                style={{ width: "8px", height: "8px" }}
+                className="rounded-full bg-white w-2 h-2"
               />
             </div>
           ) : (

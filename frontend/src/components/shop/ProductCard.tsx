@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getColorHex } from "@/lib/color-mapping";
+import { getColorClass } from "@/lib/color-mapping";
 
 export interface ProductCardProps {
   id: string;
@@ -51,8 +51,7 @@ export function ProductCard({
               {colors.map((color) => (
                 <span
                   key={color}
-                  className="w-4 h-4 rounded-full border border-gray-300"
-                  style={{ backgroundColor: getColorHex(color) }}
+                  className={`w-4 h-4 rounded-full border border-gray-300 ${getColorClass(color)}`}
                   title={color}
                 />
               ))}

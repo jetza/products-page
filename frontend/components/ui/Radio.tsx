@@ -47,8 +47,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
             type="checkbox"
             ref={ref}
             disabled={disabled}
-            className="absolute inset-0 w-full h-full opacity-0 appearance-none cursor-pointer disabled:cursor-not-allowed z-10 m-0 p-0"
-            style={{ width: 0, height: 0 }}
+            className="absolute inset-0 opacity-0 appearance-none cursor-pointer disabled:cursor-not-allowed z-10 m-0 p-0 w-0 h-0"
             {...props}
           />
           <div className="absolute inset-0 pointer-events-none z-0">

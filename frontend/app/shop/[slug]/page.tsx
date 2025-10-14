@@ -1,7 +1,6 @@
 "use client";
 
 import { getProductBySlug } from "@/lib/products-service";
-import { getColorHex } from "@/lib/color-mapping";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -106,7 +105,6 @@ export default function ProductPage({
                 colors={colors}
                 selectedColor={selectedColor}
                 onColorSelect={setSelectedColor}
-                getColorHex={getColorHex}
               />
 
               {sizes.length > 0 && (

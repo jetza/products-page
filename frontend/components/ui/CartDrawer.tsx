@@ -38,10 +38,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
       <div
         className={cn(
-          "fixed top-0 right-0 bottom-0 bg-white z-[70] flex flex-col shadow-2xl",
+          "fixed top-0 right-0 bottom-0 bg-white z-[70] flex flex-col shadow-2xl w-[557px]",
           className
         )}
-        style={{ width: '557px' }}
       >
 
         <div className="flex items-center justify-between px-12 pt-[132px] pb-8">

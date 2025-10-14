@@ -1,5 +1,5 @@
 import { getProducts } from "@/lib/products-service";
-import { getColorHex } from "@/lib/color-mapping";
+import { getColorClass } from "@/lib/color-mapping";
 import { getProductColors, formatPrice, getProductPrice } from "@/lib/utils/product-utils";
 import Link from "next/link";
 import Image from "next/image";
@@ -52,8 +52,7 @@ export default async function ProductsPage() {
                         {colors.map((colorName) => colorName && (
                           <div
                             key={colorName}
-                            className="w-6 h-6 rounded-full border-2 border-gray-300"
-                            style={{ backgroundColor: getColorHex(colorName) }}
+                            className={`w-6 h-6 rounded-full border-2 border-gray-300 ${getColorClass(colorName)}`}
                             title={colorName}
                           />
                         ))}

@@ -58,8 +58,7 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
     return (
       <div
         ref={ref}
-        className={cn("flex gap-8", className)}
-        style={{ width: '461px', minHeight: '136px' }}
+        className={cn("flex gap-8 w-[461px] min-h-[136px]", className)}
       >
         <div className="flex-shrink-0 w-[136px] h-[136px] bg-gray-100 rounded overflow-hidden relative">
           <Image

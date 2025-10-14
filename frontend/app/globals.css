@@ -38,7 +38,12 @@
   --color-error: #DF4718;
   
   /* Colors - Additional */
-  --color-yellow: #FFFBB7;
+  --color-yellow: #FFEFB7;
+  
+  /* Product Colors */
+  --color-product-light-gray: #D3D3D3;
+  --color-product-dark-gray: #6B6B6B;
+  --color-product-black: #1A1A1A;
   
   /* Typography - Font Family */
   --font-family-sans: "Mona Sans", system-ui, -apple-system, sans-serif;

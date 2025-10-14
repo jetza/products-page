@@ -49,7 +49,7 @@ export const CheckboxFilter = React.forwardRef<HTMLDivElement, CheckboxFilterPro
                 checked={isChecked}
                 onChange={() => handleToggle(option.id)}
                 className={cn(
-                  "w-5 h-5 rounded border-2 transition-colors appearance-none cursor-pointer",
+                  "w-5 h-5 rounded border-2 transition-colors appearance-none cursor-pointer bg-center bg-no-repeat bg-contain",
                   isChecked
                     ? "bg-black border-black"
                     : "bg-white border-gray-300 group-hover:border-gray-400"
@@ -58,9 +58,6 @@ export const CheckboxFilter = React.forwardRef<HTMLDivElement, CheckboxFilterPro
                   backgroundImage: isChecked
                     ? `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 10L8 14L16 6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`
                     : undefined,
-                  backgroundSize: 'contain',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
                 }}
               />
 
