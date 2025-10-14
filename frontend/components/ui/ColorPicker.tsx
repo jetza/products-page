@@ -1,4 +1,4 @@
-import { getColorClass } from "@/lib/color-mapping";
+import { getColorValue } from "@/lib/color-mapping";
 
 interface ColorPickerProps {
   colors: string[];
@@ -21,7 +21,8 @@ export function ColorPicker({ colors, selectedColor, onColorSelect }: ColorPicke
         {colors.map((colorName) => (
           <div key={colorName} className="relative w-8 h-8 flex flex-col">
             <button
-              className={`w-full h-full cursor-pointer transition-all hover:opacity-80 ${getColorClass(colorName)}`}
+              className="w-full h-full cursor-pointer transition-all hover:opacity-80"
+              style={{ backgroundColor: getColorValue(colorName) }}
               title={colorName}
               onClick={() => onColorSelect(colorName)}
               aria-label={`Select ${colorName} color`}

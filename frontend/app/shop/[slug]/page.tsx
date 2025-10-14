@@ -61,7 +61,7 @@ export default function ProductPage({
       price: getProductPrice(product) / 100,
       image: product.thumbnail || "https://placehold.co/80x80/e7e7e7/666?text=Product",
       imageAlt: product.title,
-    });
+    }, quantity);
   };
 
   return (

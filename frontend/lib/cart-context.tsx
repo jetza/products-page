@@ -15,7 +15,7 @@ export interface CartItemType {
 
 interface CartContextType {
   items: CartItemType[];
-  addToCart: (item: Omit<CartItemType, 'quantity'>) => void;
+  addToCart: (item: Omit<CartItemType, 'quantity'>, quantity?: number) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
@@ -65,17 +65,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [items, isLoaded]);
 
-  const addToCart = useCallback((item: Omit<CartItemType, 'quantity'>) => {
+  const addToCart = useCallback((item: Omit<CartItemType, 'quantity'>, quantity: number = 1) => {
     setItems((prevItems) => {
       const existingItem = prevItems.find((i) => i.id === item.id);
       
       if (existingItem) {
         return prevItems.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+          i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i
         );
       }
       
-      return [...prevItems, { ...item, quantity: 1 }];
+      return [...prevItems, { ...item, quantity }];
     });
   }, []);
 
