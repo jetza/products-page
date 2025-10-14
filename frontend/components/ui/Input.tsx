@@ -53,12 +53,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             "placeholder:text-gray-400",
             
             !error && !disabled && [
-              "border-gray-300 bg-white text-gray-900",
+              "border-gray-300 bg-white text-gray-800",
               "hover:border-gray-400",
               "focus:border-black",
             ],
             error && !disabled && [
-              "border-error bg-white text-gray-900",
+              "border-error bg-white text-gray-800",
               "focus:border-error",
             ],
             disabled && [

@@ -41,7 +41,7 @@ export function ProductCard({
 
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-medium text-gray-900 truncate group-hover:text-gray-700 transition-colors">
+          <h3 className="text-sm font-medium text-gray-800 truncate group-hover:text-gray-700 transition-colors">
             {title}
           </h3>
           <p className="text-sm text-gray-500 truncate">{collection}</p>
@@ -59,7 +59,7 @@ export function ProductCard({
           )}
         </div>
 
-        <p className="text-sm font-medium text-gray-900 whitespace-nowrap">
+        <p className="text-sm font-medium text-gray-800 whitespace-nowrap">
           {currency}
           {price.toFixed(2)}
         </p>

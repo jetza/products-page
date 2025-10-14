@@ -89,7 +89,7 @@ export const Modal: React.FC<ModalProps> = ({
           isConfirmation && device === "desktop" && "justify-center"
         )}>
           <h2 className={cn(
-            "text-[32px] leading-[1.375] font-semibold text-black",
+            "text-h4 leading-normal font-semibold text-black",
             isConfirmation && device === "desktop" && "text-center"
           )}>
             {title}

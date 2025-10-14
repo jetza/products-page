@@ -24,8 +24,8 @@ export const CustomLink: React.FC<LinkProps> = ({
     "border-b border-black",
     "hover:border-gray-400",
     
-    size === "lg" && "text-2xl leading-[1.1]",  
-    size === "sm" && "text-sm leading-[1.4]",  
+    size === "lg" && "text-big leading-tight",  
+    size === "sm" && "text-sm leading-normal",  
     
     disabled && [
       "text-gray-400 border-gray-400",

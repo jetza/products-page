@@ -61,7 +61,7 @@ export const CheckboxFilter = React.forwardRef<HTMLDivElement, CheckboxFilterPro
                 }}
               />
 
-              <span className="flex-1 text-base text-gray-900 group-hover:text-black">
+              <span className="flex-1 text-base text-gray-800 group-hover:text-black">
                 {option.label}
               </span>
             </label>

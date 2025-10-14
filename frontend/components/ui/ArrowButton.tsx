@@ -27,7 +27,7 @@ export const ArrowButton = React.forwardRef<
         
         variant === "default" && [
           "bg-black text-white",
-          "hover:bg-gray-900",
+          "hover:bg-gray-800",
           "disabled:bg-gray-300 disabled:cursor-not-allowed",
         ],
         variant === "outline" && [

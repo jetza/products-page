@@ -94,10 +94,10 @@ export default function ProductPage({
             </div>
 
             <div>
-              <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
+              <h1 className="text-h3 font-medium mb-4">{product.title}</h1>
               <p className="text-gray-600 mb-6">{product.description}</p>
 
-              <p className="text-2xl font-bold text-black mb-6">
+              <p className="text-big font-medium text-black mb-6">
                 {formatPrice(getProductPrice(product))}
               </p>
 
@@ -115,7 +115,7 @@ export default function ProductPage({
 
               {sizes.length > 0 && (
                 <div className="mb-8">
-                  <h3 className="text-sm font-medium text-gray-900 mb-4">Sizes</h3>
+                  <h3 className="text-sm font-medium text-gray-800 mb-4">Sizes</h3>
                   <div className="flex gap-2">
                     {sizes.map((size) => (
                       <button

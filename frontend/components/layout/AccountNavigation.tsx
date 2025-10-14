@@ -22,7 +22,7 @@ export const AccountNavigation = React.forwardRef<
     <div ref={ref} className={cn("account-navigation", className)}>
       <div className="account-navigation-inner">
 
-        <h2 className="text-2xl font-normal text-black">{title}</h2>
+        <h2 className="text-big font-normal text-black">{title}</h2>
 
         <nav className="flex flex-col gap-6">
           {items.map((item, index) => (

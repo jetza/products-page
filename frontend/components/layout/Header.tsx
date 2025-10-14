@@ -45,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
               <MenuIcon className="w-6 h-6" />
             </button>
 
-            <Link href="/" className="text-xl font-semibold">
+            <Link href="/" className="text-button-big font-semibold">
               SofaSocietyCo.
             </Link>
 
@@ -81,21 +81,21 @@ export const Header: React.FC<HeaderProps> = ({
               <nav className="flex-1 px-6 py-8">
                 <Link
                   href="/about"
-                  className="block text-white text-2xl font-medium mb-6"
+                  className="block text-white text-big font-medium mb-6"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About
                 </Link>
                 <Link
                   href="/inspiration"
-                  className="block text-white text-2xl font-medium mb-6"
+                  className="block text-white text-big font-medium mb-6"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Inspiration
                 </Link>
                 <Link
                   href="/shop"
-                  className="block text-white text-2xl font-medium"
+                  className="block text-white text-big font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Shop
@@ -162,7 +162,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className={cn("bg-white border-b border-gray-200", className)}>
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="text-xl font-semibold">
+        <Link href="/" className="text-button-big font-semibold">
           SofaSocietyCo.
         </Link>
 

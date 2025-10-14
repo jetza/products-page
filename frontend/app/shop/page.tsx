@@ -8,11 +8,11 @@ export default async function ShopPage() {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-8 py-12">
-        <h1 className="text-5xl font-bold mb-12">Shop</h1>
+        <h1 className="text-h1 font-medium mb-12">Shop</h1>
 
         {shopItems.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-xl text-gray-500">
+            <p className="text-button-big text-gray-500">
               No products available.
             </p>
           </div>

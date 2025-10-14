@@ -91,7 +91,7 @@ export const Search: React.FC<SearchProps> = ({
                 placeholder="Search for products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-16 pl-16 pr-16 text-lg border-none focus:outline-none rounded-lg"
+                className="w-full h-16 pl-16 pr-16 text-body border-none focus:outline-none rounded-lg"
               />
               <button
                 type="button"

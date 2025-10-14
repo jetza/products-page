@@ -22,7 +22,7 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
     return (
       <div ref={ref} className={cn("w-[461px] flex flex-col gap-8", className)}>
 
-        <div className="flex items-center justify-between text-lg">
+        <div className="flex items-center justify-between text-body">
           <span className="font-semibold">Total:</span>
           <span className="font-bold">
             {currency}{total.toFixed(2)}

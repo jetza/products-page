@@ -129,8 +129,8 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
               isMobile ? "mt-8 pt-8" : "mt-4 pt-4"
             )}
           >
-            <span className="text-xl font-bold text-black">Total</span>
-            <span className="text-xl font-bold text-black">
+            <span className="text-button-big font-bold text-black">Total</span>
+            <span className="text-button-big font-bold text-black">
               {currency}{total.toFixed(2)}
             </span>
           </div>

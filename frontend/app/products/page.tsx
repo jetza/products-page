@@ -11,7 +11,7 @@ export default async function ProductsPage() {
   return (
     <div className="p-8 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Products</h1>
+        <h1 className="text-h2 font-medium mb-8">Products</h1>
         
         {products.length === 0 ? (
           <p className="text-gray-600">No products found.</p>
@@ -39,7 +39,7 @@ export default async function ProductsPage() {
                     </div>
                   )}
 
-                  <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
+                  <h2 className="text-button-big font-semibold mb-2">{product.title}</h2>
 
                   <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                     {product.description}
@@ -59,7 +59,7 @@ export default async function ProductsPage() {
                       </div>
                     </div>
                   )}
-                  <p className="text-lg font-bold text-blue-600">
+                  <p className="text-body font-bold text-black">
                     {formatPrice(getProductPrice(product))}
                   </p>
                 </Link>

@@ -45,8 +45,8 @@ export const DropdownButton = React.forwardRef<HTMLButtonElement, DropdownButton
     };
 
     const selectStateStyles = variant === "select" ? cn(
-      !error && !disabled && ["border-gray-300 text-gray-900", "hover:border-gray-400", isOpen && "border-black"],
-      error && !disabled && ["border-error text-gray-900", isOpen && "border-error"],
+      !error && !disabled && ["border-gray-300 text-gray-800", "hover:border-gray-400", isOpen && "border-black"],
+      error && !disabled && ["border-error text-gray-800", isOpen && "border-error"],
       disabled && ["border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"]
     ) : "";
 

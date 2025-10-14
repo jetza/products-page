@@ -73,7 +73,7 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
         <div className="flex-1 min-w-0 flex flex-col">
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
-              <h3 className="text-lg font-medium mb-2">{title}</h3>
+              <h3 className="text-body font-medium mb-2">{title}</h3>
               {variant ? (
                 <p className="text-base text-gray-500 leading-[140%]">{variant}</p>
               ) : (
@@ -83,8 +83,8 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
             
             <div className="text-right ml-4">
               <div className={cn(
-                "text-xl font-bold",
-                originalPrice ? "text-[#DF4718]" : "text-black"
+                "text-button-big font-bold",
+                originalPrice ? "text-error" : "text-black"
               )}>
                 {currency}{price}
               </div>

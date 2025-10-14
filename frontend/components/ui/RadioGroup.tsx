@@ -56,7 +56,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
                   "focus:outline-none focus:ring-0",
                   "checked:border-black",
                   "hover:border-gray-400",
-                  "checked:hover:border-gray-900",
+                  "checked:hover:border-gray-800",
                   "disabled:cursor-not-allowed disabled:bg-gray-100 disabled:border-gray-300",
                   "disabled:checked:border-gray-300"
                 )}

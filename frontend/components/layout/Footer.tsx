@@ -22,14 +22,14 @@ export const Footer: React.FC<FooterProps> = ({
       <footer className={cn("bg-white border-t border-gray-200 py-6 px-6", className)}>
         <div className="max-w-md mx-auto">
           <div className="mb-6">
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-big font-semibold">
               Sofa<br />Society<br />Co.
             </h2>
             <p className="text-xs text-gray-600 mt-4">© 2024, Sofa Society</p>
           </div>
 
           <div className="mb-12">
-            <h3 className="text-lg font-semibold mb-4">Join our newsletter</h3>
+            <h3 className="text-body font-semibold mb-4">Join our newsletter</h3>
             <p className="text-sm text-gray-600 mb-4">
               We will ultra-send you our discount coupons!
             </p>
@@ -106,7 +106,7 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-5 gap-8">
           <div>
-            <h2 className="text-2xl font-semibold mb-4">
+            <h2 className="text-big font-semibold mb-4">
               Sofa<br />Society<br />Co.
             </h2>
             <p className="text-xs text-gray-600">© 2024, Sofa Society</p>
@@ -155,7 +155,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-2">Join our newsletter</h3>
+            <h3 className="text-body font-semibold mb-4">Join our newsletter</h3>
             <p className="text-sm text-gray-600 mb-4">
               We will ultra-send you our discount coupons!
             </p>

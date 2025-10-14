@@ -50,7 +50,7 @@ export const ProductCard = React.forwardRef<HTMLAnchorElement, ProductCardProps>
 
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1">
-            <h3 className="text-lg font-medium text-black group-hover:text-gray-700 transition-colors mb-1">
+            <h3 className="text-body font-medium text-black group-hover:text-gray-700 transition-colors mb-1">
               {title}
             </h3>
             
@@ -61,7 +61,7 @@ export const ProductCard = React.forwardRef<HTMLAnchorElement, ProductCardProps>
             )}
           </div>
           
-          <p className="text-lg font-semibold text-black whitespace-nowrap">
+          <p className="text-body font-semibold text-black whitespace-nowrap">
             {currency}{price}
           </p>
         </div>

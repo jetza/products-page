@@ -18,7 +18,7 @@ export const ProductGrid = React.forwardRef<HTMLDivElement, ProductGridProps>(
     if (products.length === 0) {
       return (
         <div className="flex items-center justify-center py-12">
-          <p className="text-gray-500 text-lg">No products found</p>
+          <p className="text-gray-500 text-body">No products found</p>
         </div>
       );
     }
