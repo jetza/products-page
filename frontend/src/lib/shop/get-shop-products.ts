@@ -1,6 +1,7 @@
 import { getProducts } from "@/lib/products-service";
 import { ProductCardProps } from "@/src/components/shop/ProductCard";
 import type { Product } from "@/types/product";
+import { getProductColors, getProductPrice } from "@/lib/utils/product-utils";
 
 export async function getShopProducts(): Promise<ProductCardProps[]> {
   let medusaProducts: Product[];
@@ -17,19 +18,19 @@ export async function getShopProducts(): Promise<ProductCardProps[]> {
     })
     .map((product) => {
       const image = product.images?.[0]?.url || product.thumbnail || "";
-      const price = product.variants?.[0]?.prices?.[0]?.amount || 0;
-      const currencyCode = product.variants?.[0]?.prices?.[0]?.currency_code || "eur";
-      const currencySymbol = currencyCode.toLowerCase() === "eur" ? "€" : "$";
+      const priceInCents = getProductPrice(product);
+      const colors = getProductColors(product);
 
       return {
         id: product.id,
         title: product.title,
-        collection: product.variants?.[0]?.title || "",
-        price: price / 100,
-        currency: currencySymbol,
+        collection: product.collection?.title || "Furniture",
+        price: priceInCents / 100,
+        currency: "€",
         image,
         imageAlt: product.title,
         slug: product.handle,
+        colors,
       };
     });
 }

@@ -1,4 +1,4 @@
-import { medusaClient } from "@/lib/medusa-client";
+import { medusaClient, getDefaultRegionId } from "@/lib/medusa-client";
 import type { Product } from "@/types/product";
 
 /**
@@ -8,7 +8,20 @@ import type { Product } from "@/types/product";
  */
 export async function getProducts(limit: number = 10): Promise<Product[]> {
   try {
-    const response = await medusaClient.store.product.list({ limit });
+    const regionId = await getDefaultRegionId();
+    
+    // Type assertion needed because SDK types don't include region_id and fields parameters
+    const response = await medusaClient.store.product.list({ 
+      limit,
+      region_id: regionId,
+      fields: "+variants.calculated_price,+variants.prices"
+    } as Parameters<typeof medusaClient.store.product.list>[0]);
+    
+    console.log("🔍 getProducts - First product:", response.products?.[0]);
+    if (response.products?.[0]?.variants?.[0]) {
+      console.log("🔍 First variant with pricing:", response.products[0].variants[0]);
+    }
+    
     return (response.products || []) as Product[];
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -24,9 +37,24 @@ export async function getProducts(limit: number = 10): Promise<Product[]> {
  */
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
+    const regionId = await getDefaultRegionId();
+    
     // Note: Medusa API uses "handle" parameter, but it represents a URL slug
-    const response = await medusaClient.store.product.list({ handle: slug });
-    return (response.products?.[0] as Product) || null;
+    // Type assertion needed because SDK types don't include region_id and fields parameters
+    const response = await medusaClient.store.product.list({ 
+      handle: slug,
+      region_id: regionId,
+      fields: "+variants.calculated_price,+variants.prices"
+    } as Parameters<typeof medusaClient.store.product.list>[0]);
+    const product = response.products?.[0];
+    
+    // Debug logging
+    console.log("🔍 getProductBySlug - Full product:", product);
+    if (product?.variants?.[0]) {
+      console.log("🔍 First variant with pricing:", product.variants[0]);
+    }
+    
+    return (product as Product) || null;
   } catch (error) {
     console.error("Error fetching product by slug:", error);
     return null;

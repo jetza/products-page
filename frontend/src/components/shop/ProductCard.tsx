@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getColorHex } from "@/lib/color-mapping";
 
 export interface ProductCardProps {
   id: string;
@@ -11,6 +12,7 @@ export interface ProductCardProps {
   image: string;
   imageAlt?: string;
   slug: string;
+  colors?: string[];
 }
 
 export function ProductCard({
@@ -21,6 +23,7 @@ export function ProductCard({
   image,
   imageAlt = "",
   slug,
+  colors = [],
 }: ProductCardProps) {
   return (
     <Link href={`/shop/${slug}`} className="group block">
@@ -42,6 +45,19 @@ export function ProductCard({
             {title}
           </h3>
           <p className="text-sm text-gray-500 truncate">{collection}</p>
+          
+          {colors.length > 0 && (
+            <div className="flex gap-1.5 mt-2">
+              {colors.map((color) => (
+                <span
+                  key={color}
+                  className="w-4 h-4 rounded-full border border-gray-300"
+                  style={{ backgroundColor: getColorHex(color) }}
+                  title={color}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         <p className="text-sm font-medium text-gray-900 whitespace-nowrap">

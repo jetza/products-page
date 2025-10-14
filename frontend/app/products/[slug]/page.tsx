@@ -2,6 +2,7 @@
 
 import { getProductBySlug } from "@/lib/products-service";
 import { getColorHex } from "@/lib/color-mapping";
+import { getProductColors, getProductSizes, getProductMaterials, getProductPrice, formatPrice } from "@/lib/utils/product-utils";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,6 @@ import { AddToCartSection } from "@/components/ui/AddToCartSection";
 import { useCart } from "@/lib/cart-context";
 import { useState, useEffect } from "react";
 import type { Product } from "@/types/product";
-import { getProductColors, getProductSizes, getProductMaterials, getProductPrice, formatPrice } from "@/lib/utils/product-utils";
 
 export default function ProductPage({
   params,
@@ -20,9 +20,9 @@ export default function ProductPage({
 }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>("");
-  const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedMaterial, setSelectedMaterial] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
+  const [selectedSize, setSelectedSize] = useState<string>("");
   const { addToCart } = useCart();
 
   useEffect(() => {
@@ -45,13 +45,17 @@ export default function ProductPage({
   const materials = getProductMaterials(product);
 
   const handleAddToCart = () => {
+
     let variantText = '';
     
     if (selectedColor || selectedSize) {
       variantText = `${selectedColor || ''} ${selectedSize || ''}`.trim();
-    } else if (product.variants?.[0]?.options) {
-      const options = product.variants[0].options;
-      const parts = options.map(opt => opt.value);
+    } else {
+      // Use extracted values if no selection made
+      const parts = [];
+      if (materials.length > 0) parts.push(materials[0]);
+      if (colors.length > 0) parts.push(colors[0]);
+      if (sizes.length > 0) parts.push(sizes[0]);
       variantText = parts.join(' / ');
     }
 
@@ -68,12 +72,14 @@ export default function ProductPage({
   return (
     <div className="p-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        <Link href="/shop" className="text-black hover:text-gray-600 mb-4 inline-block">
-          ← Back to shop
+
+        <Link href="/products" className="text-black hover:text-gray-600 mb-4 inline-block">
+          ← Back to products
         </Link>
 
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
             <div>
               {product.thumbnail && (
                 <div className="w-full h-96 bg-gray-100 rounded-lg overflow-hidden relative">
@@ -115,15 +121,15 @@ export default function ProductPage({
                   <div className="flex gap-2">
                     {sizes.map((size) => (
                       <button
-                        key={size}
+                        key={size as string}
                         className={`px-4 py-2 border rounded transition-all ${
                           selectedSize === size
                             ? 'border-black bg-black text-white'
                             : 'border-gray-300 hover:border-black'
                         }`}
-                        onClick={() => setSelectedSize(size)}
+                        onClick={() => setSelectedSize(size as string)}
                       >
-                        {size}
+                        {size as string}
                       </button>
                     ))}
                   </div>

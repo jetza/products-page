@@ -66,6 +66,7 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
             src={image}
             alt={imageAlt || title}
             fill
+            sizes="136px"
             className="object-cover"
           />
         </div>
