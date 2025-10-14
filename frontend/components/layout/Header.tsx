@@ -10,6 +10,7 @@ import Link from "next/link";
 
 interface HeaderProps {
   variant?: "desktop" | "mobile";
+  theme?: "solid" | "transparent";
   className?: string;
 }
 
@@ -22,6 +23,7 @@ const COUNTRIES = [
 
 export const Header: React.FC<HeaderProps> = ({ 
   variant = "desktop",
+  theme = "solid",
   className 
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,20 +34,26 @@ export const Header: React.FC<HeaderProps> = ({
   
   const { items, updateQuantity, removeFromCart } = useCart();
 
+  // Theme classes
+  const isTransparent = theme === "transparent";
+  const bgClass = isTransparent ? "bg-transparent" : "bg-white";
+  const textClass = isTransparent ? "text-white" : "text-black";
+  const borderClass = isTransparent ? "border-white/20" : "border-gray-200";
+
   if (variant === "mobile") {
     return (
       <>
-        <header className={cn("bg-white border-b border-gray-200", className)}>
+        <header className={cn(bgClass, "border-b", borderClass, className)}>
           <div className="flex items-center justify-between px-4 h-16">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 -ml-2"
               aria-label="Toggle menu"
             >
-              <MenuIcon className="w-6 h-6" />
+              <MenuIcon className={cn("w-6 h-6", textClass)} />
             </button>
 
-            <Link href="/" className="text-button-big font-semibold">
+            <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
               SofaSocietyCo.
             </Link>
 
@@ -54,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="p-2 -mr-2"
               aria-label="Shopping cart"
             >
-              <BagIcon className="w-6 h-6" />
+              <BagIcon className={cn("w-6 h-6", textClass)} />
             </button>
           </div>
         </header>
@@ -160,20 +168,20 @@ export const Header: React.FC<HeaderProps> = ({
   }
 
   return (
-    <header className={cn("bg-white border-b border-gray-200", className)}>
+    <header className={cn(bgClass, "border-b", borderClass, className)}>
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="text-button-big font-semibold">
+        <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
           SofaSocietyCo.
         </Link>
 
         <nav className="flex items-center gap-8">
-          <Link href="/about" className="text-base text-black hover:text-gray-600">
+          <Link href="/about" className={cn("text-base hover:opacity-70", textClass)}>
             About
           </Link>
-          <Link href="/inspiration" className="text-base text-black hover:text-gray-600">
+          <Link href="/inspiration" className={cn("text-base hover:opacity-70", textClass)}>
             Inspiration
           </Link>
-          <Link href="/shop" className="text-base text-black hover:text-gray-600">
+          <Link href="/shop" className={cn("text-base hover:opacity-70", textClass)}>
             Shop
           </Link>
         </nav>
@@ -182,7 +190,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="relative">
             <button
               onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-              className="flex items-center gap-2 text-base"
+              className={cn("flex items-center gap-2 text-base", textClass)}
             >
               <span>{selectedCountry}</span>
               <svg
@@ -227,7 +235,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="p-2"
             aria-label="Search"
           >
-            <SearchIcon className="w-5 h-5" />
+            <SearchIcon className={cn("w-5 h-5", textClass)} />
           </button>
 
           <button
@@ -235,7 +243,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="p-2"
             aria-label="Shopping cart"
           >
-            <BagIcon className="w-5 h-5" />
+            <BagIcon className={cn("w-5 h-5", textClass)} />
           </button>
         </div>
       </div>
