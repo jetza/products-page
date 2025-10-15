@@ -80,9 +80,11 @@ export default function CartPage() {
                   className="mb-6"
                 />
 
-                <Button variant="primary" size="lg" className="w-full mb-6">
-                  Proceed to checkout
-                </Button>
+                <Link href="/checkout">
+                  <Button variant="primary" size="lg" className="w-full mb-6">
+                    Proceed to checkout
+                  </Button>
+                </Link>
 
                 <LoginPrompt />
 
@@ -151,9 +153,11 @@ export default function CartPage() {
                   className="mb-4"
                 />
 
-                <Button variant="primary" size="lg" className="w-full mb-4">
-                  Proceed to checkout
-                </Button>
+                <Link href="/checkout">
+                  <Button variant="primary" size="lg" className="w-full mb-4">
+                    Proceed to checkout
+                  </Button>
+                </Link>
 
                 <LoginPrompt />
               </div>
