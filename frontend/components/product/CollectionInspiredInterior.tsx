@@ -2,11 +2,11 @@ import Image from "next/image";
 
 interface CollectionInspiredInteriorProps {
   title: string;
-  subtitle: string;
   collectionName: string;
+  collectionTitle?: string;
 }
 
-export function CollectionInspiredInterior({ title, subtitle, collectionName }: CollectionInspiredInteriorProps) {
+export function CollectionInspiredInterior({ title, collectionName, collectionTitle }: CollectionInspiredInteriorProps) {
   return (
     <section className="py-12 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
@@ -44,13 +44,12 @@ export function CollectionInspiredInterior({ title, subtitle, collectionName }: 
           </div>
           
           <div>
-            <h3 className="text-h4 md:text-h3 font-semibold mb-4 md:mb-6">{title}</h3>
-            <p className="text-sm md:text-body text-gray-600 mb-6 md:mb-8">{subtitle}</p>
+            <h3 className="text-h4 md:text-h3 font-semibold mb-6 md:mb-8">{title}</h3>
             <a 
               href={`/collections/${collectionName}`}
               className="text-sm md:text-body font-medium text-black hover:underline inline-flex items-center gap-2"
             >
-              See more out of {collectionName} collection
+              See more out of {collectionTitle || collectionName} collection
               <span aria-hidden="true">→</span>
             </a>
           </div>

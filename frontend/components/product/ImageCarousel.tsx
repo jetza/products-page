@@ -29,7 +29,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
           alt={images[currentIndex].alt || `Product image ${currentIndex + 1}`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
+          className="object-contain"
           priority={currentIndex === 0}
         />
       </div>

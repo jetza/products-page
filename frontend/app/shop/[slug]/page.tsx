@@ -2,20 +2,20 @@
 
 import { getProductBySlug, getProducts } from "@/lib/products-service";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { ColorPicker } from "@/components/ui/ColorPicker";
 import { MaterialsSelect } from "@/components/ui/MaterialsSelect";
 import { AddToCartSection } from "@/components/ui/AddToCartSection";
 import { useCart } from "@/lib/cart-context";
 import { useState, useEffect } from "react";
 import type { Product } from "@/types/product";
-import { getProductColors, getProductSizes, getProductMaterials, getProductPrice, formatPrice } from "@/lib/utils/product-utils";
+import { getProductColors, getProductSizes, getProductMaterials, getProductPrice } from "@/lib/utils/product-utils";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { ImageCarousel } from "@/components/product/ImageCarousel";
 import { CollectionInspiredInterior } from "@/components/product/CollectionInspiredInterior";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { ProductCardProps } from "@/components/shop/ProductCard";
+import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 
 export default function ProductPage({
   params,
@@ -57,18 +57,15 @@ export default function ProductPage({
     });
   }, [params]);
 
-  if (!product) {
-    return <div className="p-8">Loading...</div>;
-  }
-
-  const colors = getProductColors(product);
-  const sizes = getProductSizes(product);
-  const materials = getProductMaterials(product);
+  const colors = product ? getProductColors(product) : [];
+  const sizes = product ? getProductSizes(product) : [];
+  const materials = product ? getProductMaterials(product) : [];
 
   const handleAddToCart = () => {
+    if (!product) return;
+    
     let variantText = '';
     
-    // Find the matching variant based on selected options
     const matchingVariant = product.variants?.find(variant => {
       const variantOptions = variant.options || [];
       const colorMatch = !selectedColor || variantOptions.some(opt => 
@@ -102,7 +99,7 @@ export default function ProductPage({
     }, quantity);
   };
 
-  const images = product.images?.map((img) => ({
+  const images = product?.images?.map((img) => ({
     url: img.url,
     alt: product.title,
   })) || [];
@@ -111,9 +108,13 @@ export default function ProductPage({
     <>
       <ResponsiveHeader />
       <main className="min-h-screen bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8">
+        {!product ? (
+          <LoadingOverlay />
+        ) : (
+          <>
+            <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8">
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20">
             <div>
               <ImageCarousel images={images} />
             </div>
@@ -178,11 +179,13 @@ export default function ProductPage({
 
         <CollectionInspiredInterior 
           title={`The ${product.title} sofa is a masterpiece of minimalism and luxury.`}
-          subtitle={`See more out of ${product.collection?.title || "Modern Luxe"} collection`}
           collectionName={product.collection?.handle || "modern-luxe"}
+          collectionTitle={product.collection?.title}
         />
 
         <RelatedProducts products={relatedProducts} />
+          </>
+        )}
       </main>
       <ResponsiveFooter />
     </>

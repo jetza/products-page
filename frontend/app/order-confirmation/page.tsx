@@ -6,6 +6,7 @@ import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { useCheckout } from "@/lib/checkout-context";
 import { OrderConfirmation } from "@/components/order/OrderConfirmation";
+import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 
 export default function OrderConfirmationPage() {
   const router = useRouter();
@@ -18,14 +19,6 @@ export default function OrderConfirmationPage() {
     }
   }, [state.orderCompleted, order, router]);
 
-  if (!order) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-body text-gray-600">Loading...</p>
-      </div>
-    );
-  }
-
   const handleBackToHome = () => {
     resetCheckout();
     router.push("/");
@@ -36,7 +29,11 @@ export default function OrderConfirmationPage() {
       <ResponsiveHeader />
       
       <main className="min-h-screen bg-white">
-        <OrderConfirmation order={order} onBackToHome={handleBackToHome} />
+        {!order ? (
+          <LoadingOverlay />
+        ) : (
+          <OrderConfirmation order={order} onBackToHome={handleBackToHome} />
+        )}
       </main>
 
       <ResponsiveFooter />

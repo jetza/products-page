@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import { getProducts } from "@/lib/products-service";
-import { ProductGrid } from "@/components/shop/ProductGrid";
 import { getProductColors, getProductPrice } from "@/lib/utils/product-utils";
 import type { Product } from "@/types/product";
 import { ProductCardProps } from "@/src/components/shop/ProductCard";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { COLLECTION_DETAILS } from "@/lib/constants/collection-details";
+import { CollectionClient } from "@/components/collections/CollectionClient";
 
 interface CollectionPageProps {
   params: {
@@ -80,59 +80,8 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         </div>
       </section>
 
-      <section className="py-8 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 md:mb-12">
-            <h2 className="text-h3 md:text-h2 font-medium text-black mb-4 md:mb-0">
-              {collection.title}
-            </h2>
-            
-            <div className="hidden md:flex items-center gap-4">
-              <span className="text-base text-gray-500">Category</span>
-              <select className="px-4 py-2 border border-gray-300 rounded text-base">
-                <option>All</option>
-                <option>Sofas</option>
-                <option>Chairs</option>
-              </select>
-              
-              <span className="text-base text-gray-500">Type</span>
-              <select className="px-4 py-2 border border-gray-300 rounded text-base">
-                <option>All</option>
-              </select>
-              
-              <span className="text-base text-gray-500">Sort by</span>
-              <select className="px-4 py-2 border border-gray-300 rounded text-base">
-                <option>Featured</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-              </select>
-            </div>
-
-            <div className="md:hidden flex items-center justify-between gap-3">
-              <select className="flex-1 px-3 py-2 border border-gray-300 rounded text-sm">
-                <option>All Categories</option>
-                <option>Sofas</option>
-                <option>Chairs</option>
-              </select>
-              <select className="flex-1 px-3 py-2 border border-gray-300 rounded text-sm">
-                <option>Sort by</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-              </select>
-            </div>
-          </div>
-
-          {productCards.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-button-big text-gray-500">
-                No products in this collection yet.
-              </p>
-            </div>
-          ) : (
-            <ProductGrid products={productCards} />
-          )}
-        </div>
-      </section>
+      <CollectionClient products={productCards} collectionTitle={collection.title} />
+      
       <ResponsiveFooter />
     </div>
   );
