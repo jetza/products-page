@@ -22,13 +22,13 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="relative">
-      <div className="relative w-full aspect-[4/3] md:aspect-[3/4] bg-gray-100 rounded overflow-hidden">
+    <div className="relative w-full">
+      <div className="relative w-full aspect-square md:aspect-[4/5] md:max-h-[612px] bg-gray-100 rounded overflow-hidden">
         <Image
           src={images[currentIndex].url}
           alt={images[currentIndex].alt || `Product image ${currentIndex + 1}`}
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, 45vw"
           className="object-contain"
           priority={currentIndex === 0}
         />

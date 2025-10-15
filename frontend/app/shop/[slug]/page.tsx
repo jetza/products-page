@@ -11,7 +11,7 @@ import type { Product } from "@/types/product";
 import { getProductColors, getProductSizes, getProductMaterials, getProductPrice } from "@/lib/utils/product-utils";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
-import { ImageCarousel } from "@/components/product/ImageCarousel";
+import { ProductImageCarousel } from "@/components/product/ProductImageCarousel";
 import { CollectionInspiredInterior } from "@/components/product/CollectionInspiredInterior";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { ProductCardProps } from "@/components/shop/ProductCard";
@@ -99,10 +99,17 @@ export default function ProductPage({
     }, quantity);
   };
 
-  const images = product?.images?.map((img) => ({
-    url: img.url,
-    alt: product.title,
-  })) || [];
+  // Koristimo novu sliku sofe iz product-carousel
+  const carouselImages = [
+    {
+      url: "/product-carousel/image-carousel.jpg",
+      alt: product?.title || "Product image",
+    },
+    {
+      url: "/product-carousel/image-carousel.jpg",
+      alt: product?.title || "Product image",
+    },
+  ];
 
   return (
     <>
@@ -112,79 +119,82 @@ export default function ProductPage({
           <LoadingOverlay />
         ) : (
           <>
-            <div className="px-5">
-              <div className="mx-auto px-24 py-6 md:py-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20">
-            <div>
-              <ImageCarousel images={images} />
-            </div>
+            {/* Product Section - Mobile: No padding on carousel, Desktop: Standard padding */}
+            <div className="lg:px-5">
+              <div className="lg:px-24 lg:py-6 md:lg:py-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-12 mb-12 md:mb-20">
+                  {/* Carousel */}
+                  <div className="w-full">
+                    <ProductImageCarousel images={carouselImages} />
+                  </div>
 
-            <div>
-              <p className="text-xs md:text-sm text-gray-500 mb-2">{product.collection?.title || "Product"}</p>
-              <h1 className="text-h3 md:text-h2 font-semibold mb-4">{product.title}</h1>
-              <p className="text-big md:text-h4 font-semibold text-black mb-6">
-                €{Math.round(getProductPrice(product) / 100)}
-              </p>
+                  {/* Product Details */}
+                  <div className="px-3 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0">
+                    <p className="text-xs md:text-sm text-gray-500 mb-2">{product.collection?.title || "Product"}</p>
+                <h1 className="text-h3 md:text-h2 font-semibold mb-4">{product.title}</h1>
+                <p className="text-big md:text-h4 font-semibold text-black mb-6">
+                  €{Math.round(getProductPrice(product) / 100)}
+                </p>
 
-              <p className="text-sm md:text-body text-gray-600 mb-8 leading-relaxed">
-                {product.description}
-              </p>
+                <p className="text-sm md:text-body text-gray-600 mb-8 leading-relaxed">
+                  {product.description}
+                </p>
 
-              {materials.length > 0 && (
-                <MaterialsSelect
-                  materials={materials}
-                  selectedMaterial={selectedMaterial}
-                  onMaterialSelect={setSelectedMaterial}
+                {materials.length > 0 && (
+                  <MaterialsSelect
+                    materials={materials}
+                    selectedMaterial={selectedMaterial}
+                    onMaterialSelect={setSelectedMaterial}
+                  />
+                )}
+
+                {colors.length > 0 && (
+                  <ColorPicker
+                    colors={colors}
+                    selectedColor={selectedColor}
+                    onColorSelect={setSelectedColor}
+                  />
+                )}
+
+                {sizes.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-sm font-medium text-gray-800 mb-4">Sizes</h3>
+                    <div className="flex gap-2">
+                      {sizes.map((size) => (
+                        <button
+                          key={size}
+                          className={`px-4 py-2 border rounded transition-all ${
+                            selectedSize === size
+                              ? 'border-black bg-black text-white'
+                              : 'border-gray-300 hover:border-black'
+                          }`}
+                          onClick={() => setSelectedSize(size)}
+                        >
+                          {size}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <AddToCartSection
+                  quantity={quantity}
+                  onQuantityDecrease={() => setQuantity(Math.max(1, quantity - 1))}
+                  onQuantityIncrease={() => setQuantity(quantity + 1)}
+                  onAddToCart={handleAddToCart}
                 />
-              )}
-
-              {colors.length > 0 && (
-                <ColorPicker
-                  colors={colors}
-                  selectedColor={selectedColor}
-                  onColorSelect={setSelectedColor}
-                />
-              )}
-
-              {sizes.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-sm font-medium text-gray-800 mb-4">Sizes</h3>
-                  <div className="flex gap-2">
-                    {sizes.map((size) => (
-                      <button
-                        key={size}
-                        className={`px-4 py-2 border rounded transition-all ${
-                          selectedSize === size
-                            ? 'border-black bg-black text-white'
-                            : 'border-gray-300 hover:border-black'
-                        }`}
-                        onClick={() => setSelectedSize(size)}
-                      >
-                        {size}
-                      </button>
-                    ))}
                   </div>
                 </div>
-              )}
-
-              <AddToCartSection
-                quantity={quantity}
-                onQuantityDecrease={() => setQuantity(Math.max(1, quantity - 1))}
-                onQuantityIncrease={() => setQuantity(quantity + 1)}
-                onAddToCart={handleAddToCart}
-              />
-            </div>
-          </div>
               </div>
             </div>
 
-        <CollectionInspiredInterior 
-          title={`The ${product.title} sofa is a masterpiece of minimalism and luxury.`}
-          collectionName={product.collection?.handle || "modern-luxe"}
-          collectionTitle={product.collection?.title}
-        />
+            <CollectionInspiredInterior 
+              title={`The ${product.title} sofa is a masterpiece of minimalism and luxury.`}
+              collectionName={product.collection?.handle || "modern-luxe"}
+              collectionTitle={product.collection?.title}
+            />
 
-        <RelatedProducts products={relatedProducts} />
+            <RelatedProducts products={relatedProducts} />
           </>
         )}
       </main>

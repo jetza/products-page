@@ -21,8 +21,7 @@ export function CollectionsCarousel() {
   };
 
   return (
-    <div className="py-8 md:py-12 overflow-hidden">
-      {/* Header section with standard padding */}
+    <div className="py-8 md:py-12">
       <div className="px-4 md:px-5">
         <div className="mx-auto md:px-24">
           <div className="flex items-center justify-between mb-6 md:mb-8">
@@ -55,36 +54,34 @@ export function CollectionsCarousel() {
               </button>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Carousel - extends to right edge with left alignment */}
-      <div
-        ref={scrollContainerRef}
-        className="flex gap-3 md:gap-6 overflow-x-auto scrollbar-hide pl-4 md:pl-[116px]"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
-        {collections.map((collection) => (
-          <Link
-            key={collection.id}
-            href={collection.href}
-            className="flex-none w-[70vw] sm:w-[280px] md:w-[320px] lg:w-[360px] group"
-          >
-            <div className="relative aspect-[4/5] mb-2 md:mb-4 overflow-hidden">
-              <Image
-                src={collection.image}
-                alt={collection.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+          <div className="overflow-x-auto scrollbar-hide -mx-4 md:-mx-24 px-4 md:px-24" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+            <div
+              ref={scrollContainerRef}
+              className="flex gap-3 md:gap-6"
+            >
+              {collections.map((collection) => (
+                <Link
+                  key={collection.id}
+                  href={collection.href}
+                  className="flex-none w-[70vw] sm:w-[280px] md:w-[calc((100%-72px)/4)] group"
+                >
+                  <div className="relative aspect-[4/5] mb-2 md:mb-4 overflow-hidden">
+                    <Image
+                      src={collection.image}
+                      alt={collection.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-sm md:text-base font-normal leading-[140%] text-black">
+                    {collection.title}
+                  </h3>
+                </Link>
+              ))}
             </div>
-            <h3 className="text-sm md:text-base font-normal leading-[140%] text-black">
-              {collection.title}
-            </h3>
-          </Link>
-        ))}
-        {/* Spacer for right padding - responsive */}
-        <div className="flex-none w-4 md:w-[116px]" />
+          </div>
+        </div>
       </div>
     </div>
   );
