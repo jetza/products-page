@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
-import { useCheckout } from "@/lib/checkout-context";
+import { useCheckout } from "@/lib/hooks/useCheckout";
 import Link from "next/link";
 import { CheckoutOrderSummary } from "@/components/checkout/OrderSummary";
 import { CheckoutForm } from "@/components/checkout/CheckoutForm";

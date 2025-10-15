@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Checkbox } from "@/components/ui/Checkbox";
-import { useCheckout, DeliveryInfo } from "@/lib/checkout-context";
+import { useCheckout } from "@/lib/hooks/useCheckout";
+import { DeliveryInfo } from "@/lib/checkout-context";
 import { DeliveryForm } from "./DeliveryForm";
 
 export type CheckoutStep = "email" | "delivery" | "shipping" | "payment" | "review";
@@ -42,7 +43,6 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
   if (isMobile) {
     return (
       <div>
-        {/* Step 1: Email */}
         <div className="mb-6">
           <h2 className="text-sm font-semibold mb-4">1. Email</h2>
           {currentStep === "email" && (
@@ -80,7 +80,6 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           )}
         </div>
 
-        {/* Step 2: Delivery */}
         <div className="border-t border-gray-200 pt-6 mb-6">
           <h2 className="text-sm font-semibold mb-4">2. Delivery details</h2>
           {currentStep === "delivery" && (
@@ -98,7 +97,6 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           )}
         </div>
 
-        {/* Step 3: Shipping */}
         <div className="border-t border-gray-200 pt-6 mb-6">
           <h2 className="text-sm font-semibold mb-4">3. Shipping method</h2>
           {currentStep === "shipping" && (
@@ -111,7 +109,6 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           )}
         </div>
 
-        {/* Step 4: Payment */}
         <div className="border-t border-gray-200 pt-6 mb-6">
           <h2 className="text-sm font-semibold mb-4">4. Payment</h2>
           {currentStep === "payment" && (
@@ -124,7 +121,6 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           )}
         </div>
 
-        {/* Step 5: Review */}
         <div className="border-t border-gray-200 pt-6 mb-6">
           <h2 className="text-sm font-semibold mb-4">5. Review</h2>
           {currentStep === "review" && (
@@ -164,10 +160,8 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
     );
   }
 
-  // Desktop version
   return (
     <div>
-      {/* Step 1: Email */}
       <div className="pt-8 pb-8">
         <div className="mb-6 flex flex-col xl:flex-row xl:items-start xl:justify-between gap-2">
           <h2 className="text-body font-medium">1. Email</h2>
@@ -286,10 +280,9 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         )}
       </div>
 
-      {/* Place Order Button */}
       <div className="border-t border-gray-200 pt-8">
         <Button
-          variant="secondary"
+          variant="primary"
           size="lg"
           onClick={onPlaceOrder}
           disabled={currentStep !== "review" || state.isProcessing}

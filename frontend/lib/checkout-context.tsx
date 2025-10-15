@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useReducer, ReactNode } from "react";
+import React, { createContext, useReducer, ReactNode } from "react";
 
 // Types
 export interface DeliveryInfo {
@@ -60,6 +60,7 @@ export interface CompletedOrder {
   deliveryInfo: DeliveryInfo;
   billingInfo: BillingInfo;
   shippingMethod: ShippingMethod;
+  paymentInfo?: PaymentInfo;
   items: OrderItem[];
   subtotal: number;
   shipping: number;
@@ -218,7 +219,7 @@ interface CheckoutContextValue {
   resetCheckout: () => void;
 }
 
-const CheckoutContext = createContext<CheckoutContextValue | undefined>(undefined);
+export const CheckoutContext = createContext<CheckoutContextValue | undefined>(undefined);
 
 // Provider
 export function CheckoutProvider({ children }: { children: ReactNode }) {
@@ -261,16 +262,8 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
     try {
       dispatch({ type: "START_PROCESSING" });
 
-      // TODO: Ovde bi se slao API request ka backend-u
-      // const response = await fetch('/api/orders', {
-      //   method: 'POST',
-      //   body: JSON.stringify({ ...state, items, subtotal, shipping, taxes })
-      // });
-
-      // Simulacija API call-a
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Generate order number (u production-u bi došlo sa backend-a)
       const orderNumber = `#${Math.floor(100000 + Math.random() * 900000)}`;
       
       const completedOrder: CompletedOrder = {
@@ -283,6 +276,7 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
           sameAsDelivery: true,
         },
         shippingMethod: state.shippingMethod!,
+        paymentInfo: state.paymentInfo || undefined,
         items,
         subtotal,
         shipping,
@@ -323,13 +317,4 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
       {children}
     </CheckoutContext.Provider>
   );
-}
-
-// Hook
-export function useCheckout() {
-  const context = useContext(CheckoutContext);
-  if (context === undefined) {
-    throw new Error("useCheckout must be used within a CheckoutProvider");
-  }
-  return context;
 }

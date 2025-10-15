@@ -24,7 +24,7 @@ export const QuantitySelector = React.forwardRef<HTMLDivElement, QuantitySelecto
       <div
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-between w-[136px] h-12 gap-4 px-6 py-2 border border-gray-200 rounded",
+          "inline-flex items-center justify-between w-[85px] h-[32px] gap-2 px-3 py-1 border border-gray-200 rounded",
           disabled && "opacity-50 cursor-not-allowed",
           className
         )}
@@ -37,10 +37,10 @@ export const QuantitySelector = React.forwardRef<HTMLDivElement, QuantitySelecto
           aria-label="Decrease quantity"
           type="button"
         >
-          <span className="text-base leading-none font-normal">−</span>
+          <span className="text-sm leading-none font-normal">−</span>
         </button>
 
-        <span className="text-center font-normal text-base leading-none">
+        <span className="text-center font-normal text-sm leading-none">
           {quantity}
         </span>
 
@@ -51,7 +51,7 @@ export const QuantitySelector = React.forwardRef<HTMLDivElement, QuantitySelecto
           aria-label="Increase quantity"
           type="button"
         >
-          <span className="text-base leading-none font-normal">+</span>
+          <span className="text-sm leading-none font-normal">+</span>
         </button>
       </div>
     );

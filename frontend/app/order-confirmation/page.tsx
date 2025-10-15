@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
-import { useCheckout } from "@/lib/checkout-context";
+import { useCheckout } from "@/lib/hooks/useCheckout";
 import { OrderConfirmation } from "@/components/order/OrderConfirmation";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { OrderSummary } from "@/components/ui/OrderSummary";
 
 interface CartItem {
   id: string;
@@ -105,27 +106,13 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
           </Button>
         </div>
 
-        <div className="space-y-3 mb-4 text-sm">
-          <div className="flex justify-between">
-            <span>Subtotal</span>
-            <span className="font-medium">€{subtotal.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Shipping</span>
-            <span className="font-medium">€{shipping.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Taxes</span>
-            <span className="font-medium">€{taxes.toFixed(2)}</span>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-200 pt-4">
-          <div className="flex justify-between text-body">
-            <span className="font-medium">Total</span>
-            <span className="font-semibold">€{total.toFixed(2)}</span>
-          </div>
-        </div>
+        <OrderSummary
+          subtotal={subtotal}
+          shipping={shipping}
+          taxes={taxes}
+          total={total}
+          variant="mobile"
+        />
       </div>
     );
   }
@@ -196,27 +183,13 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
         </div>
       </div>
 
-      <div className="space-y-3 mb-6">
-        <div className="flex justify-between text-sm">
-          <span>Subtotal</span>
-          <span className="font-medium">${subtotal.toFixed(2)}</span>
-        </div>
-        <div className="flex justify-between text-sm">
-          <span>Shipping</span>
-          <span className="font-medium">${shipping.toFixed(2)}</span>
-        </div>
-        <div className="flex justify-between text-sm">
-          <span>Taxes</span>
-          <span className="font-medium">${taxes.toFixed(2)}</span>
-        </div>
-      </div>
-
-      <div className="border-t border-gray-200 pt-4">
-        <div className="flex justify-between text-body">
-          <span className="font-medium">Total</span>
-          <span className="font-semibold">€{total.toFixed(2)}</span>
-        </div>
-      </div>
+      <OrderSummary
+        subtotal={subtotal}
+        shipping={shipping}
+        taxes={taxes}
+        total={total}
+        variant="desktop"
+      />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { OrderConfirmationSummary } from "./OrderConfirmationSummary";
 import { CompletedOrder } from "@/lib/checkout-context";
+import { ReceiptIcon, CreditCardIcon } from "@/components/icons";
 
 interface OrderConfirmationProps {
   order: CompletedOrder;
@@ -44,7 +45,6 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
           className="w-full md:w-auto"
         >
           Back to home
-          <span className="md:hidden"> page</span>
         </Button>
       </div>
 
@@ -71,7 +71,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
 
         <div className="border border-gray-200 rounded p-4 md:p-6">
           <div className="flex items-center gap-2 mb-3 md:mb-4">
-            <LocationIcon className="w-4 h-4 md:w-5 md:h-5" />
+            <ReceiptIcon className="w-4 h-4 md:w-5 md:h-5" />
             <h2 className="text-sm md:text-body font-semibold">Billing address</h2>
           </div>
           <div className="text-sm md:text-body text-gray-900">
@@ -135,7 +135,11 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         ))}
       </div>
 
-      <div className="md:max-w-[400px] md:ml-auto">
+      <div className="md:ml-auto border border-gray-200 rounded p-4 md:p-6">
+        <div className="flex items-center gap-2 mb-4 md:mb-6">
+          <CreditCardIcon className="w-4 h-4 md:w-5 md:h-5" />
+          <h2 className="text-sm md:text-body font-semibold">Payment</h2>
+        </div>
         <OrderConfirmationSummary
           subtotal={order.subtotal}
           shipping={order.shipping}

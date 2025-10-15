@@ -8,6 +8,7 @@ import { CartItem } from "@/components/ui/CartItem";
 import { Button } from "@/components/ui/Button";
 import { DiscountCodeInput } from "@/components/ui/DiscountCodeInput";
 import { LoginPrompt } from "@/components/ui/LoginPrompt";
+import { OrderSummary } from "@/components/ui/OrderSummary";
 import Link from "next/link";
 
 export default function CartPage() {
@@ -23,21 +24,27 @@ export default function CartPage() {
     <>
       <ResponsiveHeader />
       <main className="flex-1 bg-white">
-        <div className="hidden md:block max-w-7xl mx-auto px-6 py-12">
-          <h1 className="text-h2 font-medium mb-12">Your shopping cart</h1>
-
+        <div className="hidden md:block px-5">
+          <div className="px-24 py-12">
           {items.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-body text-gray-500 mb-6">Your cart is empty</p>
-              <Link href="/shop">
-                <Button variant="primary">Continue Shopping</Button>
-              </Link>
-            </div>
+            <>
+              <h1 className="text-h2 font-medium mb-12">Your shopping cart</h1>
+              <div className="text-center py-20">
+                <p className="text-body text-gray-500 mb-6">Your cart is empty</p>
+                <Link href="/shop">
+                  <Button variant="primary">Continue Shopping</Button>
+                </Link>
+              </div>
+            </>
           ) : (
             <div className="grid grid-cols-[1fr_380px] gap-20">
               <div>
+                <h1 className="text-h2 font-medium mb-12">Your shopping cart</h1>
                 {items.map((item, index) => (
                   <React.Fragment key={item.id}>
+                    {index === 0 && (
+                      <div className="h-px bg-gray-200 mb-8" />
+                    )}
                     <CartItem
                       {...item}
                       onQuantityChange={updateQuantity}
@@ -50,28 +57,14 @@ export default function CartPage() {
                 ))}
               </div>
 
-              <div className="sticky top-8 h-fit">
-                <div className="space-y-3 mb-6">
-                  <div className="flex justify-between text-base">
-                    <span className="text-gray-600">Subtotal:</span>
-                    <span className="font-medium">€{subtotal.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-base">
-                    <span className="text-gray-600">Shipping:</span>
-                    <span className="font-medium">€{shipping.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-base">
-                    <span className="text-gray-600">Taxes:</span>
-                    <span className="font-medium">€{taxes.toFixed(2)}</span>
-                  </div>
-                </div>
-
-                <div className="h-px bg-gray-200 mb-6" />
-
-                <div className="flex justify-between text-button-big mb-8">
-                  <span className="font-semibold">Total:</span>
-                  <span className="font-bold">€{total.toFixed(2)}</span>
-                </div>
+              <div>
+                <OrderSummary
+                  subtotal={subtotal}
+                  shipping={shipping}
+                  taxes={taxes}
+                  total={total}
+                  variant="desktop"
+                />
 
                 <DiscountCodeInput
                   value={discountCode}
@@ -87,13 +80,13 @@ export default function CartPage() {
                 </Link>
 
                 <LoginPrompt />
-
               </div>
             </div>
           )}
+          </div>
         </div>
 
-        <div className="md:hidden px-4 py-8">
+        <div className="md:hidden px-3 py-8">
           <h1 className="text-h3 font-medium mb-8">Your shopping cart</h1>
 
           {items.length === 0 ? (
@@ -110,6 +103,9 @@ export default function CartPage() {
               <div className="mb-8">
                 {items.map((item, index) => (
                   <React.Fragment key={item.id}>
+                    {index === 0 && (
+                      <div className="h-px bg-gray-200 mb-6" />
+                    )}
                     <CartItem
                       {...item}
                       onQuantityChange={updateQuantity}
@@ -124,27 +120,13 @@ export default function CartPage() {
 
               <div className="border-t pt-6">
 
-                <div className="space-y-2 mb-4">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Subtotal:</span>
-                    <span className="font-medium">€{subtotal.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Shipping:</span>
-                    <span className="font-medium">€{shipping.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Taxes:</span>
-                    <span className="font-medium">€{taxes.toFixed(2)}</span>
-                  </div>
-                </div>
-
-                <div className="h-px bg-gray-200 mb-4" />
-
-                <div className="flex justify-between text-body mb-6">
-                  <span className="font-semibold">Total:</span>
-                  <span className="font-bold">€{total.toFixed(2)}</span>
-                </div>
+                <OrderSummary
+                  subtotal={subtotal}
+                  shipping={shipping}
+                  taxes={taxes}
+                  total={total}
+                  variant="mobile"
+                />
 
                 <DiscountCodeInput
                   value={discountCode}
