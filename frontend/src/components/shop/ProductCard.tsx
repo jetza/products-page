@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getColorValue } from "@/lib/color-mapping";
+import { getColorValue } from "@/lib/constants/colors";
 
 export interface ProductCardProps {
   id: string;

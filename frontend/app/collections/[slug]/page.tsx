@@ -7,6 +7,7 @@ import type { Product } from "@/types/product";
 import { ProductCardProps } from "@/src/components/shop/ProductCard";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { COLLECTION_DETAILS } from "@/lib/constants/collection-details";
 
 interface CollectionPageProps {
   params: {
@@ -14,41 +15,9 @@ interface CollectionPageProps {
   };
 }
 
-// Collection data mapping
-const COLLECTIONS = {
-  "scandinavian-simplicity": {
-    title: "Scandinavian Simplicity",
-    subtitle: "Effortless elegance, timeless comfort",
-    description: "Minimalistic designs, neutral colors, and high-quality textures. Perfect for those who seek comfort with a clean and understated aesthetic.",
-    longDescription: "This collection brings the essence of Scandinavian elegance to your living room.",
-    heroImage: "/hero/Hero.png",
-  },
-  "modern-luxe": {
-    title: "Modern Luxe",
-    subtitle: "Contemporary sophistication",
-    description: "Bold designs with luxurious materials and contemporary style.",
-    longDescription: "Experience modern luxury with our curated collection.",
-    heroImage: "/hero/Hero.png",
-  },
-  "boho-chic": {
-    title: "Boho Chic",
-    subtitle: "Eclectic and vibrant",
-    description: "Playful textures and vibrant colors for a unique living space.",
-    longDescription: "Embrace the boho lifestyle with our colorful collection.",
-    heroImage: "/hero/Hero.png",
-  },
-  "timeless-classics": {
-    title: "Timeless Classics",
-    subtitle: "Enduring elegance",
-    description: "Classic designs that never go out of style.",
-    longDescription: "Invest in furniture that stands the test of time.",
-    heroImage: "/hero/Hero.png",
-  },
-};
-
 export default async function CollectionPage({ params }: CollectionPageProps) {
   const { slug } = params;
-  const collection = COLLECTIONS[slug as keyof typeof COLLECTIONS];
+  const collection = COLLECTION_DETAILS[slug as keyof typeof COLLECTION_DETAILS];
 
   if (!collection) {
     return <div>Collection not found</div>;

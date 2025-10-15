@@ -7,19 +7,13 @@ import { Search } from "@/components/ui/Search";
 import { CartDrawer } from "@/components/ui/CartDrawer";
 import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
+import { SUPPORTED_COUNTRIES } from "@/lib/constants/supported-countries";
 
 interface HeaderProps {
   variant?: "desktop" | "mobile";
   theme?: "solid" | "transparent";
   className?: string;
 }
-
-const COUNTRIES = [
-  "Afghanistan",
-  "Albania",
-  "Algeria",
-  "Andorra",
-];
 
 export const Header: React.FC<HeaderProps> = ({ 
   variant = "desktop",
@@ -137,7 +131,7 @@ export const Header: React.FC<HeaderProps> = ({
 
                 {isCountryDropdownOpen && (
                   <div className="mt-4 bg-white rounded max-h-[300px] overflow-y-auto">
-                    {COUNTRIES.map((country) => (
+                    {SUPPORTED_COUNTRIES.map((country) => (
                       <button
                         key={country}
                         onClick={() => {
@@ -214,7 +208,7 @@ export const Header: React.FC<HeaderProps> = ({
 
             {isCountryDropdownOpen && (
               <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded shadow-lg w-[200px] max-h-[300px] overflow-y-auto z-50">
-                {COUNTRIES.map((country) => (
+                {SUPPORTED_COUNTRIES.map((country) => (
                   <button
                     key={country}
                     onClick={() => {

@@ -5,6 +5,7 @@ import "@fontsource/mona-sans/500.css";
 import "@fontsource/mona-sans/600.css";
 import "@fontsource/mona-sans/700.css";
 import { CartProvider } from "@/lib/cart-context";
+import { CheckoutProvider } from "@/lib/checkout-context";
 
 export const metadata: Metadata = {
   title: "Sofa Society Co.",
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased flex flex-col min-h-screen" suppressHydrationWarning>
         <CartProvider>
-          {children}
+          <CheckoutProvider>
+            {children}
+          </CheckoutProvider>
         </CartProvider>
       </body>
     </html>

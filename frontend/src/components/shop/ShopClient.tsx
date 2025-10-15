@@ -6,7 +6,7 @@ import { CheckboxFilter } from "@/components/filters/CheckboxFilter";
 import { SortDropdown } from "@/components/filters/SortDropdown";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { ProductCardProps } from "@/components/shop/ProductCard";
-import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS } from "@/src/lib/shop/filter-options";
+import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS } from "@/lib/constants/filter-options";
 
 interface ShopClientProps {
   products: ProductCardProps[];

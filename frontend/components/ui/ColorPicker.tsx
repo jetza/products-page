@@ -1,4 +1,4 @@
-import { getColorValue } from "@/lib/color-mapping";
+import { getColorValue } from "@/lib/constants/colors";
 
 interface ColorPickerProps {
   colors: string[];

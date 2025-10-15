@@ -16,7 +16,7 @@ interface CartItem {
   imageAlt?: string;
 }
 
-interface OrderSummaryProps {
+interface CheckoutOrderSummaryProps {
   items: CartItem[];
   discountCode: string;
   onDiscountCodeChange: (code: string) => void;
@@ -27,7 +27,7 @@ interface OrderSummaryProps {
   isMobile?: boolean;
 }
 
-export const OrderSummary: React.FC<OrderSummaryProps> = ({
+export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
   items,
   discountCode,
   onDiscountCodeChange,

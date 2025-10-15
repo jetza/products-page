@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
 import Link from "next/link";
-import { HELP_LINKS, SOCIAL_LINKS, LEGAL_LINKS } from "./footer-links.data";
+import { HELP_LINKS, SOCIAL_LINKS, LEGAL_LINKS } from "@/lib/constants/footer-links";
 
 interface FooterLinksProps {
   variant?: "mobile" | "desktop";

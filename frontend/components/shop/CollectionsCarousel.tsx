@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
-import { collections } from "@/lib/collections-data";
+import { collections } from "@/lib/constants/collections";
 import { Button } from "@/components/ui/Button";
 
 export function CollectionsCarousel() {
