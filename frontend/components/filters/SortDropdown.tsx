@@ -37,6 +37,7 @@ export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
         <DropdownButton
           isOpen={isOpen}
           onClick={() => setIsOpen(!isOpen)}
+          variant="filter"
           className="min-w-[180px]"
         >
           <span className="text-base flex-1 text-left">

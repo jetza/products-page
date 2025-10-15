@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { FilterDropdown } from "@/components/filters/FilterDropdown";
 import { CheckboxFilter } from "@/components/filters/CheckboxFilter";
 import { SortDropdown } from "@/components/filters/SortDropdown";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { ProductCardProps } from "@/components/shop/ProductCard";
+import { DropdownButton } from "@/components/ui/DropdownButton";
+import { PlusIcon } from "@/components/icons";
+import { useProductFilter } from "@/lib/hooks/useProductFilter";
 import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS } from "@/lib/constants/filter-options";
 
 interface ShopClientProps {
@@ -13,26 +16,47 @@ interface ShopClientProps {
 }
 
 export function ShopClient({ products: shopItems }: ShopClientProps) {
-  const [selectedCollections, setSelectedCollections] = useState<string[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState<string>("featured");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  
+  const { filteredProducts, filters, sort } = useProductFilter(shopItems, {
+    enableCollectionFilter: true,
+  });
 
-  const filteredShopItems = useMemo(() => {
-    const filtered = [...shopItems];
+  const {
+    selectedCollections,
+    setSelectedCollections,
+    selectedCategories,
+    setSelectedCategories,
+    selectedTypes,
+    setSelectedTypes,
+  } = filters;
 
-    if (sortBy === "price-asc") {
-      return filtered.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "price-desc") {
-      return filtered.sort((a, b) => b.price - a.price);
-    }
-
-    return filtered;
-  }, [shopItems, sortBy]);
+  const { sortBy, setSortBy } = sort;
 
   return (
     <>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex md:hidden items-center justify-between mb-8">
+        <DropdownButton
+          isOpen={isFilterOpen}
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+          variant="filter"
+          customIcon={
+            <PlusIcon 
+              className={`w-4 h-4 transition-transform ${isFilterOpen ? 'rotate-45' : ''}`} 
+            />
+          }
+        >
+          <span className="text-base">Filter</span>
+        </DropdownButton>
+
+        <SortDropdown
+          options={SORT_OPTIONS}
+          selected={sortBy}
+          onChange={setSortBy}
+        />
+      </div>
+
+      <div className="hidden md:flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
           <FilterDropdown label="Collection">
             <CheckboxFilter
@@ -66,7 +90,40 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
         />
       </div>
 
-      <ProductGrid products={filteredShopItems} />
+      {isFilterOpen && (
+        <div className="md:hidden mb-8 p-6 border border-gray-200 rounded bg-gray-50">
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-sm font-semibold mb-3">Collection</h3>
+              <CheckboxFilter
+                options={COLLECTIONS}
+                selected={selectedCollections}
+                onChange={setSelectedCollections}
+              />
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-3">Category</h3>
+              <CheckboxFilter
+                options={CATEGORIES}
+                selected={selectedCategories}
+                onChange={setSelectedCategories}
+              />
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-3">Type</h3>
+              <CheckboxFilter
+                options={TYPES}
+                selected={selectedTypes}
+                onChange={setSelectedTypes}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      <ProductGrid products={filteredProducts} />
     </>
   );
 }

@@ -1,12 +1,13 @@
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 export default function Home() {
   return (
     <>
       <ResponsiveHeader />
       <main className="flex-1">
-        <div className="container mx-auto px-4 py-12">
+        <PageContainer className="py-12">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-h1 font-medium text-gray-800 mb-6">
               Welcome to Sofa Society Co.
@@ -15,7 +16,7 @@ export default function Home() {
               Discover our collection of premium furniture
             </p>
           </div>
-        </div>
+        </PageContainer>
       </main>
       <ResponsiveFooter />
     </>

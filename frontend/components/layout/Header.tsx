@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
     return (
       <>
         <header className={cn(bgClass, borderClass, className)}>
-          <div className="flex items-center justify-between px-4 h-16">
+          <div className="flex items-center justify-between px-8 h-16">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 -ml-2"
@@ -163,12 +163,13 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className={cn(bgClass, borderClass, className)}>
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
-          SofaSocietyCo.
-        </Link>
+      <div className="px-5">
+        <div className="mx-auto px-24 h-20 flex items-center justify-between">
+          <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
+            SofaSocietyCo.
+          </Link>
 
-        <nav className="flex items-center gap-8">
+          <nav className="flex items-center gap-8">
           <Link href="/about" className={cn("text-base hover:opacity-70", textClass)}>
             About
           </Link>
@@ -178,9 +179,9 @@ export const Header: React.FC<HeaderProps> = ({
           <Link href="/shop" className={cn("text-base hover:opacity-70", textClass)}>
             Shop
           </Link>
-        </nav>
+          </nav>
 
-        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6">
           <div className="relative">
             <button
               onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
@@ -239,6 +240,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <BagIcon className={cn("w-5 h-5", textClass)} />
           </button>
+          </div>
         </div>
       </div>
 

@@ -9,8 +9,8 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
   if (!products || products.length === 0) return null;
 
   return (
-    <section className="py-12 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section className="py-12 md:py-20 bg-white px-4 md:px-5">
+      <div className="mx-auto md:px-24">
         <h2 className="text-h4 md:text-h2 font-semibold mb-8 md:mb-12">Related products</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

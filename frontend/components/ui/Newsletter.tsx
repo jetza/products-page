@@ -29,7 +29,7 @@ export const Newsletter: React.FC<NewsletterProps> = ({
         We will ultra-send you our discount coupons!
       </p>
       {layout === "horizontal" ? (
-        <div className="flex gap-2 w-full items-start">
+        <div className="flex flex-col sm:flex-row gap-2 w-full items-stretch sm:items-start">
           <div className="flex-1 min-w-0">
             <Input
               type="email"
@@ -39,7 +39,12 @@ export const Newsletter: React.FC<NewsletterProps> = ({
               fullWidth
             />
           </div>
-          <Button variant="primary" size="md" onClick={handleSubscribe} className="whitespace-nowrap flex-shrink-0 h-12">
+          <Button 
+            variant="primary" 
+            size="md" 
+            onClick={handleSubscribe} 
+            className="whitespace-nowrap flex-shrink-0 h-12 w-full sm:w-auto"
+          >
             Subscribe
           </Button>
         </div>

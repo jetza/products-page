@@ -112,9 +112,9 @@ export default function ProductPage({
           <LoadingOverlay />
         ) : (
           <>
-            <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8">
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20">
+            <div className="px-5">
+              <div className="mx-auto px-24 py-6 md:py-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20">
             <div>
               <ImageCarousel images={images} />
             </div>
@@ -175,7 +175,8 @@ export default function ProductPage({
               />
             </div>
           </div>
-        </div>
+              </div>
+            </div>
 
         <CollectionInspiredInterior 
           title={`The ${product.title} sofa is a masterpiece of minimalism and luxury.`}

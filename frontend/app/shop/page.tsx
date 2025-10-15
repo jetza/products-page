@@ -4,6 +4,7 @@ import { getShopProducts } from "@/src/lib/shop/get-shop-products";
 import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { PageContainer } from "@/components/layout/PageContainer";
 
 export default async function ShopPage() {
   const shopItems = await getShopProducts();
@@ -14,7 +15,7 @@ export default async function ShopPage() {
       <main className="flex-1 min-h-screen bg-white">
         <CollectionsCarousel />
 
-        <div className="max-w-7xl mx-auto px-8 py-12">
+        <PageContainer className="py-12">
           <h1 className="text-h1 font-medium mb-12">Shop</h1>
 
           {shopItems.length === 0 ? (
@@ -26,7 +27,7 @@ export default async function ShopPage() {
           ) : (
             <ShopClient products={shopItems} />
           )}
-        </div>
+        </PageContainer>
       </main>
       <ResponsiveFooter />
     </>

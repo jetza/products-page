@@ -6,6 +6,7 @@ import type { Product } from "@/types/product";
 import { ProductCardProps } from "@/src/components/shop/ProductCard";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { PageContainer } from "@/components/layout/PageContainer";
 import { COLLECTION_DETAILS } from "@/lib/constants/collection-details";
 import { CollectionClient } from "@/components/collections/CollectionClient";
 
@@ -59,7 +60,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         </div>
         
         <div className="bg-white py-12 md:py-16">
-          <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <PageContainer>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               <div>
                 <h1 className="text-h2 md:text-h1 font-medium text-black mb-0">
@@ -76,7 +77,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                 </p>
               </div>
             </div>
-          </div>
+          </PageContainer>
         </div>
       </section>
 

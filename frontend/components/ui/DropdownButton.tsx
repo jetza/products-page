@@ -12,6 +12,7 @@ export interface DropdownButtonProps {
   error?: boolean;
   id?: string;
   size?: "sm" | "lg";
+  customIcon?: React.ReactNode;
 }
 
 export const DropdownButton = React.forwardRef<HTMLButtonElement, DropdownButtonProps>(
@@ -26,6 +27,7 @@ export const DropdownButton = React.forwardRef<HTMLButtonElement, DropdownButton
       error = false,
       id,
       size = "lg",
+      customIcon,
     },
     ref
   ) => {
@@ -36,10 +38,10 @@ export const DropdownButton = React.forwardRef<HTMLButtonElement, DropdownButton
       filter: "px-6 py-3 border border-gray-300 rounded hover:border-gray-400 gap-2",
       select: "h-12 px-4 pr-10 text-base font-normal text-left border rounded transition-all duration-200 focus:outline-none w-full justify-between",
       selectFilter: cn(
-        "justify-between text-sm font-normal text-left border border-black rounded transition-all duration-200 focus:outline-none",
+        "justify-between text-base font-normal text-left border border-gray-300 rounded transition-all duration-200 focus:outline-none",
         size === "lg" && "h-10 px-4 gap-2",
         size === "sm" && "h-[33px] px-3 gap-1",
-        !disabled && ["hover:bg-gray-50", isOpen && "bg-gray-50"],
+        !disabled && ["hover:bg-gray-50"],
         disabled && ["border-gray-300 text-gray-400 bg-gray-50 cursor-not-allowed"]
       ),
     };
@@ -59,20 +61,23 @@ export const DropdownButton = React.forwardRef<HTMLButtonElement, DropdownButton
         className={cn(
           baseStyles,
           variantStyles[variant],
-          variant !== "select" && isOpen && "border-black",
           selectStateStyles,
           className
         )}
         type="button"
       >
         {children}
-        <ChevronDownIcon
-          className={cn(
-            variant === "select" ? "transition-transform duration-200" : "w-4 h-4 transition-transform",
-            isOpen && "rotate-180",
-            disabled && "text-gray-400"
-          )}
-        />
+        {customIcon ? (
+          customIcon
+        ) : (
+          <ChevronDownIcon
+            className={cn(
+              variant === "select" ? "transition-transform duration-200" : "w-4 h-4 transition-transform",
+              isOpen && "rotate-180",
+              disabled && "text-gray-400"
+            )}
+          />
+        )}
       </button>
     );
   }

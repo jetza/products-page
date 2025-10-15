@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({
 
   if (variant === "mobile") {
     return (
-      <footer className={cn("bg-gray-50 py-12 px-6", className)}>
+      <footer className={cn("bg-gray-50 py-12 px-8", className)}>
         <div className="max-w-md mx-auto">
           <Newsletter className="mb-12" />
           
@@ -33,16 +33,20 @@ export const Footer: React.FC<FooterProps> = ({
 
   return (
     <footer className={cn("bg-gray-50 py-12", className)}>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-[200px_1fr_500px] gap-12">
-          <FooterLogo />
+      <div className="px-5">
+        <div className="mx-auto px-24">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start justify-between">
+            <div className="w-full md:w-[168px]">
+              <FooterLogo />
+            </div>
 
-          <div className="flex justify-center">
-            <FooterLinksGroup />
-          </div>
+            <div className="w-full md:w-[384px]">
+              <FooterLinksGroup />
+            </div>
 
-          <div className="w-full">
-            <Newsletter layout="horizontal" />
+            <div className="w-full md:w-[384px]">
+              <Newsletter layout="horizontal" />
+            </div>
           </div>
         </div>
       </div>
