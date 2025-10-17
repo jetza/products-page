@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { ArrowLeftIcon, ArrowRightIcon } from "@/components/icons";
+import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 
 interface ProductImageCarouselProps {
   images: { url: string; alt?: string }[];
@@ -52,7 +52,10 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
                 alt={image.alt || `Product image ${index + 1}`}
                 width={427}
                 height={532}
-                className="w-full h-full object-contain p-4 lg:p-0"
+                className={`w-full h-full object-contain p-4 lg:p-0 transition-transform duration-300 ${
+                  index === 1 ? 'scale-200' : ''
+                }`}
+                style={index === 1 ? { transform: 'scale(2)' } : undefined}
                 priority={index === 0}
               />
             </div>
@@ -61,22 +64,22 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
 
         {images.length > 1 && (
           <>
-            <button
+            <ArrowButton
+              direction="left"
+              variant="outline"
               onClick={() => scroll("left")}
               disabled={currentIndex === 0}
-              className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-transparent border border-black rounded-full flex items-center justify-center transition-colors z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 z-10"
               aria-label="Previous image"
-            >
-              <ArrowLeftIcon className="w-5 h-5 lg:w-6 lg:h-6 text-black" />
-            </button>
-            <button
+            />
+            <ArrowButton
+              direction="right"
+              variant="default"
               onClick={() => scroll("right")}
               disabled={currentIndex === images.length - 1}
-              className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black rounded-full flex items-center justify-center transition-colors shadow-lg z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 shadow-lg z-10"
               aria-label="Next image"
-            >
-              <ArrowRightIcon className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
-            </button>
+            />
           </>
         )}
       </div>

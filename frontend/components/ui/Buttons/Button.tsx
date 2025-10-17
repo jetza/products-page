@@ -46,7 +46,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           "rounded",
           "leading-none",
 
-          // Size styles
           size === "sm" && "h-8 px-4 gap-2 text-xs",
           size === "md" && "h-10 px-6 gap-2 text-base",
           size === "lg" && "h-12 px-6 gap-4 text-base",

@@ -2,22 +2,15 @@
 
 import React from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Buttons/Button";
 import { OrderConfirmationSummary } from "./OrderConfirmationSummary";
 import { CompletedOrder } from "@/lib/checkout-context";
-import { ReceiptIcon, CreditCardIcon } from "@/components/icons";
+import { ReceiptIcon, CreditCardIcon, MapPinIcon } from "@/components/icons";
 
 interface OrderConfirmationProps {
   order: CompletedOrder;
   onBackToHome: () => void;
 }
-
-const LocationIcon = ({ className = "" }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 20 20" fill="none">
-    <path d="M17.5 8.33334C17.5 14.1667 10 19.1667 10 19.1667C10 19.1667 2.5 14.1667 2.5 8.33334C2.5 6.34421 3.29018 4.43656 4.6967 3.03004C6.10322 1.62352 8.01088 0.833344 10 0.833344C11.9891 0.833344 13.8968 1.62352 15.3033 3.03004C16.7098 4.43656 17.5 6.34421 17.5 8.33334Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M10 10.8333C11.3807 10.8333 12.5 9.71406 12.5 8.33334C12.5 6.95263 11.3807 5.83334 10 5.83334C8.61929 5.83334 7.5 6.95263 7.5 8.33334C7.5 9.71406 8.61929 10.8333 10 10.8333Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
 
 export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
   order,
@@ -51,7 +44,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mb-8 md:mb-12">
         <div className="border border-gray-200 rounded p-4 md:p-6">
           <div className="flex items-center gap-2 mb-3 md:mb-4">
-            <LocationIcon className="w-4 h-4 md:w-5 md:h-5" />
+            <MapPinIcon className="w-4 h-4 md:w-5 md:h-5" />
             <h2 className="text-sm md:text-body font-semibold">Delivery address</h2>
           </div>
           <div className="text-sm md:text-body text-gray-900">

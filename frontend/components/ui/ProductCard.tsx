@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils/cn";
 
 export interface ProductCardProps {
@@ -48,11 +49,12 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
             variant === "mobile" && "h-[139px]"
           )}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={imageUrl}
             alt={imageAlt}
-            className="w-full h-full object-cover"
+            fill
+            sizes={variant === "desktop" ? "384px" : "163px"}
+            className="object-cover"
           />
         </div>
 

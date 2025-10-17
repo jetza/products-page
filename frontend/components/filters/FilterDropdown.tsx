@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { DropdownButton } from "@/components/ui/DropdownButton";
+import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
 
 export interface FilterDropdownProps {
   label: string;

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
 import { OrderSummary } from "@/components/ui/OrderSummary";
 
@@ -64,7 +64,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
                 style={{ width: `${imageSize}px`, height: `${imageHeight}px` }}
               >
                 <Image
-                  src={item.image || '/placeholder.png'}
+                  src={item.image || 'https://placehold.co/600x400'}
                   alt={item.imageAlt || item.title || 'Product image'}
                   fill
                   className="object-cover"
@@ -136,7 +136,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
               style={{ width: `${imageSize}px`, height: `${imageHeight}px` }}
             >
               <Image
-                src={item.image || '/placeholder.png'}
+                src={item.image || 'https://placehold.co/600x400'}
                 alt={item.imageAlt || item.title || 'Product image'}
                 fill
                 className="object-cover"

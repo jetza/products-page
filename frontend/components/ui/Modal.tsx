@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { XIcon } from "@/components/icons";
-import { Button } from "./Button";
+import { Button } from "./Buttons/Button";
+import { CloseButton } from "./Buttons/CloseButton";
 
 type ModalStyleConfig = {
   width: string;
@@ -95,13 +95,7 @@ export const Modal: React.FC<ModalProps> = ({
             {title}
           </h2>
           {showCloseButton && !isConfirmation && (
-            <button
-              onClick={onClose}
-              className="text-black hover:text-gray-600 transition-colors"
-              aria-label="Close modal"
-            >
-              <XIcon className="w-6 h-6" />
-            </button>
+            <CloseButton variant="minimal" onClose={onClose} />
           )}
         </div>
 

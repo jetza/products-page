@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 
 interface ResponsiveHeaderProps {
   theme?: "solid" | "transparent";
+  className?: string;
 }
 
-export const ResponsiveHeader: React.FC<ResponsiveHeaderProps> = ({ theme = "solid" }) => {
+export const ResponsiveHeader: React.FC<ResponsiveHeaderProps> = ({ theme = "solid", className }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -21,10 +22,10 @@ export const ResponsiveHeader: React.FC<ResponsiveHeaderProps> = ({ theme = "sol
   return (
     <>
       <div className="hidden md:block">
-        <Header variant="desktop" theme={theme} />
+        <Header variant="desktop" theme={theme} className={className} />
       </div>
       <div className="block md:hidden">
-        <Header variant="mobile" theme={theme} />
+        <Header variant="mobile" theme={theme} className={className} />
       </div>
     </>
   );

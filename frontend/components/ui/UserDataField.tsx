@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
+import { Button } from "./Buttons/Button";
 
 export interface UserDataFieldProps {
   icon: React.ReactNode;
@@ -14,7 +15,6 @@ export interface UserDataFieldProps {
 
 export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps>(
   ({ icon, label, value, number, numberLabel, onEdit, variant = "desktop", className }, ref) => {
-    // Desktop layout
     if (variant === "desktop") {
       return (
         <div
@@ -45,19 +45,18 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
           )}
 
           {onEdit && (
-            <button
-              type="button"
+            <Button
+              variant="secondary"
+              size="md"
               onClick={onEdit}
-              className="flex-shrink-0 h-10 px-4 text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
             >
-              Label
-            </button>
+              Change
+            </Button>
           )}
         </div>
       );
     }
 
-    // Mobile layout
     return (
       <div
         ref={ref}
@@ -90,13 +89,14 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
         </div>
 
         {onEdit && (
-          <button
-            type="button"
+          <Button
+            variant="secondary"
+            size="lg"
             onClick={onEdit}
-            className="w-full h-[48px] text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
+            className="w-full"
           >
-            Label
-          </button>
+            Change
+          </Button>
         )}
       </div>
     );

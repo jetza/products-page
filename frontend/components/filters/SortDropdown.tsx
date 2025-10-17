@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { DropdownButton } from "@/components/ui/DropdownButton";
+import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
+import { Button } from "@/components/ui/Buttons/Button";
 
 export interface SortOption {
   id: string;
@@ -54,17 +55,18 @@ export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
 
             <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded shadow-lg z-20 min-w-[180px] py-2">
               {options.map((option) => (
-                <button
+                <Button
                   key={option.id}
                   onClick={() => handleSelect(option.id)}
+                  variant="ghost"
+                  type="button"
                   className={cn(
-                    "w-full px-4 py-2 text-left text-base hover:bg-gray-50 transition-colors",
+                    "w-full px-4 py-2 text-left text-base justify-start rounded-none h-auto",
                     selected === option.id && "bg-gray-100 font-medium"
                   )}
-                  type="button"
                 >
                   {option.label}
-                </button>
+                </Button>
               ))}
             </div>
           </>

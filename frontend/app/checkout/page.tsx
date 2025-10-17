@@ -41,7 +41,6 @@ export default function CheckoutPage() {
 
   return (
     <main className="min-h-screen">
-      {/* Desktop Layout */}
       <div className="hidden md:grid md:grid-cols-[1fr_636px]">
         <div className="bg-white">
           <div className="px-12 py-6">
@@ -70,7 +69,6 @@ export default function CheckoutPage() {
         </div>
       </div>
 
-      {/* Mobile Layout */}
       <div className="md:hidden">
         <div className="px-4 py-6 flex items-center justify-between">
           <Link href="/" className="text-body font-medium">

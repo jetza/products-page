@@ -5,7 +5,7 @@ import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { useCart } from "@/lib/cart-context";
 import { CartItem } from "@/components/ui/CartItem";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Buttons/Button";
 import { DiscountCodeInput } from "@/components/ui/DiscountCodeInput";
 import { LoginPrompt } from "@/components/ui/LoginPrompt";
 import { OrderSummary } from "@/components/ui/OrderSummary";

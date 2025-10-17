@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils/cn";
-import { DropdownButton } from "@/components/ui/DropdownButton";
+import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
 
 export interface SelectOption {
   value: string;

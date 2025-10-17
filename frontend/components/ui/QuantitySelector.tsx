@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
+import { PlusIcon, MinusIcon } from "@/components/icons";
 
 export interface QuantitySelectorProps {
   quantity: number;
@@ -37,7 +38,7 @@ export const QuantitySelector = React.forwardRef<HTMLDivElement, QuantitySelecto
           aria-label="Decrease quantity"
           type="button"
         >
-          <span className="text-sm leading-none font-normal">−</span>
+          <MinusIcon className="w-4 h-4" />
         </button>
 
         <span className="text-center font-normal text-sm leading-none">
@@ -51,7 +52,7 @@ export const QuantitySelector = React.forwardRef<HTMLDivElement, QuantitySelecto
           aria-label="Increase quantity"
           type="button"
         >
-          <span className="text-sm leading-none font-normal">+</span>
+          <PlusIcon className="w-4 h-4" />
         </button>
       </div>
     );

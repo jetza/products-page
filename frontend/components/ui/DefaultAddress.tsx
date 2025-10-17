@@ -1,7 +1,8 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { Radio } from "./Radio";
-import { DeleteButton } from "./DeleteButton";
+import { Radio } from "./Buttons/Radio";
+import { DeleteButton } from "./Buttons/DeleteButton";
+import { Button } from "./Buttons/Button";
 
 export interface DefaultAddressProps {
   label: string;
@@ -97,13 +98,13 @@ export const DefaultAddress = React.forwardRef<HTMLDivElement, DefaultAddressPro
         <div className="flex items-center gap-2">
           {onDelete && <DeleteButton onDelete={onDelete} />}
           {onEdit && (
-            <button
-              type="button"
+            <Button
+              variant="secondary"
+              size="md"
               onClick={onEdit}
-              className="flex-shrink-0 h-10 px-4 text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
             >
-              Label
-            </button>
+              Change
+            </Button>
           )}
         </div>
       </div>

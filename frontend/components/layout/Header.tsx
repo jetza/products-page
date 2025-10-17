@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { SearchIcon, MenuIcon, BagIcon } from "@/components/icons";
+import { SearchIcon, MenuIcon, BagIcon, ChevronDownIcon } from "@/components/icons";
 import { Search } from "@/components/ui/Search";
 import { CartDrawer } from "@/components/ui/CartDrawer";
 import { useCart } from "@/lib/cart-context";
@@ -28,11 +28,10 @@ export const Header: React.FC<HeaderProps> = ({
   
   const { items, updateQuantity, removeFromCart } = useCart();
 
-  // Theme classes
   const isTransparent = theme === "transparent";
   const bgClass = isTransparent ? "bg-transparent" : "bg-white";
   const textClass = isTransparent ? "text-white" : "text-black";
-  const borderClass = isTransparent ? "" : "border-b border-gray-200";
+  const borderClass = "";
 
   if (variant === "mobile") {
     return (
@@ -110,23 +109,12 @@ export const Header: React.FC<HeaderProps> = ({
                   className="flex items-center gap-2 text-white text-base"
                 >
                   <span>{selectedCountry}</span>
-                  <svg
-                    width="12"
-                    height="8"
-                    viewBox="0 0 12 8"
-                    fill="none"
+                  <ChevronDownIcon 
                     className={cn(
-                      "transition-transform",
+                      "w-3 h-3 transition-transform",
                       isCountryDropdownOpen && "rotate-180"
                     )}
-                  >
-                    <path
-                      d="M1 1L6 6L11 1"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+                  />
                 </button>
 
                 {isCountryDropdownOpen && (
@@ -188,23 +176,12 @@ export const Header: React.FC<HeaderProps> = ({
               className={cn("flex items-center gap-2 text-base", textClass)}
             >
               <span>{selectedCountry}</span>
-              <svg
-                width="12"
-                height="8"
-                viewBox="0 0 12 8"
-                fill="none"
+              <ChevronDownIcon
                 className={cn(
-                  "transition-transform",
+                  "w-3 h-3 transition-transform",
                   isCountryDropdownOpen && "rotate-180"
                 )}
-              >
-                <path
-                  d="M1 1L6 6L11 1"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
+              />
             </button>
 
             {isCountryDropdownOpen && (

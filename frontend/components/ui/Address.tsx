@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { DeleteButton } from "./DeleteButton";
+import { DeleteButton } from "./Buttons/DeleteButton";
+import { Button } from "./Buttons/Button";
 
 export interface AddressProps {
   icon: React.ReactNode;
@@ -41,7 +42,6 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
     },
     ref
   ) => {
-    // Desktop layout
     if (variant === "desktop") {
       return (
         <div
@@ -92,13 +92,13 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
             <div className="flex items-start gap-2 ml-6">
               {onDelete && <DeleteButton onDelete={onDelete} />}
               {onEdit && (
-                <button
-                  type="button"
+                <Button
+                  variant="secondary"
+                  size="md"
                   onClick={onEdit}
-                  className="flex-shrink-0 h-10 px-4 text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
                 >
-                  Label
-                </button>
+                  Change
+                </Button>
               )}
             </div>
           </div>
@@ -106,7 +106,6 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
       );
     }
 
-    // Mobile layout
     return (
       <div
         ref={ref}
@@ -155,13 +154,13 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
         <div className="flex items-center gap-2 ml-10">
           {onDelete && <DeleteButton onDelete={onDelete} />}
           {onEdit && (
-            <button
-              type="button"
+            <Button
+              variant="secondary"
+              size="md"
               onClick={onEdit}
-              className="flex-shrink-0 h-10 px-4 text-base font-normal text-black bg-transparent border border-black rounded transition-colors hover:bg-gray-50"
             >
-              Label
-            </button>
+              Change
+            </Button>
           )}
         </div>
       </div>

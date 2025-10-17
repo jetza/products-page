@@ -98,9 +98,19 @@ export interface CheckoutState {
 
 // Initial State
 const initialState: CheckoutState = {
-  email: "",
+  email: "jovana.jerimic@gmail.com",
   subscribeNewsletter: false,
-  deliveryInfo: null,
+  deliveryInfo: {
+    firstName: "Jovana",
+    lastName: "Jerimic",
+    company: "",
+    address: "123 Main Street",
+    apartment: "Apt 4B",
+    city: "Zagreb",
+    country: "Croatia",
+    postalCode: "10000",
+    phone: "+385 99 143 321",
+  },
   shippingMethod: null,
   paymentInfo: null,
   billingInfo: null,

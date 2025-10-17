@@ -2,6 +2,8 @@
 
 import React from "react";
 import { cn } from "@/lib/utils/cn";
+import { Input } from "./Input";
+import { Button } from "./Buttons/Button";
 
 interface DiscountCodeInputProps {
   value: string;
@@ -18,32 +20,21 @@ export const DiscountCodeInput: React.FC<DiscountCodeInputProps> = ({
 }) => {
   return (
     <div className={cn("flex gap-3 w-full", className)}>
-      <input
+      <Input
         type="text"
         value={value}
         onChange={onChange}
         placeholder="Discount code"
-        className={cn(
-          "flex-1 h-12 px-4 text-base font-normal",
-          "border border-gray-300 rounded",
-          "transition-all duration-200",
-          "focus:outline-none focus:border-black",
-          "placeholder:text-gray-400",
-          "bg-white text-gray-800"
-        )}
+        className="flex-1"
       />
-      <button
+      <Button
+        variant="primary"
+        size="lg"
         onClick={onApply}
-        className={cn(
-          "px-6 h-12 text-base font-medium",
-          "rounded",
-          "bg-gray-200 text-white hover:bg-gray-300",
-          "transition-colors duration-200",
-          "whitespace-nowrap"
-        )}
+        className="whitespace-nowrap"
       >
         Apply
-      </button>
+      </Button>
     </div>
   );
 };

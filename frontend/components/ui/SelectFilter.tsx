@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils/cn";
-import { DropdownButton } from "@/components/ui/DropdownButton";
+import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
 
 export interface SelectFilterOption {
   value: string;
@@ -33,7 +33,6 @@ export const SelectFilter: React.FC<SelectFilterProps> = ({
 
   const selectedOption = options.find((opt) => opt.value === value);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (selectRef.current && !selectRef.current.contains(event.target as Node)) {

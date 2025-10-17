@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Buttons/Button";
 import { DeliveryInfo } from "@/lib/checkout-context";
 import { countries } from "@/lib/constants/countries";
 
@@ -72,32 +72,24 @@ export const DeliveryForm: React.FC<DeliveryFormProps> = ({ onSubmit, initialDat
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <Input
-            type="text"
-            placeholder="First name"
-            value={formData.firstName}
-            onChange={(e) => handleChange("firstName", e.target.value)}
-            fullWidth
-            className={errors.firstName ? "border-red-500" : ""}
-          />
-          {errors.firstName && (
-            <p className="text-xs text-red-500 mt-1">{errors.firstName}</p>
-          )}
-        </div>
-        <div>
-          <Input
-            type="text"
-            placeholder="Last name"
-            value={formData.lastName}
-            onChange={(e) => handleChange("lastName", e.target.value)}
-            fullWidth
-            className={errors.lastName ? "border-red-500" : ""}
-          />
-          {errors.lastName && (
-            <p className="text-xs text-red-500 mt-1">{errors.lastName}</p>
-          )}
-        </div>
+        <Input
+          type="text"
+          placeholder="First name"
+          value={formData.firstName}
+          onChange={(e) => handleChange("firstName", e.target.value)}
+          fullWidth
+          error={!!errors.firstName}
+          helperText={errors.firstName}
+        />
+        <Input
+          type="text"
+          placeholder="Last name"
+          value={formData.lastName}
+          onChange={(e) => handleChange("lastName", e.target.value)}
+          fullWidth
+          error={!!errors.lastName}
+          helperText={errors.lastName}
+        />
       </div>
 
       <Input
@@ -108,19 +100,15 @@ export const DeliveryForm: React.FC<DeliveryFormProps> = ({ onSubmit, initialDat
         fullWidth
       />
 
-      <div>
-        <Input
-          type="text"
-          placeholder="Address"
-          value={formData.address}
-          onChange={(e) => handleChange("address", e.target.value)}
-          fullWidth
-          className={errors.address ? "border-red-500" : ""}
-        />
-        {errors.address && (
-          <p className="text-xs text-red-500 mt-1">{errors.address}</p>
-        )}
-      </div>
+      <Input
+        type="text"
+        placeholder="Address"
+        value={formData.address}
+        onChange={(e) => handleChange("address", e.target.value)}
+        fullWidth
+        error={!!errors.address}
+        helperText={errors.address}
+      />
 
       <Input
         type="text"
@@ -131,55 +119,41 @@ export const DeliveryForm: React.FC<DeliveryFormProps> = ({ onSubmit, initialDat
       />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <Input
-            type="text"
-            placeholder="City"
-            value={formData.city}
-            onChange={(e) => handleChange("city", e.target.value)}
-            fullWidth
-            className={errors.city ? "border-red-500" : ""}
-          />
-          {errors.city && (
-            <p className="text-xs text-red-500 mt-1">{errors.city}</p>
-          )}
-        </div>
-        <div>
-          <Input
-            type="text"
-            placeholder="Postal code"
-            value={formData.postalCode}
-            onChange={(e) => handleChange("postalCode", e.target.value)}
-            fullWidth
-            className={errors.postalCode ? "border-red-500" : ""}
-          />
-          {errors.postalCode && (
-            <p className="text-xs text-red-500 mt-1">{errors.postalCode}</p>
-          )}
-        </div>
-        <div>
-          <Select
-            value={formData.country}
-            onChange={(value) => handleChange("country", value)}
-            options={countries.map((c) => ({ value: c, label: c }))}
-            fullWidth
-          />
-        </div>
+        <Input
+          type="text"
+          placeholder="City"
+          value={formData.city}
+          onChange={(e) => handleChange("city", e.target.value)}
+          fullWidth
+          error={!!errors.city}
+          helperText={errors.city}
+        />
+        <Input
+          type="text"
+          placeholder="Postal code"
+          value={formData.postalCode}
+          onChange={(e) => handleChange("postalCode", e.target.value)}
+          fullWidth
+          error={!!errors.postalCode}
+          helperText={errors.postalCode}
+        />
+        <Select
+          value={formData.country}
+          onChange={(value) => handleChange("country", value)}
+          options={countries.map((c) => ({ value: c, label: c }))}
+          fullWidth
+        />
       </div>
 
-      <div>
-        <Input
-          type="tel"
-          placeholder="Phone"
-          value={formData.phone}
-          onChange={(e) => handleChange("phone", e.target.value)}
-          fullWidth
-          className={errors.phone ? "border-red-500" : ""}
-        />
-        {errors.phone && (
-          <p className="text-xs text-red-500 mt-1">{errors.phone}</p>
-        )}
-      </div>
+      <Input
+        type="tel"
+        placeholder="Phone"
+        value={formData.phone}
+        onChange={(e) => handleChange("phone", e.target.value)}
+        fullWidth
+        error={!!errors.phone}
+        helperText={errors.phone}
+      />
 
       <Button type="submit" variant="primary" size="lg" className="w-full">
         Continue to shipping

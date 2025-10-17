@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { Button } from "./Button";
+import { Button } from "./Buttons/Button";
 import { Input } from "./Input";
 import Link from "next/link";
 

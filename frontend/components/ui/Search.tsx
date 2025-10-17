@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils/cn";
-import { SearchIcon, XIcon } from "@/components/icons";
+import { SearchIcon } from "@/components/icons";
+import { CloseButton } from "./Buttons/CloseButton";
 
 interface SearchProps {
   variant?: "desktop" | "mobile";
@@ -59,14 +60,12 @@ export const Search: React.FC<SearchProps> = ({
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full h-12 pl-12 pr-12 bg-black border-none text-white placeholder:text-white/60 focus:outline-none"
             />
-            <button
-              type="button"
-              onClick={onClose}
+            <CloseButton
+              variant="light"
+              size="sm"
+              onClose={onClose}
               className="absolute right-4 top-1/2 -translate-y-1/2"
-              aria-label="Close search"
-            >
-              <XIcon className="w-5 h-5 text-white" />
-            </button>
+            />
           </div>
         </form>
       </div>
@@ -93,14 +92,11 @@ export const Search: React.FC<SearchProps> = ({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-16 pl-16 pr-16 text-body border-none focus:outline-none rounded-lg"
               />
-              <button
-                type="button"
-                onClick={onClose}
-                className="absolute right-6 top-1/2 -translate-y-1/2 p-1 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Close search"
-              >
-                <XIcon className="w-6 h-6 text-gray-600" />
-              </button>
+              <CloseButton
+                size="sm"
+                onClose={onClose}
+                className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-600"
+              />
             </div>
           </form>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils/cn";
 
 export interface OrderItemProps {
@@ -34,12 +35,13 @@ export const OrderItem = React.forwardRef<HTMLDivElement, OrderItemProps>(
         className={cn("flex gap-4 mb-6", className)}
       >
 
-        <div className="flex-shrink-0 w-20 h-20 bg-gray-100 rounded overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="flex-shrink-0 w-20 h-20 bg-gray-100 rounded overflow-hidden relative">
+          <Image
             src={image}
-            alt={imageAlt}
-            className="w-full h-full object-cover"
+            alt={imageAlt || title}
+            fill
+            className="object-cover"
+            sizes="80px"
           />
         </div>
 

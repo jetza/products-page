@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { Button } from "./Button";
+import { Button } from "./Buttons/Button";
 import Link from "next/link";
 
 export interface CartSummaryProps {

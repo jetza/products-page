@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
-import { Checkbox } from "@/components/ui/Checkbox";
+import { Checkbox } from "@/components/ui/Buttons/Checkbox";
 import { useCheckout } from "@/lib/hooks/useCheckout";
 import { DeliveryInfo } from "@/lib/checkout-context";
 import { DeliveryForm } from "./DeliveryForm";

@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
+import { Button } from "@/components/ui/Buttons/Button";
 
 export interface AccountNavigationItem {
   label: string;
@@ -26,30 +27,32 @@ export const AccountNavigation = React.forwardRef<
 
         <nav className="flex flex-col gap-6">
           {items.map((item, index) => (
-            <button
+            <Button
               key={index}
               onClick={item.onClick}
+              variant="ghost"
               className={cn(
-                "text-left text-base transition-colors",
+                "text-left text-base justify-start h-auto p-0 rounded-none",
                 item.active
                   ? "font-bold text-black"
                   : "font-normal text-black hover:font-bold"
               )}
             >
               {item.label}
-            </button>
+            </Button>
           ))}
         </nav>
 
         <div className="flex-1" />
 
         {onLogout && (
-          <button
+          <Button
             onClick={onLogout}
-            className="text-left text-base font-normal text-black hover:font-bold transition-all"
+            variant="ghost"
+            className="text-left text-base font-normal text-black hover:font-bold h-auto p-0 rounded-none justify-start"
           >
             Log out
-          </button>
+          </Button>
         )}
       </div>
     </div>

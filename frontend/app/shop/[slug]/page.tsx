@@ -8,7 +8,7 @@ import { AddToCartSection } from "@/components/ui/AddToCartSection";
 import { useCart } from "@/lib/cart-context";
 import { useState, useEffect } from "react";
 import type { Product } from "@/types/product";
-import { getProductColors, getProductSizes, getProductMaterials, getProductPrice } from "@/lib/utils/product-utils";
+import { getProductColors, getProductMaterials, getProductPrice } from "@/lib/utils/product-utils";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { ProductImageCarousel } from "@/components/product/ProductImageCarousel";
@@ -25,7 +25,6 @@ export default function ProductPage({
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<ProductCardProps[]>([]);
   const [selectedColor, setSelectedColor] = useState<string>("");
-  const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedMaterial, setSelectedMaterial] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
   const { addToCart } = useCart();
@@ -58,7 +57,6 @@ export default function ProductPage({
   }, [params]);
 
   const colors = product ? getProductColors(product) : [];
-  const sizes = product ? getProductSizes(product) : [];
   const materials = product ? getProductMaterials(product) : [];
 
   const handleAddToCart = () => {
@@ -71,13 +69,10 @@ export default function ProductPage({
       const colorMatch = !selectedColor || variantOptions.some(opt => 
         opt.option.title === "Color" && opt.value === selectedColor
       );
-      const sizeMatch = !selectedSize || variantOptions.some(opt => 
-        opt.option.title === "Size" && opt.value === selectedSize
-      );
       const materialMatch = !selectedMaterial || variantOptions.some(opt => 
         opt.option.title === "Material" && opt.value === selectedMaterial
       );
-      return colorMatch && sizeMatch && materialMatch;
+      return colorMatch && materialMatch;
     });
 
     if (matchingVariant?.options) {
@@ -99,18 +94,6 @@ export default function ProductPage({
     }, quantity);
   };
 
-  // Koristimo novu sliku sofe iz product-carousel
-  const carouselImages = [
-    {
-      url: "/product-carousel/image-carousel.jpg",
-      alt: product?.title || "Product image",
-    },
-    {
-      url: "/product-carousel/image-carousel.jpg",
-      alt: product?.title || "Product image",
-    },
-  ];
-
   return (
     <>
       <ResponsiveHeader />
@@ -119,16 +102,41 @@ export default function ProductPage({
           <LoadingOverlay />
         ) : (
           <>
-            {/* Product Section - Mobile: No padding on carousel, Desktop: Standard padding */}
+            {(() => {
+              let carouselImages = [];
+              
+              if (product.images && product.images.length > 0) {
+                if (product.images.length === 1) {
+                  carouselImages = [
+                    { url: product.images[0].url, alt: `${product.title} - Image 1` },
+                    { url: product.images[0].url, alt: `${product.title} - Image 2` },
+                  ];
+                } else {
+                  carouselImages = product.images.map((img, index) => ({
+                    url: img.url || `/Products/sofa${index + 1}.png`,
+                    alt: `${product.title} - Image ${index + 1}`,
+                  }));
+                }
+              } else {
+                carouselImages = Array.from({ length: 4 }, (_, index) => ({
+                  url: `/Products/sofa${index + 1}.png`,
+                  alt: `${product.title} - Image ${index + 1}`,
+                }));
+              }
+              return (
+                <>
             <div className="lg:px-5">
               <div className="lg:px-24 lg:py-6 md:lg:py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-12 mb-12 md:mb-20">
-                  {/* Carousel */}
                   <div className="w-full">
-                    <ProductImageCarousel images={carouselImages} />
+                    {carouselImages.length === 0 ? (
+                      <div className="bg-red-100 p-4 text-red-800">
+                        No images found! CarouselImages array is empty.
+                      </div>
+                    ) : (
+                      <ProductImageCarousel images={carouselImages} />
+                    )}
                   </div>
-
-                  {/* Product Details */}
                   <div className="px-3 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0">
                     <p className="text-xs md:text-sm text-gray-500 mb-2">{product.collection?.title || "Product"}</p>
                 <h1 className="text-h3 md:text-h2 font-semibold mb-4">{product.title}</h1>
@@ -156,27 +164,6 @@ export default function ProductPage({
                   />
                 )}
 
-                {sizes.length > 0 && (
-                  <div className="mb-8">
-                    <h3 className="text-sm font-medium text-gray-800 mb-4">Sizes</h3>
-                    <div className="flex gap-2">
-                      {sizes.map((size) => (
-                        <button
-                          key={size}
-                          className={`px-4 py-2 border rounded transition-all ${
-                            selectedSize === size
-                              ? 'border-black bg-black text-white'
-                              : 'border-gray-300 hover:border-black'
-                          }`}
-                          onClick={() => setSelectedSize(size)}
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 <AddToCartSection
                   quantity={quantity}
                   onQuantityDecrease={() => setQuantity(Math.max(1, quantity - 1))}
@@ -195,6 +182,9 @@ export default function ProductPage({
             />
 
             <RelatedProducts products={relatedProducts} />
+                </>
+              );
+            })()}
           </>
         )}
       </main>

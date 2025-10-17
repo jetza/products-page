@@ -6,7 +6,7 @@ import { CheckboxFilter } from "@/components/filters/CheckboxFilter";
 import { SortDropdown } from "@/components/filters/SortDropdown";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { ProductCardProps } from "@/components/shop/ProductCard";
-import { DropdownButton } from "@/components/ui/DropdownButton";
+import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
 import { PlusIcon } from "@/components/icons";
 import { useProductFilter } from "@/lib/hooks/useProductFilter";
 import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS } from "@/lib/constants/filter-options";

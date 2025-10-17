@@ -3,9 +3,9 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import { ChevronButton } from "@/components/ui/Buttons/ChevronButton";
 import { collections } from "@/lib/constants/collections";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Buttons/Button";
 
 export function CollectionsCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -38,20 +38,18 @@ export function CollectionsCarousel() {
             </Link>
 
             <div className="hidden md:flex gap-2">
-              <button
+              <ChevronButton
+                direction="left"
                 onClick={() => scroll("left")}
-                className="w-12 h-12 border border-black rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-colors"
+                variant="outline"
                 aria-label="Scroll left"
-              >
-                <ChevronLeftIcon className="w-6 h-6" />
-              </button>
-              <button
+              />
+              <ChevronButton
+                direction="right"
                 onClick={() => scroll("right")}
-                className="w-12 h-12 border border-black rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-colors"
+                variant="outline"
                 aria-label="Scroll right"
-              >
-                <ChevronRightIcon className="w-6 h-6" />
-              </button>
+              />
             </div>
           </div>
 

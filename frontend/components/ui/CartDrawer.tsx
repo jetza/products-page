@@ -2,9 +2,9 @@
 
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { XIcon } from "@/components/icons";
 import { CartItem, CartItemProps } from "@/components/ui/CartItem";
 import { CartSummary } from "@/components/ui/CartSummary";
+import { CloseButton } from "@/components/ui/Buttons/CloseButton";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -29,29 +29,19 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   return (
     <>
-
       <div
         className="fixed inset-0 bg-black/50 z-[60] transition-opacity"
         onClick={onClose}
       />
-
-
       <div
         className={cn(
           "fixed top-0 right-0 bottom-0 bg-white z-[70] flex flex-col shadow-2xl w-[557px]",
           className
         )}
       >
-
         <div className="flex items-center justify-between px-12 pt-[132px] pb-8">
           <h2 className="text-big font-semibold">Cart</h2>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-            aria-label="Close cart"
-          >
-            <XIcon className="w-6 h-6" />
-          </button>
+          <CloseButton onClose={onClose} />
         </div>
 
         <div className="flex-1 overflow-y-auto px-12">

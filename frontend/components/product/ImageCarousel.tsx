@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import { ChevronButton } from "@/components/ui/Buttons/ChevronButton";
 
 interface ImageCarouselProps {
   images: { url: string; alt?: string }[];
@@ -23,7 +23,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
 
   return (
     <div className="relative w-full">
-      <div className="relative w-full aspect-square md:aspect-[4/5] md:max-h-[612px] bg-gray-100 rounded overflow-hidden">
+      <div className="relative w-full aspect-square md:aspect-[4/5] md:max-h-[600px] bg-gray-100 rounded overflow-hidden">
         <Image
           src={images[currentIndex].url}
           alt={images[currentIndex].alt || `Product image ${currentIndex + 1}`}
@@ -36,20 +36,18 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
 
       {images.length > 1 && (
         <>
-          <button
+          <ChevronButton
+            direction="left"
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
+            className="absolute left-4 top-1/2 -translate-y-1/2"
             aria-label="Previous image"
-          >
-            <ChevronLeftIcon className="w-5 h-5 md:w-6 md:h-6" />
-          </button>
-          <button
+          />
+          <ChevronButton
+            direction="right"
             onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
+            className="absolute right-4 top-1/2 -translate-y-1/2"
             aria-label="Next image"
-          >
-            <ChevronRightIcon className="w-5 h-5 md:w-6 md:h-6" />
-          </button>
+          />
 
           <div className="flex justify-center gap-2 mt-4">
             {images.map((_, index) => (

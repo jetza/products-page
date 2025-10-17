@@ -28,7 +28,6 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={cn("flex flex-col gap-2", fullWidth && "w-full")}>
-        {/* Label */}
         {label && (
           <label
             htmlFor={inputId}

@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import { ArrowLeftIcon, ArrowRightIcon } from "@/components/icons";
 
 export interface ArrowButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -42,9 +42,9 @@ export const ArrowButton = React.forwardRef<
       {...props}
     >
       {direction === "left" ? (
-        <ChevronLeftIcon className={size === "lg" ? "w-4 h-4" : "w-3 h-3"} />
+        <ArrowLeftIcon className={size === "lg" ? "w-4 h-4" : "w-3 h-3"} />
       ) : (
-        <ChevronRightIcon className={size === "lg" ? "w-4 h-4" : "w-3 h-3"} />
+        <ArrowRightIcon className={size === "lg" ? "w-4 h-4" : "w-3 h-3"} />
       )}
     </button>
   );

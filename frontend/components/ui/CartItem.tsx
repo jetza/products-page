@@ -1,8 +1,8 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { TrashIcon } from "@/components/icons";
 import Image from "next/image";
 import { QuantitySelector } from "./QuantitySelector";
+import { DeleteButton } from "./Buttons/DeleteButton";
 
 export interface CartItemProps {
   id: string;
@@ -103,13 +103,11 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
               onIncrease={handleIncrease}
             />
             
-            <button
-              onClick={handleRemove}
-              className="w-11 h-11 p-[10px] flex items-center justify-center hover:bg-gray-100 rounded transition-colors"
+            <DeleteButton
+              variant="ghost"
+              onDelete={handleRemove}
               aria-label="Remove item"
-            >
-              <TrashIcon className="w-6 h-6" />
-            </button>
+            />
           </div>
         </div>
       </div>

@@ -27,7 +27,6 @@ export default function OrderConfirmationPage() {
   return (
     <>
       <ResponsiveHeader />
-      
       <main className="min-h-screen bg-white">
         {!order ? (
           <LoadingOverlay />
@@ -35,7 +34,6 @@ export default function OrderConfirmationPage() {
           <OrderConfirmation order={order} onBackToHome={handleBackToHome} />
         )}
       </main>
-
       <ResponsiveFooter />
     </>
   );
