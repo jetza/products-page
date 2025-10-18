@@ -17,8 +17,8 @@ interface HomeProductsProps {
 
 // Lista slika po kategorijama (fiksne slike)
 const categoryDefaultImages = {
-  sofas: "/products/sofa7.png",
-  "arm-chairs": "/products/arm-chair1.png",
+  sofas: "/products/sutton-royale.jpg",
+  "arm-chairs": "/products/belime-haven-arm-chair.png",
 };
 
 export function HomeProducts({ title, categories }: HomeProductsProps) {

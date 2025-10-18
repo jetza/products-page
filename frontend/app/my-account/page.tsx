@@ -44,7 +44,7 @@ export default function MyAccountPage() {
           <MobileMenu defaultTab={activeTab} onTabChange={handleTabChange} />
         </div>
 
-        <div className="hidden md:grid md:grid-cols-[240px_1fr] md:gap-12">
+        <div className="hidden md:grid md:grid-cols-[auto_1fr] md:gap-8 lg:gap-12">
           <AccountNavigation 
             items={navigationItems}
             onLogout={handleLogout}

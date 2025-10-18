@@ -83,19 +83,19 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         </div>
       </div>
 
-      <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
-        {order.items.map((item) => (
+      <div className="border border-gray-200 mb-8 md:mb-12">
+        {order.items.map((item, index) => (
           <div 
             key={item.id} 
-            className="border border-gray-200 p-4 md:p-6"
+            className={`p-4 md:p-6 ${index !== order.items.length - 1 ? 'border-b border-gray-200' : ''}`}
           >
             <div className="flex items-start gap-4 md:gap-6">
-              <div className="relative w-[120px] h-[200px] md:w-[176px] md:h-[232px] bg-gray-100 flex-shrink-0">
+              <div className="relative w-[120px] h-[200px] md:w-[176px] md:h-[232px] bg-gray-100 flex-shrink-0 overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.title || 'Product image'}
                   fill
-                  className="object-contain"
+                  className="object-cover"
                 />
               </div>
 

@@ -24,7 +24,7 @@ export function AddToCartSection({
           onDecrease={onQuantityDecrease}
           onIncrease={onQuantityIncrease}
           disabled={disabled}
-          className="w-full md:w-auto"
+          className="w-full md:w-[149px]"
         />
         <Button
           variant="primary"

@@ -15,7 +15,7 @@ export function CollectionInspiredInterior({ title, collectionName, collectionTi
           
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded overflow-hidden mb-6 md:mb-8">
             <Image
-              src="/product-page/image1.png"
+              src="/Product page/image1.png"
               alt="Collection inspired interior"
               fill
               sizes="100vw"
@@ -28,7 +28,7 @@ export function CollectionInspiredInterior({ title, collectionName, collectionTi
       <div className="mb-8 md:mb-12 px-8 md:px-0">
         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden">
           <Image
-            src="/product-page/image-wide.png"
+            src="/Product page/image-wide.png"
             alt="Collection inspired interior"
             fill
             sizes="100vw"
@@ -40,13 +40,13 @@ export function CollectionInspiredInterior({ title, collectionName, collectionTi
       <div className="px-8 md:px-5">
         <div className="mx-auto md:px-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
-            <div className="relative aspect-square md:aspect-[3/4] rounded overflow-hidden">
+            <div className="relative w-[70%] md:w-full aspect-square md:aspect-[3/4] rounded overflow-hidden">
               <Image
-                src="/product-page/image1.png"
+                src="/Product page/image2.png"
                 alt="Featured interior"
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                sizes="(max-width: 768px) 70vw, 50vw"
+                className="object-cover scale-[1.2] md:scale-100"
               />
             </div>
             

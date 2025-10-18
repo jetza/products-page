@@ -17,10 +17,10 @@ export const mockOrders: Order[] = [
     date: "23 December 2024",
     status: "Packing",
     items: [
-      { id: "1", image: "/products/sofa1.png", title: "Sofa 1" },
-      { id: "2", image: "/products/sofa2.png", title: "Sofa 2" },
-      { id: "3", image: "/products/sofa3.png", title: "Sofa 3" },
-      { id: "4", image: "/products/sofa4.png", title: "Sofa 4" },
+      { id: "1", image: "/products/nordic-haven.jpg", title: "Nordic Haven" },
+      { id: "2", image: "/products/everly-estate.jpg", title: "Everly Estate" },
+      { id: "3", image: "/products/camden-retreat.jpg", title: "Camden Retreat" },
+      { id: "4", image: "/products/sutton-royale.jpg", title: "Sutton Royale" },
     ],
   },
   {
@@ -29,9 +29,9 @@ export const mockOrders: Order[] = [
     date: "23 December 2024",
     status: "Delivering",
     items: [
-      { id: "1", image: "/products/sofa5.png", title: "Sofa 5" },
-      { id: "2", image: "/products/sofa6.png", title: "Sofa 6" },
-      { id: "3", image: "/products/sofa7.png", title: "Sofa 7" },
+      { id: "1", image: "/products/astrid-curve.png", title: "Astrid Curve" },
+      { id: "2", image: "/products/paloma-haven.jpg", title: "Paloma Haven" },
+      { id: "3", image: "/products/belime-haven-arm-chair.png", title: "Belime Haven Armchair" },
     ],
   },
   {
@@ -40,10 +40,10 @@ export const mockOrders: Order[] = [
     date: "23 December 2024",
     status: "Delivered",
     items: [
-      { id: "1", image: "/products/sofa1.png", title: "Sofa 1" },
-      { id: "2", image: "/products/sofa2.png", title: "Sofa 2" },
-      { id: "3", image: "/products/sofa8.png", title: "Sofa 8" },
-      { id: "4", image: "/products/sofa9.png", title: "Sofa 9" },
+      { id: "1", image: "/products/nordic-haven.jpg", title: "Nordic Haven" },
+      { id: "2", image: "/products/everly-estate.jpg", title: "Everly Estate" },
+      { id: "3", image: "/products/sofa8.png", title: "Sofa" },
+      { id: "4", image: "/products/astrid-curve-gray.jpg", title: "Astrid Curve Gray" },
     ],
   },
   {
@@ -52,10 +52,12 @@ export const mockOrders: Order[] = [
     date: "23 December 2024",
     status: "Packing",
     items: [
-      { id: "1", image: "/products/sofa3.png", title: "Sofa 3" },
-      { id: "2", image: "/products/sofa4.png", title: "Sofa 4" },
-      { id: "3", image: "/products/sofa5.png", title: "Sofa 5" },
-      { id: "4", image: "/products/sofa6.png", title: "Sofa 6" },
+      { id: "1", image: "/products/camden-retreat.jpg", title: "Camden Retreat" },
+      { id: "2", image: "/products/sofa4.png", title: "Sofa" },
+      { id: "3", image: "/products/paloma-haven-arm-chair.jpg", title: "Paloma Haven Armchair" },
+      { id: "4", image: "/products/sofa6.png", title: "Sofa" },
+      { id: "5", image: "/products/sofa7.png", title: "Sofa" },
+      { id: "6", image: "/products/sofa8.png", title: "Sofa" },
     ],
   },
 ];

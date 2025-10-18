@@ -38,7 +38,7 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
     const totalMargin = isMobile ? "mb-6" : "mb-8";
 
     return (
-      <div ref={ref} className={cn(className, !isMobile && "ml-auto max-w-md")}>
+      <div ref={ref} className={className}>
         <div className={spacing}>
           <div className={cn("flex justify-between", textSize)}>
             <span className="text-gray-600">Subtotal:</span>

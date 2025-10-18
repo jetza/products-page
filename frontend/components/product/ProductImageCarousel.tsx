@@ -59,10 +59,10 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
                 alt={image.alt || `Product image ${index + 1}`}
                 width={427}
                 height={532}
-                className={`w-full h-full object-contain p-4 lg:p-0 transition-transform duration-300 ${
-                  index === 1 ? 'scale-200' : ''
-                }`}
-                style={index === 1 ? { transform: 'scale(2)' } : undefined}
+                className={`w-full h-full transition-transform duration-300 ${
+                  index === 0 ? 'object-cover' : index === 1 ? 'object-cover' : 'object-contain'
+                } lg:p-0`}
+                style={index === 1 ? { transform: 'scale(1.5)', transformOrigin: 'center' } : undefined}
                 priority={index === 0}
               />
             </div>
@@ -70,7 +70,7 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
         </div>
 
         {images.length > 1 && (
-          <>
+          <div className="hidden lg:block">
             <ArrowButton
               direction="left"
               variant="outline"
@@ -87,7 +87,7 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
               className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 shadow-lg z-10"
               aria-label="Next image"
             />
-          </>
+          </div>
         )}
       </div>
 

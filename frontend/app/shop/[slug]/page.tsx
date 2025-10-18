@@ -139,39 +139,43 @@ export default function ProductPage({
                       <ProductImageCarousel images={carouselImages} />
                     )}
                   </div>
-                  <div className="px-8 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0">
-                    <p className="text-xs md:text-sm text-gray-500 mb-2">{product.collection?.title || "Product"}</p>
-                <h1 className="text-h3 md:text-h2 font-semibold mb-4">{product.title}</h1>
-                <p className="text-big md:text-h4 font-semibold text-black mb-6">
-                  €{Math.round(getProductPrice(product) / 100)}
-                </p>
+                  <div className="px-8 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0 flex flex-col h-full lg:justify-between">
+                    <div>
+                      <p className="text-xs md:text-sm text-gray-500 mb-2">{product.collection?.title || "Product"}</p>
+                      <h1 className="text-h3 md:text-h2 font-semibold mb-4">{product.title}</h1>
+                      <p className="text-big md:text-h4 font-semibold text-black mb-6">
+                        €{Math.round(getProductPrice(product) / 100)}
+                      </p>
 
-                <p className="text-sm md:text-body text-gray-600 mb-8 leading-relaxed">
-                  {product.description}
-                </p>
+                      <p className="text-sm md:text-body text-gray-600 mb-8 leading-relaxed">
+                        {product.description}
+                      </p>
+                    </div>
 
-                {materials.length > 0 && (
-                  <MaterialsSelect
-                    materials={materials}
-                    selectedMaterial={selectedMaterial}
-                    onMaterialSelect={setSelectedMaterial}
-                  />
-                )}
+                    <div className="space-y-8">
+                      {materials.length > 0 && (
+                        <MaterialsSelect
+                          materials={materials}
+                          selectedMaterial={selectedMaterial}
+                          onMaterialSelect={setSelectedMaterial}
+                        />
+                      )}
 
-                {colors.length > 0 && (
-                  <ColorPicker
-                    colors={colors}
-                    selectedColor={selectedColor}
-                    onColorSelect={setSelectedColor}
-                  />
-                )}
+                      {colors.length > 0 && (
+                        <ColorPicker
+                          colors={colors}
+                          selectedColor={selectedColor}
+                          onColorSelect={setSelectedColor}
+                        />
+                      )}
 
-                <AddToCartSection
-                  quantity={quantity}
-                  onQuantityDecrease={() => setQuantity(Math.max(1, quantity - 1))}
-                  onQuantityIncrease={() => setQuantity(quantity + 1)}
-                  onAddToCart={handleAddToCart}
-                />
+                      <AddToCartSection
+                        quantity={quantity}
+                        onQuantityDecrease={() => setQuantity(Math.max(1, quantity - 1))}
+                        onQuantityIncrease={() => setQuantity(quantity + 1)}
+                        onAddToCart={handleAddToCart}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

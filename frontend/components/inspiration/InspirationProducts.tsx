@@ -17,11 +17,11 @@ export function InspirationProducts() {
               </p>
             </div>
             <div className="lg:w-[40%]">
-              <Link href="/shop/nordic-haven">
+              <Link href="/shop/astrid-curve">
                 <div className="relative w-full aspect-square overflow-hidden cursor-pointer">
                   <Image
-                    src="/products/sofa1.png"
-                    alt="Nordic Haven Sofa"
+                    src="/products/astrid-curve.png"
+                    alt="Astrid Curve Sofa"
                     fill
                     className="object-cover"
                   />
@@ -68,7 +68,7 @@ export function InspirationProducts() {
                 <Link href="/shop/nordic-haven">
                   <div className="relative w-full aspect-square overflow-hidden cursor-pointer">
                     <Image
-                      src="/products/sofa2.png"
+                      src="/products/nordic-haven.jpg"
                       alt="Nordic Haven"
                       fill
                       className="object-cover"
@@ -88,7 +88,7 @@ export function InspirationProducts() {
                 <Link href="/shop/bellaire-haven">
                   <div className="relative w-full aspect-square overflow-hidden cursor-pointer">
                     <Image
-                      src="/products/arm-chair1.png"
+                      src="/products/belime-haven-arm-chair.png"
                       alt="Bellaire Haven"
                       fill
                       className="object-cover"
@@ -97,7 +97,7 @@ export function InspirationProducts() {
                 </Link>
                 <div className="mt-4 flex items-center justify-between">
                   <div>
-                    <p className="text-body font-semibold text-black">Belime Haven</p>
+                    <p className="text-body font-semibold text-black">Bellaire Haven</p>
                     <p className="text-sm text-gray-600">Accent Chair</p>
                   </div>
                   <p className="text-big font-semibold text-black">1200€</p>
@@ -137,8 +137,8 @@ export function InspirationProducts() {
                 <Link href="/shop/camden-retreat">
                   <div className="relative w-full aspect-square overflow-hidden cursor-pointer">
                     <Image
-                      src="/products/sofa3.png"
-                      alt="Oslo Drift"
+                      src="/products/camden-retreat.jpg"
+                      alt="Camden Retreat"
                       fill
                       className="object-cover"
                     />
@@ -147,12 +147,12 @@ export function InspirationProducts() {
                 <div className="mt-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-body font-semibold text-black">Oslo Drift</p>
+                      <p className="text-body font-semibold text-black">Camden Retreat</p>
                       <p className="text-sm text-gray-600 mt-1">Bohemian Luxury</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-big font-semibold text-red-500">1890€</p>
-                      <p className="text-sm text-black line-through">2100€</p>
+                      <p className="text-big font-semibold text-red-500">1000€</p>
+                      <p className="text-sm text-black line-through">1200€</p>
                     </div>
                   </div>
                 </div>
