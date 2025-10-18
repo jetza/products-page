@@ -1,10 +1,14 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Buttons/Button";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function NotFound() {
+  const router = useRouter();
+  
   return (
     <div className="min-h-screen flex flex-col">
       <ResponsiveHeader />
@@ -28,11 +32,13 @@ export default function NotFound() {
               <p className="text-big font-normal leading-normal mb-8">
                 {CONTENT.errors.notFound.description}
               </p>
-              <Link href="/">
-                <Button variant="primary" size="lg">
-                  {CONTENT.errors.notFound.button}
-                </Button>
-              </Link>
+              <Button 
+                variant="primary" 
+                size="lg"
+                onClick={() => router.push('/')}
+              >
+                {CONTENT.errors.notFound.button}
+              </Button>
             </div>
           </div>
         </div>

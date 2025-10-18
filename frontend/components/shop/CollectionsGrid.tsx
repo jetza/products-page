@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
@@ -9,6 +10,7 @@ import { collections } from "@/lib/constants/collections.data";
 import { CONTENT } from "@/lib/constants/content";
 
 export function CollectionsGrid() {
+  const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -34,15 +36,14 @@ export function CollectionsGrid() {
           <div className="flex items-center justify-between mb-6 md:mb-8">
             <h2 className="text-h3 md:text-h2 font-medium text-black">{CONTENT.filters.collections}</h2>
 
-            <Link href="/collection" className="md:hidden">
-              <Button
-                variant="primary"
-                size="sm"
-                className="text-xs"
-              >
-                View All
-              </Button>
-            </Link>
+            <Button
+              variant="primary"
+              size="sm"
+              className="text-xs md:hidden"
+              onClick={() => router.push('/collection')}
+            >
+              View All
+            </Button>
             
             <div className="hidden md:flex gap-2">
               <ArrowButton

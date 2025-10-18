@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 import { Button } from "@/components/ui/Buttons/Button";
@@ -15,6 +16,8 @@ interface HomeCollectionsProps {
 }
 
 export function HomeCollections({ collections }: HomeCollectionsProps) {
+  const router = useRouter();
+  
   return (
     <section className="bg-white">
       <div className="px-5">
@@ -24,15 +27,14 @@ export function HomeCollections({ collections }: HomeCollectionsProps) {
             Collections
           </h2>
           
-          <Link href="/collection" className="lg:hidden">
-            <Button
-              variant="primary"
-              size="sm"
-              className="text-xs"
-            >
-              View All
-            </Button>
-          </Link>
+          <Button
+            variant="primary"
+            size="sm"
+            className="text-xs lg:hidden"
+            onClick={() => router.push('/collection')}
+          >
+            View All
+          </Button>
 
           <div className="hidden lg:flex gap-2">
             <ArrowButton direction="left" variant="outline" onClick={() => {}} />

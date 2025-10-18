@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { useCart } from "@/lib/cart-context";
@@ -13,6 +14,7 @@ import Link from "next/link";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function CartPage() {
+  const router = useRouter();
   const { items, updateQuantity, removeFromCart } = useCart();
   const [discountCode, setDiscountCode] = useState("");
 
@@ -74,11 +76,14 @@ export default function CartPage() {
                   className="mb-6"
                 />
 
-                <Link href="/checkout">
-                  <Button variant="primary" size="lg" className="w-full mb-6">
-                    Proceed to checkout
-                  </Button>
-                </Link>
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  className="w-full mb-6"
+                  onClick={() => router.push('/checkout')}
+                >
+                  Proceed to checkout
+                </Button>
 
                 <LoginPrompt />
               </div>
@@ -136,11 +141,14 @@ export default function CartPage() {
                   className="mb-4"
                 />
 
-                <Link href="/checkout">
-                  <Button variant="primary" size="lg" className="w-full mb-4">
-                    Proceed to checkout
-                  </Button>
-                </Link>
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  className="w-full mb-4"
+                  onClick={() => router.push('/checkout')}
+                >
+                  Proceed to checkout
+                </Button>
 
                 <LoginPrompt />
               </div>

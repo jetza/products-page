@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils/cn";
 import { Button } from "./Buttons/Button";
-import Link from "next/link";
 import { CONTENT } from "@/lib/constants/content";
 
 export interface CartSummaryProps {
@@ -23,6 +25,8 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
     },
     ref
   ) => {
+    const router = useRouter();
+    
     return (
       <div ref={ref} className={cn("w-[461px] flex flex-col gap-8", className)}>
 
@@ -34,15 +38,14 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
         </div>
 
         {showViewCart ? (
-          <Link href="/cart">
-            <Button 
-              variant="primary" 
-              size="lg" 
-              className="w-full"
-            >
-              {CONTENT.cart.viewCart}
-            </Button>
-          </Link>
+          <Button 
+            variant="primary" 
+            size="lg" 
+            className="w-full"
+            onClick={() => router.push('/cart')}
+          >
+            {CONTENT.cart.viewCart}
+          </Button>
         ) : (
           <Button 
             variant="primary" 

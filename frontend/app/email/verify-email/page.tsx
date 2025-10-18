@@ -1,9 +1,12 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Buttons/Button";
 import EmailFooter from "@/components/email/EmailFooter";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function VerifyEmailPage() {
+  const router = useRouter();
   const userName = "Jovana";
   
   return (
@@ -31,11 +34,13 @@ export default function VerifyEmailPage() {
           </div>
 
           <div>
-            <Link href="/my-account">
-              <Button variant="primary" size="lg">
-                {CONTENT.emails.verifyEmail.button}
-              </Button>
-            </Link>
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={() => router.push('/my-account')}
+            >
+              {CONTENT.emails.verifyEmail.button}
+            </Button>
           </div>
         </div>
 

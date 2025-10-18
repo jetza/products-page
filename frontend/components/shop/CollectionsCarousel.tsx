@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
@@ -9,6 +10,7 @@ import { Button } from "@/components/ui/Buttons/Button";
 import { CONTENT } from "@/lib/constants/content";
 
 export function CollectionsCarousel() {
+  const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -34,25 +36,23 @@ export function CollectionsCarousel() {
           <div className="flex items-center justify-between mb-6 md:mb-8">
             <h2 className="text-h3 md:text-h2 font-medium text-black">{CONTENT.filters.collections}</h2>
 
-            <Link href="/collection" className="md:hidden">
+            <Button
+              variant="primary"
+              size="sm"
+              className="text-xs md:hidden"
+              onClick={() => router.push('/collection')}
+            >
+              View All
+            </Button>
+
+            <div className="hidden md:flex items-center gap-4">
               <Button
                 variant="primary"
-                size="sm"
-                className="text-xs"
+                size="md"
+                onClick={() => router.push('/collection')}
               >
                 View All
               </Button>
-            </Link>
-
-            <div className="hidden md:flex items-center gap-4">
-              <Link href="/collection">
-                <Button
-                  variant="primary"
-                  size="md"
-                >
-                  View All
-                </Button>
-              </Link>
               
               <div className="flex gap-2">
                 <ArrowButton
