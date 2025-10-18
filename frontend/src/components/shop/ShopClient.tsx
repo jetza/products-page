@@ -5,6 +5,7 @@ import { FilterDropdown } from "@/components/filters/FilterDropdown";
 import { CheckboxFilter } from "@/components/filters/CheckboxFilter";
 import { SortDropdown } from "@/components/filters/SortDropdown";
 import { MobileFilterDrawer } from "@/components/filters/MobileFilterDrawer";
+import { MobileSortDrawer } from "@/components/filters/MobileSortDrawer";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { ProductCardProps } from "@/components/shop/ProductCard";
 import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
@@ -18,6 +19,7 @@ interface ShopClientProps {
 
 export function ShopClient({ products: shopItems }: ShopClientProps) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isSortOpen, setIsSortOpen] = useState(false);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
@@ -81,11 +83,13 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
           <span className="text-base">Filter</span>
         </DropdownButton>
 
-        <SortDropdown
-          options={SORT_OPTIONS}
-          selected={sortBy}
-          onChange={setSortBy}
-        />
+        <DropdownButton
+          isOpen={isSortOpen}
+          onClick={() => setIsSortOpen(!isSortOpen)}
+          variant="filter"
+        >
+          <span className="text-base">Sort by</span>
+        </DropdownButton>
       </div>
 
       <div className="hidden md:flex items-center justify-between mb-8">
@@ -143,6 +147,14 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
         onApply={() => {
           // Filter will be applied automatically through state
         }}
+      />
+
+      <MobileSortDrawer
+        isOpen={isSortOpen}
+        onClose={() => setIsSortOpen(false)}
+        options={SORT_OPTIONS}
+        selected={sortBy}
+        onSelect={setSortBy}
       />
 
       <ProductGrid products={filteredProducts} />
