@@ -40,16 +40,13 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
 
   const { sortBy, setSortBy } = sort;
 
-  // Additional filtering for price, materials, and colors using PRODUCT_METADATA
   const filteredProducts = React.useMemo(() => {
     let filtered = [...baseFilteredProducts];
 
-    // Filter by price range
     filtered = filtered.filter(
       (product) => product.price >= priceRange[0] && product.price <= priceRange[1]
     );
 
-    // Filter by materials (using PRODUCT_METADATA)
     if (selectedMaterials.length > 0) {
       filtered = filtered.filter((product) => {
         const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
@@ -57,7 +54,6 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
       });
     }
 
-    // Filter by colors (using PRODUCT_METADATA)
     if (selectedColors.length > 0) {
       filtered = filtered.filter((product) => {
         const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
@@ -70,7 +66,7 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
 
   return (
     <>
-      <div className="flex md:hidden items-center justify-between mb-8">
+      <div className="flex sm:hidden items-center justify-between mb-8">
         <DropdownButton
           isOpen={isFilterOpen}
           onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -93,9 +89,9 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
         </DropdownButton>
       </div>
 
-      <div className="hidden md:flex items-center justify-between mb-8">
+      <div className="hidden sm:flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
-          <FilterDropdown label="Collection">
+          <FilterDropdown label={CONTENT.filters.collection}>
             <CheckboxFilter
               options={COLLECTIONS}
               selected={selectedCollections}
@@ -103,7 +99,7 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
             />
           </FilterDropdown>
 
-          <FilterDropdown label="Category">
+          <FilterDropdown label={CONTENT.filters.category}>
             <CheckboxFilter
               options={CATEGORIES}
               selected={selectedCategories}
@@ -111,7 +107,7 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
             />
           </FilterDropdown>
 
-          <FilterDropdown label="Type">
+          <FilterDropdown label={CONTENT.filters.type}>
             <CheckboxFilter
               options={TYPES}
               selected={selectedTypes}
@@ -146,7 +142,6 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
         onColorsChange={setSelectedColors}
         onPriceChange={setPriceRange}
         onApply={() => {
-          // Filter will be applied automatically through state
         }}
       />
 

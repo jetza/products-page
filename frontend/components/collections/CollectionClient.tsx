@@ -1,11 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FilterDropdown } from "@/components/filters/FilterDropdown";
 import { CheckboxFilter } from "@/components/filters/CheckboxFilter";
 import { SortDropdown } from "@/components/filters/SortDropdown";
+import { MobileFilterDrawer } from "@/components/filters/MobileFilterDrawer";
+import { MobileSortDrawer } from "@/components/filters/MobileSortDrawer";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { ProductCardProps } from "@/components/shop/ProductCard";
+import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
+import { PlusIcon } from "@/components/icons";
 import { useProductFilter } from "@/lib/hooks/useProductFilter";
 import { FURNITURE_CATEGORIES, FURNITURE_TYPES } from "@/lib/constants/furniture-filters.config";
 import { SORT_OPTIONS } from "@/lib/constants/filter-options.config";
@@ -17,6 +21,9 @@ interface CollectionClientProps {
 }
 
 export function CollectionClient({ products, collectionTitle }: CollectionClientProps) {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isSortOpen, setIsSortOpen] = useState(false);
+  
   const { filteredProducts, filters, sort } = useProductFilter(products, {
     enableCollectionFilter: false,
   });
@@ -32,7 +39,32 @@ export function CollectionClient({ products, collectionTitle }: CollectionClient
             {collectionTitle}
           </h2>
           
-          <div className="flex items-center justify-between mb-8 lg:mb-12">
+          {/* Mobile and Tablet - Filter and Sort buttons */}
+          <div className="flex md:hidden items-center justify-between mb-8">
+            <DropdownButton
+              isOpen={isFilterOpen}
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
+              variant="filter"
+              customIcon={
+                <PlusIcon 
+                  className={`w-4 h-4 transition-transform ${isFilterOpen ? 'rotate-45' : ''}`} 
+                />
+              }
+            >
+              <span className="text-base">{CONTENT.common.filter}</span>
+            </DropdownButton>
+
+            <DropdownButton
+              isOpen={isSortOpen}
+              onClick={() => setIsSortOpen(!isSortOpen)}
+              variant="filter"
+            >
+              <span className="text-base">{CONTENT.common.sortBy}</span>
+            </DropdownButton>
+          </div>
+
+          {/* Desktop - Individual filter dropdowns */}
+          <div className="hidden md:flex items-center justify-between mb-8 lg:mb-12">
             <div className="flex items-center gap-4">
               <FilterDropdown label={CONTENT.filters.category}>
                 <CheckboxFilter
@@ -57,6 +89,35 @@ export function CollectionClient({ products, collectionTitle }: CollectionClient
               onChange={setSortBy}
             />
           </div>
+
+          <MobileFilterDrawer
+            isOpen={isFilterOpen}
+            onClose={() => setIsFilterOpen(false)}
+            collections={[]}
+            categories={FURNITURE_CATEGORIES}
+            types={FURNITURE_TYPES}
+            selectedCollections={[]}
+            selectedCategories={selectedCategories}
+            selectedTypes={selectedTypes}
+            selectedMaterials={[]}
+            selectedColors={[]}
+            priceRange={[0, 5000]}
+            onCollectionsChange={() => {}}
+            onCategoriesChange={setSelectedCategories}
+            onTypesChange={setSelectedTypes}
+            onMaterialsChange={() => {}}
+            onColorsChange={() => {}}
+            onPriceChange={() => {}}
+            onApply={() => {}}
+          />
+
+          <MobileSortDrawer
+            isOpen={isSortOpen}
+            onClose={() => setIsSortOpen(false)}
+            options={SORT_OPTIONS}
+            selected={sortBy}
+            onSelect={setSortBy}
+          />
 
           {filteredProducts.length === 0 ? (
             <div className="text-center py-12">

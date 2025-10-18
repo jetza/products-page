@@ -34,7 +34,7 @@ export function CollectionsGrid() {
       <div className="px-8 md:px-5">
         <div className="mx-auto md:px-24">
           <div className="flex items-center justify-between mb-6 md:mb-8">
-            <h2 className="text-h3 md:text-h2 font-medium text-black">{CONTENT.filters.collections}</h2>
+            <h2 className="text-h3 md:text-h2 font-medium text-black">{CONTENT.filters.browseCollections}</h2>
 
             <Button
               variant="primary"

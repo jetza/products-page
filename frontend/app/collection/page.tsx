@@ -11,9 +11,12 @@ import { CollectionClient } from "@/components/collections/CollectionClient";
 export default async function CollectionsPage() {
   const allProducts = await getProducts(50);
   
-  const displayProducts = allProducts.slice(0, 4);
+  // Filter products by collection "Scandinavian Simplicity"
+  const collectionProducts = allProducts.filter(
+    (product: Product) => product.collection?.title === "Scandinavian Simplicity"
+  );
 
-  const productCards: ProductCardProps[] = displayProducts.map((product: Product) => ({
+  const productCards: ProductCardProps[] = collectionProducts.map((product: Product) => ({
     id: product.id,
     title: product.title,
     collection: product.collection?.title || "",
