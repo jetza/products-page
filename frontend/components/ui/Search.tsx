@@ -4,6 +4,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils/cn";
 import { SearchIcon } from "@/components/icons";
 import { CloseButton } from "./Buttons/CloseButton";
+import Link from "next/link";
+import Image from "next/image";
+import { getProducts } from "@/lib/products-service";
+import type { Product } from "@/types/product";
 
 interface SearchProps {
   variant?: "desktop" | "mobile";
@@ -19,11 +23,32 @@ export const Search: React.FC<SearchProps> = ({
   className,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Load all products when component mounts
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const products = await getProducts(50);
+        setAllProducts(products);
+      } catch (error) {
+        console.error("Failed to load products:", error);
+      }
+    };
+    loadProducts();
+  }, []);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
+    }
+    // Clear search when modal closes
+    if (!isOpen) {
+      setSearchQuery("");
+      setSearchResults([]);
     }
   }, [isOpen]);
 
@@ -37,6 +62,29 @@ export const Search: React.FC<SearchProps> = ({
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
+
+  // Perform search when query changes
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
+
+    setIsSearching(true);
+    const query = searchQuery.toLowerCase();
+    
+    const filtered = allProducts.filter((product) => {
+      return (
+        product.title?.toLowerCase().includes(query) ||
+        product.collection?.title?.toLowerCase().includes(query) ||
+        product.description?.toLowerCase().includes(query)
+      );
+    });
+
+    setSearchResults(filtered);
+    setIsSearching(false);
+  }, [searchQuery, allProducts]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,10 +149,63 @@ export const Search: React.FC<SearchProps> = ({
           </form>
 
           {searchQuery && (
-            <div className="border-t border-gray-200 p-6">
-              <p className="text-sm text-gray-500">
-                Search results for &quot;{searchQuery}&quot; will appear here...
-              </p>
+            <div className="border-t border-gray-200 max-h-96 overflow-y-auto">
+              {isSearching ? (
+                <div className="p-6 text-center">
+                  <p className="text-sm text-gray-500">Searching...</p>
+                </div>
+              ) : searchResults.length > 0 ? (
+                <div className="p-4">
+                  <p className="text-sm text-gray-500 mb-4 px-2">
+                    Found {searchResults.length} product{searchResults.length !== 1 ? 's' : ''}
+                  </p>
+                  <div className="space-y-2">
+                    {searchResults.map((product) => {
+                      const image = product.images?.[0]?.url || product.thumbnail || "";
+                      const price = product.variants?.[0]?.calculated_price?.calculated_amount 
+                        ? product.variants[0].calculated_price.calculated_amount / 100 
+                        : 0;
+                      
+                      return (
+                        <Link
+                          key={product.id}
+                          href={`/shop/${product.handle}`}
+                          onClick={onClose}
+                          className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg transition-colors"
+                        >
+                          <div className="w-16 h-16 bg-gray-100 flex-shrink-0 relative rounded">
+                            {image && (
+                              <Image
+                                src={image}
+                                alt={product.title || "Product"}
+                                fill
+                                className="object-cover rounded"
+                              />
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-medium text-sm text-gray-900 truncate">
+                              {product.title}
+                            </h3>
+                            <p className="text-xs text-gray-500">
+                              {product.collection?.title || "Furniture"}
+                            </p>
+                          </div>
+                          <div className="text-sm font-medium text-gray-900">
+                            €{price.toFixed(2)}
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : (
+                <div className="p-6 text-center">
+                  <p className="text-sm text-gray-500">
+                    No products found for &quot;{searchQuery}&quot;
+                  </p>
+                </div>
+              )}
             </div>
           )}
         </div>
