@@ -109,6 +109,10 @@ export function CollectionClient({ products, collectionTitle }: CollectionClient
             onColorsChange={() => {}}
             onPriceChange={() => {}}
             onApply={() => {}}
+            showPriceFilter={false}
+            showColorFilter={false}
+            showMaterialFilter={false}
+            showCollectionFilter={false}
           />
 
           <MobileSortDrawer
