@@ -7,6 +7,7 @@ import { useCheckout } from "@/lib/hooks/useCheckout";
 import Link from "next/link";
 import { CheckoutOrderSummary } from "@/components/checkout/OrderSummary";
 import { CheckoutForm } from "@/components/checkout/CheckoutForm";
+import { CONTENT } from "@/lib/constants/content";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -74,7 +75,7 @@ export default function CheckoutPage() {
           <Link href="/" className="text-body font-medium">
             SofaSocietyCo.
           </Link>
-          <h1 className="text-body font-medium">Checkout</h1>
+          <h1 className="text-body font-medium">{CONTENT.checkout.title}</h1>
         </div>
 
         <div className="px-8 py-6 bg-gray-100">

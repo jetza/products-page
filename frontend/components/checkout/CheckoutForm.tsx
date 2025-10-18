@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/Buttons/Checkbox";
 import { useCheckout } from "@/lib/hooks/useCheckout";
 import { DeliveryInfo } from "@/lib/checkout-context";
 import { DeliveryForm } from "./DeliveryForm";
+import { CONTENT } from "@/lib/constants/content";
 
 export type CheckoutStep = "email" | "delivery" | "shipping" | "payment" | "review";
 
@@ -101,7 +102,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           <h2 className="text-sm font-semibold mb-4">3. Shipping method</h2>
           {currentStep === "shipping" && (
             <div>
-              <p className="text-sm text-gray-600 mb-6">Select shipping...</p>
+              <p className="text-sm text-gray-600 mb-6">{CONTENT.checkout.selectShipping}</p>
               <Button variant="primary" size="lg" onClick={() => setCurrentStep("payment")}>
                 Continue
               </Button>
@@ -113,7 +114,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           <h2 className="text-sm font-semibold mb-4">4. Payment</h2>
           {currentStep === "payment" && (
             <div>
-              <p className="text-sm text-gray-600 mb-6">Enter payment...</p>
+              <p className="text-sm text-gray-600 mb-6">{CONTENT.checkout.enterPayment}</p>
               <Button variant="primary" size="lg" onClick={() => setCurrentStep("review")}>
                 Review
               </Button>
@@ -126,12 +127,12 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           {currentStep === "review" && (
             <div className="space-y-4">
               <div>
-                <p className="text-xs font-semibold mb-1">Email</p>
+                <p className="text-xs font-semibold mb-1">{CONTENT.checkout.email}</p>
                 <p className="text-sm text-gray-600">{state.email}</p>
               </div>
               {state.deliveryInfo && (
                 <div>
-                  <p className="text-xs font-semibold mb-1">Delivery</p>
+                  <p className="text-xs font-semibold mb-1">{CONTENT.checkout.delivery}</p>
                   <p className="text-sm text-gray-600">
                     {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}<br />
                     {state.deliveryInfo.address}<br />
@@ -227,7 +228,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <h2 className="text-body font-medium mb-6">3. Shipping method</h2>
         {currentStep === "shipping" && (
           <div>
-            <p className="text-sm text-gray-600 mb-6">Select shipping method...</p>
+            <p className="text-sm text-gray-600 mb-6">{CONTENT.checkout.selectShipping} method...</p>
             <div>
               <Button variant="primary" size="lg" onClick={() => setCurrentStep("payment")}>
                 Continue to payment
@@ -241,7 +242,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <h2 className="text-body font-medium mb-6">4. Payment</h2>
         {currentStep === "payment" && (
           <div>
-            <p className="text-sm text-gray-600 mb-6">Enter payment details...</p>
+            <p className="text-sm text-gray-600 mb-6">{CONTENT.checkout.enterPayment}...</p>
             <div>
               <Button variant="primary" size="lg" onClick={() => setCurrentStep("review")}>
                 Review order
@@ -257,12 +258,12 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           <div>
             <div className="space-y-4 mb-6">
               <div>
-                <h3 className="text-sm font-semibold mb-2">Email</h3>
+                <h3 className="text-sm font-semibold mb-2">{CONTENT.checkout.email}</h3>
                 <p className="text-sm text-gray-600">{state.email}</p>
               </div>
               {state.deliveryInfo && (
                 <div>
-                  <h3 className="text-sm font-semibold mb-2">Delivery Address</h3>
+                  <h3 className="text-sm font-semibold mb-2">{CONTENT.checkout.deliveryAddress}</h3>
                   <p className="text-sm text-gray-600">
                     {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}<br />
                     {state.deliveryInfo.address}<br />

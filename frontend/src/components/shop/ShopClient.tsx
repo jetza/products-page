@@ -11,7 +11,8 @@ import { ProductCardProps } from "@/components/shop/ProductCard";
 import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
 import { PlusIcon } from "@/components/icons";
 import { useProductFilter } from "@/lib/hooks/useProductFilter";
-import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS, MATERIALS, COLORS_FILTER, PRODUCT_METADATA } from "@/lib/constants/filter-options";
+import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS, MATERIALS, COLORS_FILTER, PRODUCT_METADATA } from "@/lib/constants/filter-options.config";
+import { CONTENT } from "@/lib/constants/content";
 
 interface ShopClientProps {
   products: ProductCardProps[];
@@ -80,7 +81,7 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
             />
           }
         >
-          <span className="text-base">Filter</span>
+          <span className="text-base">{CONTENT.common.filter}</span>
         </DropdownButton>
 
         <DropdownButton
@@ -88,7 +89,7 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
           onClick={() => setIsSortOpen(!isSortOpen)}
           variant="filter"
         >
-          <span className="text-base">Sort by</span>
+          <span className="text-base">{CONTENT.common.sortBy}</span>
         </DropdownButton>
       </div>
 

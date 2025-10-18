@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
+import { CONTENT } from "@/lib/constants/content";
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState("");
@@ -38,21 +39,21 @@ export default function RegisterPage() {
         <div className="flex items-center justify-center px-6 py-12 overflow-y-auto">
           <div className="w-full max-w-md">
             <h1 className="text-h2 font-medium text-black mb-12">
-              Hey, welcome to<br />Sofa Society!
+              {CONTENT.auth.register.title}<br />{CONTENT.auth.register.titleBrand}
             </h1>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <Input
                   type="text"
-                  placeholder="First name"
+                  placeholder={CONTENT.auth.register.placeholders.firstName}
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   required
                 />
                 <Input
                   type="text"
-                  placeholder="Last name"
+                  placeholder={CONTENT.auth.register.placeholders.lastName}
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   required
@@ -61,7 +62,7 @@ export default function RegisterPage() {
 
               <Input
                 type="email"
-                placeholder="Email"
+                placeholder={CONTENT.auth.register.placeholders.email}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -69,7 +70,7 @@ export default function RegisterPage() {
 
               <Input
                 type="password"
-                placeholder="Password"
+                placeholder={CONTENT.auth.register.placeholders.password}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -77,7 +78,7 @@ export default function RegisterPage() {
 
               <Input
                 type="password"
-                placeholder="Confirm Password"
+                placeholder={CONTENT.auth.register.placeholders.confirmPassword}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
@@ -89,14 +90,14 @@ export default function RegisterPage() {
                 size="lg"
                 className="w-full"
               >
-                Register
+                {CONTENT.auth.register.button}
               </Button>
             </form>
 
             <p className="text-base text-gray-500 mt-8">
-              Already have an account? No worries, just{" "}
+              {CONTENT.auth.register.haveAccount}{" "}
               <Link href="/login" className="text-black font-medium underline hover:no-underline">
-                log in
+                {CONTENT.auth.register.loginLink}
               </Link>
               .
             </p>

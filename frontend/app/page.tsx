@@ -2,7 +2,7 @@ import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { HeroSection } from "@/components/layout/HeroSection";
 import { HomeProducts } from "@/components/home/HomeProducts";
 import { HomeAbout } from "@/components/home/HomeAbout";
-import { homeContent } from "@/lib/constants/home/home-content";
+import { homeContent } from "@/lib/constants/pages/home.content";
 import Link from "next/link";
 import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
 

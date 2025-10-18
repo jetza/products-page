@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Buttons/Button";
 import { OrderConfirmationSummary } from "./OrderConfirmationSummary";
 import { CompletedOrder } from "@/lib/checkout-context";
 import { ReceiptIcon, CreditCardIcon, MapPinIcon } from "@/components/icons";
+import { CONTENT } from "@/lib/constants/content";
 
 interface OrderConfirmationProps {
   order: CompletedOrder;
@@ -20,16 +21,16 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
     <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-16">
       <div className="mb-8 md:mb-12">
         <h1 className="text-h4 md:text-h2 font-semibold mb-4">
-          Thank you for your order!
+          {CONTENT.order.confirmation.title}
         </h1>
         <p className="text-sm md:text-body text-gray-600 mb-4">
-          We are pleased to confirm that your order has been successfully placed and will be processed shortly.
+          {CONTENT.order.confirmation.message}
         </p>
         <p className="text-sm md:text-body text-gray-600 mb-6">
-          We have sent you the receipt and order details to your email address
+          {CONTENT.order.confirmation.receiptSent}
           <br className="hidden md:inline" />
           <span className="md:hidden">. </span>
-          Your order number is <span className="font-semibold">{order.orderNumber}</span>.
+          {CONTENT.order.confirmation.orderNumberLabel} <span className="font-semibold">{order.orderNumber}</span>.
         </p>
         <Button 
           variant="primary" 
@@ -37,7 +38,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
           onClick={onBackToHome}
           className="w-full md:w-auto"
         >
-          Back to home page
+          {CONTENT.order.confirmation.backToHome}
         </Button>
       </div>
 
@@ -45,7 +46,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         <div className="border border-gray-200 rounded p-4 md:p-6">
           <div className="flex items-center gap-2 mb-3 md:mb-4">
             <MapPinIcon className="w-4 h-4 md:w-5 md:h-5" />
-            <h2 className="text-sm md:text-body font-semibold">Delivery address</h2>
+            <h2 className="text-sm md:text-body font-semibold">{CONTENT.order.confirmation.deliveryAddress}</h2>
           </div>
           <div className="text-sm md:text-body text-gray-900">
             <p className="font-medium">
@@ -65,7 +66,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         <div className="border border-gray-200 rounded p-4 md:p-6">
           <div className="flex items-center gap-2 mb-3 md:mb-4">
             <ReceiptIcon className="w-4 h-4 md:w-5 md:h-5" />
-            <h2 className="text-sm md:text-body font-semibold">Billing address</h2>
+            <h2 className="text-sm md:text-body font-semibold">{CONTENT.order.confirmation.billingAddress}</h2>
           </div>
           <div className="text-sm md:text-body text-gray-900">
             <p className="font-medium">
@@ -109,10 +110,10 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
                       {item.variant.includes('/') ? (
                         <>
                           <p className="text-sm md:text-base text-gray-500 leading-[140%]">
-                            Material: <span className="text-black font-semibold">{item.variant.split('/')[0].trim()}</span>
+                            {CONTENT.order.confirmation.material} <span className="text-black font-semibold">{item.variant.split('/')[0].trim()}</span>
                           </p>
                           <p className="text-sm md:text-base text-gray-500 leading-[140%]">
-                            Color: <span className="text-black font-semibold">{item.variant.split('/')[1].trim()}</span>
+                            {CONTENT.order.confirmation.color} <span className="text-black font-semibold">{item.variant.split('/')[1].trim()}</span>
                           </p>
                         </>
                       ) : (
@@ -126,7 +127,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
 
                 <div className="flex items-center justify-between">
                   <p className="text-sm md:text-base text-gray-600">
-                    Quantity: <span className="text-black font-semibold">{item.quantity}</span>
+                    {CONTENT.order.confirmation.quantity} <span className="text-black font-semibold">{item.quantity}</span>
                   </p>
                   <div className="text-body md:text-button-big font-bold">
                     €{item.price}
@@ -141,7 +142,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
       <div className="md:ml-auto border border-gray-200 rounded p-4 md:p-6">
         <div className="flex items-center gap-2 mb-4 md:mb-6">
           <CreditCardIcon className="w-4 h-4 md:w-5 md:h-5" />
-          <h2 className="text-sm md:text-body font-semibold">Payment</h2>
+          <h2 className="text-sm md:text-body font-semibold">{CONTENT.order.confirmation.payment}</h2>
         </div>
         <OrderConfirmationSummary
           subtotal={order.subtotal}

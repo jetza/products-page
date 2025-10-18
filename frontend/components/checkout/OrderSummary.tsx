@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
 import { OrderSummary } from "@/components/ui/OrderSummary";
 import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
+import { CONTENT } from "@/lib/constants/content";
 
 interface CartItem {
   id: string;
@@ -50,7 +51,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
           onClick={() => setIsExpanded(!isExpanded)}
           className="flex items-center justify-between mb-6 w-full"
         >
-          <h2 className="text-body font-medium">Order summary</h2>
+          <h2 className="text-body font-medium">{CONTENT.checkout.orderSummary}</h2>
           <div className="flex items-center gap-2">
             <span className="text-body font-medium">€{total.toFixed(0)}</span>
             {isExpanded ? (
@@ -64,7 +65,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
         {isExpanded && (
           <>
             <div className="flex items-center justify-between mb-6">
-          <p className="text-sm font-medium">Order - {items.length} item</p>
+          <p className="text-sm font-medium">{CONTENT.checkout.orderItems(items.length)}</p>
           <Link href="/cart" className="text-xs font-semibold underline">
             Edit cart
           </Link>
@@ -95,7 +96,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
                     Variant: {item.variant}
                   </p>
                 )}
-                <p className="text-xs text-gray-600">Quantity: {item.quantity}</p>
+                <p className="text-xs text-gray-600">{CONTENT.product.quantity}: {item.quantity}</p>
               </div>
             </div>
           ))}

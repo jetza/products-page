@@ -1,4 +1,5 @@
 import { ChevronDownIcon } from "@/components/icons";
+import { CONTENT } from "@/lib/constants/content";
 
 interface MaterialsSelectProps {
   materials: string[];
@@ -12,7 +13,7 @@ export function MaterialsSelect({ materials, selectedMaterial, onMaterialSelect 
   return (
     <div className="mb-8">
       <div className="flex items-center gap-4 mb-4">
-        <h3 className="text-base font-normal text-black">Materials</h3>
+        <h3 className="text-base font-normal text-black">{CONTENT.filters.materials}</h3>
         <span className="text-base font-normal text-gray-400">
           {selectedMaterial || materials[0]}
         </span>

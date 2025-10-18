@@ -31,7 +31,7 @@ export async function getDefaultRegionId(): Promise<string> {
     const eurRegion = regions.find(r => r.currency_code === "eur");
     cachedRegionId = eurRegion?.id || regions[0].id;
     
-    console.log("✅ Using region for pricing:", cachedRegionId);
+    console.log("Using region for pricing:", cachedRegionId);
     return cachedRegionId;
   } catch (error) {
     console.error("Error fetching regions:", error);

@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getProducts } from "@/lib/products-service";
 import type { Product } from "@/types/product";
+import { CONTENT } from "@/lib/constants/content";
 
 interface SearchProps {
   variant?: "desktop" | "mobile";
@@ -135,7 +136,7 @@ export const Search: React.FC<SearchProps> = ({
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Search for products..."
+                placeholder={CONTENT.common.search}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-16 pl-16 pr-16 text-body border-none focus:outline-none rounded-lg"
@@ -152,7 +153,7 @@ export const Search: React.FC<SearchProps> = ({
             <div className="border-t border-gray-200 max-h-96 overflow-y-auto">
               {isSearching ? (
                 <div className="p-6 text-center">
-                  <p className="text-sm text-gray-500">Searching...</p>
+                  <p className="text-sm text-gray-500">{CONTENT.common.loading}</p>
                 </div>
               ) : searchResults.length > 0 ? (
                 <div className="p-4">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CONTENT } from "@/lib/constants/content";
 
 interface HomeAboutProps {
   title: string;
@@ -23,7 +24,7 @@ export function HomeAbout({
       <div className="px-5">
         <div className="mx-auto px-4 lg:px-24 py-12 lg:py-16">
           <h2 className="text-h3 lg:text-h2 font-semibold text-black mb-8 lg:mb-12">
-            About Sofa Society
+            {CONTENT.nav.about} {CONTENT.brand.shortName}
           </h2>
 
           <div className="mb-8 lg:mb-12">

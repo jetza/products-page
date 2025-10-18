@@ -2,10 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { mockOrders } from "@/lib/constants/mockOrders";
+import { mockOrders } from "@/lib/constants/mock-orders.data";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Buttons/Button";
 import { PackageIcon, TruckIcon, CheckmarkIcon } from "@/components/icons";
+import { CONTENT } from "@/lib/constants/content";
 
 const statusIcons = {
   Packing: PackageIcon,
@@ -17,7 +18,7 @@ export const MyOrders: React.FC = () => {
   return (
     <div>
       <h1 className="text-[32px] font-semibold mb-8 md:mb-12">
-        My orders
+        {CONTENT.account.myOrders}
       </h1>
 
       <div className="space-y-6">
@@ -61,7 +62,7 @@ export const MyOrders: React.FC = () => {
 
                 <div>
                   <p className="text-sm text-gray-900 mb-1">
-                    <span className="font-medium">Order:</span> {order.orderNumber}
+                    <span className="font-medium">{CONTENT.account.orderLabel}</span> {order.orderNumber}
                   </p>
                   <p className="text-xs text-gray-500">
                     Order date: {order.date}
@@ -81,7 +82,7 @@ export const MyOrders: React.FC = () => {
                 <div className="flex flex-col justify-between">
                   <div>
                     <p className="text-base text-gray-900 mb-1">
-                      <span className="font-medium">Order:</span> {order.orderNumber}
+                      <span className="font-medium">{CONTENT.account.orderLabel}</span> {order.orderNumber}
                     </p>
                     <p className="text-sm text-gray-500">
                       Order date: {order.date}

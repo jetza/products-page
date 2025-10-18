@@ -7,8 +7,9 @@ import { SortDropdown } from "@/components/filters/SortDropdown";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { ProductCardProps } from "@/components/shop/ProductCard";
 import { useProductFilter } from "@/lib/hooks/useProductFilter";
-import { FURNITURE_CATEGORIES, FURNITURE_TYPES } from "@/lib/constants/furniture-filter-options";
-import { SORT_OPTIONS } from "@/lib/constants/filter-options";
+import { FURNITURE_CATEGORIES, FURNITURE_TYPES } from "@/lib/constants/furniture-filters.config";
+import { SORT_OPTIONS } from "@/lib/constants/filter-options.config";
+import { CONTENT } from "@/lib/constants/content";
 
 interface CollectionClientProps {
   products: ProductCardProps[];
@@ -33,7 +34,7 @@ export function CollectionClient({ products, collectionTitle }: CollectionClient
           
           <div className="flex items-center justify-between mb-8 lg:mb-12">
             <div className="flex items-center gap-4">
-              <FilterDropdown label="Category">
+              <FilterDropdown label={CONTENT.filters.category}>
                 <CheckboxFilter
                   options={FURNITURE_CATEGORIES}
                   selected={selectedCategories}
@@ -41,7 +42,7 @@ export function CollectionClient({ products, collectionTitle }: CollectionClient
                 />
               </FilterDropdown>
 
-              <FilterDropdown label="Type">
+              <FilterDropdown label={CONTENT.filters.type}>
                 <CheckboxFilter
                   options={FURNITURE_TYPES}
                   selected={selectedTypes}
@@ -60,7 +61,7 @@ export function CollectionClient({ products, collectionTitle }: CollectionClient
           {filteredProducts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-button-big text-gray-500">
-                No products match your filters.
+                {CONTENT.common.noProductsMatch}
               </p>
             </div>
           ) : (

@@ -1,4 +1,5 @@
-import { getColorValue } from "@/lib/constants/colors";
+import { getColorValue } from "@/lib/constants/colors.config";
+import { CONTENT } from "@/lib/constants/content";
 
 interface ColorPickerProps {
   colors: string[];
@@ -12,7 +13,7 @@ export function ColorPicker({ colors, selectedColor, onColorSelect }: ColorPicke
   return (
     <div className="mb-8 w-[149px] h-[78px]">
       <div className="flex items-center gap-4 mb-4">
-        <h3 className="text-base font-normal text-black">Colors</h3>
+        <h3 className="text-base font-normal text-black">{CONTENT.filters.colors}</h3>
         <span className="text-base font-normal text-gray-400">
           {selectedColor || colors[0]}
         </span>

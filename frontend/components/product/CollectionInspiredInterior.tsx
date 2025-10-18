@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CONTENT } from "@/lib/constants/content";
 
 interface CollectionInspiredInteriorProps {
   title: string;
@@ -11,7 +12,7 @@ export function CollectionInspiredInterior({ title, collectionName, collectionTi
     <section className="py-12 md:py-20 bg-white">
       <div className="px-8 md:px-5">
         <div className="mx-auto md:px-24">
-          <h2 className="text-h4 md:text-h2 font-semibold mb-8 md:mb-12">Collection Inspired Interior</h2>
+          <h2 className="text-h4 md:text-h2 font-semibold mb-8 md:mb-12">{CONTENT.product.collectionInspiredInterior}</h2>
           
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded overflow-hidden mb-6 md:mb-8">
             <Image

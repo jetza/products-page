@@ -10,6 +10,7 @@ import { DiscountCodeInput } from "@/components/ui/DiscountCodeInput";
 import { LoginPrompt } from "@/components/ui/LoginPrompt";
 import { OrderSummary } from "@/components/ui/OrderSummary";
 import Link from "next/link";
+import { CONTENT } from "@/lib/constants/content";
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart } = useCart();
@@ -28,18 +29,18 @@ export default function CartPage() {
           <div className="px-24 py-12">
           {items.length === 0 ? (
             <>
-              <h1 className="text-h2 font-medium mb-12">Your shopping cart</h1>
+              <h1 className="text-h2 font-medium mb-12">{CONTENT.cart.title}</h1>
               <div className="text-center py-20">
-                <p className="text-body text-gray-500 mb-6">Your cart is empty</p>
+                <p className="text-body text-gray-500 mb-6">{CONTENT.cart.empty}</p>
                 <Link href="/shop">
-                  <Button variant="primary">Continue Shopping</Button>
+                  <Button variant="primary">{CONTENT.common.continueShopping}</Button>
                 </Link>
               </div>
             </>
           ) : (
             <div className="grid grid-cols-[1fr_380px] gap-20">
               <div>
-                <h1 className="text-h2 font-medium mb-12">Your shopping cart</h1>
+                <h1 className="text-h2 font-medium mb-12">{CONTENT.cart.title}</h1>
                 {items.map((item, index) => (
                   <React.Fragment key={item.id}>
                     {index === 0 && (
@@ -87,14 +88,14 @@ export default function CartPage() {
         </div>
 
         <div className="md:hidden px-3 py-8">
-          <h1 className="text-h3 font-medium mb-8">Your shopping bag</h1>
+          <h1 className="text-h3 font-medium mb-8">{CONTENT.cart.shoppingBag}</h1>
 
           {items.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-base text-gray-500 mb-6">Your cart is empty</p>
+              <p className="text-base text-gray-500 mb-6">{CONTENT.cart.empty}</p>
               <Link href="/shop">
                 <Button variant="primary" className="w-full">
-                  Continue Shopping
+                  {CONTENT.common.continueShopping}
                 </Button>
               </Link>
             </div>

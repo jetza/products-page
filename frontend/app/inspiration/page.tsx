@@ -2,7 +2,7 @@ import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { HeroSection } from "@/components/layout/HeroSection";
 import { InspirationProducts } from "@/components/inspiration/InspirationProducts";
 import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
-import { inspirationContent } from "@/lib/constants/inspiration/inspiration-content";
+import { inspirationContent } from "@/lib/constants/pages/inspiration.content";
 
 export default function InspirationPage() {
   return (

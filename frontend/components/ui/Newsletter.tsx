@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils/cn";
 import { Button } from "./Buttons/Button";
 import { Input } from "./Input";
 import Link from "next/link";
+import { CONTENT } from "@/lib/constants/content";
 
 interface NewsletterProps {
   layout?: "horizontal" | "vertical";
@@ -24,7 +25,7 @@ export const Newsletter: React.FC<NewsletterProps> = ({
 
   return (
     <div className={cn("w-full", className)}>
-      <h3 className="text-body font-semibold mb-4">Join our newsletter</h3>
+      <h3 className="text-body font-semibold mb-4">{CONTENT.footer.newsletter.title}</h3>
       <p className="text-sm text-gray-600 mb-4">
         We will ultra-send you our discount coupons!
       </p>

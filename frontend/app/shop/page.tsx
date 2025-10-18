@@ -5,6 +5,7 @@ import { CollectionsGrid } from "@/components/shop/CollectionsGrid";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { PageContainer } from "@/components/layout/PageContainer";
+import { CONTENT } from "@/lib/constants/content";
 
 export default async function ShopPage() {
   const shopItems = await getShopProducts();
@@ -16,12 +17,12 @@ export default async function ShopPage() {
         <CollectionsGrid />
 
         <PageContainer className="py-12">
-          <h1 className="text-h1 font-medium mb-12">Shop</h1>
+          <h1 className="text-h1 font-medium mb-12">{CONTENT.nav.shop}</h1>
 
           {shopItems.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-button-big text-gray-500">
-                No products available.
+                {CONTENT.common.noResults}
               </p>
             </div>
           ) : (

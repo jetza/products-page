@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { ProductCardProps } from "@/components/shop/ProductCard";
-import { PRODUCT_METADATA } from "@/lib/constants/filter-options";
+import { PRODUCT_METADATA } from "@/lib/constants/filter-options.config";
 
 interface UseProductFilterOptions {
   enableCollectionFilter?: boolean;

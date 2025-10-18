@@ -4,7 +4,7 @@ import { AboutIntro } from "@/components/about/AboutIntro";
 import { AboutImage } from "@/components/about/AboutImage";
 import { AboutReflection } from "@/components/about/AboutReflection";
 import { AboutCenter } from "@/components/about/AboutCenter";
-import { aboutContent } from "@/lib/constants/about/about-content";
+import { aboutContent } from "@/lib/constants/pages/about.content";
 
 export default function AboutPage() {
   return (

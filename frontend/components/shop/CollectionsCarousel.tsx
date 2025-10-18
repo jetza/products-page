@@ -4,8 +4,9 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
-import { collections } from "@/lib/constants/collections";
+import { collections } from "@/lib/constants/collections.data";
 import { Button } from "@/components/ui/Buttons/Button";
+import { CONTENT } from "@/lib/constants/content";
 
 export function CollectionsCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -31,7 +32,7 @@ export function CollectionsCarousel() {
       <div className="px-8 md:px-5">
         <div className="mx-auto md:px-24">
           <div className="flex items-center justify-between mb-6 md:mb-8">
-            <h2 className="text-h3 md:text-h2 font-medium text-black">Collections</h2>
+            <h2 className="text-h3 md:text-h2 font-medium text-black">{CONTENT.filters.collections}</h2>
 
             <Link href="/collection" className="md:hidden">
               <Button

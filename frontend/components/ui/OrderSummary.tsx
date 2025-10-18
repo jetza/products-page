@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
+import { CONTENT } from "@/lib/constants/content";
 
 export interface OrderSummaryProps {
   subtotal: number;
@@ -41,20 +42,20 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
       <div ref={ref} className={className}>
         <div className={spacing}>
           <div className={cn("flex justify-between", textSize)}>
-            <span className="text-gray-600">Subtotal:</span>
+            <span className="text-gray-600">{CONTENT.order.summary.subtotal}</span>
             <span className="font-medium">{currency}{subtotal.toFixed(2)}</span>
           </div>
           <div className={cn("flex justify-between", textSize)}>
-            <span className="text-gray-600">Shipping:</span>
+            <span className="text-gray-600">{CONTENT.order.summary.shipping}</span>
             <span className="font-medium">{currency}{shipping.toFixed(2)}</span>
           </div>
           <div className={cn("flex justify-between", textSize)}>
-            <span className="text-gray-600">Taxes:</span>
+            <span className="text-gray-600">{CONTENT.order.summary.taxes}</span>
             <span className="font-medium">{currency}{taxes.toFixed(2)}</span>
           </div>
           {discountAmount && discountAmount > 0 && (
             <div className={cn("flex justify-between", textSize, "text-green-600")}>
-              <span>Discount {discountCode && `(${discountCode})`}:</span>
+              <span>{CONTENT.order.summary.discount} {discountCode && `(${discountCode})`}:</span>
               <span className="font-medium">-{currency}{discountAmount.toFixed(2)}</span>
             </div>
           )}
@@ -63,12 +64,12 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
         {isMobile && <div className={cn("h-px bg-gray-200", separatorMargin)} />}
 
         <div className={cn("flex justify-between", totalSize, totalMargin)}>
-          <span className="font-semibold">Total:</span>
+          <span className="font-semibold">{CONTENT.order.summary.total}</span>
           <span className="font-bold">{currency}{total.toFixed(2)}</span>
         </div>
 
         {showVatNote && (
-          <p className="text-xs text-gray-500 mt-2">Including VAT</p>
+          <p className="text-xs text-gray-500 mt-2">{CONTENT.order.summary.includingVAT}</p>
         )}
       </div>
     );

@@ -2,6 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils/cn";
 import { Button } from "./Buttons/Button";
 import Link from "next/link";
+import { CONTENT } from "@/lib/constants/content";
 
 export interface CartSummaryProps {
   total: number;
@@ -26,7 +27,7 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
       <div ref={ref} className={cn("w-[461px] flex flex-col gap-8", className)}>
 
         <div className="flex items-center justify-between text-body">
-          <span className="font-semibold">Total:</span>
+          <span className="font-semibold">{CONTENT.order.summary.total}</span>
           <span className="font-bold">
             {currency}{total.toFixed(2)}
           </span>
@@ -39,7 +40,7 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
               size="lg" 
               className="w-full"
             >
-              View cart
+              {CONTENT.cart.viewCart}
             </Button>
           </Link>
         ) : (
@@ -49,7 +50,7 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
             className="w-full"
             onClick={onCheckout}
           >
-            Proceed to checkout
+            {CONTENT.cart.proceedToCheckout}
           </Button>
         )}
       </div>

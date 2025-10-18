@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
 import { UserIcon } from "@/components/icons";
 import { useCheckout } from "@/lib/hooks/useCheckout";
+import { CONTENT } from "@/lib/constants/content";
 
 export const PersonalSecurity: React.FC = () => {
   const { state } = useCheckout();
@@ -34,12 +35,12 @@ export const PersonalSecurity: React.FC = () => {
   return (
     <div>
       <h1 className="text-[32px] font-semibold mb-8 md:mb-12">
-        Personal & security
+        {CONTENT.account.personalSecurity}
       </h1>
 
       <div className="mb-8 md:mb-12">
         <h2 className="text-base md:text-body font-medium mb-4 md:mb-6">
-          Personal information
+          {CONTENT.account.personalInfo}
         </h2>
 
         <div className="border border-gray-200 rounded-lg p-4 md:p-6 mb-4">
@@ -49,7 +50,7 @@ export const PersonalSecurity: React.FC = () => {
             {isEditingName ? (
               <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
-                  label="Name"
+                  label={CONTENT.account.name}
                   type="text"
                   value={`${editedFirstName} ${editedLastName}`}
                   onChange={(e) => {
@@ -60,7 +61,7 @@ export const PersonalSecurity: React.FC = () => {
                   fullWidth
                 />
                 <Input
-                  label="Number"
+                  label={CONTENT.account.number}
                   type="text"
                   value={editedPhone}
                   onChange={(e) => setEditedPhone(e.target.value)}
@@ -70,11 +71,11 @@ export const PersonalSecurity: React.FC = () => {
             ) : (
               <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs md:text-sm text-gray-500 mb-1">Name</p>
+                  <p className="text-xs md:text-sm text-gray-500 mb-1">{CONTENT.account.name}</p>
                   <p className="text-sm md:text-base text-gray-900">{firstName} {lastName}</p>
                 </div>
                 <div>
-                  <p className="text-xs md:text-sm text-gray-500 mb-1">Number</p>
+                  <p className="text-xs md:text-sm text-gray-500 mb-1">{CONTENT.account.number}</p>
                   <p className="text-sm md:text-base text-gray-900">{phone}</p>
                 </div>
               </div>
@@ -86,7 +87,7 @@ export const PersonalSecurity: React.FC = () => {
               onClick={isEditingName ? handleSave : handleStartEditing}
               className="w-full md:w-auto md:flex-shrink-0"
             >
-              {isEditingName ? "Save" : "Change"}
+              {isEditingName ? CONTENT.account.save : CONTENT.account.change}
             </Button>
           </div>
         </div>
@@ -94,7 +95,7 @@ export const PersonalSecurity: React.FC = () => {
 
       <div className="mb-8 md:mb-12">
         <h2 className="text-base md:text-body font-medium mb-4 md:mb-6">
-          Contact
+          {CONTENT.account.contact}
         </h2>
 
         <div className="border border-gray-200 rounded-lg p-4 md:p-6 mb-2">
@@ -102,20 +103,20 @@ export const PersonalSecurity: React.FC = () => {
             <UserIcon className="w-5 h-5 md:w-6 md:h-6 text-gray-600 flex-shrink-0 mt-1" />
             
             <div className="flex-1">
-              <p className="text-xs md:text-sm text-gray-500 mb-1">Email</p>
+              <p className="text-xs md:text-sm text-gray-500 mb-1">{CONTENT.account.email}</p>
               <p className="text-sm md:text-base text-gray-900">{email}</p>
             </div>
           </div>
         </div>
 
         <p className="text-xs md:text-sm text-gray-500 mt-2">
-          If you want to change your email please contact us via customer support.
+          {CONTENT.account.emailChangeNote}
         </p>
       </div>
 
       <div className="mb-8 md:mb-12">
         <h2 className="text-base md:text-body font-medium mb-4 md:mb-6">
-          Address
+          {CONTENT.account.address}
         </h2>
 
         <Button
@@ -123,17 +124,17 @@ export const PersonalSecurity: React.FC = () => {
           size="md"
           className="w-full md:w-auto"
         >
-          Add address
+          {CONTENT.account.addAddress}
         </Button>
       </div>
 
       <div>
         <h2 className="text-base md:text-body font-medium mb-4 md:mb-6">
-          Change password
+          {CONTENT.account.changePassword}
         </h2>
 
         <p className="text-xs md:text-sm text-gray-500 mb-4">
-          To change your password, we&apos;ll send you an email. Just click on the reset button below.
+          {CONTENT.account.passwordResetNote}
         </p>
 
         <Button
@@ -142,7 +143,7 @@ export const PersonalSecurity: React.FC = () => {
           onClick={() => setIsChangingPassword(!isChangingPassword)}
           className="w-full md:w-auto"
         >
-          Reset password
+          {CONTENT.account.resetPassword}
         </Button>
       </div>
     </div>

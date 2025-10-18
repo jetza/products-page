@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
 import { QuantitySelector } from "./QuantitySelector";
 import { DeleteButton } from "./Buttons/DeleteButton";
+import { CONTENT } from "@/lib/constants/content";
 
 export interface CartItemProps {
   id: string;
@@ -77,7 +78,7 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
               {variant ? (
                 <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">{variant}</p>
               ) : (
-                <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">No variant</p>
+                <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">{CONTENT.common.noVariant}</p>
               )}
               
               <div>

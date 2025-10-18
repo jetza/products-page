@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils/cn";
 import { CartItem, CartItemProps } from "@/components/ui/CartItem";
 import { CartSummary } from "@/components/ui/CartSummary";
 import { CloseButton } from "@/components/ui/Buttons/CloseButton";
+import { CONTENT } from "@/lib/constants/content";
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -40,14 +41,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         )}
       >
         <div className="flex items-center justify-between px-12 pt-[132px] pb-8">
-          <h2 className="text-big font-semibold">Cart</h2>
+          <h2 className="text-big font-semibold">{CONTENT.cart.cart}</h2>
           <CloseButton onClose={onClose} />
         </div>
 
         <div className="flex-1 overflow-y-auto px-12">
           {items.length === 0 ? (
             <div className="flex items-center justify-center h-full">
-              <p className="text-gray-500">Your cart is empty</p>
+              <p className="text-gray-500">{CONTENT.cart.empty}</p>
             </div>
           ) : (
             <div>

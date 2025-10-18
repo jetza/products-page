@@ -8,7 +8,8 @@ import { CartDrawer } from "@/components/ui/CartDrawer";
 import { CartBadge } from "@/components/ui/CartBadge";
 import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
-import { SUPPORTED_COUNTRIES } from "@/lib/constants/supported-countries";
+import { SUPPORTED_COUNTRIES } from "@/lib/constants/supported-countries.config";
+import { CONTENT } from "@/lib/constants/content";
 
 interface HeaderProps {
   variant?: "desktop" | "mobile";
@@ -41,14 +42,14 @@ export const Header: React.FC<HeaderProps> = ({
         <header className={cn(bgClass, borderClass, className)}>
           <div className="flex items-center justify-between px-8 h-16">
             <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
-              SofaSocietyCo.
+              {CONTENT.brand.name}
             </Link>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsCartOpen(true)}
                 className="p-2 relative"
-                aria-label="Shopping cart"
+                aria-label={CONTENT.nav.cart}
               >
                 <BagIcon className={cn("w-6 h-6", textClass)} />
                 <CartBadge count={totalItems} variant={isTransparent ? "light" : "dark"} />
@@ -78,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white" />
                   <input
                     type="text"
-                    placeholder="Search"
+                    placeholder={CONTENT.common.searchPlaceholder}
                     className="w-full h-12 pl-12 pr-4 bg-black text-white placeholder:text-white/60 focus:outline-none"
                   />
                 </div>
@@ -90,21 +91,21 @@ export const Header: React.FC<HeaderProps> = ({
                   className="block text-white text-big font-medium mb-6"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  About
+                  {CONTENT.nav.about}
                 </Link>
                 <Link
                   href="/inspiration"
                   className="block text-white text-big font-medium mb-6"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Inspiration
+                  {CONTENT.nav.inspiration}
                 </Link>
                 <Link
                   href="/shop"
                   className="block text-white text-big font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Shop
+                  {CONTENT.nav.shop}
                 </Link>
               </nav>
 
@@ -159,18 +160,18 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="px-5">
         <div className="mx-auto px-24 h-20 flex items-center justify-between">
           <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
-            SofaSocietyCo.
+            {CONTENT.brand.name}
           </Link>
 
           <nav className="flex items-center gap-8">
           <Link href="/about" className={cn("text-base hover:opacity-70", textClass)}>
-            About
+            {CONTENT.nav.about}
           </Link>
           <Link href="/inspiration" className={cn("text-base hover:opacity-70", textClass)}>
-            Inspiration
+            {CONTENT.nav.inspiration}
           </Link>
           <Link href="/shop" className={cn("text-base hover:opacity-70", textClass)}>
-            Shop
+            {CONTENT.nav.shop}
           </Link>
           </nav>
 
@@ -210,7 +211,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={() => setIsSearchOpen(!isSearchOpen)}
             className="p-2"
-            aria-label="Search"
+            aria-label={CONTENT.common.search}
           >
             <SearchIcon className={cn("w-5 h-5", textClass)} />
           </button>
@@ -218,7 +219,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={() => setIsCartOpen(true)}
             className="p-2 relative"
-            aria-label="Shopping cart"
+            aria-label={CONTENT.nav.cart}
           >
             <BagIcon className={cn("w-5 h-5", textClass)} />
             <CartBadge count={totalItems} variant={isTransparent ? "light" : "dark"} />

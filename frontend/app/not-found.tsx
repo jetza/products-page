@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Buttons/Button";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { CONTENT } from "@/lib/constants/content";
 
 export default function NotFound() {
   return (
@@ -19,18 +20,17 @@ export default function NotFound() {
             <div></div>
             <div>
               <h2 className="text-h3 font-medium text-black">
-                Page not found
+                {CONTENT.errors.notFound.title}
               </h2>
             </div>
 
             <div>
               <p className="text-big font-normal leading-normal mb-8">
-                The page you are looking for doesn&apos;t exist or an error occurred. 
-                Go back, or head over to our home page.
+                {CONTENT.errors.notFound.description}
               </p>
               <Link href="/">
                 <Button variant="primary" size="lg">
-                  Back to home
+                  {CONTENT.errors.notFound.button}
                 </Button>
               </Link>
             </div>

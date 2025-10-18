@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/Buttons/Button";
+import { CloseButton } from "@/components/ui/Buttons/CloseButton";
 import type { SortOption } from "./SortDropdown";
+import { CONTENT } from "@/lib/constants/content";
 
 interface MobileSortDrawerProps {
   isOpen: boolean;
@@ -44,7 +46,7 @@ export function MobileSortDrawer({
       <div className="fixed bottom-0 left-0 right-0 bg-white z-50 rounded-t-3xl overflow-y-auto max-h-[50vh]">
         <div className="flex flex-col h-full">
           <div className="flex-1 px-5 py-8">
-            <h2 className="text-2xl font-medium mb-8">Sort by</h2>
+            <h2 className="text-2xl font-medium mb-8">{CONTENT.common.sortBy}</h2>
 
             <div className="space-y-4">
               {options.map((option) => (
