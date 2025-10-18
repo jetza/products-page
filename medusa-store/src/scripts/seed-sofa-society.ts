@@ -175,7 +175,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
 
   // Standard colors and materials for ALL products
   const COLORS = ["Light Gray", "Dark Gray", "Black"];
-  const MATERIALS = ["Linen", "Cotton", "Velvet"];
+  const MATERIALS = ["Velvet", "Linen", "Boucle", "Leather"];
   
   logger.info(`📍 Using region for pricing: ${defaultRegion.name} (${defaultRegion.currency_code})`);
 

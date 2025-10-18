@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { ProductCardProps } from "@/components/shop/ProductCard";
+import { PRODUCT_METADATA } from "@/lib/constants/filter-options";
 
 interface UseProductFilterOptions {
   enableCollectionFilter?: boolean;
@@ -39,31 +40,28 @@ export function useProductFilter(
   const filteredProducts = useMemo(() => {
     let filtered = [...products];
 
-    // Filter by collections (if enabled)
+    // Filter by collections (using PRODUCT_METADATA)
     if (enableCollectionFilter && selectedCollections.length > 0) {
-      filtered = filtered.filter((product) =>
-        selectedCollections.some((col) =>
-          product.collection?.toLowerCase().includes(col.toLowerCase())
-        )
-      );
+      filtered = filtered.filter((product) => {
+        const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
+        return metadata && selectedCollections.includes(metadata.collection);
+      });
     }
 
-    // Filter by categories
+    // Filter by categories (using PRODUCT_METADATA)
     if (selectedCategories.length > 0) {
-      filtered = filtered.filter((product) =>
-        selectedCategories.some((cat) =>
-          product.title?.toLowerCase().includes(cat.toLowerCase())
-        )
-      );
+      filtered = filtered.filter((product) => {
+        const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
+        return metadata && selectedCategories.includes(metadata.category);
+      });
     }
 
-    // Filter by types
+    // Filter by types (using PRODUCT_METADATA)
     if (selectedTypes.length > 0) {
-      filtered = filtered.filter((product) =>
-        selectedTypes.some((type) =>
-          product.title?.toLowerCase().includes(type.toLowerCase())
-        )
-      );
+      filtered = filtered.filter((product) => {
+        const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
+        return metadata && selectedTypes.includes(metadata.type);
+      });
     }
 
     // Sort

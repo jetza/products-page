@@ -4,12 +4,13 @@ import React, { useState } from "react";
 import { FilterDropdown } from "@/components/filters/FilterDropdown";
 import { CheckboxFilter } from "@/components/filters/CheckboxFilter";
 import { SortDropdown } from "@/components/filters/SortDropdown";
+import { MobileFilterDrawer } from "@/components/filters/MobileFilterDrawer";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { ProductCardProps } from "@/components/shop/ProductCard";
 import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
 import { PlusIcon } from "@/components/icons";
 import { useProductFilter } from "@/lib/hooks/useProductFilter";
-import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS } from "@/lib/constants/filter-options";
+import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS, MATERIALS, COLORS_FILTER, PRODUCT_METADATA } from "@/lib/constants/filter-options";
 
 interface ShopClientProps {
   products: ProductCardProps[];
@@ -17,8 +18,11 @@ interface ShopClientProps {
 
 export function ShopClient({ products: shopItems }: ShopClientProps) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
+  const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
   
-  const { filteredProducts, filters, sort } = useProductFilter(shopItems, {
+  const { filteredProducts: baseFilteredProducts, filters, sort } = useProductFilter(shopItems, {
     enableCollectionFilter: true,
   });
 
@@ -32,6 +36,34 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
   } = filters;
 
   const { sortBy, setSortBy } = sort;
+
+  // Additional filtering for price, materials, and colors using PRODUCT_METADATA
+  const filteredProducts = React.useMemo(() => {
+    let filtered = [...baseFilteredProducts];
+
+    // Filter by price range
+    filtered = filtered.filter(
+      (product) => product.price >= priceRange[0] && product.price <= priceRange[1]
+    );
+
+    // Filter by materials (using PRODUCT_METADATA)
+    if (selectedMaterials.length > 0) {
+      filtered = filtered.filter((product) => {
+        const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
+        return metadata && selectedMaterials.some((material) => metadata.materials.includes(material));
+      });
+    }
+
+    // Filter by colors (using PRODUCT_METADATA)
+    if (selectedColors.length > 0) {
+      filtered = filtered.filter((product) => {
+        const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
+        return metadata && selectedColors.some((color) => metadata.colors.includes(color));
+      });
+    }
+
+    return filtered;
+  }, [baseFilteredProducts, priceRange, selectedMaterials, selectedColors]);
 
   return (
     <>
@@ -90,38 +122,28 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
         />
       </div>
 
-      {isFilterOpen && (
-        <div className="md:hidden mb-8 p-6 border border-gray-200 rounded bg-gray-50">
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-sm font-semibold mb-3">Collection</h3>
-              <CheckboxFilter
-                options={COLLECTIONS}
-                selected={selectedCollections}
-                onChange={setSelectedCollections}
-              />
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold mb-3">Category</h3>
-              <CheckboxFilter
-                options={CATEGORIES}
-                selected={selectedCategories}
-                onChange={setSelectedCategories}
-              />
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold mb-3">Type</h3>
-              <CheckboxFilter
-                options={TYPES}
-                selected={selectedTypes}
-                onChange={setSelectedTypes}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      <MobileFilterDrawer
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+        collections={COLLECTIONS}
+        categories={CATEGORIES}
+        types={TYPES}
+        selectedCollections={selectedCollections}
+        selectedCategories={selectedCategories}
+        selectedTypes={selectedTypes}
+        selectedMaterials={selectedMaterials}
+        selectedColors={selectedColors}
+        priceRange={priceRange}
+        onCollectionsChange={setSelectedCollections}
+        onCategoriesChange={setSelectedCategories}
+        onTypesChange={setSelectedTypes}
+        onMaterialsChange={setSelectedMaterials}
+        onColorsChange={setSelectedColors}
+        onPriceChange={setPriceRange}
+        onApply={() => {
+          // Filter will be applied automatically through state
+        }}
+      />
 
       <ProductGrid products={filteredProducts} />
     </>
