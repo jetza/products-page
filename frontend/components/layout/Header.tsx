@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils/cn";
 import { SearchIcon, MenuIcon, BagIcon, ChevronDownIcon } from "@/components/icons";
 import { Search } from "@/components/ui/Search";
 import { CartDrawer } from "@/components/ui/CartDrawer";
+import { CartBadge } from "@/components/ui/CartBadge";
 import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
 import { SUPPORTED_COUNTRIES } from "@/lib/constants/supported-countries";
@@ -27,6 +28,7 @@ export const Header: React.FC<HeaderProps> = ({
   const [selectedCountry, setSelectedCountry] = useState("HR");
   
   const { items, updateQuantity, removeFromCart } = useCart();
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const isTransparent = theme === "transparent";
   const bgClass = isTransparent ? "bg-transparent" : "bg-white";
@@ -38,19 +40,18 @@ export const Header: React.FC<HeaderProps> = ({
       <>
         <header className={cn(bgClass, borderClass, className)}>
           <div className="flex items-center justify-between px-8 h-16">
-            {/* Logo - Left */}
             <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
               SofaSocietyCo.
             </Link>
 
-            {/* Right Side - Cart and Menu */}
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="p-2"
+                className="p-2 relative"
                 aria-label="Shopping cart"
               >
                 <BagIcon className={cn("w-6 h-6", textClass)} />
+                <CartBadge count={totalItems} variant={isTransparent ? "light" : "dark"} />
               </button>
 
               <button
@@ -216,10 +217,11 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             onClick={() => setIsCartOpen(true)}
-            className="p-2"
+            className="p-2 relative"
             aria-label="Shopping cart"
           >
             <BagIcon className={cn("w-5 h-5", textClass)} />
+            <CartBadge count={totalItems} variant={isTransparent ? "light" : "dark"} />
           </button>
           </div>
         </div>
