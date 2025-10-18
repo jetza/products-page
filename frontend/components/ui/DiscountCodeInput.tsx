@@ -25,13 +25,14 @@ export const DiscountCodeInput: React.FC<DiscountCodeInputProps> = ({
         value={value}
         onChange={onChange}
         placeholder="Discount code"
-        className="flex-1"
+        className="flex-[2]"
       />
       <Button
         variant="primary"
         size="lg"
         onClick={onApply}
-        className="whitespace-nowrap"
+        disabled={!value.trim()}
+        className="whitespace-nowrap flex-1"
       >
         Apply
       </Button>

@@ -53,7 +53,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           variant === "primary" && [
             "bg-button-primary-bg text-button-primary-text",
             "hover:bg-button-primary-hover",
-            "disabled:bg-button-disabled-bg disabled:text-button-disabled-text",
+            "disabled:bg-button-disabled-bg disabled:text-white",
           ],
           variant === "secondary" && [
             "bg-button-secondary-bg text-button-secondary-text",

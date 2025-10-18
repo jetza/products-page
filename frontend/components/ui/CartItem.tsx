@@ -58,55 +58,56 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
     return (
       <div
         ref={ref}
-        className={cn("flex gap-4 md:gap-8 w-full md:w-auto", className)}
+        className={cn("flex items-start gap-4 md:gap-8 w-full md:w-auto", className)}
       >
-        <div className="flex-shrink-0 w-[100px] h-[100px] md:w-[136px] md:h-[136px] bg-gray-100 rounded overflow-hidden relative">
+        <div className="flex-shrink-0 w-[120px] h-[158px] bg-gray-100 overflow-hidden relative">
           <Image
             src={image}
             alt={imageAlt || title}
             fill
-            sizes="(max-width: 768px) 100px, 136px"
+            sizes="120px"
             className="object-cover"
           />
         </div>
 
-        <div className="flex-1 min-w-0 flex flex-col">
+        <div className="flex-1 min-w-0 flex flex-col h-[158px]">
           <div className="flex items-start justify-between mb-3 md:mb-4">
             <div className="flex-1">
               <h3 className="text-base md:text-body font-medium mb-1 md:mb-2">{title}</h3>
               {variant ? (
-                <p className="text-sm md:text-base text-gray-500 leading-[140%]">{variant}</p>
+                <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">{variant}</p>
               ) : (
-                <p className="text-sm md:text-base text-gray-500 leading-[140%]">No variant</p>
+                <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">No variant</p>
               )}
-            </div>
-            
-            <div className="text-right ml-4">
-              <div className={cn(
-                "text-body md:text-button-big font-bold",
-                originalPrice ? "text-error" : "text-black"
-              )}>
-                {currency}{price}
-              </div>
-              {originalPrice && (
-                <div className="text-xs md:text-sm text-gray-400 line-through">
-                  {currency}{originalPrice}
+              
+              <div>
+                <div className={cn(
+                  "text-body md:text-button-big font-bold",
+                  originalPrice ? "text-error" : "text-black"
+                )}>
+                  {currency}{price}
                 </div>
-              )}
+                {originalPrice && (
+                  <div className="text-xs md:text-sm text-gray-400 line-through">
+                    {currency}{originalPrice}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
 
-          <div className="flex items-center justify-between mt-auto">
-            <QuantitySelector
-              quantity={quantity}
-              onDecrease={handleDecrease}
-              onIncrease={handleIncrease}
-            />
-            
             <DeleteButton
               variant="ghost"
               onDelete={handleRemove}
               aria-label="Remove item"
+            />
+          </div>
+
+          <div className="mt-auto">
+            <QuantitySelector
+              quantity={quantity}
+              onDecrease={handleDecrease}
+              onIncrease={handleIncrease}
+              className="w-[85px] md:w-[120px] h-8 md:h-10 gap-2 md:gap-3 px-4 md:px-3 mx-0"
             />
           </div>
         </div>

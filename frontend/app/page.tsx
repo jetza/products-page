@@ -1,24 +1,50 @@
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
-import { PageContainer } from "@/components/layout/PageContainer";
+import { HeroSection } from "@/components/layout/HeroSection";
+import { HomeProducts } from "@/components/home/HomeProducts";
+import { HomeAbout } from "@/components/home/HomeAbout";
+import { homeContent } from "@/lib/constants/home/home-content";
+import Link from "next/link";
+import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
 
 export default function Home() {
   return (
-    <>
-      <ResponsiveHeader />
-      <main className="flex-1">
-        <PageContainer className="py-12">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-h1 font-medium text-gray-800 mb-6">
-              Welcome to Sofa Society Co.
-            </h1>
-            <p className="text-button-big text-gray-600">
-              Discover our collection of premium furniture
-            </p>
+    <div className="min-h-screen bg-white">
+      <HeroSection
+        imageSrc={homeContent.hero.image}
+        imageAlt={homeContent.hero.imageAlt}
+        contentBg="bg-white"
+      >
+        <div className="px-5">
+          <div className="mx-auto px-4 lg:px-24 py-12 lg:py-16">
+          <div className="flex flex-col lg:flex-row lg:gap-16 space-y-6 lg:space-y-0">
+            <div className="lg:w-[60%]">
+              <h1 className="text-[32px] lg:text-[48px] font-semibold text-black leading-tight">
+                {homeContent.hero.title}
+              </h1>
+            </div>
+            <div className="lg:w-[40%] flex flex-col gap-4">
+              <p className="text-[18px] lg:text-[24px] text-gray-700 leading-relaxed">
+                {homeContent.hero.subtitle}
+              </p>
+              <Link 
+                href="/shop" 
+                className="text-[18px] lg:text-[24px] text-black underline hover:no-underline inline-block"
+              >
+                {homeContent.hero.cta}
+              </Link>
+            </div>
           </div>
-        </PageContainer>
+          </div>
+        </div>
+      </HeroSection>
+
+      <main>
+        <HomeProducts {...homeContent.products} />
+        <CollectionsCarousel />
+        <HomeAbout {...homeContent.about} />
       </main>
+      
       <ResponsiveFooter />
-    </>
+    </div>
   );
 }

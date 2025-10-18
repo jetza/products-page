@@ -38,7 +38,7 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
     const totalMargin = isMobile ? "mb-6" : "mb-8";
 
     return (
-      <div ref={ref} className={className}>
+      <div ref={ref} className={cn(className, !isMobile && "ml-auto max-w-md")}>
         <div className={spacing}>
           <div className={cn("flex justify-between", textSize)}>
             <span className="text-gray-600">Subtotal:</span>
@@ -60,7 +60,7 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
           )}
         </div>
 
-        <div className={cn("h-px bg-gray-200", separatorMargin)} />
+        {isMobile && <div className={cn("h-px bg-gray-200", separatorMargin)} />}
 
         <div className={cn("flex justify-between", totalSize, totalMargin)}>
           <span className="font-semibold">Total:</span>

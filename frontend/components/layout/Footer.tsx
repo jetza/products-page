@@ -19,13 +19,15 @@ export const Footer: React.FC<FooterProps> = ({
 
   if (variant === "mobile") {
     return (
-      <footer className={cn("bg-gray-50 py-12 px-8", className)}>
-        <div className="max-w-md mx-auto">
-          <Newsletter className="mb-12" />
-          
-          <FooterLogo className="mb-8" />
+      <footer className={cn("bg-gray-50 py-12", className)}>
+        <div className="px-5">
+          <div className="mx-auto px-4">
+            <Newsletter className="mb-12" />
+            
+            <FooterLogo className="mb-8" />
 
-          <FooterLinks variant="mobile" />
+            <FooterLinks variant="mobile" />
+          </div>
         </div>
       </footer>
     );

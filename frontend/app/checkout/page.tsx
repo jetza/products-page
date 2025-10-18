@@ -70,14 +70,14 @@ export default function CheckoutPage() {
       </div>
 
       <div className="md:hidden">
-        <div className="px-4 py-6 flex items-center justify-between">
+        <div className="px-8 py-6 flex items-center justify-between">
           <Link href="/" className="text-body font-medium">
             SofaSocietyCo.
           </Link>
           <h1 className="text-body font-medium">Checkout</h1>
         </div>
 
-        <div className="px-4 py-6 bg-gray-100">
+        <div className="px-8 py-6 bg-gray-100">
           <CheckoutOrderSummary
             items={items}
             discountCode={discountCode}
@@ -90,7 +90,7 @@ export default function CheckoutPage() {
           />
         </div>
 
-        <div className="px-4 py-6">
+        <div className="px-8 py-6">
           <CheckoutForm isMobile onPlaceOrder={handlePlaceOrder} />
         </div>
       </div>

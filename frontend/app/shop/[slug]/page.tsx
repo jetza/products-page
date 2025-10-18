@@ -96,8 +96,10 @@ export default function ProductPage({
 
   return (
     <>
-      <ResponsiveHeader />
-      <main className="min-h-screen bg-white">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <ResponsiveHeader />
+      </div>
+      <main className="min-h-screen bg-white pt-[72px] lg:pt-[88px]">
         {!product ? (
           <LoadingOverlay />
         ) : (
@@ -137,7 +139,7 @@ export default function ProductPage({
                       <ProductImageCarousel images={carouselImages} />
                     )}
                   </div>
-                  <div className="px-3 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0">
+                  <div className="px-8 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0">
                     <p className="text-xs md:text-sm text-gray-500 mb-2">{product.collection?.title || "Product"}</p>
                 <h1 className="text-h3 md:text-h2 font-semibold mb-4">{product.title}</h1>
                 <p className="text-big md:text-h4 font-semibold text-black mb-6">

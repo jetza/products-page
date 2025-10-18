@@ -38,25 +38,29 @@ export const Header: React.FC<HeaderProps> = ({
       <>
         <header className={cn(bgClass, borderClass, className)}>
           <div className="flex items-center justify-between px-8 h-16">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 -ml-2"
-              aria-label="Toggle menu"
-            >
-              <MenuIcon className={cn("w-6 h-6", textClass)} />
-            </button>
-
+            {/* Logo - Left */}
             <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
               SofaSocietyCo.
             </Link>
 
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="p-2 -mr-2"
-              aria-label="Shopping cart"
-            >
-              <BagIcon className={cn("w-6 h-6", textClass)} />
-            </button>
+            {/* Right Side - Cart and Menu */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="p-2"
+                aria-label="Shopping cart"
+              >
+                <BagIcon className={cn("w-6 h-6", textClass)} />
+              </button>
+
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2"
+                aria-label="Toggle menu"
+              >
+                <MenuIcon className={cn("w-6 h-6", textClass)} />
+              </button>
+            </div>
           </div>
         </header>
 

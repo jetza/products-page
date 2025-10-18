@@ -9,7 +9,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
   if (!products || products.length === 0) return null;
 
   return (
-    <section className="py-12 md:py-20 bg-white px-4 md:px-5">
+    <section className="py-12 md:py-20 bg-white px-8 md:px-5">
       <div className="mx-auto md:px-24">
         <h2 className="text-h4 md:text-h2 font-semibold mb-8 md:mb-12">Related products</h2>
         

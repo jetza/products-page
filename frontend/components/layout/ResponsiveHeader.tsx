@@ -25,7 +25,7 @@ export const ResponsiveHeader: React.FC<ResponsiveHeaderProps> = ({ theme = "sol
         <Header variant="desktop" theme={theme} className={className} />
       </div>
       <div className="block md:hidden">
-        <Header variant="mobile" theme={theme} className={className} />
+        <Header variant="mobile" theme="solid" className={className} />
       </div>
     </>
   );

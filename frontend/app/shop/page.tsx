@@ -1,7 +1,7 @@
 import React from "react";
 import { ShopClient } from "@/src/components/shop/ShopClient";
 import { getShopProducts } from "@/src/lib/shop/get-shop-products";
-import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
+import { CollectionsGrid } from "@/components/shop/CollectionsGrid";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { PageContainer } from "@/components/layout/PageContainer";
@@ -13,7 +13,7 @@ export default async function ShopPage() {
     <>
       <ResponsiveHeader />
       <main className="flex-1 min-h-screen bg-white">
-        <CollectionsCarousel />
+        <CollectionsGrid />
 
         <PageContainer className="py-12">
           <h1 className="text-h1 font-medium mb-12">Shop</h1>

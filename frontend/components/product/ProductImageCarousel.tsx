@@ -12,23 +12,30 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollPosition = container.scrollLeft;
+      const containerWidth = container.offsetWidth;
+      const newIndex = Math.round(scrollPosition / containerWidth);
+      setCurrentIndex(newIndex);
+    }
+  };
+
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const scrollAmount = container.offsetWidth;
-      const newScrollPosition = direction === "left" 
-        ? container.scrollLeft - scrollAmount 
-        : container.scrollLeft + scrollAmount;
-      
-      container.scrollTo({
-        left: newScrollPosition,
-        behavior: "smooth",
-      });
-
       const newIndex = direction === "left"
         ? Math.max(0, currentIndex - 1)
         : Math.min(images.length - 1, currentIndex + 1);
+      
       setCurrentIndex(newIndex);
+      
+      const scrollAmount = container.offsetWidth;
+      container.scrollTo({
+        left: newIndex * scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
 

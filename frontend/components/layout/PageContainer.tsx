@@ -17,7 +17,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
   }
 
   return (
-    <div className="px-3 md:px-5">
+    <div className="px-8 md:px-5">
       <div className={cn("mx-auto md:px-24", className)}>
         {children}
       </div>

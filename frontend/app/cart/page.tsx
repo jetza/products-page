@@ -87,7 +87,7 @@ export default function CartPage() {
         </div>
 
         <div className="md:hidden px-3 py-8">
-          <h1 className="text-h3 font-medium mb-8">Your shopping cart</h1>
+          <h1 className="text-h3 font-medium mb-8">Your shopping bag</h1>
 
           {items.length === 0 ? (
             <div className="text-center py-12">

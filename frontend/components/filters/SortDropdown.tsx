@@ -26,7 +26,6 @@ export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
     ref
   ) => {
     const [isOpen, setIsOpen] = useState(false);
-    const selectedOption = options.find(opt => opt.id === selected);
 
     const handleSelect = (optionId: string) => {
       onChange(optionId);
@@ -42,7 +41,7 @@ export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
           className="min-w-[180px]"
         >
           <span className="text-base flex-1 text-left">
-            {selectedOption?.label || "Sort by"}
+            Sort By
           </span>
         </DropdownButton>
 

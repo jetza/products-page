@@ -70,7 +70,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
                 label="Want to get news and offers? Ok, yes and some discounts. But only if you subscribe."
                 className="mb-6"
               />
-              <Button variant="primary" size="lg" onClick={handleEmailNext} className="w-full">
+              <Button variant="primary" size="lg" onClick={handleEmailNext}>
                 Next
               </Button>
             </>
@@ -102,7 +102,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           {currentStep === "shipping" && (
             <div>
               <p className="text-sm text-gray-600 mb-6">Select shipping...</p>
-              <Button variant="primary" size="lg" onClick={() => setCurrentStep("payment")} className="w-full">
+              <Button variant="primary" size="lg" onClick={() => setCurrentStep("payment")}>
                 Continue
               </Button>
             </div>
@@ -114,7 +114,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           {currentStep === "payment" && (
             <div>
               <p className="text-sm text-gray-600 mb-6">Enter payment...</p>
-              <Button variant="primary" size="lg" onClick={() => setCurrentStep("review")} className="w-full">
+              <Button variant="primary" size="lg" onClick={() => setCurrentStep("review")}>
                 Review
               </Button>
             </div>
@@ -124,36 +124,37 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <div className="border-t border-gray-200 pt-6 mb-6">
           <h2 className="text-sm font-semibold mb-4">5. Review</h2>
           {currentStep === "review" && (
-            <div>
-              <div className="space-y-4 mb-6">
-                <div>
-                  <p className="text-xs font-semibold mb-1">Email</p>
-                  <p className="text-sm text-gray-600">{state.email}</p>
-                </div>
-                {state.deliveryInfo && (
-                  <div>
-                    <p className="text-xs font-semibold mb-1">Delivery</p>
-                    <p className="text-sm text-gray-600">
-                      {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}<br />
-                      {state.deliveryInfo.address}<br />
-                      {state.deliveryInfo.city}, {state.deliveryInfo.postalCode}
-                    </p>
-                  </div>
-                )}
+            <div className="space-y-4">
+              <div>
+                <p className="text-xs font-semibold mb-1">Email</p>
+                <p className="text-sm text-gray-600">{state.email}</p>
               </div>
-              <Button 
-                variant="primary" 
-                size="lg" 
-                onClick={onPlaceOrder}
-                disabled={state.isProcessing}
-                className="w-full"
-              >
-                {state.isProcessing ? "Processing..." : "Place an order"}
-              </Button>
-              {state.error && (
-                <p className="text-xs text-red-600 mt-4">{state.error}</p>
+              {state.deliveryInfo && (
+                <div>
+                  <p className="text-xs font-semibold mb-1">Delivery</p>
+                  <p className="text-sm text-gray-600">
+                    {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}<br />
+                    {state.deliveryInfo.address}<br />
+                    {state.deliveryInfo.city}, {state.deliveryInfo.postalCode}
+                  </p>
+                </div>
               )}
             </div>
+          )}
+        </div>
+
+        <div className="border-t border-gray-200 pt-6">
+          <Button 
+            variant="primary" 
+            size="lg" 
+            onClick={onPlaceOrder}
+            disabled={currentStep !== "review" || state.isProcessing}
+            className="w-full"
+          >
+            {state.isProcessing ? "Processing..." : "Place an order"}
+          </Button>
+          {state.error && (
+            <p className="text-xs text-red-600 mt-4">{state.error}</p>
           )}
         </div>
       </div>
@@ -193,7 +194,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
             />
 
             <div>
-              <Button variant="primary" size="lg" onClick={handleEmailNext} className="px-12">
+              <Button variant="primary" size="lg" onClick={handleEmailNext}>
                 Next
               </Button>
             </div>
@@ -205,7 +206,6 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         )}
       </div>
 
-      {/* Step 2: Delivery Details */}
       <div className="border-t border-gray-200 pt-8 pb-8">
         <h2 className="text-body font-medium mb-6">2. Delivery details</h2>
         {currentStep === "delivery" && (
@@ -223,14 +223,13 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         )}
       </div>
 
-      {/* Step 3: Shipping Method */}
       <div className="border-t border-gray-200 pt-8 pb-8">
         <h2 className="text-body font-medium mb-6">3. Shipping method</h2>
         {currentStep === "shipping" && (
           <div>
             <p className="text-sm text-gray-600 mb-6">Select shipping method...</p>
             <div>
-              <Button variant="primary" size="lg" onClick={() => setCurrentStep("payment")} className="px-12">
+              <Button variant="primary" size="lg" onClick={() => setCurrentStep("payment")}>
                 Continue to payment
               </Button>
             </div>
@@ -238,14 +237,13 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         )}
       </div>
 
-      {/* Step 4: Payment */}
       <div className="border-t border-gray-200 pt-8 pb-8">
         <h2 className="text-body font-medium mb-6">4. Payment</h2>
         {currentStep === "payment" && (
           <div>
             <p className="text-sm text-gray-600 mb-6">Enter payment details...</p>
             <div>
-              <Button variant="primary" size="lg" onClick={() => setCurrentStep("review")} className="px-12">
+              <Button variant="primary" size="lg" onClick={() => setCurrentStep("review")}>
                 Review order
               </Button>
             </div>
@@ -253,7 +251,6 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         )}
       </div>
 
-      {/* Step 5: Review */}
       <div className="border-t border-gray-200 pt-8 pb-8">
         <h2 className="text-body font-medium mb-6">5. Review</h2>
         {currentStep === "review" && (

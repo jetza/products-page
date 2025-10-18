@@ -155,7 +155,7 @@ export const DeliveryForm: React.FC<DeliveryFormProps> = ({ onSubmit, initialDat
         helperText={errors.phone}
       />
 
-      <Button type="submit" variant="primary" size="lg" className="w-full">
+      <Button type="submit" variant="primary" size="lg">
         Continue to shipping
       </Button>
     </form>

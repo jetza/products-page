@@ -9,7 +9,7 @@ interface CollectionInspiredInteriorProps {
 export function CollectionInspiredInterior({ title, collectionName, collectionTitle }: CollectionInspiredInteriorProps) {
   return (
     <section className="py-12 md:py-20 bg-white">
-      <div className="px-4 md:px-5">
+      <div className="px-8 md:px-5">
         <div className="mx-auto md:px-24">
           <h2 className="text-h4 md:text-h2 font-semibold mb-8 md:mb-12">Collection Inspired Interior</h2>
           
@@ -25,7 +25,7 @@ export function CollectionInspiredInterior({ title, collectionName, collectionTi
         </div>
       </div>
 
-      <div className="mb-8 md:mb-12 px-4 md:px-0">
+      <div className="mb-8 md:mb-12 px-8 md:px-0">
         <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden">
           <Image
             src="/product-page/image-wide.png"
@@ -37,7 +37,7 @@ export function CollectionInspiredInterior({ title, collectionName, collectionTi
         </div>
       </div>
 
-      <div className="px-4 md:px-5">
+      <div className="px-8 md:px-5">
         <div className="mx-auto md:px-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             <div className="relative aspect-square md:aspect-[3/4] rounded overflow-hidden">

@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
 import { OrderSummary } from "@/components/ui/OrderSummary";
+import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
 
 interface CartItem {
   id: string;
@@ -40,16 +41,29 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
 }) => {
   const imageSize = isMobile ? 80 : 132;
   const imageHeight = isMobile ? 80 : 160;
+  const [isExpanded, setIsExpanded] = useState(true);
 
   if (isMobile) {
     return (
       <div>
-        <div className="flex items-center justify-between mb-6">
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="flex items-center justify-between mb-6 w-full"
+        >
           <h2 className="text-body font-medium">Order summary</h2>
-          <span className="text-body font-medium">€{total.toFixed(2)}</span>
-        </div>
+          <div className="flex items-center gap-2">
+            <span className="text-body font-medium">€{total.toFixed(0)}</span>
+            {isExpanded ? (
+              <ChevronUpIcon className="w-4 h-4" />
+            ) : (
+              <ChevronDownIcon className="w-4 h-4" />
+            )}
+          </div>
+        </button>
 
-        <div className="flex items-center justify-between mb-6">
+        {isExpanded && (
+          <>
+            <div className="flex items-center justify-between mb-6">
           <p className="text-sm font-medium">Order - {items.length} item</p>
           <Link href="/cart" className="text-xs font-semibold underline">
             Edit cart
@@ -113,6 +127,8 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
           total={total}
           variant="mobile"
         />
+          </>
+        )}
       </div>
     );
   }

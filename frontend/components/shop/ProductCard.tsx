@@ -38,7 +38,7 @@ export const ProductCard = React.forwardRef<HTMLAnchorElement, ProductCardProps>
           className
         )}
       >
-        <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-2 md:mb-4">
+        <div className="relative w-full aspect-square bg-gray-100 overflow-hidden mb-2 md:mb-4">
           <Image
             src={image}
             alt={imageAlt || title}

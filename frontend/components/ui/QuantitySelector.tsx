@@ -25,7 +25,7 @@ export const QuantitySelector = React.forwardRef<HTMLDivElement, QuantitySelecto
       <div
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-between w-[85px] h-[32px] gap-2 px-3 py-1 border border-gray-200 rounded",
+          "inline-flex items-center justify-center w-[149px] md:w-[149px] h-12 gap-4 px-3 border border-gray-200 rounded mx-auto md:mx-0",
           disabled && "opacity-50 cursor-not-allowed",
           className
         )}

@@ -37,7 +37,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
           onClick={onBackToHome}
           className="w-full md:w-auto"
         >
-          Back to home
+          Back to home page
         </Button>
       </div>
 
@@ -87,42 +87,52 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         {order.items.map((item) => (
           <div 
             key={item.id} 
-            className="flex items-center gap-4 md:gap-6 pb-4 md:pb-6 border-b border-gray-200"
+            className="border border-gray-200 p-4 md:p-6"
           >
-            <div className="relative w-[80px] h-[80px] md:w-[200px] md:h-[160px] bg-gray-100 rounded flex-shrink-0">
-              <Image
-                src={item.image}
-                alt={item.title || 'Product image'}
-                fill
-                className="object-cover rounded"
-              />
-            </div>
+            <div className="flex items-start gap-4 md:gap-6">
+              <div className="relative w-[120px] h-[200px] md:w-[176px] md:h-[232px] bg-gray-100 flex-shrink-0">
+                <Image
+                  src={item.image}
+                  alt={item.title || 'Product image'}
+                  fill
+                  className="object-contain"
+                />
+              </div>
 
-            <div className="flex-1 min-w-0">
-              <h3 className="text-sm md:text-big font-medium mb-1 md:mb-2">
-                {item.title}
-              </h3>
-              {item.variant && (
-                <p className="text-xs md:text-body text-gray-600">
-                  Variant: {item.variant}
-                </p>
-              )}
-              {item.size && (
-                <p className="text-xs md:text-body text-gray-600">
-                  Size: {item.size}
-                </p>
-              )}
-              <p className="text-xs md:text-body text-gray-600 mt-1 md:hidden">
-                Quantity: {item.quantity}
-              </p>
-            </div>
+              <div className="flex-1 min-w-0 flex flex-col h-[200px] md:h-[232px] justify-between">
+                <div>
+                  <h3 className="text-base md:text-body font-medium mb-1 md:mb-2">
+                    {item.title}
+                  </h3>
+                  {item.variant && (
+                    <>
+                      {item.variant.includes('/') ? (
+                        <>
+                          <p className="text-sm md:text-base text-gray-500 leading-[140%]">
+                            Material: <span className="text-black font-semibold">{item.variant.split('/')[0].trim()}</span>
+                          </p>
+                          <p className="text-sm md:text-base text-gray-500 leading-[140%]">
+                            Color: <span className="text-black font-semibold">{item.variant.split('/')[1].trim()}</span>
+                          </p>
+                        </>
+                      ) : (
+                        <p className="text-sm md:text-base text-gray-500 leading-[140%]">
+                          {item.variant}
+                        </p>
+                      )}
+                    </>
+                  )}
+                </div>
 
-            <div className="hidden md:block text-body text-gray-600">
-              Quantity: {item.quantity}
-            </div>
-
-            <div className="text-sm md:text-big font-medium">
-              €{item.price}
+                <div className="flex items-center justify-between">
+                  <p className="text-sm md:text-base text-gray-600">
+                    Quantity: <span className="text-black font-semibold">{item.quantity}</span>
+                  </p>
+                  <div className="text-body md:text-button-big font-bold">
+                    €{item.price}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         ))}
