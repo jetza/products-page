@@ -17,9 +17,9 @@ export async function getProducts(limit: number = 10): Promise<Product[]> {
       fields: "+variants.calculated_price,+variants.prices"
     } as Parameters<typeof medusaClient.store.product.list>[0]);
     
-    console.log("getProducts - First product:", response.products?.[0]);
+  // ...removed log...
     if (response.products?.[0]?.variants?.[0]) {
-      console.log("First variant with pricing:", response.products[0].variants[0]);
+  // ...removed log...
     }
     
     return (response.products || []) as Product[];
@@ -49,9 +49,9 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
     const product = response.products?.[0];
     
     // Debug logging
-    console.log("getProductBySlug - Full product:", product);
+  // ...removed log...
     if (product?.variants?.[0]) {
-      console.log("First variant with pricing:", product.variants[0]);
+  // ...removed log...
     }
     
     return (product as Product) || null;

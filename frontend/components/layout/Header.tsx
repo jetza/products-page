@@ -2,14 +2,14 @@
 
 import React, { useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { SearchIcon, MenuIcon, BagIcon, ChevronDownIcon } from "@/components/icons";
+import { SearchIcon, MenuIcon, BagIcon } from "@/components/icons";
 import { Search } from "@/components/ui/Search";
 import { CartDrawer } from "@/components/ui/CartDrawer";
 import { CartBadge } from "@/components/ui/CartBadge";
 import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
-import { SUPPORTED_COUNTRIES } from "@/lib/constants/supported-countries.config";
 import { CONTENT } from "@/lib/constants/content";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 interface HeaderProps {
   variant?: "desktop" | "mobile";
@@ -25,8 +25,6 @@ export const Header: React.FC<HeaderProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState("HR");
   
   const { items, updateQuantity, removeFromCart } = useCart();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -110,35 +108,7 @@ export const Header: React.FC<HeaderProps> = ({
               </nav>
 
               <div className="px-6 pb-8">
-                <button
-                  onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-                  className="flex items-center gap-2 text-white text-base"
-                >
-                  <span>{selectedCountry}</span>
-                  <ChevronDownIcon 
-                    className={cn(
-                      "w-3 h-3 transition-transform",
-                      isCountryDropdownOpen && "rotate-180"
-                    )}
-                  />
-                </button>
-
-                {isCountryDropdownOpen && (
-                  <div className="mt-4 bg-white rounded max-h-[300px] overflow-y-auto">
-                    {SUPPORTED_COUNTRIES.map((country) => (
-                      <button
-                        key={country}
-                        onClick={() => {
-                          setSelectedCountry(country.substring(0, 2).toUpperCase());
-                          setIsCountryDropdownOpen(false);
-                        }}
-                        className="block w-full text-left px-4 py-3 text-sm text-black hover:bg-gray-50"
-                      >
-                        {country}
-                      </button>
-                    ))}
-                  </div>
-                )}
+                <LanguageSwitcher variant="light" position="top" />
               </div>
             </div>
           </>
@@ -176,37 +146,7 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           <div className="flex items-center gap-6">
-          <div className="relative">
-            <button
-              onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-              className={cn("flex items-center gap-2 text-base", textClass)}
-            >
-              <span>{selectedCountry}</span>
-              <ChevronDownIcon
-                className={cn(
-                  "w-3 h-3 transition-transform",
-                  isCountryDropdownOpen && "rotate-180"
-                )}
-              />
-            </button>
-
-            {isCountryDropdownOpen && (
-              <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded shadow-lg w-[200px] max-h-[300px] overflow-y-auto z-50">
-                {SUPPORTED_COUNTRIES.map((country) => (
-                  <button
-                    key={country}
-                    onClick={() => {
-                      setSelectedCountry(country.substring(0, 2).toUpperCase());
-                      setIsCountryDropdownOpen(false);
-                    }}
-                    className="block w-full text-left px-4 py-3 text-sm text-black hover:bg-gray-50"
-                  >
-                    {country}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          <LanguageSwitcher variant={isTransparent ? "light" : "dark"} />
 
           <button
             onClick={() => setIsSearchOpen(!isSearchOpen)}

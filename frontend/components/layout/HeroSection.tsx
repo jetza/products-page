@@ -54,6 +54,7 @@ export function HeroSection({
             src={imageSrc}
             alt={imageAlt}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
             quality={100}

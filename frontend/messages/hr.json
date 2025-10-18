@@ -1,0 +1,291 @@
+{
+  "home": {
+    "hero": {
+      "title": "Unaprijedite svoj dnevni boravak uz neusporedivu udobnost i stil",
+      "subtitle": "Pronađite svoju savršenu sofu danas",
+      "cta": "Istraži sada",
+      "imageAlt": "Sofa Society - Premium namještaj za dnevni boravak"
+    },
+    "products": {
+      "title": "Naši proizvodi",
+      "categories": {
+        "sofas": "Sofe",
+        "armChairs": "Naslonjači"
+      }
+    },
+    "about": {
+      "title": "U Sofa Society vjerujemo da je sofa srce svakog doma.",
+      "description": "Posvećeni smo isporuci visokokvalitetnih, pažljivo dizajniranih sofa koje spajaju udobnost i stil.",
+      "additionalText": "Naša misija je pretvoriti vaš životni prostor u oazu opuštanja i ljepote, s proizvodima koji traju.",
+      "cta": "Pročitajte više o Sofa Society",
+      "imageAlt": "Moderan interijer dnevnog boravka"
+    }
+  },
+  "brand": {
+    "name": "SofaSocietyCo.",
+    "shortName": "Sofa Society",
+    "email": "info@sofasociety.com",
+    "copyright": "© 2024, Sofa Society"
+  },
+  "emails": {
+    "verifyEmail": {
+      "title": "Potvrdite vašu email adresu",
+      "greeting": "Pozdrav {name}, hvala što ste se registrirali na Sofa Society!",
+      "message1": "Prije nego što počnemo, trebamo potvrditi da ste to vi.",
+      "message2": "Kliknite dolje kako biste potvrdili vašu email adresu:",
+      "button": "Potvrdi email"
+    },
+    "orderConfirmation": {
+      "title": "Potvrda narudžbe",
+      "message1": "Zadovoljstvo nam je potvrditi da je vaša narudžba uspješno zaprimljena i bit će uskoro obrađena. Vaš broj narudžbe je #{orderNumber}.",
+      "message2": "Primit ćete još jedno ažuriranje kada vaša narudžba bude poslana. Za sva pitanja, slobodno nas kontaktirajte na info@sofasociety.com.",
+      "thankYou": "Hvala vam što kupujete kod nas!",
+      "deliveryAddress": "Adresa dostave",
+      "billingAddress": "Adresa za račun",
+      "payment": "Plaćanje",
+      "subtotal": "Međuzbroj",
+      "shipping": "Dostava",
+      "total": "Ukupno",
+      "tax": "Uključujući {amount} poreza"
+    },
+    "resetPassword": {
+      "title": "Resetirajte vašu lozinku",
+      "message": "Primili smo zahtjev za resetiranje lozinke vašeg Sofa Society računa. Kliknite dolje kako biste postavili novu lozinku:",
+      "button": "Resetiraj lozinku",
+      "disclaimer": "Ako niste zatražili ovu promjenu, molimo ignorišite ovaj email i vaša trenutna lozinka će ostati nepromijenjena."
+    },
+    "shippingUpdate": {
+      "title": "Ažuriranje dostave",
+      "message1": "Sjajne vijesti! Vaša narudžba #{orderNumber} je sada na putu prema vama. Evo detalja o dostavi.",
+      "message2": "Možete pratiti vaš paket klikom dolje:",
+      "button": "Detalji narudžbe",
+      "thankYou": "Hvala što ste odabrali Sofa Society. Jedva čekamo da vaš novi namještaj pronađe dom kod vas!"
+    },
+    "welcome": {
+      "title": "Dobrodošli u Sofa Society!",
+      "greeting": "Dobrodošli u Sofa Society! Uzbuđeni smo što ste se pridružili našoj zajednici ljubitelja udobnosti. S našim pažljivo izrađenim sofama, samo ste par koraka udaljeni od dodavanja elegancije i ugode vašem prostoru.",
+      "subheading": "Kao novi član, evo što možete očekivati:",
+      "benefits": [
+        "Premium sofe visokog kvaliteta u raznim stilovima i materijalima",
+        "Podrška posvećena da vam pomogne",
+        "Ekskluzivne ponude i rani pristup novim kolekcijama",
+        "Istražite naše kolekcije i pronađite sofu koja odgovara vašem stilu!"
+      ],
+      "signature": "Srdačan pozdrav,",
+      "team": "Sofa Society Tim"
+    }
+  },
+  "common": {
+    "search": "Pretražite proizvode...",
+    "searchPlaceholder": "Pretraži",
+    "loading": "Učitavanje...",
+    "noResults": "Nema dostupnih proizvoda.",
+    "noProductsMatch": "Nema proizvoda koji odgovaraju vašim filterima.",
+    "noProductsFound": "Nema pronađenih proizvoda",
+    "noVariant": "Nema varijante",
+    "filter": "Filter",
+    "sortBy": "Sortiraj po",
+    "showResults": "Prikaži rezultate",
+    "addToCart": "Dodaj u košaricu",
+    "viewCart": "Pogledaj košaricu",
+    "viewAll": "Pogledaj sve",
+    "checkout": "Naplata",
+    "continueShopping": "Nastavi kupovinu",
+    "remove": "Ukloni",
+    "quantity": "Količina"
+  },
+  "nav": {
+    "about": "O nama",
+    "inspiration": "Inspiracija",
+    "shop": "Trgovina",
+    "cart": "Košarica",
+    "account": "Moj račun"
+  },
+  "footer": {
+    "social": {
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "pinterest": "Pinterest",
+      "facebook": "Facebook"
+    },
+    "newsletter": {
+      "title": "Pridružite se našem biltenu"
+    }
+  },
+  "sort": {
+    "featured": "Istaknuto",
+    "bestSelling": "Najprodavanije",
+    "lowestPrice": "Najniža cijena",
+    "highestPrice": "Najviša cijena"
+  },
+  "filters": {
+    "collection": "Kolekcija",
+    "collections": "Kolekcije",
+    "browseCollections": "Pregledaj kolekcije",
+    "category": "Kategorija",
+    "type": "Tip",
+    "material": "Materijal",
+    "materials": "Materijali",
+    "color": "Boja",
+    "colors": "Boje",
+    "price": "Cijena",
+    "priceRange": "€{min} - €{max}"
+  },
+  "product": {
+    "material": "Materijal",
+    "color": "Boja",
+    "quantity": "Količina",
+    "selectOptions": "Molimo odaberite sve opcije prije dodavanja u košaricu",
+    "outOfStock": "Nema na zalihi",
+    "inStock": "Na zalihi",
+    "relatedProducts": "Možda će vam se svidjeti i",
+    "collectionInspiredInterior": "Kolekcija inspirirana interijerom"
+  },
+  "order": {
+    "confirmation": {
+      "title": "Hvala na vašoj narudžbi!",
+      "message": "Zadovoljstvo nam je potvrditi da je vaša narudžba uspješno zaprimljena i bit će uskoro obrađena.",
+      "receiptSent": "Poslali smo vam račun i detalje narudžbe na vašu email adresu",
+      "orderNumberLabel": "Vaš broj narudžbe je",
+      "backToHome": "Povratak na početnu stranicu",
+      "deliveryAddress": "Adresa dostave",
+      "billingAddress": "Adresa za račun",
+      "payment": "Plaćanje",
+      "material": "Materijal:",
+      "color": "Boja:",
+      "quantity": "Količina:"
+    },
+    "summary": {
+      "subtotal": "Međuzbroj:",
+      "shipping": "Dostava:",
+      "taxes": "Porezi:",
+      "discount": "Popust",
+      "total": "Ukupno:",
+      "includingVAT": "Uključujući PDV"
+    }
+  },
+  "cart": {
+    "title": "Vaša košarica",
+    "cart": "Košarica",
+    "shoppingBag": "Vaša košarica",
+    "empty": "Vaša košarica je prazna",
+    "subtotal": "Međuzbroj",
+    "shipping": "Dostava",
+    "tax": "Porez",
+    "total": "Ukupno",
+    "estimatedTotal": "Procijenjeno ukupno",
+    "viewCart": "Pogledaj košaricu",
+    "proceedToCheckout": "Nastavi s naplatom",
+    "itemsInCart": "{count, plural, =1 {1 artikl} other {# artikla}} u košarici"
+  },
+  "checkout": {
+    "title": "Naplata",
+    "deliveryInfo": "Informacije o dostavi",
+    "delivery": "Dostava",
+    "deliveryAddress": "Adresa dostave",
+    "paymentInfo": "Informacije o plaćanju",
+    "orderSummary": "Sažetak narudžbe",
+    "placeOrder": "Naruči",
+    "continueToShipping": "Nastavi na dostavu",
+    "selectShipping": "Odaberi opciju dostave",
+    "enterPayment": "Unesi podatke o plaćanju",
+    "orderItems": "Narudžba - {count, plural, =1 {1 artikl} other {# artikla}}",
+    "firstName": "Ime",
+    "lastName": "Prezime",
+    "email": "Email",
+    "phone": "Telefon",
+    "address": "Adresa",
+    "apartment": "Stan, apartman, itd.",
+    "company": "Tvrtka (opcionalno)",
+    "city": "Grad",
+    "postalCode": "Poštanski broj",
+    "country": "Država",
+    "placeholders": {
+      "firstName": "Ime",
+      "lastName": "Prezime",
+      "email": "Email",
+      "phone": "Telefon",
+      "address": "Ulica i broj",
+      "apartment": "Stan, apartman, itd. (opcionalno)",
+      "company": "Naziv tvrtke",
+      "city": "Grad",
+      "postalCode": "Poštanski broj"
+    },
+    "validation": {
+      "firstNameRequired": "Ime je obavezno",
+      "lastNameRequired": "Prezime je obavezno",
+      "emailRequired": "Email je obavezan",
+      "phoneRequired": "Telefon je obavezan",
+      "addressRequired": "Adresa je obavezna",
+      "cityRequired": "Grad je obavezan",
+      "postalCodeRequired": "Poštanski broj je obavezan",
+      "countryRequired": "Država je obavezna"
+    }
+  },
+  "auth": {
+    "register": {
+      "title": "Pozdrav, dobrodošli u",
+      "titleBrand": "Sofa Society!",
+      "button": "Registriraj se",
+      "haveAccount": "Već imate račun? Nema problema, samo se",
+      "loginLink": "prijavite",
+      "placeholders": {
+        "firstName": "Ime",
+        "lastName": "Prezime",
+        "email": "Email",
+        "password": "Lozinka",
+        "confirmPassword": "Potvrdi lozinku"
+      }
+    },
+    "login": {
+      "title": "Dobrodošli natrag",
+      "button": "Prijavi se",
+      "noAccount": "Nemate račun?",
+      "registerLink": "Registrirajte se"
+    }
+  },
+  "account": {
+    "title": "Moj račun",
+    "personalSecurity": "Osobni podaci i sigurnost",
+    "myOrders": "Moje narudžbe",
+    "personalInfo": "Osobne informacije",
+    "contact": "Kontakt",
+    "address": "Adresa",
+    "name": "Ime",
+    "number": "Broj",
+    "email": "Email",
+    "password": "Lozinka",
+    "changePassword": "Promijeni lozinku",
+    "change": "Promijeni",
+    "save": "Spremi",
+    "cancel": "Odustani",
+    "edit": "Uredi",
+    "logout": "Odjavi se",
+    "addAddress": "Dodaj adresu",
+    "resetPassword": "Resetiraj lozinku",
+    "emailChangeNote": "Ako želite promijeniti email, molimo kontaktirajte našu korisničku podršku.",
+    "passwordResetNote": "Za promjenu lozinke, poslat ćemo vam email. Samo kliknite na gumb za resetiranje dolje.",
+    "orderLabel": "Narudžba:",
+    "orderNumber": "Narudžba #",
+    "orderDate": "Datum narudžbe",
+    "orderStatus": "Status",
+    "orderTotal": "Ukupno"
+  },
+  "errors": {
+    "generic": "Nešto je pošlo po zlu. Molimo pokušajte ponovno.",
+    "notFound": {
+      "title": "Stranica nije pronađena",
+      "description": "Stranica koju tražite ne postoji ili se dogodila greška. Vratite se natrag ili idite na našu početnu stranicu.",
+      "button": "Povratak na početnu"
+    },
+    "productNotFound": "Proizvod nije pronađen",
+    "requiredField": "Ovo polje je obavezno",
+    "invalidEmail": "Molimo unesite valjanu email adresu"
+  },
+  "success": {
+    "addedToCart": "Uspješno dodano u košaricu!",
+    "orderPlaced": "Vaša narudžba je uspješno zaprimljena!",
+    "emailVerified": "Email uspješno potvrđen!",
+    "passwordReset": "Lozinka uspješno resetirana!"
+  }
+}

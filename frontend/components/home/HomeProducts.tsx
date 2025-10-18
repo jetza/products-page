@@ -54,6 +54,7 @@ export function HomeProducts({ title, categories }: HomeProductsProps) {
                     src={categoryImages[category.slug]}
                     alt={category.title}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 )}

@@ -177,7 +177,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
   const COLORS = ["Light Gray", "Dark Gray", "Black"];
   const MATERIALS = ["Velvet", "Linen", "Boucle", "Leather"];
   
-  logger.info(`📍 Using region for pricing: ${defaultRegion.name} (${defaultRegion.currency_code})`);
+  logger.info(`Using region for pricing: ${defaultRegion.name} (${defaultRegion.currency_code})`);
 
   // Helper to create variants for multiple materials
   const createVariants = (sku: string, basePrice: number) => {

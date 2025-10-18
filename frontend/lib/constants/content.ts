@@ -123,7 +123,7 @@ export const CONTENT = {
   filters: {
     collection: "Collection",
     collections: "Collections",
-    browseCollections: "Browse Collections",
+    browseCollections: "Collections",
     category: "Category",
     type: "Type",
     material: "Material",
