@@ -42,7 +42,7 @@ export function CollectionsCarousel() {
               className="text-xs md:hidden"
               onClick={() => router.push('/collection')}
             >
-              View All
+              {CONTENT.common.viewAll}
             </Button>
 
             <div className="hidden md:flex items-center gap-4">
@@ -51,7 +51,7 @@ export function CollectionsCarousel() {
                 size="md"
                 onClick={() => router.push('/collection')}
               >
-                View All
+                {CONTENT.common.viewAll}
               </Button>
               
               <div className="flex gap-2">

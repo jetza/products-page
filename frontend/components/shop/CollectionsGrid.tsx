@@ -42,7 +42,7 @@ export function CollectionsGrid() {
               className="text-xs md:hidden"
               onClick={() => router.push('/collection')}
             >
-              View All
+              {CONTENT.common.viewAll}
             </Button>
             
             <div className="hidden md:flex gap-2">

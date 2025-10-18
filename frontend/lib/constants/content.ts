@@ -82,6 +82,7 @@ export const CONTENT = {
     showResults: "Show results",
     addToCart: "Add to cart",
     viewCart: "View cart",
+    viewAll: "View All",
     checkout: "Checkout",
     continueShopping: "Continue shopping",
     remove: "Remove",

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 import { Button } from "@/components/ui/Buttons/Button";
+import { CONTENT } from "@/lib/constants/content";
 
 interface Collection {
   title: string;
@@ -24,7 +25,7 @@ export function HomeCollections({ collections }: HomeCollectionsProps) {
         <div className="mx-auto px-4 lg:px-24 py-12 lg:py-16">
         <div className="flex items-center justify-between mb-8 lg:mb-12">
           <h2 className="text-h3 lg:text-h2 font-semibold text-black">
-            Collections
+            {CONTENT.filters.collections}
           </h2>
           
           <Button
@@ -33,7 +34,7 @@ export function HomeCollections({ collections }: HomeCollectionsProps) {
             className="text-xs lg:hidden"
             onClick={() => router.push('/collection')}
           >
-            View All
+            {CONTENT.common.viewAll}
           </Button>
 
           <div className="hidden lg:flex gap-2">
