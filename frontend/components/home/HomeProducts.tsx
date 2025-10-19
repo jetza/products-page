@@ -47,7 +47,7 @@ export const HomeProducts = React.memo(function HomeProducts({
           </h2>
 
           <div className="grid grid-cols-2 gap-6 lg:gap-8">
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <Link
                 key={category.slug}
                 href={`/shop?category=${category.slug}`}
@@ -59,8 +59,10 @@ export const HomeProducts = React.memo(function HomeProducts({
                       src={categoryImages[category.slug]}
                       alt={category.title}
                       fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 1024px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      priority={index < 2}
+                      loading={index < 2 ? undefined : "lazy"}
                     />
                   )}
                 </div>

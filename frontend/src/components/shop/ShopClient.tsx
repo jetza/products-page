@@ -171,7 +171,10 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
         onSelect={setSortBy}
       />
 
-      <ProductGrid products={filteredProducts} />
+      <ProductGrid 
+        products={filteredProducts}
+        useVirtualScroll={filteredProducts.length >= 100}
+      />
     </>
   );
 }

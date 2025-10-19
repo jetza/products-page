@@ -71,6 +71,7 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
             fill
             sizes="120px"
             className="object-cover"
+            loading="lazy"
           />
         </div>
 

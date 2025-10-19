@@ -25,7 +25,9 @@ export const InspirationProducts = React.memo(function InspirationProducts() {
                     src="/products/astrid-curve.png"
                     alt="Astrid Curve Sofa"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
+                    loading="lazy"
                   />
                 </div>
               </Link>
@@ -50,7 +52,9 @@ export const InspirationProducts = React.memo(function InspirationProducts() {
               src="/Inspiration page/Inspiration.jpg"
               alt="Haven Sofas"
               fill
+              sizes="100vw"
               className="object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -78,7 +82,9 @@ export const InspirationProducts = React.memo(function InspirationProducts() {
                       src="/products/nordic-haven.jpg"
                       alt="Nordic Haven"
                       fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
                       className="object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </Link>
@@ -100,7 +106,9 @@ export const InspirationProducts = React.memo(function InspirationProducts() {
                       src="/products/belime-haven-arm-chair.png"
                       alt="Bellaire Haven"
                       fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
                       className="object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </Link>
@@ -126,7 +134,9 @@ export const InspirationProducts = React.memo(function InspirationProducts() {
               src="/Inspiration page/Inspiration-wide.png"
               alt="Oslo Drift Collection"
               fill
+              sizes="100vw"
               className="object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -154,7 +164,9 @@ export const InspirationProducts = React.memo(function InspirationProducts() {
                     src="/products/camden-retreat.jpg"
                     alt="Camden Retreat"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
+                    loading="lazy"
                   />
                 </div>
               </Link>

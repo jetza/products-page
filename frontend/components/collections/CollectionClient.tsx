@@ -66,7 +66,6 @@ export const CollectionClient = React.memo(function CollectionClient({
             {collectionTitle}
           </h2>
 
-          {/* Mobile and Tablet - Filter and Sort buttons */}
           <div className="flex md:hidden items-center justify-between mb-8">
             <DropdownButton
               isOpen={isFilterOpen}
@@ -156,7 +155,10 @@ export const CollectionClient = React.memo(function CollectionClient({
               </p>
             </div>
           ) : (
-            <ProductGrid products={filteredProducts} />
+            <ProductGrid 
+              products={filteredProducts} 
+              useVirtualScroll={filteredProducts.length >= 100}
+            />
           )}
         </div>
       </div>

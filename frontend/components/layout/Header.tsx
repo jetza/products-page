@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, lazy, Suspense } from "react";
 import { cn } from "@/lib/utils/cn";
 import { SearchIcon, MenuIcon, BagIcon } from "@/components/icons";
-import { Search } from "@/components/ui/Search";
-import { CartDrawer } from "@/components/ui/CartDrawer";
 import { CartBadge } from "@/components/ui/CartBadge";
 import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
@@ -12,6 +10,10 @@ import { CONTENT } from "@/lib/constants/content";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { getHref } from "@/lib/getHref";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
+
+// Lazy load heavy components
+const Search = lazy(() => import("@/components/ui/Search").then(m => ({ default: m.Search })));
+const CartDrawer = lazy(() => import("@/components/ui/CartDrawer").then(m => ({ default: m.CartDrawer })));
 
 interface HeaderProps {
   variant?: "desktop" | "mobile";
@@ -132,13 +134,17 @@ export const Header = React.memo<HeaderProps>(({
           </>
         )}
 
-        <CartDrawer
-          isOpen={isCartOpen}
-          onClose={handleCloseCart}
-          items={items}
-          onQuantityChange={updateQuantity}
-          onRemoveItem={removeFromCart}
-        />
+        {isCartOpen && (
+          <Suspense fallback={<div className="fixed inset-0 bg-black/50 z-50" />}>
+            <CartDrawer
+              isOpen={isCartOpen}
+              onClose={handleCloseCart}
+              items={items}
+              onQuantityChange={updateQuantity}
+              onRemoveItem={removeFromCart}
+            />
+          </Suspense>
+        )}
       </>
     );
   }
@@ -201,19 +207,27 @@ export const Header = React.memo<HeaderProps>(({
         </div>
       </div>
 
-      <Search
-        variant="desktop"
-        isOpen={isSearchOpen}
-        onClose={handleCloseSearch}
-      />
+      {isSearchOpen && (
+        <Suspense fallback={<div className="fixed inset-0 bg-black/50 z-40" />}>
+          <Search
+            variant="desktop"
+            isOpen={isSearchOpen}
+            onClose={handleCloseSearch}
+          />
+        </Suspense>
+      )}
 
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={handleCloseCart}
-        items={items}
-        onQuantityChange={updateQuantity}
-        onRemoveItem={removeFromCart}
-      />
+      {isCartOpen && (
+        <Suspense fallback={<div className="fixed inset-0 bg-black/50 z-50" />}>
+          <CartDrawer
+            isOpen={isCartOpen}
+            onClose={handleCloseCart}
+            items={items}
+            onQuantityChange={updateQuantity}
+            onRemoveItem={removeFromCart}
+          />
+        </Suspense>
+      )}
     </header>
   );
 });

@@ -34,7 +34,14 @@ export function HomeAbout({
 
           <div className="mb-8 lg:mb-12">
             <div className="relative w-full aspect-[21/9] overflow-hidden">
-              <Image src={image} alt={imageAlt} fill className="object-cover" />
+              <Image 
+                src={image} 
+                alt={imageAlt} 
+                fill 
+                sizes="100vw"
+                className="object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">

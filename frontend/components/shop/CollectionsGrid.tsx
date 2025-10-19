@@ -74,7 +74,7 @@ export function CollectionsGrid() {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div className="flex gap-3 md:grid md:grid-cols-4 md:gap-6">
-              {collections.map((collection) => {
+              {collections.map((collection, index) => {
                 const href = getHref(collection.href, locale);
                 return (
                   <Link
@@ -87,7 +87,10 @@ export function CollectionsGrid() {
                         src={collection.image}
                         alt={collection.title}
                         fill
+                        sizes="(max-width: 768px) 70vw, (max-width: 1024px) 280px, 25vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        priority={index < 2}
+                        loading={index < 2 ? undefined : "lazy"}
                       />
                     </div>
                     <div className="space-y-1">

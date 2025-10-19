@@ -7,7 +7,7 @@ import { MaterialsSelect } from "@/components/ui/MaterialsSelect";
 import { AddToCartSection } from "@/components/ui/AddToCartSection";
 import { Notification } from "@/components/ui/Notification";
 import { useCart } from "@/lib/cart-context";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import type { Product } from "@/types/product";
 import {
   getProductColors,
@@ -16,13 +16,15 @@ import {
 } from "@/lib/utils/product-utils";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
-import { ProductImageCarousel } from "@/components/product/ProductImageCarousel";
-import { CollectionInspiredInterior } from "@/components/product/CollectionInspiredInterior";
-import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { ProductCardProps } from "@/components/shop/ProductCard";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 
 import React from "react";
+
+// Lazy load heavy components
+const ProductImageCarousel = lazy(() => import("@/components/product/ProductImageCarousel").then(m => ({ default: m.ProductImageCarousel })));
+const CollectionInspiredInterior = lazy(() => import("@/components/product/CollectionInspiredInterior").then(m => ({ default: m.CollectionInspiredInterior })));
+const RelatedProducts = lazy(() => import("@/components/product/RelatedProducts").then(m => ({ default: m.RelatedProducts })));
 export default function ProductPage({
   params,
 }: {
@@ -167,7 +169,9 @@ export default function ProductPage({
                               No images found! CarouselImages array is empty.
                             </div>
                           ) : (
-                            <ProductImageCarousel images={carouselImages} />
+                            <Suspense fallback={<div className="w-full aspect-square bg-gray-100 animate-pulse rounded" />}>
+                              <ProductImageCarousel images={carouselImages} />
+                            </Suspense>
                           )}
                         </div>
                         <div className="px-8 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0 flex flex-col h-full lg:justify-between">
@@ -215,12 +219,16 @@ export default function ProductPage({
                       </div>
                     </div>
                   </div>
-                  <CollectionInspiredInterior
-                    title={`The ${product.title} sofa is a masterpiece of minimalism and luxury.`}
-                    collectionName={product.collection?.handle || "modern-luxe"}
-                    collectionTitle={product.collection?.title}
-                  />
-                  <RelatedProducts products={relatedProducts} />
+                  <Suspense fallback={<div className="w-full h-96 bg-gray-100 animate-pulse" />}>
+                    <CollectionInspiredInterior
+                      title={`The ${product.title} sofa is a masterpiece of minimalism and luxury.`}
+                      collectionName={product.collection?.handle || "modern-luxe"}
+                      collectionTitle={product.collection?.title}
+                    />
+                  </Suspense>
+                  <Suspense fallback={<div className="w-full h-64 bg-gray-100 animate-pulse" />}>
+                    <RelatedProducts products={relatedProducts} />
+                  </Suspense>
                 </>
               );
             })()}

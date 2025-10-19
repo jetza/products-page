@@ -22,7 +22,9 @@ export function AboutCommitment({ title, values }: AboutCommitmentProps) {
                   src="/About/About Small.png"
                   alt="Minimalist beige sofa with plant"
                   fill
+                  sizes="(max-width: 768px) 320px, 50vw"
                   className="object-cover object-left"
+                  loading="lazy"
                 />
               </div>
             </div>

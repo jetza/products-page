@@ -33,6 +33,7 @@ export const CollectionInspiredInterior = React.memo(
               fill
               sizes="100vw"
               className="object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -46,6 +47,7 @@ export const CollectionInspiredInterior = React.memo(
             fill
             sizes="100vw"
             className="object-cover"
+            loading="lazy"
           />
         </div>
       </div>
@@ -60,6 +62,7 @@ export const CollectionInspiredInterior = React.memo(
                 fill
                 sizes="(max-width: 768px) 70vw, 50vw"
                 className="object-cover scale-[1.2] md:scale-100"
+                loading="lazy"
               />
             </div>
 

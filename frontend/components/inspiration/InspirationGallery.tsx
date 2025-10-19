@@ -51,7 +51,10 @@ export const InspirationGallery = React.memo(function InspirationGallery({
                         src={style.image}
                         alt={style.title}
                         fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover"
+                        priority={index === 0}
+                        loading={index === 0 ? undefined : "lazy"}
                       />
                     </div>
                   </Link>

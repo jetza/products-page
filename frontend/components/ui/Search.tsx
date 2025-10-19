@@ -216,7 +216,9 @@ export const Search: React.FC<SearchProps> = ({
                                 src={image}
                                 alt={product.title || "Product"}
                                 fill
+                                sizes="64px"
                                 className="object-cover rounded"
+                                loading="lazy"
                               />
                             )}
                           </div>
