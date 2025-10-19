@@ -1,6 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { Button } from "@/components/ui/Buttons/Button";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
@@ -8,6 +10,7 @@ import { CONTENT } from "@/lib/constants/content";
 
 export default function NotFound() {
   const router = useRouter();
+  const locale = getCurrentLocale();
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -35,7 +38,7 @@ export default function NotFound() {
               <Button 
                 variant="primary" 
                 size="lg"
-                onClick={() => router.push('/')}
+                onClick={() => router.push(getHref('/', locale))}
               >
                 {CONTENT.errors.notFound.button}
               </Button>

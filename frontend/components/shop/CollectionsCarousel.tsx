@@ -8,8 +8,11 @@ import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 import { collections } from "@/lib/constants/collections.data";
 import { Button } from "@/components/ui/Buttons/Button";
 import { CONTENT } from "@/lib/constants/content";
+// import { getHref } from "@/lib/getHref";
+// import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
 export function CollectionsCarousel() {
+  // const locale = getCurrentLocale();
   const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 

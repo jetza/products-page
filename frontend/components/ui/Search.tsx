@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils/cn";
 import { SearchIcon } from "@/components/icons";
 import { CloseButton } from "./Buttons/CloseButton";
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import Image from "next/image";
 import { getProducts } from "@/lib/products-service";
 import type { Product } from "@/types/product";
@@ -23,13 +25,13 @@ export const Search: React.FC<SearchProps> = ({
   onClose,
   className,
 }) => {
+  const locale = getCurrentLocale();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Load all products when component mounts
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -46,7 +48,6 @@ export const Search: React.FC<SearchProps> = ({
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
-    // Clear search when modal closes
     if (!isOpen) {
       setSearchQuery("");
       setSearchResults([]);
@@ -64,7 +65,6 @@ export const Search: React.FC<SearchProps> = ({
     return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
-  // Perform search when query changes
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
@@ -166,11 +166,10 @@ export const Search: React.FC<SearchProps> = ({
                       const price = product.variants?.[0]?.calculated_price?.calculated_amount 
                         ? product.variants[0].calculated_price.calculated_amount / 100 
                         : 0;
-                      
                       return (
                         <Link
                           key={product.id}
-                          href={`/shop/${product.handle}`}
+                          href={getHref(`/shop/${product.handle}`, locale)}
                           onClick={onClose}
                           className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded-lg transition-colors"
                         >

@@ -6,13 +6,15 @@
       "cta": "Shop now",
       "imageAlt": "Sofa Society - Premium living room furniture"
     },
-    "products": {
-      "title": "Our Products",
-      "categories": {
-        "sofas": "Sofas",
-        "armChairs": "Armchairs"
-      }
+    "newsletter": {
+      "title": "Join our newsletter",
+      "coupons": "We will ultra-send you our discount coupons!",
+      "agree": "By subscribing you agree to our",
+      "privacy": "Privacy Policy",
+      "consent": "and provide consent to receive updates from our company."
     },
+    "sofas": "Sofas",
+    "armChairs": "Armchairs",
     "about": {
       "title": "At Sofa Society, we believe the sofa is the heart of every home.",
       "description": "We are committed to delivering high-quality, thoughtfully designed sofas that combine comfort and style.",
@@ -109,7 +111,11 @@
       "facebook": "Facebook"
     },
     "newsletter": {
-      "title": "Join our newsletter"
+      "title": "Join our newsletter",
+      "coupons": "We will ultra-send you our discount coupons!",
+      "agree": "By subscribing you agree to our",
+      "privacy": "Privacy Policy",
+      "consent": "and provide consent to receive updates from our company."
     }
   },
   "sort": {
@@ -288,4 +294,5 @@
     "emailVerified": "Email verified successfully!",
     "passwordReset": "Password reset successfully!"
   }
+
 }

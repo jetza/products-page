@@ -5,8 +5,13 @@ import { HomeAbout } from "@/components/home/HomeAbout";
 import { homeContent } from "@/lib/constants/pages/home.content";
 import Link from "next/link";
 import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
 export default function Home() {
+  const locale = getCurrentLocale();
+
+
   return (
     <div className="min-h-screen bg-white">
       <HeroSection
@@ -27,7 +32,7 @@ export default function Home() {
                 {homeContent.hero.subtitle}
               </p>
               <Link 
-                href="/shop" 
+                href="/shop"
                 className="text-[18px] lg:text-[24px] text-black underline hover:no-underline inline-block"
               >
                 {homeContent.hero.cta}

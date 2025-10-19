@@ -12,8 +12,11 @@ import { LoginPrompt } from "@/components/ui/LoginPrompt";
 import { OrderSummary } from "@/components/ui/OrderSummary";
 import Link from "next/link";
 import { CONTENT } from "@/lib/constants/content";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
 export default function CartPage() {
+  const locale = getCurrentLocale();
   const router = useRouter();
   const { items, updateQuantity, removeFromCart } = useCart();
   const [discountCode, setDiscountCode] = useState("");
@@ -34,7 +37,7 @@ export default function CartPage() {
               <h1 className="text-h2 font-medium mb-12">{CONTENT.cart.title}</h1>
               <div className="text-center py-20">
                 <p className="text-body text-gray-500 mb-6">{CONTENT.cart.empty}</p>
-                <Link href="/shop">
+                <Link href={getHref("/shop", locale)}>
                   <Button variant="primary">{CONTENT.common.continueShopping}</Button>
                 </Link>
               </div>
@@ -80,7 +83,7 @@ export default function CartPage() {
                   variant="primary" 
                   size="lg" 
                   className="w-full mb-6"
-                  onClick={() => router.push('/checkout')}
+                  onClick={() => router.push(getHref('/checkout', locale))}
                 >
                   Proceed to checkout
                 </Button>
@@ -98,7 +101,7 @@ export default function CartPage() {
           {items.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-base text-gray-500 mb-6">{CONTENT.cart.empty}</p>
-              <Link href="/shop">
+              <Link href={getHref("/shop", locale)}>
                 <Button variant="primary" className="w-full">
                   {CONTENT.common.continueShopping}
                 </Button>
@@ -145,7 +148,7 @@ export default function CartPage() {
                   variant="primary" 
                   size="lg" 
                   className="w-full mb-4"
-                  onClick={() => router.push('/checkout')}
+                  onClick={() => router.push(getHref('/checkout', locale))}
                 >
                   Proceed to checkout
                 </Button>

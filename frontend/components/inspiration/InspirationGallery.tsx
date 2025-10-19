@@ -1,10 +1,7 @@
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import Image from "next/image";
-
-interface StyleCardProps {
-  title: string;
-  description: string;
-  image: string;
-}
+import Link from "next/link";
 
 interface InspirationGalleryProps {
   title: string;
@@ -12,7 +9,15 @@ interface InspirationGalleryProps {
   styles: StyleCardProps[];
 }
 
+interface StyleCardProps {
+  title: string;
+  description: string;
+  image: string;
+  href: string;
+}
+
 export function InspirationGallery({ title, description, styles }: InspirationGalleryProps) {
+  const locale = getCurrentLocale();
   return (
     <section className="bg-white">
       <div className="px-5">
@@ -35,14 +40,16 @@ export function InspirationGallery({ title, description, styles }: InspirationGa
               }`}
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg">
-                  <Image
-                    src={style.image}
-                    alt={style.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                <Link href={getHref(style.href, locale)}>
+                  <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg cursor-pointer">
+                    <Image
+                      src={style.image}
+                      alt={style.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </Link>
               </div>
 
               <div className={index % 2 === 1 ? "lg:order-1" : ""}>

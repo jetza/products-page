@@ -1,6 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import Link from "next/link";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 import { Button } from "@/components/ui/Buttons/Button";
@@ -18,6 +20,7 @@ interface HomeCollectionsProps {
 
 export function HomeCollections({ collections }: HomeCollectionsProps) {
   const router = useRouter();
+  const locale = getCurrentLocale();
   
   return (
     <section className="bg-white">
@@ -32,7 +35,7 @@ export function HomeCollections({ collections }: HomeCollectionsProps) {
             variant="primary"
             size="sm"
             className="text-xs lg:hidden"
-            onClick={() => router.push('/collection')}
+            onClick={() => router.push(getHref('/collection', locale))}
           >
             {CONTENT.common.viewAll}
           </Button>
@@ -41,13 +44,14 @@ export function HomeCollections({ collections }: HomeCollectionsProps) {
             <ArrowButton direction="left" variant="outline" onClick={() => {}} />
             <ArrowButton direction="right" variant="default" onClick={() => {}} />
           </div>
+
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
           {collections.map((collection) => (
             <Link
               key={collection.slug}
-              href={`/collections/${collection.slug}`}
+              href={getHref(`/collections/${collection.slug}`, locale)}
               className="group"
             >
               <div className="bg-gray-100 rounded-lg overflow-hidden aspect-[3/4] relative mb-3 lg:mb-4">

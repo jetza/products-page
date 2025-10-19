@@ -1,3 +1,5 @@
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import React from "react";
 import { cn } from "@/lib/utils/cn";
 import Link from "next/link";
@@ -29,9 +31,11 @@ export const ProductCard = React.forwardRef<HTMLAnchorElement, ProductCardProps>
     },
     ref
   ) => {
+    const locale = getCurrentLocale();
+    const href = getHref(`/shop/${slug}`, locale);
     return (
       <Link
-        href={`/shop/${slug}`}
+        href={href}
         ref={ref}
         className={cn(
           "group block bg-white overflow-hidden transition-all",

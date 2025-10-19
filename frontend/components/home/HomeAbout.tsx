@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { CONTENT } from "@/lib/constants/content";
 
 interface HomeAboutProps {
@@ -19,6 +21,7 @@ export function HomeAbout({
   image, 
   imageAlt 
 }: HomeAboutProps) {
+  const locale = getCurrentLocale();
   return (
     <section className="bg-white">
       <div className="px-5">
@@ -51,7 +54,7 @@ export function HomeAbout({
               {additionalText}
             </p>
             <Link 
-              href="/about" 
+              href={getHref("/about", locale)} 
               className="text-body text-black underline hover:no-underline inline-block"
             >
               {cta}

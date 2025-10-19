@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
 import { OrderSummary } from "@/components/ui/OrderSummary";
@@ -38,8 +40,9 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
   shipping,
   taxes,
   total,
-  isMobile = false,
+  isMobile = false
 }) => {
+  const locale = getCurrentLocale();
   const imageSize = isMobile ? 80 : 132;
   const imageHeight = isMobile ? 80 : 160;
   const [isExpanded, setIsExpanded] = useState(true);
@@ -66,7 +69,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
           <>
             <div className="flex items-center justify-between mb-6">
           <p className="text-sm font-medium">{CONTENT.checkout.orderItems(items.length)}</p>
-          <Link href="/cart" className="text-xs font-semibold underline">
+          <Link href={getHref("/cart", locale)} className="text-xs font-semibold underline">
             Edit cart
           </Link>
         </div>
@@ -140,7 +143,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
         <h2 className="text-body font-medium">
           Order - {items.length} {items.length === 1 ? 'item' : 'items'}
         </h2>
-        <Link href="/cart" className="text-xs font-semibold underline">
+        <Link href={getHref("/cart", locale)} className="text-xs font-semibold underline">
           Edit cart
         </Link>
       </div>

@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils/cn";
 import { Button } from "./Buttons/Button";
 import { Input } from "./Input";
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { CONTENT } from "@/lib/constants/content";
 
 interface NewsletterProps {
@@ -12,10 +14,8 @@ interface NewsletterProps {
   className?: string;
 }
 
-export const Newsletter: React.FC<NewsletterProps> = ({ 
-  layout = "horizontal",
-  className 
-}) => {
+export const Newsletter: React.FC<NewsletterProps> = ({ layout = "horizontal", className }) => {
+  const locale = getCurrentLocale();
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
@@ -27,7 +27,7 @@ export const Newsletter: React.FC<NewsletterProps> = ({
     <div className={cn("w-full", className)}>
       <h3 className="text-body font-semibold mb-4">{CONTENT.footer.newsletter.title}</h3>
       <p className="text-sm text-gray-600 mb-4">
-        We will ultra-send you our discount coupons!
+        {CONTENT.footer.newsletter.coupons}
       </p>
       {layout === "horizontal" ? (
         <div className="flex flex-row gap-2 w-full items-stretch">
@@ -64,11 +64,11 @@ export const Newsletter: React.FC<NewsletterProps> = ({
         </div>
       )}
       <p className={cn("text-xs text-gray-500", layout === "vertical" ? "mt-3" : "mt-2")}>
-        By subscribing you agree to with our{" "}
-        <Link href="/privacy" className="underline">
-          Privacy Policy
+        {CONTENT.footer.newsletter.agree} {" "}
+        <Link href={getHref("/privacy", locale)} className="underline">
+          {CONTENT.footer.newsletter.privacy}
         </Link>{" "}
-        and provide consent to receive updates from our company.
+        {CONTENT.footer.newsletter.consent}
       </p>
     </div>
   );

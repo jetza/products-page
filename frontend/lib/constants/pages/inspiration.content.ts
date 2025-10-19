@@ -14,6 +14,7 @@ export const inspirationContent = {
       image: "/Inspiration page/Inspiration.jpg",
       price: "1800€",
       productSlug: "astrid-curve",
+      href: "/shop/astrid-curve",
     },
     {
       title: "Haven Sofas have minimalistic designs, neutral colors, and high-quality textures.",
@@ -21,6 +22,7 @@ export const inspirationContent = {
       image: "/Inspiration page/Inspiration-wide.png",
       price: "1500€",
       productSlug: "haven-sofa",
+      href: "/shop/haven-sofa",
     },
     {
       title: "Oslo Drift is infused with playful textures and vibrant patterns with eclectic vibes.",
@@ -28,6 +30,7 @@ export const inspirationContent = {
       image: "/Inspiration page/Inspiration.jpg",
       price: "2100€",
       productSlug: "oslo-drift",
+      href: "/shop/oslo-drift",
     },
   ],
   

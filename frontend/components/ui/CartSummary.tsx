@@ -2,6 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { cn } from "@/lib/utils/cn";
 import { Button } from "./Buttons/Button";
 import { CONTENT } from "@/lib/constants/content";
@@ -25,7 +27,8 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
     },
     ref
   ) => {
-    const router = useRouter();
+  const router = useRouter();
+  const locale = getCurrentLocale();
     
     return (
       <div ref={ref} className={cn("w-[461px] flex flex-col gap-8", className)}>
@@ -42,7 +45,7 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
             variant="primary" 
             size="lg" 
             className="w-full"
-            onClick={() => router.push('/cart')}
+            onClick={() => router.push(getHref('/cart', locale))}
           >
             {CONTENT.cart.viewCart}
           </Button>

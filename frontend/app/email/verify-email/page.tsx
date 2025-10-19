@@ -1,12 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { Button } from "@/components/ui/Buttons/Button";
 import EmailFooter from "@/components/email/EmailFooter";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function VerifyEmailPage() {
   const router = useRouter();
+  const locale = getCurrentLocale();
   const userName = "Jovana";
   
   return (
@@ -37,7 +40,7 @@ export default function VerifyEmailPage() {
             <Button 
               variant="primary" 
               size="lg"
-              onClick={() => router.push('/my-account')}
+              onClick={() => router.push(getHref('/my-account', locale))}
             >
               {CONTENT.emails.verifyEmail.button}
             </Button>

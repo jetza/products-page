@@ -1,9 +1,11 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
 
 export interface LinkProps {
   href: string;
+  locale?: string;
   size?: "sm" | "lg";
   disabled?: boolean;
   external?: boolean;
@@ -13,6 +15,7 @@ export interface LinkProps {
 
 export const CustomLink: React.FC<LinkProps> = ({
   href,
+  locale,
   size = "lg",
   disabled,
   external,
@@ -55,7 +58,7 @@ export const CustomLink: React.FC<LinkProps> = ({
   }
 
   return (
-    <Link href={href} className={linkClasses}>
+    <Link href={getHref(href, locale ?? "en")} className={linkClasses}>
       {children}
     </Link>
   );

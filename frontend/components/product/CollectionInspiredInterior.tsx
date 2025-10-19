@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { CONTENT } from "@/lib/constants/content";
+import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
 interface CollectionInspiredInteriorProps {
   title: string;
@@ -8,6 +11,7 @@ interface CollectionInspiredInteriorProps {
 }
 
 export function CollectionInspiredInterior({ title, collectionName, collectionTitle }: CollectionInspiredInteriorProps) {
+  const locale = getCurrentLocale();
   return (
     <section className="py-12 md:py-20 bg-white">
       <div className="px-8 md:px-5">
@@ -53,12 +57,12 @@ export function CollectionInspiredInterior({ title, collectionName, collectionTi
             
             <div>
               <h3 className="text-h4 md:text-h3 font-semibold mb-6 md:mb-8">{title}</h3>
-              <a 
-                href={`/collections/${collectionName}`}
+              <Link 
+                href={getHref(`/collections/${collectionName}`, locale)}
                 className="text-sm md:text-body font-medium text-black hover:underline inline-flex items-center gap-2"
               >
                 See more out of {collectionTitle || collectionName} collection
-              </a>
+              </Link>
             </div>
           </div>
         </div>

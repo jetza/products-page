@@ -4,12 +4,15 @@ import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 import { Button } from "@/components/ui/Buttons/Button";
 import { collections } from "@/lib/constants/collections.data";
 import { CONTENT } from "@/lib/constants/content";
 
 export function CollectionsGrid() {
+  const locale = getCurrentLocale();
   const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -69,27 +72,30 @@ export function CollectionsGrid() {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div className="flex gap-3 md:grid md:grid-cols-4 md:gap-6">
-            {collections.map((collection) => (
-              <Link
-                key={collection.id}
-                href={collection.href}
-                className="flex-none w-[70vw] sm:w-[280px] md:w-auto group"
-              >
-                <div className="relative aspect-[4/5] mb-2 md:mb-4 overflow-hidden">
-                  <Image
-                    src={collection.image}
-                    alt={collection.title}
-                   fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-sm md:text-base font-semibold leading-[140%] text-black">
-                    {collection.title}
-                  </h3>
-                </div>
-              </Link>
-            ))}
+            {collections.map((collection) => {
+              const href = getHref(collection.href, locale);
+              return (
+                <Link
+                  key={collection.id}
+                  href={href}
+                  className="flex-none w-[70vw] sm:w-[280px] md:w-auto group"
+                >
+                  <div className="relative aspect-[4/5] mb-2 md:mb-4 overflow-hidden">
+                    <Image
+                      src={collection.image}
+                      alt={collection.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-sm md:text-base font-semibold leading-[140%] text-black">
+                      {collection.title}
+                    </h3>
+                  </div>
+                </Link>
+              );
+            })}
             </div>
           </div>
         </div>

@@ -108,6 +108,10 @@ export const CONTENT = {
     },
     newsletter: {
       title: "Join our newsletter",
+      coupons: "Get exclusive offers, discounts, and inspiration straight to your inbox.",
+      agree: "By subscribing, you agree to our",
+      privacy: "Privacy Policy",
+      consent: "and consent to receive marketing emails."
     },
   },
 

@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { Button } from "@/components/ui/Buttons/Button";
 import EmailFooter from "@/components/email/EmailFooter";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function ResetPasswordPage() {
+  const locale = getCurrentLocale();
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="max-w-4xl mx-auto px-3 lg:px-[116px] py-8 lg:py-24">
@@ -20,7 +23,7 @@ export default function ResetPasswordPage() {
           </p>
 
           <div>
-            <Link href="/my-account">
+            <Link href={getHref("/my-account", locale)}>
               <Button variant="primary" size="lg">
                 {CONTENT.emails.resetPassword.button}
               </Button>

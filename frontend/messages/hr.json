@@ -6,30 +6,16 @@
       "cta": "Istraži sada",
       "imageAlt": "Sofa Society - Premium namještaj za dnevni boravak"
     },
-    "products": {
-      "title": "Naši proizvodi",
-      "categories": {
-        "sofas": "Sofe",
-        "armChairs": "Naslonjači"
-      }
+    "newsletter": {
+      "title": "Pridružite se newsletteru",
+      "coupons": "Poslat ćemo vam naše kuponske kodove za popust!",
+      "agree": "Pretplatom se slažete s našom",
+      "privacy": "Politikom privatnosti",
+      "consent": "i dajete privolu za primanje obavijesti od naše tvrtke."
     },
+    "sofas": "Sofe",
+    "armChairs": "Naslonjači",
     "about": {
-      "title": "U Sofa Society vjerujemo da je sofa srce svakog doma.",
-      "description": "Posvećeni smo isporuci visokokvalitetnih, pažljivo dizajniranih sofa koje spajaju udobnost i stil.",
-      "additionalText": "Naša misija je pretvoriti vaš životni prostor u oazu opuštanja i ljepote, s proizvodima koji traju.",
-      "cta": "Pročitajte više o Sofa Society",
-      "imageAlt": "Moderan interijer dnevnog boravka"
-    }
-  },
-  "brand": {
-    "name": "SofaSocietyCo.",
-    "shortName": "Sofa Society",
-    "email": "info@sofasociety.com",
-    "copyright": "© 2024, Sofa Society"
-  },
-  "emails": {
-    "verifyEmail": {
-      "title": "Potvrdite vašu email adresu",
       "greeting": "Pozdrav {name}, hvala što ste se registrirali na Sofa Society!",
       "message1": "Prije nego što počnemo, trebamo potvrditi da ste to vi.",
       "message2": "Kliknite dolje kako biste potvrdili vašu email adresu:",
@@ -109,7 +95,11 @@
       "facebook": "Facebook"
     },
     "newsletter": {
-      "title": "Pridružite se našem biltenu"
+      "title": "Pridružite se newsletteru",
+      "coupons": "Poslat ćemo vam naše kuponske kodove za popust!",
+      "agree": "Pretplatom se slažete s našom",
+      "privacy": "Politikom privatnosti",
+      "consent": "i dajete privolu za primanje obavijesti od naše tvrtke."
     }
   },
   "sort": {
@@ -288,4 +278,5 @@
     "emailVerified": "Email uspješno potvrđen!",
     "passwordReset": "Lozinka uspješno resetirana!"
   }
+
 }

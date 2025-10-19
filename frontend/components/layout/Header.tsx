@@ -10,6 +10,8 @@ import { useCart } from "@/lib/cart-context";
 import Link from "next/link";
 import { CONTENT } from "@/lib/constants/content";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 
 interface HeaderProps {
   variant?: "desktop" | "mobile";
@@ -25,21 +27,20 @@ export const Header: React.FC<HeaderProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
   const { items, updateQuantity, removeFromCart } = useCart();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-
   const isTransparent = theme === "transparent";
   const bgClass = isTransparent ? "bg-transparent" : "bg-white";
   const textClass = isTransparent ? "text-white" : "text-black";
   const borderClass = "";
+  const locale = getCurrentLocale();
 
   if (variant === "mobile") {
     return (
       <>
         <header className={cn(bgClass, borderClass, className)}>
           <div className="flex items-center justify-between px-8 h-16">
-            <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
+            <Link href={getHref("/", locale)} className={cn("text-button-big font-semibold", textClass)}>
               {CONTENT.brand.name}
             </Link>
 
@@ -85,21 +86,21 @@ export const Header: React.FC<HeaderProps> = ({
 
               <nav className="flex-1 px-6 py-8">
                 <Link
-                  href="/about"
+                  href={getHref("/about", locale)}
                   className="block text-white text-big font-medium mb-6"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {CONTENT.nav.about}
                 </Link>
                 <Link
-                  href="/inspiration"
+                  href={getHref("/inspiration", locale)}
                   className="block text-white text-big font-medium mb-6"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {CONTENT.nav.inspiration}
                 </Link>
                 <Link
-                  href="/shop"
+                  href={getHref("/shop", locale)}
                   className="block text-white text-big font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -129,18 +130,18 @@ export const Header: React.FC<HeaderProps> = ({
     <header className={cn(bgClass, borderClass, className)}>
       <div className="px-5">
         <div className="mx-auto px-24 h-20 flex items-center justify-between">
-          <Link href="/" className={cn("text-button-big font-semibold", textClass)}>
+          <Link href={getHref("/", locale)} className={cn("text-button-big font-semibold", textClass)}>
             {CONTENT.brand.name}
           </Link>
 
           <nav className="flex items-center gap-8">
-          <Link href="/about" className={cn("text-base hover:opacity-70", textClass)}>
+          <Link href={getHref("/about", locale)} className={cn("text-base hover:opacity-70", textClass)}>
             {CONTENT.nav.about}
           </Link>
-          <Link href="/inspiration" className={cn("text-base hover:opacity-70", textClass)}>
+          <Link href={getHref("/inspiration", locale)} className={cn("text-base hover:opacity-70", textClass)}>
             {CONTENT.nav.inspiration}
           </Link>
-          <Link href="/shop" className={cn("text-base hover:opacity-70", textClass)}>
+          <Link href={getHref("/shop", locale)} className={cn("text-base hover:opacity-70", textClass)}>
             {CONTENT.nav.shop}
           </Link>
           </nav>

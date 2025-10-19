@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
 import { Checkbox } from "@/components/ui/Buttons/Checkbox";
@@ -22,7 +24,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
   onPlaceOrder,
 }) => {
   const { state, setEmail, setDeliveryInfo } = useCheckout();
-  
+  const locale = getCurrentLocale();
   const [currentStep, setCurrentStep] = useState<CheckoutStep>("email");
   const [email, setEmailLocal] = useState(state.email);
   const [subscribeNewsletter, setSubscribeNewsletter] = useState(state.subscribeNewsletter);
@@ -49,13 +51,10 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           {currentStep === "email" && (
             <>
               <p className="text-xs text-gray-600 mb-4">
-                Already have an account?
-                <br />
-                No worries, just{" "}
-                <Link href="/login" className="font-semibold underline">
-                  log in
-                </Link>
-                .
+                {CONTENT.auth.register.haveAccount} {" "}
+                <Link href={getHref("/login", locale)} className="font-semibold underline">
+                  {CONTENT.auth.register.loginLink}
+                </Link>.
               </p>
               <Input
                 type="email"
@@ -168,11 +167,10 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <div className="mb-6 flex flex-col xl:flex-row xl:items-start xl:justify-between gap-2">
           <h2 className="text-body font-medium">1. Email</h2>
           <p className="text-sm text-gray-600">
-            Already have an account? No worries, just{" "}
-            <Link href="/login" className="font-semibold underline">
-              log in
-            </Link>
-            .
+            {CONTENT.auth.register.haveAccount} {" "}
+            <Link href={getHref("/login", locale)} className="font-semibold underline">
+              {CONTENT.auth.register.loginLink}
+            </Link>.
           </p>
         </div>
 

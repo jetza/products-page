@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { getHref } from "@/lib/getHref";
+import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import Image from "next/image";
 import { Button } from "@/components/ui/Buttons/Button";
 import { Input } from "@/components/ui/Input";
@@ -9,6 +11,7 @@ import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function RegisterPage() {
+  const locale = getCurrentLocale();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -96,10 +99,9 @@ export default function RegisterPage() {
 
             <p className="text-base text-gray-500 mt-8">
               {CONTENT.auth.register.haveAccount}{" "}
-              <Link href="/login" className="text-black font-medium underline hover:no-underline">
+              <Link href={getHref("/login", locale)} className="text-black font-medium underline hover:no-underline">
                 {CONTENT.auth.register.loginLink}
-              </Link>
-              .
+              </Link>.
             </p>
           </div>
         </div>

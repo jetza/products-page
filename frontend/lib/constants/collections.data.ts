@@ -1,3 +1,6 @@
+// import { getCurrentLocale } from "@/lib/getCurrentLocale";
+// import { getHref } from "@/lib/getHref";
+
 export interface Collection {
   id: string;
   title: string;
