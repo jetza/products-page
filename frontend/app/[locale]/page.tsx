@@ -32,7 +32,7 @@ export default function Home() {
                 {homeContent.hero.subtitle}
               </p>
               <Link 
-                href="/shop"
+                href={getHref("/shop", locale)}
                 className="text-[18px] lg:text-[24px] text-black underline hover:no-underline inline-block"
               >
                 {homeContent.hero.cta}
