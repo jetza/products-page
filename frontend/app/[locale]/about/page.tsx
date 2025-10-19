@@ -5,6 +5,7 @@ import { AboutImage } from "@/components/about/AboutImage";
 import { AboutReflection } from "@/components/about/AboutReflection";
 import { AboutCenter } from "@/components/about/AboutCenter";
 import { aboutContent } from "@/lib/constants/pages/about.content";
+import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 
 export default function AboutPage() {
   return (
@@ -14,13 +15,21 @@ export default function AboutPage() {
         imageAlt="Sofa Society - About Us"
         contentBg="bg-gray-50"
       >
-        <AboutIntro {...aboutContent.intro} />
+        <FadeInOnScroll variant="fade-up" duration={1000}>
+          <AboutIntro {...aboutContent.intro} />
+        </FadeInOnScroll>
       </HeroSection>
 
       <main>
-        <AboutImage {...aboutContent.missionImage} />
-        <AboutReflection {...aboutContent.reflection} />
-        <AboutCenter {...aboutContent.center} />
+        <FadeInOnScroll variant="scale" duration={800}>
+          <AboutImage {...aboutContent.missionImage} />
+        </FadeInOnScroll>
+        <FadeInOnScroll variant="fade-up" duration={800}>
+          <AboutReflection {...aboutContent.reflection} />
+        </FadeInOnScroll>
+        <FadeInOnScroll variant="fade-up" duration={800}>
+          <AboutCenter {...aboutContent.center} />
+        </FadeInOnScroll>
       </main>
 
       <ResponsiveFooter />

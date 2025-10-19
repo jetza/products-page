@@ -18,6 +18,7 @@ import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { ProductCardProps } from "@/components/shop/ProductCard";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
+import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 
 import React from "react";
 
@@ -163,59 +164,63 @@ export default function ProductPage({
                   <div className="lg:px-5">
                     <div className="lg:px-24 lg:py-6 md:lg:py-8">
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-12 mb-12 md:mb-20">
-                        <div className="w-full">
-                          {carouselImages.length === 0 ? (
-                            <div className="bg-red-100 p-4 text-red-800">
-                              No images found! CarouselImages array is empty.
+                        <FadeInOnScroll variant="fade-right" duration={800}>
+                          <div className="w-full">
+                            {carouselImages.length === 0 ? (
+                              <div className="bg-red-100 p-4 text-red-800">
+                                No images found! CarouselImages array is empty.
+                              </div>
+                            ) : (
+                              <Suspense fallback={<div className="w-full aspect-square bg-gray-100 animate-pulse rounded" />}>
+                                <ProductImageCarousel images={carouselImages} />
+                              </Suspense>
+                            )}
+                          </div>
+                        </FadeInOnScroll>
+                        <FadeInOnScroll variant="fade-left" duration={800} delay={200}>
+                          <div className="px-8 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0 flex flex-col h-full lg:justify-between">
+                            <div>
+                              <p className="text-xs md:text-sm text-gray-500 mb-2">
+                                {product.collection?.title || "Product"}
+                              </p>
+                              <h1 className="text-h3 md:text-h2 font-semibold mb-4">
+                                {product.title}
+                              </h1>
+                              <p className="text-big md:text-h4 font-semibold text-black mb-6">
+                                €{Math.round(getProductPrice(product) / 100)}
+                              </p>
+                              <p className="text-sm md:text-body text-gray-600 mb-8 leading-relaxed">
+                                {product.description}
+                              </p>
                             </div>
-                          ) : (
-                            <Suspense fallback={<div className="w-full aspect-square bg-gray-100 animate-pulse rounded" />}>
-                              <ProductImageCarousel images={carouselImages} />
-                            </Suspense>
-                          )}
-                        </div>
-                        <div className="px-8 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0 flex flex-col h-full lg:justify-between">
-                          <div>
-                            <p className="text-xs md:text-sm text-gray-500 mb-2">
-                              {product.collection?.title || "Product"}
-                            </p>
-                            <h1 className="text-h3 md:text-h2 font-semibold mb-4">
-                              {product.title}
-                            </h1>
-                            <p className="text-big md:text-h4 font-semibold text-black mb-6">
-                              €{Math.round(getProductPrice(product) / 100)}
-                            </p>
-                            <p className="text-sm md:text-body text-gray-600 mb-8 leading-relaxed">
-                              {product.description}
-                            </p>
-                          </div>
-                          <div className="space-y-8">
-                            {materials.length > 0 && (
-                              <MaterialsSelect
-                                materials={materials}
-                                selectedMaterial={selectedMaterial}
-                                onMaterialSelect={setSelectedMaterial}
+                            <div className="space-y-8">
+                              {materials.length > 0 && (
+                                <MaterialsSelect
+                                  materials={materials}
+                                  selectedMaterial={selectedMaterial}
+                                  onMaterialSelect={setSelectedMaterial}
+                                />
+                              )}
+                              {colors.length > 0 && (
+                                <ColorPicker
+                                  colors={colors}
+                                  selectedColor={selectedColor}
+                                  onColorSelect={setSelectedColor}
+                                />
+                              )}
+                              <AddToCartSection
+                                quantity={quantity}
+                                onQuantityDecrease={() =>
+                                  setQuantity(Math.max(1, quantity - 1))
+                                }
+                                onQuantityIncrease={() =>
+                                  setQuantity(quantity + 1)
+                                }
+                                onAddToCart={handleAddToCart}
                               />
-                            )}
-                            {colors.length > 0 && (
-                              <ColorPicker
-                                colors={colors}
-                                selectedColor={selectedColor}
-                                onColorSelect={setSelectedColor}
-                              />
-                            )}
-                            <AddToCartSection
-                              quantity={quantity}
-                              onQuantityDecrease={() =>
-                                setQuantity(Math.max(1, quantity - 1))
-                              }
-                              onQuantityIncrease={() =>
-                                setQuantity(quantity + 1)
-                              }
-                              onAddToCart={handleAddToCart}
-                            />
+                            </div>
                           </div>
-                        </div>
+                        </FadeInOnScroll>
                       </div>
                     </div>
                   </div>

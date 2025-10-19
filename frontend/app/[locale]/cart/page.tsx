@@ -14,6 +14,7 @@ import Link from "next/link";
 import { CONTENT } from "@/lib/constants/content";
 import { getHref } from "@/lib/getHref";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 
 export default function CartPage() {
   const locale = getCurrentLocale();
@@ -53,52 +54,56 @@ export default function CartPage() {
               </>
             ) : (
               <div className="grid grid-cols-[1fr_380px] gap-20">
-                <div>
-                  <h1 className="text-h2 font-medium mb-12">
-                    {CONTENT.cart.title}
-                  </h1>
-                  {items.map((item, index) => (
-                    <React.Fragment key={item.id}>
-                      {index === 0 && <div className="h-px bg-gray-200 mb-8" />}
-                      <CartItem
-                        {...item}
-                        onQuantityChange={updateQuantity}
-                        onRemove={removeFromCart}
-                      />
-                      {index < items.length - 1 && (
-                        <div className="h-px bg-gray-200 my-8" />
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
+                <FadeInOnScroll variant="fade-right" duration={700}>
+                  <div>
+                    <h1 className="text-h2 font-medium mb-12">
+                      {CONTENT.cart.title}
+                    </h1>
+                    {items.map((item, index) => (
+                      <React.Fragment key={item.id}>
+                        {index === 0 && <div className="h-px bg-gray-200 mb-8" />}
+                        <CartItem
+                          {...item}
+                          onQuantityChange={updateQuantity}
+                          onRemove={removeFromCart}
+                        />
+                        {index < items.length - 1 && (
+                          <div className="h-px bg-gray-200 my-8" />
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </FadeInOnScroll>
 
-                <div>
-                  <OrderSummary
-                    subtotal={subtotal}
-                    shipping={shipping}
-                    taxes={taxes}
-                    total={total}
-                    variant="desktop"
-                  />
+                <FadeInOnScroll variant="fade-left" duration={700} delay={200}>
+                  <div>
+                    <OrderSummary
+                      subtotal={subtotal}
+                      shipping={shipping}
+                      taxes={taxes}
+                      total={total}
+                      variant="desktop"
+                    />
 
-                  <DiscountCodeInput
-                    value={discountCode}
-                    onChange={(e) => setDiscountCode(e.target.value)}
-                    onApply={() => console.log("Apply discount:", discountCode)}
-                    className="mb-6"
-                  />
+                    <DiscountCodeInput
+                      value={discountCode}
+                      onChange={(e) => setDiscountCode(e.target.value)}
+                      onApply={() => console.log("Apply discount:", discountCode)}
+                      className="mb-6"
+                    />
 
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    className="w-full mb-6"
-                    onClick={() => router.push(getHref("/checkout", locale))}
-                  >
-                    Proceed to checkout
-                  </Button>
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      className="w-full mb-6"
+                      onClick={() => router.push(getHref("/checkout", locale))}
+                    >
+                      Proceed to checkout
+                    </Button>
 
-                  <LoginPrompt />
-                </div>
+                    <LoginPrompt />
+                  </div>
+                </FadeInOnScroll>
               </div>
             )}
           </div>

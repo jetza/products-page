@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, useMemo } from "react";
 import { cn } from "@/lib/utils/cn";
 import { ProductCard, ProductCardProps } from "./ProductCard";
 import { CONTENT } from "@/lib/constants/content";
+import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 
 export interface ProductGridProps {
   products: ProductCardProps[];
@@ -80,8 +81,15 @@ export const ProductGrid = React.memo(
               className,
             )}
           >
-            {visibleProducts.map((product) => (
-              <ProductCard key={product.id} {...product} />
+            {visibleProducts.map((product, index) => (
+              <FadeInOnScroll 
+                key={product.id} 
+                variant="fade-up" 
+                duration={600}
+                delay={index % 6 * 100}
+              >
+                <ProductCard {...product} />
+              </FadeInOnScroll>
             ))}
           </div>
           {paddingBottom > 0 && <div style={{ height: paddingBottom }} />}

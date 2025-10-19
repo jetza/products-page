@@ -7,6 +7,7 @@ import { ProductCardProps } from "@/src/components/shop/ProductCard";
 import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { CollectionClient } from "@/components/collections/CollectionClient";
+import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 
 export default async function CollectionsPage() {
   const allProducts = await getProducts(50);
@@ -53,33 +54,39 @@ export default async function CollectionsPage() {
           <div className="px-5">
             <div className="mx-auto px-4 lg:px-24 py-12 lg:py-16">
               <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
-                <div className="lg:w-[60%]">
-                  <h1 className="text-h3 lg:text-h2 font-semibold text-black leading-tight">
-                    Scandinavian Simplicity:
-                    <br />
-                    Effortless elegance, timeless comfort
-                  </h1>
-                </div>
-                <div className="lg:w-[40%] space-y-6 pt-[72px]">
-                  <p className="text-body text-gray-700 leading-relaxed">
-                    Minimalistic designs, neutral colors, and high-quality
-                    textures. Perfect for those who seek comfort with a clean
-                    and understated aesthetic.
-                  </p>
-                  <p className="text-body text-gray-700 leading-relaxed">
-                    This collection brings the essence of Scandinavian elegance
-                    to your living room.
-                  </p>
-                </div>
+                <FadeInOnScroll variant="fade-right" duration={900}>
+                  <div className="lg:w-[60%]">
+                    <h1 className="text-h3 lg:text-h2 font-semibold text-black leading-tight">
+                      Scandinavian Simplicity:
+                      <br />
+                      Effortless elegance, timeless comfort
+                    </h1>
+                  </div>
+                </FadeInOnScroll>
+                <FadeInOnScroll variant="fade-left" duration={900} delay={200}>
+                  <div className="lg:w-[40%] space-y-6 pt-[72px]">
+                    <p className="text-body text-gray-700 leading-relaxed">
+                      Minimalistic designs, neutral colors, and high-quality
+                      textures. Perfect for those who seek comfort with a clean
+                      and understated aesthetic.
+                    </p>
+                    <p className="text-body text-gray-700 leading-relaxed">
+                      This collection brings the essence of Scandinavian elegance
+                      to your living room.
+                    </p>
+                  </div>
+                </FadeInOnScroll>
               </div>
             </div>
           </div>
         </section>
 
-        <CollectionClient
-          products={productCards}
-          collectionTitle="Scandinavian Simplicity"
-        />
+        <FadeInOnScroll variant="fade-up" duration={800}>
+          <CollectionClient
+            products={productCards}
+            collectionTitle="Scandinavian Simplicity"
+          />
+        </FadeInOnScroll>
       </div>
       <ResponsiveFooter />
     </>

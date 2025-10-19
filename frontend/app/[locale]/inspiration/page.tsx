@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/layout/HeroSection";
 import { InspirationProducts } from "@/components/inspiration/InspirationProducts";
 import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
 import { inspirationContent } from "@/lib/constants/pages/inspiration.content";
+import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 
 export default function InspirationPage() {
   return (
@@ -13,8 +14,12 @@ export default function InspirationPage() {
       />
 
       <main>
-        <InspirationProducts />
-        <CollectionsCarousel />
+        <FadeInOnScroll variant="fade-up" duration={800}>
+          <InspirationProducts />
+        </FadeInOnScroll>
+        <FadeInOnScroll variant="scale" duration={800}>
+          <CollectionsCarousel />
+        </FadeInOnScroll>
       </main>
 
       <ResponsiveFooter />

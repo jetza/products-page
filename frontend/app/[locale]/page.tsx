@@ -7,6 +7,7 @@ import Link from "next/link";
 import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
 import { getHref } from "@/lib/getHref";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 
 export default function Home() {
   const locale = getCurrentLocale();
@@ -21,31 +22,41 @@ export default function Home() {
         <div className="px-5">
           <div className="mx-auto px-4 lg:px-24 py-12 lg:py-16">
             <div className="flex flex-col lg:flex-row lg:gap-16 space-y-6 lg:space-y-0">
-              <div className="lg:w-[60%]">
-                <h1 className="text-[32px] lg:text-[48px] font-semibold text-black leading-tight">
-                  {homeContent.hero.title}
-                </h1>
-              </div>
-              <div className="lg:w-[40%] flex flex-col gap-4">
-                <p className="text-[18px] lg:text-[24px] text-gray-700 leading-relaxed">
-                  {homeContent.hero.subtitle}
-                </p>
-                <Link
-                  href={getHref("/shop", locale)}
-                  className="text-[18px] lg:text-[24px] text-black underline hover:no-underline inline-block"
-                >
-                  {homeContent.hero.cta}
-                </Link>
-              </div>
+              <FadeInOnScroll variant="fade-right" duration={1000}>
+                <div className="lg:w-[60%]">
+                  <h1 className="text-[32px] lg:text-[48px] font-semibold text-black leading-tight">
+                    {homeContent.hero.title}
+                  </h1>
+                </div>
+              </FadeInOnScroll>
+              <FadeInOnScroll variant="fade-left" duration={1000} delay={200}>
+                <div className="lg:w-[40%] flex flex-col gap-4">
+                  <p className="text-[18px] lg:text-[24px] text-gray-700 leading-relaxed">
+                    {homeContent.hero.subtitle}
+                  </p>
+                  <Link
+                    href={getHref("/shop", locale)}
+                    className="text-[18px] lg:text-[24px] text-black underline hover:no-underline inline-block"
+                  >
+                    {homeContent.hero.cta}
+                  </Link>
+                </div>
+              </FadeInOnScroll>
             </div>
           </div>
         </div>
       </HeroSection>
 
       <main>
-        <HomeProducts {...homeContent.products} />
-        <CollectionsCarousel />
-        <HomeAbout {...homeContent.about} />
+        <FadeInOnScroll variant="fade-up" duration={800}>
+          <HomeProducts {...homeContent.products} />
+        </FadeInOnScroll>
+        <FadeInOnScroll variant="scale" duration={800}>
+          <CollectionsCarousel />
+        </FadeInOnScroll>
+        <FadeInOnScroll variant="fade-up" duration={800}>
+          <HomeAbout {...homeContent.about} />
+        </FadeInOnScroll>
       </main>
 
       <ResponsiveFooter />
