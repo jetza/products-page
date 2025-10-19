@@ -16,7 +16,7 @@ export default function InspirationPage() {
         <InspirationProducts />
         <CollectionsCarousel />
       </main>
-      
+
       <ResponsiveFooter />
     </div>
   );

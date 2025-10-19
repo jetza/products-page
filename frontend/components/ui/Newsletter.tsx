@@ -14,7 +14,10 @@ interface NewsletterProps {
   className?: string;
 }
 
-export const Newsletter: React.FC<NewsletterProps> = ({ layout = "horizontal", className }) => {
+export const Newsletter: React.FC<NewsletterProps> = ({
+  layout = "horizontal",
+  className,
+}) => {
   const locale = getCurrentLocale();
   const [email, setEmail] = useState("");
 
@@ -25,7 +28,9 @@ export const Newsletter: React.FC<NewsletterProps> = ({ layout = "horizontal", c
 
   return (
     <div className={cn("w-full", className)}>
-      <h3 className="text-body font-semibold mb-4">{CONTENT.footer.newsletter.title}</h3>
+      <h3 className="text-body font-semibold mb-4">
+        {CONTENT.footer.newsletter.title}
+      </h3>
       <p className="text-sm text-gray-600 mb-4">
         {CONTENT.footer.newsletter.coupons}
       </p>
@@ -40,10 +45,10 @@ export const Newsletter: React.FC<NewsletterProps> = ({ layout = "horizontal", c
               fullWidth
             />
           </div>
-          <Button 
-            variant="primary" 
-            size="md" 
-            onClick={handleSubscribe} 
+          <Button
+            variant="primary"
+            size="md"
+            onClick={handleSubscribe}
             className="whitespace-nowrap flex-shrink-0 h-12"
           >
             Subscribe
@@ -58,13 +63,23 @@ export const Newsletter: React.FC<NewsletterProps> = ({ layout = "horizontal", c
             onChange={(e) => setEmail(e.target.value)}
             fullWidth
           />
-          <Button variant="primary" size="md" fullWidth onClick={handleSubscribe}>
+          <Button
+            variant="primary"
+            size="md"
+            fullWidth
+            onClick={handleSubscribe}
+          >
             Subscribe
           </Button>
         </div>
       )}
-      <p className={cn("text-xs text-gray-500", layout === "vertical" ? "mt-3" : "mt-2")}>
-        {CONTENT.footer.newsletter.agree} {" "}
+      <p
+        className={cn(
+          "text-xs text-gray-500",
+          layout === "vertical" ? "mt-3" : "mt-2",
+        )}
+      >
+        {CONTENT.footer.newsletter.agree}{" "}
         <Link href={getHref("/privacy", locale)} className="underline">
           {CONTENT.footer.newsletter.privacy}
         </Link>{" "}

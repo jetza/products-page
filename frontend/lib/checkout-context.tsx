@@ -74,21 +74,21 @@ export interface CheckoutState {
   // Step 1: Email
   email: string;
   subscribeNewsletter: boolean;
-  
+
   // Step 2: Delivery
   deliveryInfo: DeliveryInfo | null;
-  
+
   // Step 3: Shipping
   shippingMethod: ShippingMethod | null;
-  
+
   // Step 4: Payment
   paymentInfo: PaymentInfo | null;
   billingInfo: BillingInfo | null;
-  
+
   // Discount
   discountCode: string;
   discountAmount: number;
-  
+
   // Order status
   isProcessing: boolean;
   orderCompleted: boolean;
@@ -137,7 +137,10 @@ type CheckoutAction =
   | { type: "RESET_CHECKOUT" };
 
 // Reducer
-function checkoutReducer(state: CheckoutState, action: CheckoutAction): CheckoutState {
+function checkoutReducer(
+  state: CheckoutState,
+  action: CheckoutAction,
+): CheckoutState {
   switch (action.type) {
     case "SET_EMAIL":
       return {
@@ -145,52 +148,52 @@ function checkoutReducer(state: CheckoutState, action: CheckoutAction): Checkout
         email: action.payload.email,
         subscribeNewsletter: action.payload.subscribe,
       };
-    
+
     case "SET_DELIVERY_INFO":
       return {
         ...state,
         deliveryInfo: action.payload,
       };
-    
+
     case "SET_SHIPPING_METHOD":
       return {
         ...state,
         shippingMethod: action.payload,
       };
-    
+
     case "SET_PAYMENT_INFO":
       return {
         ...state,
         paymentInfo: action.payload,
       };
-    
+
     case "SET_BILLING_INFO":
       return {
         ...state,
         billingInfo: action.payload,
       };
-    
+
     case "SET_DISCOUNT":
       return {
         ...state,
         discountCode: action.payload.code,
         discountAmount: action.payload.amount,
       };
-    
+
     case "REMOVE_DISCOUNT":
       return {
         ...state,
         discountCode: "",
         discountAmount: 0,
       };
-    
+
     case "START_PROCESSING":
       return {
         ...state,
         isProcessing: true,
         error: null,
       };
-    
+
     case "ORDER_SUCCESS":
       return {
         ...state,
@@ -199,17 +202,17 @@ function checkoutReducer(state: CheckoutState, action: CheckoutAction): Checkout
         completedOrder: action.payload,
         error: null,
       };
-    
+
     case "ORDER_ERROR":
       return {
         ...state,
         isProcessing: false,
         error: action.payload,
       };
-    
+
     case "RESET_CHECKOUT":
       return initialState;
-    
+
     default:
       return state;
   }
@@ -225,11 +228,18 @@ interface CheckoutContextValue {
   setBillingInfo: (info: BillingInfo) => void;
   setDiscount: (code: string, amount: number) => void;
   removeDiscount: () => void;
-  completeOrder: (items: OrderItem[], subtotal: number, shipping: number, taxes: number) => Promise<void>;
+  completeOrder: (
+    items: OrderItem[],
+    subtotal: number,
+    shipping: number,
+    taxes: number,
+  ) => Promise<void>;
   resetCheckout: () => void;
 }
 
-export const CheckoutContext = createContext<CheckoutContextValue | undefined>(undefined);
+export const CheckoutContext = createContext<CheckoutContextValue | undefined>(
+  undefined,
+);
 
 // Provider
 export function CheckoutProvider({ children }: { children: ReactNode }) {
@@ -267,7 +277,7 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
     items: OrderItem[],
     subtotal: number,
     shipping: number,
-    taxes: number
+    taxes: number,
   ) => {
     try {
       dispatch({ type: "START_PROCESSING" });
@@ -275,7 +285,7 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       const orderNumber = `#${Math.floor(100000 + Math.random() * 900000)}`;
-      
+
       const completedOrder: CompletedOrder = {
         orderNumber,
         date: new Date().toISOString(),
@@ -300,7 +310,8 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       dispatch({
         type: "ORDER_ERROR",
-        payload: error instanceof Error ? error.message : "Failed to complete order",
+        payload:
+          error instanceof Error ? error.message : "Failed to complete order",
       });
     }
   };

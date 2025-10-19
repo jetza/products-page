@@ -13,8 +13,23 @@ export interface UserDataFieldProps {
   className?: string;
 }
 
-export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps>(
-  ({ icon, label, value, number, numberLabel, onEdit, variant = "desktop", className }, ref) => {
+export const UserDataField = React.forwardRef<
+  HTMLDivElement,
+  UserDataFieldProps
+>(
+  (
+    {
+      icon,
+      label,
+      value,
+      number,
+      numberLabel,
+      onEdit,
+      variant = "desktop",
+      className,
+    },
+    ref,
+  ) => {
     if (variant === "desktop") {
       return (
         <div
@@ -23,7 +38,7 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
             "w-[600px] min-h-[79px]",
             "flex items-center p-4 gap-6",
             "bg-white border border-gray-200 rounded",
-            className
+            className,
           )}
         >
           <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
@@ -38,18 +53,18 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
           {number && (
             <div className="flex flex-col flex-1 gap-1">
               {numberLabel && (
-                <span className="text-sm font-normal text-gray-400">{numberLabel}</span>
+                <span className="text-sm font-normal text-gray-400">
+                  {numberLabel}
+                </span>
               )}
-              <span className="text-base font-normal text-black whitespace-nowrap">{number}</span>
+              <span className="text-base font-normal text-black whitespace-nowrap">
+                {number}
+              </span>
             </div>
           )}
 
           {onEdit && (
-            <Button
-              variant="secondary"
-              size="md"
-              onClick={onEdit}
-            >
+            <Button variant="secondary" size="md" onClick={onEdit}>
               Change
             </Button>
           )}
@@ -63,12 +78,10 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
         className={cn(
           "w-full p-4 flex flex-col",
           "bg-white border border-gray-200 rounded",
-          className
+          className,
         )}
       >
-
         <div className="flex items-start gap-4 mb-4">
-
           <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
             {icon}
           </div>
@@ -80,9 +93,13 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
             {number && (
               <div className="flex flex-col gap-1 mt-2">
                 {numberLabel && (
-                  <span className="text-sm font-normal text-gray-400">{numberLabel}</span>
+                  <span className="text-sm font-normal text-gray-400">
+                    {numberLabel}
+                  </span>
                 )}
-                <span className="text-base font-normal text-black">{number}</span>
+                <span className="text-base font-normal text-black">
+                  {number}
+                </span>
               </div>
             )}
           </div>
@@ -100,7 +117,7 @@ export const UserDataField = React.forwardRef<HTMLDivElement, UserDataFieldProps
         )}
       </div>
     );
-  }
+  },
 );
 
 UserDataField.displayName = "UserDataField";

@@ -12,7 +12,12 @@ import { DeliveryInfo } from "@/lib/checkout-context";
 import { DeliveryForm } from "./DeliveryForm";
 import { CONTENT } from "@/lib/constants/content";
 
-export type CheckoutStep = "email" | "delivery" | "shipping" | "payment" | "review";
+export type CheckoutStep =
+  | "email"
+  | "delivery"
+  | "shipping"
+  | "payment"
+  | "review";
 
 interface CheckoutFormProps {
   isMobile?: boolean;
@@ -27,7 +32,9 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
   const locale = getCurrentLocale();
   const [currentStep, setCurrentStep] = useState<CheckoutStep>("email");
   const [email, setEmailLocal] = useState(state.email);
-  const [subscribeNewsletter, setSubscribeNewsletter] = useState(state.subscribeNewsletter);
+  const [subscribeNewsletter, setSubscribeNewsletter] = useState(
+    state.subscribeNewsletter,
+  );
 
   const handleEmailNext = () => {
     if (!email.trim()) {
@@ -51,10 +58,14 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           {currentStep === "email" && (
             <>
               <p className="text-xs text-gray-600 mb-4">
-                {CONTENT.auth.register.haveAccount} {" "}
-                <Link href={getHref("/login", locale)} className="font-semibold underline">
+                {CONTENT.auth.register.haveAccount}{" "}
+                <Link
+                  href={getHref("/login", locale)}
+                  className="font-semibold underline"
+                >
                   {CONTENT.auth.register.loginLink}
-                </Link>.
+                </Link>
+                .
               </p>
               <Input
                 type="email"
@@ -83,15 +94,17 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <div className="border-t border-gray-200 pt-6 mb-6">
           <h2 className="text-sm font-semibold mb-4">2. Delivery details</h2>
           {currentStep === "delivery" && (
-            <DeliveryForm 
+            <DeliveryForm
               onSubmit={handleDeliverySubmit}
               initialData={state.deliveryInfo}
             />
           )}
           {currentStep !== "delivery" && state.deliveryInfo && (
             <p className="text-xs text-gray-600">
-              {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}<br />
-              {state.deliveryInfo.address}<br />
+              {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}
+              <br />
+              {state.deliveryInfo.address}
+              <br />
               {state.deliveryInfo.city}, {state.deliveryInfo.postalCode}
             </p>
           )}
@@ -101,8 +114,14 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           <h2 className="text-sm font-semibold mb-4">3. Shipping method</h2>
           {currentStep === "shipping" && (
             <div>
-              <p className="text-sm text-gray-600 mb-6">{CONTENT.checkout.selectShipping}</p>
-              <Button variant="primary" size="lg" onClick={() => setCurrentStep("payment")}>
+              <p className="text-sm text-gray-600 mb-6">
+                {CONTENT.checkout.selectShipping}
+              </p>
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => setCurrentStep("payment")}
+              >
                 Continue
               </Button>
             </div>
@@ -113,8 +132,14 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           <h2 className="text-sm font-semibold mb-4">4. Payment</h2>
           {currentStep === "payment" && (
             <div>
-              <p className="text-sm text-gray-600 mb-6">{CONTENT.checkout.enterPayment}</p>
-              <Button variant="primary" size="lg" onClick={() => setCurrentStep("review")}>
+              <p className="text-sm text-gray-600 mb-6">
+                {CONTENT.checkout.enterPayment}
+              </p>
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => setCurrentStep("review")}
+              >
                 Review
               </Button>
             </div>
@@ -126,15 +151,21 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           {currentStep === "review" && (
             <div className="space-y-4">
               <div>
-                <p className="text-xs font-semibold mb-1">{CONTENT.checkout.email}</p>
+                <p className="text-xs font-semibold mb-1">
+                  {CONTENT.checkout.email}
+                </p>
                 <p className="text-sm text-gray-600">{state.email}</p>
               </div>
               {state.deliveryInfo && (
                 <div>
-                  <p className="text-xs font-semibold mb-1">{CONTENT.checkout.delivery}</p>
+                  <p className="text-xs font-semibold mb-1">
+                    {CONTENT.checkout.delivery}
+                  </p>
                   <p className="text-sm text-gray-600">
-                    {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}<br />
-                    {state.deliveryInfo.address}<br />
+                    {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}
+                    <br />
+                    {state.deliveryInfo.address}
+                    <br />
                     {state.deliveryInfo.city}, {state.deliveryInfo.postalCode}
                   </p>
                 </div>
@@ -144,9 +175,9 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         </div>
 
         <div className="border-t border-gray-200 pt-6">
-          <Button 
-            variant="primary" 
-            size="lg" 
+          <Button
+            variant="primary"
+            size="lg"
             onClick={onPlaceOrder}
             disabled={currentStep !== "review" || state.isProcessing}
             className="w-full"
@@ -167,10 +198,14 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <div className="mb-6 flex flex-col xl:flex-row xl:items-start xl:justify-between gap-2">
           <h2 className="text-body font-medium">1. Email</h2>
           <p className="text-sm text-gray-600">
-            {CONTENT.auth.register.haveAccount} {" "}
-            <Link href={getHref("/login", locale)} className="font-semibold underline">
+            {CONTENT.auth.register.haveAccount}{" "}
+            <Link
+              href={getHref("/login", locale)}
+              className="font-semibold underline"
+            >
               {CONTENT.auth.register.loginLink}
-            </Link>.
+            </Link>
+            .
           </p>
         </div>
 
@@ -208,15 +243,17 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
       <div className="border-t border-gray-200 pt-8 pb-8">
         <h2 className="text-body font-medium mb-6">2. Delivery details</h2>
         {currentStep === "delivery" && (
-          <DeliveryForm 
+          <DeliveryForm
             onSubmit={handleDeliverySubmit}
             initialData={state.deliveryInfo}
           />
         )}
         {currentStep !== "delivery" && state.deliveryInfo && (
           <p className="text-sm text-gray-600">
-            {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}<br />
-            {state.deliveryInfo.address}<br />
+            {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}
+            <br />
+            {state.deliveryInfo.address}
+            <br />
             {state.deliveryInfo.city}, {state.deliveryInfo.postalCode}
           </p>
         )}
@@ -226,9 +263,15 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <h2 className="text-body font-medium mb-6">3. Shipping method</h2>
         {currentStep === "shipping" && (
           <div>
-            <p className="text-sm text-gray-600 mb-6">{CONTENT.checkout.selectShipping} method...</p>
+            <p className="text-sm text-gray-600 mb-6">
+              {CONTENT.checkout.selectShipping} method...
+            </p>
             <div>
-              <Button variant="primary" size="lg" onClick={() => setCurrentStep("payment")}>
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => setCurrentStep("payment")}
+              >
                 Continue to payment
               </Button>
             </div>
@@ -240,9 +283,15 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <h2 className="text-body font-medium mb-6">4. Payment</h2>
         {currentStep === "payment" && (
           <div>
-            <p className="text-sm text-gray-600 mb-6">{CONTENT.checkout.enterPayment}...</p>
+            <p className="text-sm text-gray-600 mb-6">
+              {CONTENT.checkout.enterPayment}...
+            </p>
             <div>
-              <Button variant="primary" size="lg" onClick={() => setCurrentStep("review")}>
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => setCurrentStep("review")}
+              >
                 Review order
               </Button>
             </div>
@@ -256,17 +305,25 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           <div>
             <div className="space-y-4 mb-6">
               <div>
-                <h3 className="text-sm font-semibold mb-2">{CONTENT.checkout.email}</h3>
+                <h3 className="text-sm font-semibold mb-2">
+                  {CONTENT.checkout.email}
+                </h3>
                 <p className="text-sm text-gray-600">{state.email}</p>
               </div>
               {state.deliveryInfo && (
                 <div>
-                  <h3 className="text-sm font-semibold mb-2">{CONTENT.checkout.deliveryAddress}</h3>
+                  <h3 className="text-sm font-semibold mb-2">
+                    {CONTENT.checkout.deliveryAddress}
+                  </h3>
                   <p className="text-sm text-gray-600">
-                    {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}<br />
-                    {state.deliveryInfo.address}<br />
-                    {state.deliveryInfo.city}, {state.deliveryInfo.postalCode}<br />
-                    {state.deliveryInfo.country}<br />
+                    {state.deliveryInfo.firstName} {state.deliveryInfo.lastName}
+                    <br />
+                    {state.deliveryInfo.address}
+                    <br />
+                    {state.deliveryInfo.city}, {state.deliveryInfo.postalCode}
+                    <br />
+                    {state.deliveryInfo.country}
+                    <br />
                     {state.deliveryInfo.phone}
                   </p>
                 </div>

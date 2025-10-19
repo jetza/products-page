@@ -16,17 +16,20 @@ export const CONTENT = {
   emails: {
     verifyEmail: {
       title: "Verify your email",
-      greeting: (name: string) => `Hey ${name}, thanks for registering for an account on Sofa Society!`,
-      message1: "Before we get started, we just need to confirm that this is you.",
+      greeting: (name: string) =>
+        `Hey ${name}, thanks for registering for an account on Sofa Society!`,
+      message1:
+        "Before we get started, we just need to confirm that this is you.",
       message2: "Click below to verify your email address:",
       button: "Verify email",
     },
-    
+
     orderConfirmation: {
       title: "Order confirmation",
-      message1: (orderNumber: string) => 
+      message1: (orderNumber: string) =>
         `We are pleased to confirm that your order has been successfully placed and will be processed shortly. Your order number is #${orderNumber}.`,
-      message2: "You'll receive another update once your order is shipped. For any questions, feel free to contact us at info@sofasociety.com.",
+      message2:
+        "You'll receive another update once your order is shipped. For any questions, feel free to contact us at info@sofasociety.com.",
       thankYou: "Thank you for shopping with us!",
       deliveryAddress: "Delivery address",
       billingAddress: "Billing address",
@@ -36,26 +39,30 @@ export const CONTENT = {
       total: "Total",
       tax: (amount: string) => `Including ${amount} tax`,
     },
-    
+
     resetPassword: {
       title: "Reset your password",
-      message: "We received a request to reset your Sofa Society account password. Click below to set a new password:",
+      message:
+        "We received a request to reset your Sofa Society account password. Click below to set a new password:",
       button: "Reset password",
-      disclaimer: "If you didn't request this change, please ignore this email, and your current password will remain unchanged.",
+      disclaimer:
+        "If you didn't request this change, please ignore this email, and your current password will remain unchanged.",
     },
-    
+
     shippingUpdate: {
       title: "Shipping update",
-      message1: (orderNumber: string) => 
+      message1: (orderNumber: string) =>
         `Great news! Your order #${orderNumber} is now on its way to you. Here are the shipping details.`,
       message2: "You can track your package by clicking below:",
       button: "Order details",
-      thankYou: "Thank you for choosing Sofa Society. We're excited for your new sofa to find its home with you!",
+      thankYou:
+        "Thank you for choosing Sofa Society. We're excited for your new sofa to find its home with you!",
     },
-    
+
     welcome: {
       title: "Welcome to Sofa Society!",
-      greeting: "Welcome to Sofa Society! We're excited to have you join our community of comfort enthusiasts. With our carefully crafted sofas, you're just steps away from adding elegance and coziness to your living space.",
+      greeting:
+        "Welcome to Sofa Society! We're excited to have you join our community of comfort enthusiasts. With our carefully crafted sofas, you're just steps away from adding elegance and coziness to your living space.",
       subheading: "As a new member, here's what you can expect:",
       benefits: [
         "Premium, high-quality sofas in a range of styles and materials",
@@ -108,10 +115,11 @@ export const CONTENT = {
     },
     newsletter: {
       title: "Join our newsletter",
-      coupons: "Get exclusive offers, discounts, and inspiration straight to your inbox.",
+      coupons:
+        "Get exclusive offers, discounts, and inspiration straight to your inbox.",
       agree: "By subscribing, you agree to our",
       privacy: "Privacy Policy",
-      consent: "and consent to receive marketing emails."
+      consent: "and consent to receive marketing emails.",
     },
   },
 
@@ -155,8 +163,10 @@ export const CONTENT = {
     // Order Confirmation Page
     confirmation: {
       title: "Thank you for your order!",
-      message: "We are pleased to confirm that your order has been successfully placed and will be processed shortly.",
-      receiptSent: "We have sent you the receipt and order details to your email address",
+      message:
+        "We are pleased to confirm that your order has been successfully placed and will be processed shortly.",
+      receiptSent:
+        "We have sent you the receipt and order details to your email address",
       orderNumberLabel: "Your order number is",
       backToHome: "Back to home page",
       deliveryAddress: "Delivery address",
@@ -190,7 +200,8 @@ export const CONTENT = {
     estimatedTotal: "Estimated total",
     viewCart: "View cart",
     proceedToCheckout: "Proceed to checkout",
-    itemsInCart: (count: number) => `${count} item${count !== 1 ? 's' : ''} in cart`,
+    itemsInCart: (count: number) =>
+      `${count} item${count !== 1 ? "s" : ""} in cart`,
   },
 
   // Checkout
@@ -205,7 +216,8 @@ export const CONTENT = {
     continueToShipping: "Continue to shipping",
     selectShipping: "Select shipping option",
     enterPayment: "Enter payment details",
-    orderItems: (count: number) => `Order - ${count} item${count !== 1 ? 's' : ''}`,
+    orderItems: (count: number) =>
+      `Order - ${count} item${count !== 1 ? "s" : ""}`,
     // Form labels
     firstName: "First Name",
     lastName: "Last Name",
@@ -292,8 +304,10 @@ export const CONTENT = {
     addAddress: "Add address",
     resetPassword: "Reset password",
     // Messages
-    emailChangeNote: "If you want to change your email please contact us via customer support.",
-    passwordResetNote: "To change your password, we'll send you an email. Just click on the reset button below.",
+    emailChangeNote:
+      "If you want to change your email please contact us via customer support.",
+    passwordResetNote:
+      "To change your password, we'll send you an email. Just click on the reset button below.",
     // Orders
     orderLabel: "Order:",
     orderNumber: "Order #",
@@ -307,7 +321,8 @@ export const CONTENT = {
     generic: "Something went wrong. Please try again.",
     notFound: {
       title: "Page not found",
-      description: "The page you are looking for doesn't exist or an error occurred. Go back, or head over to our home page.",
+      description:
+        "The page you are looking for doesn't exist or an error occurred. Go back, or head over to our home page.",
       button: "Back to home",
     },
     productNotFound: "Product not found",

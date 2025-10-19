@@ -6,19 +6,22 @@ interface CartBadgeProps {
   className?: string;
 }
 
-export function CartBadge({ count, variant = "dark", className }: CartBadgeProps) {
+export function CartBadge({
+  count,
+  variant = "dark",
+  className,
+}: CartBadgeProps) {
   if (count <= 0) return null;
 
-  const variantStyles = variant === "light" 
-    ? "bg-white text-black" 
-    : "bg-black text-white";
+  const variantStyles =
+    variant === "light" ? "bg-white text-black" : "bg-black text-white";
 
   return (
-    <span 
+    <span
       className={cn(
         "absolute -top-0.5 -right-0.5 w-4 h-4 text-[10px] font-medium rounded-full flex items-center justify-center",
         variantStyles,
-        className
+        className,
       )}
     >
       {count}

@@ -45,7 +45,7 @@ export function ProductCard({
             {title}
           </h3>
           <p className="text-sm text-gray-500 truncate">{collection}</p>
-          
+
           {colors.length > 0 && (
             <div className="flex gap-1.5 mt-2">
               {colors.map((color) => (

@@ -1,4 +1,4 @@
-import { FilterOption } from './filter-options.config';
+import { FilterOption } from "./filter-options.config";
 
 export const FURNITURE_CATEGORIES: FilterOption[] = [
   { id: "one-seater", label: "One seater" },

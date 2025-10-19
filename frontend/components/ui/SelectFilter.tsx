@@ -35,7 +35,10 @@ export const SelectFilter: React.FC<SelectFilterProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -77,13 +80,15 @@ export const SelectFilter: React.FC<SelectFilterProps> = ({
       </DropdownButton>
 
       {isOpen && !disabled && (
-        <div className={cn(
-          "absolute z-50 mt-2",
-          "bg-white border border-gray-300 rounded",
-          "shadow-lg",
-          "min-w-full",
-          "max-h-[300px] overflow-y-auto"
-        )}>
+        <div
+          className={cn(
+            "absolute z-50 mt-2",
+            "bg-white border border-gray-300 rounded",
+            "shadow-lg",
+            "min-w-full",
+            "max-h-[300px] overflow-y-auto",
+          )}
+        >
           {options.map((option) => (
             <button
               key={option.value}
@@ -95,7 +100,7 @@ export const SelectFilter: React.FC<SelectFilterProps> = ({
                 "hover:bg-gray-50 hover:font-semibold",
                 "focus:outline-none",
                 "whitespace-nowrap",
-                option.value === value && "bg-gray-100 font-semibold"
+                option.value === value && "bg-gray-100 font-semibold",
               )}
             >
               {option.label}

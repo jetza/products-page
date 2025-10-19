@@ -12,18 +12,17 @@ interface FooterProps {
   className?: string;
 }
 
-export const Footer: React.FC<FooterProps> = ({ 
+export const Footer: React.FC<FooterProps> = ({
   variant = "desktop",
-  className 
+  className,
 }) => {
-
   if (variant === "mobile") {
     return (
       <footer className={cn("bg-gray-50 py-12", className)}>
         <div className="px-5">
           <div className="mx-auto px-4">
             <Newsletter className="mb-12" />
-            
+
             <FooterLogo className="mb-8" />
 
             <FooterLinks variant="mobile" />

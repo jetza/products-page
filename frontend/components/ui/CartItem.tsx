@@ -36,7 +36,7 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
       onRemove,
       className,
     },
-    ref
+    ref,
   ) => {
     const handleDecrease = () => {
       if (quantity > 1 && onQuantityChange) {
@@ -59,7 +59,10 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
     return (
       <div
         ref={ref}
-        className={cn("flex items-start gap-4 md:gap-8 w-full md:w-auto", className)}
+        className={cn(
+          "flex items-start gap-4 md:gap-8 w-full md:w-auto",
+          className,
+        )}
       >
         <div className="flex-shrink-0 w-[120px] h-[158px] bg-gray-100 overflow-hidden relative">
           <Image
@@ -74,23 +77,33 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
         <div className="flex-1 min-w-0 flex flex-col h-[158px]">
           <div className="flex items-start justify-between mb-3 md:mb-4">
             <div className="flex-1">
-              <h3 className="text-base md:text-body font-medium mb-1 md:mb-2">{title}</h3>
+              <h3 className="text-base md:text-body font-medium mb-1 md:mb-2">
+                {title}
+              </h3>
               {variant ? (
-                <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">{variant}</p>
+                <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">
+                  {variant}
+                </p>
               ) : (
-                <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">{CONTENT.common.noVariant}</p>
+                <p className="text-sm md:text-base text-gray-500 leading-[140%] mb-1 md:mb-2">
+                  {CONTENT.common.noVariant}
+                </p>
               )}
-              
+
               <div>
-                <div className={cn(
-                  "text-body md:text-button-big font-bold",
-                  originalPrice ? "text-error" : "text-black"
-                )}>
-                  {currency}{price}
+                <div
+                  className={cn(
+                    "text-body md:text-button-big font-bold",
+                    originalPrice ? "text-error" : "text-black",
+                  )}
+                >
+                  {currency}
+                  {price}
                 </div>
                 {originalPrice && (
                   <div className="text-xs md:text-sm text-gray-400 line-through">
-                    {currency}{originalPrice}
+                    {currency}
+                    {originalPrice}
                   </div>
                 )}
               </div>
@@ -114,7 +127,7 @@ export const CartItem = React.forwardRef<HTMLDivElement, CartItemProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 CartItem.displayName = "CartItem";

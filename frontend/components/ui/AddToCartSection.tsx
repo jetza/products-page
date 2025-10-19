@@ -36,9 +36,7 @@ export function AddToCartSection({
           Add to cart
         </Button>
       </div>
-      <p className="text-sm text-gray-500">
-        Estimate delivery 2-3 days
-      </p>
+      <p className="text-sm text-gray-500">Estimate delivery 2-3 days</p>
     </div>
   );
 }

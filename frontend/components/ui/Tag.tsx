@@ -28,13 +28,13 @@ export const Tag = React.forwardRef<HTMLDivElement, TagProps>(
           variant === "informative" && "bg-yellow text-black",
           variant === "disabled" && "bg-gray-100 text-gray-400",
           variant === "discount" && "bg-error text-white",
-          className
+          className,
         )}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 
 Tag.displayName = "Tag";

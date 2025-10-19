@@ -20,14 +20,17 @@ export default function CheckoutPage() {
   const [discountCode, setDiscountCode] = useState(state.discountCode);
   const [errorModalOpen, setErrorModalOpen] = useState(false);
 
-  const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
   const shipping = 30.0;
   const taxes = 0;
   const total = subtotal + shipping + taxes - state.discountAmount;
 
   const handlePlaceOrder = async () => {
     try {
-      const orderItems = items.map(item => ({
+      const orderItems = items.map((item) => ({
         id: item.id,
         title: item.title,
         variant: item.variant,
@@ -59,8 +62,8 @@ export default function CheckoutPage() {
               <CheckoutForm onPlaceOrder={handlePlaceOrder} />
             </div>
           </div>
-          <div className="bg-gray-100 min-h-screen" style={{ width: '636px' }}>
-            <div className="px-12" style={{ paddingTop: '174px' }}>
+          <div className="bg-gray-100 min-h-screen" style={{ width: "636px" }}>
+            <div className="px-12" style={{ paddingTop: "174px" }}>
               <CheckoutOrderSummary
                 items={items}
                 discountCode={discountCode}
@@ -105,7 +108,9 @@ export default function CheckoutPage() {
         showCloseButton={true}
         variant="confirmation"
       >
-        <div className="text-center text-gray-700">Failed to complete order. Please try again.</div>
+        <div className="text-center text-gray-700">
+          Failed to complete order. Please try again.
+        </div>
       </Modal>
     </>
   );

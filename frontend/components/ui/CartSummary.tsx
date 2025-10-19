@@ -18,41 +18,35 @@ export interface CartSummaryProps {
 
 export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
   (
-    {
-      total,
-      currency = "€",
-      onCheckout,
-      showViewCart = true,
-      className,
-    },
-    ref
+    { total, currency = "€", onCheckout, showViewCart = true, className },
+    ref,
   ) => {
-  const router = useRouter();
-  const locale = getCurrentLocale();
-    
+    const router = useRouter();
+    const locale = getCurrentLocale();
+
     return (
       <div ref={ref} className={cn("w-[461px] flex flex-col gap-8", className)}>
-
         <div className="flex items-center justify-between text-body">
           <span className="font-semibold">{CONTENT.order.summary.total}</span>
           <span className="font-bold">
-            {currency}{total.toFixed(2)}
+            {currency}
+            {total.toFixed(2)}
           </span>
         </div>
 
         {showViewCart ? (
-          <Button 
-            variant="primary" 
-            size="lg" 
+          <Button
+            variant="primary"
+            size="lg"
             className="w-full"
-            onClick={() => router.push(getHref('/cart', locale))}
+            onClick={() => router.push(getHref("/cart", locale))}
           >
             {CONTENT.cart.viewCart}
           </Button>
         ) : (
-          <Button 
-            variant="primary" 
-            size="lg" 
+          <Button
+            variant="primary"
+            size="lg"
             className="w-full"
             onClick={onCheckout}
           >
@@ -61,7 +55,7 @@ export const CartSummary = React.forwardRef<HTMLDivElement, CartSummaryProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 CartSummary.displayName = "CartSummary";

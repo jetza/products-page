@@ -29,11 +29,8 @@ export const DeleteButton = React.forwardRef<
           "border border-black rounded",
           "hover:bg-gray-50",
         ],
-        variant === "ghost" && [
-          "w-11 h-11",
-          "hover:bg-gray-100 rounded",
-        ],
-        className
+        variant === "ghost" && ["w-11 h-11", "hover:bg-gray-100 rounded"],
+        className,
       )}
       {...props}
     >

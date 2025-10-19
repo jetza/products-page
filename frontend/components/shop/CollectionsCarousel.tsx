@@ -18,12 +18,12 @@ export function CollectionsCarousel() {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const firstCard = scrollContainerRef.current.querySelector('a');
+      const firstCard = scrollContainerRef.current.querySelector("a");
       if (firstCard) {
         const cardWidth = firstCard.offsetWidth;
         const gap = 24;
         const scrollAmount = cardWidth + gap;
-        
+
         scrollContainerRef.current.scrollBy({
           left: direction === "left" ? -scrollAmount : scrollAmount,
           behavior: "smooth",
@@ -37,13 +37,15 @@ export function CollectionsCarousel() {
       <div className="px-8 md:px-5">
         <div className="mx-auto md:px-24">
           <div className="flex items-center justify-between mb-6 md:mb-8">
-            <h2 className="text-h3 md:text-h2 font-medium text-black">{CONTENT.filters.collections}</h2>
+            <h2 className="text-h3 md:text-h2 font-medium text-black">
+              {CONTENT.filters.collections}
+            </h2>
 
             <Button
               variant="primary"
               size="sm"
               className="text-xs md:hidden"
-              onClick={() => router.push('/collection')}
+              onClick={() => router.push("/collection")}
             >
               {CONTENT.common.viewAll}
             </Button>
@@ -52,11 +54,11 @@ export function CollectionsCarousel() {
               <Button
                 variant="primary"
                 size="md"
-                onClick={() => router.push('/collection')}
+                onClick={() => router.push("/collection")}
               >
                 {CONTENT.common.viewAll}
               </Button>
-              
+
               <div className="flex gap-2">
                 <ArrowButton
                   direction="left"
@@ -76,9 +78,9 @@ export function CollectionsCarousel() {
             </div>
           </div>
 
-          <div 
+          <div
             ref={scrollContainerRef}
-            className="overflow-x-auto scrollbar-hide -mx-4 md:-mx-24 px-4 md:px-24" 
+            className="overflow-x-auto scrollbar-hide -mx-4 md:-mx-24 px-4 md:px-24"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div className="flex gap-3 md:gap-6">

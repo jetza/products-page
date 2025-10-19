@@ -10,14 +10,20 @@ interface CollectionInspiredInteriorProps {
   collectionTitle?: string;
 }
 
-export function CollectionInspiredInterior({ title, collectionName, collectionTitle }: CollectionInspiredInteriorProps) {
+export function CollectionInspiredInterior({
+  title,
+  collectionName,
+  collectionTitle,
+}: CollectionInspiredInteriorProps) {
   const locale = getCurrentLocale();
   return (
     <section className="py-12 md:py-20 bg-white">
       <div className="px-8 md:px-5">
         <div className="mx-auto md:px-24">
-          <h2 className="text-h4 md:text-h2 font-semibold mb-8 md:mb-12">{CONTENT.product.collectionInspiredInterior}</h2>
-          
+          <h2 className="text-h4 md:text-h2 font-semibold mb-8 md:mb-12">
+            {CONTENT.product.collectionInspiredInterior}
+          </h2>
+
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded overflow-hidden mb-6 md:mb-8">
             <Image
               src="/Product page/image1.png"
@@ -54,10 +60,12 @@ export function CollectionInspiredInterior({ title, collectionName, collectionTi
                 className="object-cover scale-[1.2] md:scale-100"
               />
             </div>
-            
+
             <div>
-              <h3 className="text-h4 md:text-h3 font-semibold mb-6 md:mb-8">{title}</h3>
-              <Link 
+              <h3 className="text-h4 md:text-h3 font-semibold mb-6 md:mb-8">
+                {title}
+              </h3>
+              <Link
                 href={getHref(`/collections/${collectionName}`, locale)}
                 className="text-sm md:text-body font-medium text-black hover:underline inline-flex items-center gap-2"
               >

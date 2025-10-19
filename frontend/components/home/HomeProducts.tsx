@@ -22,7 +22,9 @@ const categoryDefaultImages = {
 };
 
 export function HomeProducts({ title, categories }: HomeProductsProps) {
-  const [categoryImages, setCategoryImages] = useState<Record<string, string>>({});
+  const [categoryImages, setCategoryImages] = useState<Record<string, string>>(
+    {},
+  );
 
   useEffect(() => {
     const images: Record<string, string> = {};
@@ -41,31 +43,31 @@ export function HomeProducts({ title, categories }: HomeProductsProps) {
           </h2>
 
           <div className="grid grid-cols-2 gap-6 lg:gap-8">
-          {categories.map((category) => (
-            <Link
-              key={category.slug}
-              href={`/shop?category=${category.slug}`}
-              className="group"
-            >
-              <div className="bg-gray-100 overflow-hidden aspect-[4/3] relative">
-                {categoryImages[category.slug] && (
-                  <Image
-                    src={categoryImages[category.slug]}
-                    alt={category.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                )}
-              </div>
+            {categories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/shop?category=${category.slug}`}
+                className="group"
+              >
+                <div className="bg-gray-100 overflow-hidden aspect-[4/3] relative">
+                  {categoryImages[category.slug] && (
+                    <Image
+                      src={categoryImages[category.slug]}
+                      alt={category.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
+                </div>
                 <FadeInOnScroll>
                   <h3 className="text-big text-black mt-4 group-hover:text-gray-700 transition-colors">
                     {category.title}
                   </h3>
                 </FadeInOnScroll>
-            </Link>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

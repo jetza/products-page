@@ -4,8 +4,11 @@ import React from "react";
 import { CheckboxFilter } from "./CheckboxFilter";
 import { PriceSlider } from "./PriceSlider";
 import { Button } from "@/components/ui/Buttons/Button";
-import { CloseButton } from "@/components/ui/Buttons/CloseButton";
-import { FilterOption, MATERIALS, COLORS_FILTER } from "@/lib/constants/filter-options.config";
+import {
+  FilterOption,
+  MATERIALS,
+  COLORS_FILTER,
+} from "@/lib/constants/filter-options.config";
 import { CONTENT } from "@/lib/constants/content";
 
 interface MobileFilterDrawerProps {
@@ -27,7 +30,6 @@ interface MobileFilterDrawerProps {
   onColorsChange: (values: string[]) => void;
   onPriceChange: (range: [number, number]) => void;
   onApply: () => void;
-  // Optional props to show/hide specific filters
   showPriceFilter?: boolean;
   showColorFilter?: boolean;
   showMaterialFilter?: boolean;
@@ -62,17 +64,16 @@ export function MobileFilterDrawer({
 
   return (
     <>
-      <div
-        className="fixed inset-0 bg-black/20 z-40"
-        onClick={onClose}
-      />
+      <div className="fixed inset-0 bg-black/20 z-40" onClick={onClose} />
 
       <div className="fixed inset-x-0 bottom-0 bg-white z-50 rounded-t-3xl overflow-hidden max-h-[80vh]">
         <div className="overflow-y-auto px-5 pt-8 pb-6 max-h-[calc(80vh-80px)]">
           <div className="space-y-6">
             {showPriceFilter && (
               <div>
-                <h3 className="text-xl font-medium mb-4">{CONTENT.filters.price}</h3>
+                <h3 className="text-xl font-medium mb-4">
+                  {CONTENT.filters.price}
+                </h3>
                 <PriceSlider
                   min={0}
                   max={5000}
@@ -84,7 +85,9 @@ export function MobileFilterDrawer({
 
             {showColorFilter && (
               <div>
-                <h3 className="text-xl font-medium mb-4">{CONTENT.filters.color}</h3>
+                <h3 className="text-xl font-medium mb-4">
+                  {CONTENT.filters.color}
+                </h3>
                 <CheckboxFilter
                   options={COLORS_FILTER}
                   selected={selectedColors}
@@ -95,7 +98,9 @@ export function MobileFilterDrawer({
 
             {showMaterialFilter && (
               <div>
-                <h3 className="text-xl font-medium mb-4">{CONTENT.filters.materials}</h3>
+                <h3 className="text-xl font-medium mb-4">
+                  {CONTENT.filters.materials}
+                </h3>
                 <CheckboxFilter
                   options={MATERIALS}
                   selected={selectedMaterials}
@@ -106,7 +111,9 @@ export function MobileFilterDrawer({
 
             {showCollectionFilter && collections.length > 0 && (
               <div>
-                <h3 className="text-xl font-medium mb-4">{CONTENT.filters.collection}</h3>
+                <h3 className="text-xl font-medium mb-4">
+                  {CONTENT.filters.collection}
+                </h3>
                 <CheckboxFilter
                   options={collections}
                   selected={selectedCollections}
@@ -116,7 +123,9 @@ export function MobileFilterDrawer({
             )}
 
             <div>
-              <h3 className="text-xl font-medium mb-4">{CONTENT.filters.category}</h3>
+              <h3 className="text-xl font-medium mb-4">
+                {CONTENT.filters.category}
+              </h3>
               <CheckboxFilter
                 options={categories}
                 selected={selectedCategories}
@@ -125,7 +134,9 @@ export function MobileFilterDrawer({
             </div>
 
             <div>
-              <h3 className="text-xl font-medium mb-4">{CONTENT.filters.type}</h3>
+              <h3 className="text-xl font-medium mb-4">
+                {CONTENT.filters.type}
+              </h3>
               <CheckboxFilter
                 options={types}
                 selected={selectedTypes}

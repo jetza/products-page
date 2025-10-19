@@ -7,7 +7,7 @@ export const COLOR_VALUE_MAP: Record<string, string> = {
   // Main colors from color picker
   "Light Gray": "var(--color-product-light-gray)",
   "Dark Gray": "var(--color-product-dark-gray)",
-  "Black": "var(--color-product-black)",
+  Black: "var(--color-product-black)",
 };
 
 /**
@@ -19,7 +19,7 @@ export const COLOR_CLASS_MAP: Record<string, string> = {
   // Main colors from color picker
   "Light Gray": "bg-product-light-gray",
   "Dark Gray": "bg-product-dark-gray",
-  "Black": "bg-product-black",
+  Black: "bg-product-black",
 };
 
 /**

@@ -26,11 +26,23 @@ export const MyOrders: React.FC = () => {
           const StatusIcon = statusIcons[order.status];
           const displayItems = [...order.items].slice(0, 4).reverse();
           const remainingCount = Math.max(0, order.items.length - 4);
-          
-          console.log('Order:', order.orderNumber, 'Total items:', order.items.length, 'Display:', displayItems.length, 'Remaining:', remainingCount);
-          
+
+          console.log(
+            "Order:",
+            order.orderNumber,
+            "Total items:",
+            order.items.length,
+            "Display:",
+            displayItems.length,
+            "Remaining:",
+            remainingCount,
+          );
+
           return (
-            <div key={order.id} className="border border-gray-200 rounded-lg p-4 md:p-6">
+            <div
+              key={order.id}
+              className="border border-gray-200 rounded-lg p-4 md:p-6"
+            >
               <div className="md:hidden space-y-4">
                 <div className="flex flex-row-reverse gap-2">
                   {displayItems.map((item, index) => (
@@ -62,18 +74,17 @@ export const MyOrders: React.FC = () => {
 
                 <div>
                   <p className="text-sm text-gray-900 mb-1">
-                    <span className="font-medium">{CONTENT.account.orderLabel}</span> {order.orderNumber}
+                    <span className="font-medium">
+                      {CONTENT.account.orderLabel}
+                    </span>{" "}
+                    {order.orderNumber}
                   </p>
                   <p className="text-xs text-gray-500">
                     Order date: {order.date}
                   </p>
                 </div>
 
-                <Button 
-                  variant="secondary" 
-                  size="sm"
-                  className="w-full"
-                >
+                <Button variant="secondary" size="sm" className="w-full">
                   Check status
                 </Button>
               </div>
@@ -82,13 +93,16 @@ export const MyOrders: React.FC = () => {
                 <div className="flex flex-col justify-between">
                   <div>
                     <p className="text-base text-gray-900 mb-1">
-                      <span className="font-medium">{CONTENT.account.orderLabel}</span> {order.orderNumber}
+                      <span className="font-medium">
+                        {CONTENT.account.orderLabel}
+                      </span>{" "}
+                      {order.orderNumber}
                     </p>
                     <p className="text-sm text-gray-500">
                       Order date: {order.date}
                     </p>
                   </div>
-                  
+
                   <Tag variant="primary" className="mt-4 self-start">
                     <StatusIcon className="w-4 h-4" />
                     {order.status}
@@ -119,8 +133,8 @@ export const MyOrders: React.FC = () => {
                     ))}
                   </div>
 
-                  <Button 
-                    variant="secondary" 
+                  <Button
+                    variant="secondary"
                     size="sm"
                     className="w-auto self-end"
                   >

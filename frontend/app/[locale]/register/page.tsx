@@ -42,7 +42,9 @@ export default function RegisterPage() {
         <div className="flex items-center justify-center px-6 py-12 overflow-y-auto">
           <div className="w-full max-w-md">
             <h1 className="text-h2 font-medium text-black mb-12">
-              {CONTENT.auth.register.title}<br />{CONTENT.auth.register.titleBrand}
+              {CONTENT.auth.register.title}
+              <br />
+              {CONTENT.auth.register.titleBrand}
             </h1>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -99,9 +101,13 @@ export default function RegisterPage() {
 
             <p className="text-base text-gray-500 mt-8">
               {CONTENT.auth.register.haveAccount}{" "}
-              <Link href={getHref("/login", locale)} className="text-black font-medium underline hover:no-underline">
+              <Link
+                href={getHref("/login", locale)}
+                className="text-black font-medium underline hover:no-underline"
+              >
                 {CONTENT.auth.register.loginLink}
-              </Link>.
+              </Link>
+              .
             </p>
           </div>
         </div>

@@ -17,7 +17,10 @@ export interface ProductCardProps {
   className?: string;
 }
 
-export const ProductCard = React.forwardRef<HTMLAnchorElement, ProductCardProps>(
+export const ProductCard = React.forwardRef<
+  HTMLAnchorElement,
+  ProductCardProps
+>(
   (
     {
       title,
@@ -29,7 +32,7 @@ export const ProductCard = React.forwardRef<HTMLAnchorElement, ProductCardProps>
       slug,
       className,
     },
-    ref
+    ref,
   ) => {
     const locale = getCurrentLocale();
     const href = getHref(`/shop/${slug}`, locale);
@@ -39,7 +42,7 @@ export const ProductCard = React.forwardRef<HTMLAnchorElement, ProductCardProps>
         ref={ref}
         className={cn(
           "group block bg-white overflow-hidden transition-all",
-          className
+          className,
         )}
       >
         <div className="relative w-full aspect-square bg-gray-100 overflow-hidden mb-2 md:mb-4">
@@ -57,21 +60,20 @@ export const ProductCard = React.forwardRef<HTMLAnchorElement, ProductCardProps>
             <h3 className="text-sm md:text-body font-medium text-black group-hover:text-gray-700 transition-colors mb-1">
               {title}
             </h3>
-            
+
             {collection && (
-              <p className="text-xs md:text-sm text-gray-500">
-                {collection}
-              </p>
+              <p className="text-xs md:text-sm text-gray-500">{collection}</p>
             )}
           </div>
-          
+
           <p className="text-sm md:text-body font-semibold text-black whitespace-nowrap">
-            {currency}{price}
+            {currency}
+            {price}
           </p>
         </div>
       </Link>
     );
-  }
+  },
 );
 
 ProductCard.displayName = "ProductCard";

@@ -9,30 +9,33 @@ interface PriceSliderProps {
   onChange: (value: [number, number]) => void;
 }
 
-export function PriceSlider({ 
-  min = 0, 
-  max = 10000, 
+export function PriceSlider({
+  min = 0,
+  max = 10000,
   value,
-  onChange 
+  onChange,
 }: PriceSliderProps) {
-  const [isDragging, setIsDragging] = useState<'min' | 'max' | null>(null);
+  const [isDragging, setIsDragging] = useState<"min" | "max" | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const updateValue = (clientX: number) => {
     if (!sliderRef.current || !isDragging) return;
 
     const rect = sliderRef.current.getBoundingClientRect();
-    const percent = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    const percent = Math.max(
+      0,
+      Math.min(1, (clientX - rect.left) / rect.width),
+    );
     const newValue = Math.round(min + percent * (max - min));
 
-    if (isDragging === 'min' && newValue <= value[1]) {
+    if (isDragging === "min" && newValue <= value[1]) {
       onChange([newValue, value[1]]);
-    } else if (isDragging === 'max' && newValue >= value[0]) {
+    } else if (isDragging === "max" && newValue >= value[0]) {
       onChange([value[0], newValue]);
     }
   };
 
-  const handleMouseDown = (type: 'min' | 'max') => {
+  const handleMouseDown = (type: "min" | "max") => {
     setIsDragging(type);
   };
 
@@ -80,15 +83,15 @@ export function PriceSlider({
         <div
           className="absolute w-4 h-4 bg-white border-2 border-black rounded-full cursor-pointer transform -translate-x-1/2 -translate-y-1/2 top-1/2 touch-none"
           style={{ left: `${minPercent}%` }}
-          onMouseDown={() => handleMouseDown('min')}
-          onTouchStart={() => handleMouseDown('min')}
+          onMouseDown={() => handleMouseDown("min")}
+          onTouchStart={() => handleMouseDown("min")}
         />
 
         <div
           className="absolute w-4 h-4 bg-white border-2 border-black rounded-full cursor-pointer transform -translate-x-1/2 -translate-y-1/2 top-1/2 touch-none"
           style={{ left: `${maxPercent}%` }}
-          onMouseDown={() => handleMouseDown('max')}
-          onTouchStart={() => handleMouseDown('max')}
+          onMouseDown={() => handleMouseDown("max")}
+          onTouchStart={() => handleMouseDown("max")}
         />
       </div>
     </div>

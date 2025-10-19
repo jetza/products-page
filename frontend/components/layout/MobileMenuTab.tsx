@@ -28,9 +28,7 @@ export const MobileMenu = React.forwardRef<HTMLDivElement, MobileMenuProps>(
             variant="ghost"
             className={cn(
               "flex-1 h-[72px] rounded-none",
-              activeTab === "personal"
-                ? "font-bold"
-                : "font-normal"
+              activeTab === "personal" ? "font-bold" : "font-normal",
             )}
           >
             Personal & security
@@ -41,9 +39,7 @@ export const MobileMenu = React.forwardRef<HTMLDivElement, MobileMenuProps>(
             variant="ghost"
             className={cn(
               "flex-1 h-[72px] rounded-none",
-              activeTab === "orders"
-                ? "font-bold"
-                : "font-normal"
+              activeTab === "orders" ? "font-bold" : "font-normal",
             )}
           >
             My orders
@@ -53,7 +49,7 @@ export const MobileMenu = React.forwardRef<HTMLDivElement, MobileMenuProps>(
         {children && <div className="w-full">{children}</div>}
       </div>
     );
-  }
+  },
 );
 
 MobileMenu.displayName = "MobileMenu";

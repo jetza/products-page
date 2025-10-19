@@ -11,7 +11,10 @@ import { ProductCardProps } from "@/components/shop/ProductCard";
 import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
 import { PlusIcon } from "@/components/icons";
 import { useProductFilter } from "@/lib/hooks/useProductFilter";
-import { FURNITURE_CATEGORIES, FURNITURE_TYPES } from "@/lib/constants/furniture-filters.config";
+import {
+  FURNITURE_CATEGORIES,
+  FURNITURE_TYPES,
+} from "@/lib/constants/furniture-filters.config";
 import { SORT_OPTIONS } from "@/lib/constants/filter-options.config";
 import { CONTENT } from "@/lib/constants/content";
 
@@ -20,15 +23,23 @@ interface CollectionClientProps {
   collectionTitle: string;
 }
 
-export function CollectionClient({ products, collectionTitle }: CollectionClientProps) {
+export function CollectionClient({
+  products,
+  collectionTitle,
+}: CollectionClientProps) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
-  
+
   const { filteredProducts, filters, sort } = useProductFilter(products, {
     enableCollectionFilter: false,
   });
 
-  const { selectedCategories, setSelectedCategories, selectedTypes, setSelectedTypes } = filters;
+  const {
+    selectedCategories,
+    setSelectedCategories,
+    selectedTypes,
+    setSelectedTypes,
+  } = filters;
   const { sortBy, setSortBy } = sort;
 
   return (
@@ -38,7 +49,7 @@ export function CollectionClient({ products, collectionTitle }: CollectionClient
           <h2 className="text-h3 lg:text-h2 font-semibold text-black mb-6 lg:mb-8">
             {collectionTitle}
           </h2>
-          
+
           {/* Mobile and Tablet - Filter and Sort buttons */}
           <div className="flex md:hidden items-center justify-between mb-8">
             <DropdownButton
@@ -46,8 +57,8 @@ export function CollectionClient({ products, collectionTitle }: CollectionClient
               onClick={() => setIsFilterOpen(!isFilterOpen)}
               variant="filter"
               customIcon={
-                <PlusIcon 
-                  className={`w-4 h-4 transition-transform ${isFilterOpen ? 'rotate-45' : ''}`} 
+                <PlusIcon
+                  className={`w-4 h-4 transition-transform ${isFilterOpen ? "rotate-45" : ""}`}
                 />
               }
             >

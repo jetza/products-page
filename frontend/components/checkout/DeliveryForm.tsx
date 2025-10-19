@@ -13,7 +13,10 @@ interface DeliveryFormProps {
   initialData?: DeliveryInfo | null;
 }
 
-export const DeliveryForm: React.FC<DeliveryFormProps> = ({ onSubmit, initialData }) => {
+export const DeliveryForm: React.FC<DeliveryFormProps> = ({
+  onSubmit,
+  initialData,
+}) => {
   const [formData, setFormData] = useState<DeliveryInfo>({
     firstName: initialData?.firstName || "",
     lastName: initialData?.lastName || "",
@@ -26,7 +29,9 @@ export const DeliveryForm: React.FC<DeliveryFormProps> = ({ onSubmit, initialDat
     phone: initialData?.phone || "",
   });
 
-  const [errors, setErrors] = useState<Partial<Record<keyof DeliveryInfo, string>>>({});
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof DeliveryInfo, string>>
+  >({});
 
   const handleChange = (field: keyof DeliveryInfo, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));

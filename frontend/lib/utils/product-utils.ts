@@ -13,12 +13,12 @@ export function getProductSlug(product: Product): string {
  */
 export function getProductColors(product: Product): string[] {
   if (!product.variants) return [];
-  
+
   const colors = product.variants
-    .flatMap(variant => variant.options || [])
-    .filter(option => option.option.title === "Color")
-    .map(option => option.value);
-  
+    .flatMap((variant) => variant.options || [])
+    .filter((option) => option.option.title === "Color")
+    .map((option) => option.value);
+
   return Array.from(new Set(colors));
 }
 
@@ -27,12 +27,12 @@ export function getProductColors(product: Product): string[] {
  */
 export function getProductSizes(product: Product): string[] {
   if (!product.variants) return [];
-  
+
   const sizes = product.variants
-    .flatMap(variant => variant.options || [])
-    .filter(option => option.option.title === "Size")
-    .map(option => option.value);
-  
+    .flatMap((variant) => variant.options || [])
+    .filter((option) => option.option.title === "Size")
+    .map((option) => option.value);
+
   return Array.from(new Set(sizes));
 }
 
@@ -41,12 +41,12 @@ export function getProductSizes(product: Product): string[] {
  */
 export function getProductMaterials(product: Product): string[] {
   if (!product.variants) return [];
-  
+
   const materials = product.variants
-    .flatMap(variant => variant.options || [])
-    .filter(option => option.option.title === "Material")
-    .map(option => option.value);
-  
+    .flatMap((variant) => variant.options || [])
+    .filter((option) => option.option.title === "Material")
+    .map((option) => option.value);
+
   return Array.from(new Set(materials));
 }
 
@@ -78,7 +78,10 @@ export function getProductPrice(product: Product): number {
  * @param currency - Currency symbol (default: €)
  * @returns Formatted price string (e.g., "€1,200.00")
  */
-export function formatPrice(priceInCents: number, currency: string = "€"): string {
+export function formatPrice(
+  priceInCents: number,
+  currency: string = "€",
+): string {
   const priceInUnits = priceInCents / 100;
   return `${currency}${priceInUnits.toFixed(2)}`;
 }

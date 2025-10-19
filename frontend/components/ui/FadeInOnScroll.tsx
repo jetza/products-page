@@ -7,7 +7,11 @@ interface FadeInOnScrollProps {
   delay?: number;
 }
 
-export const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({ children, className = "", delay = 0 }) => {
+export const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({
+  children,
+  className = "",
+  delay = 0,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -28,9 +32,7 @@ export const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({ children, classN
   return (
     <div
       ref={ref}
-      className={
-        `${className} transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`
-      }
+      className={`${className} transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
     >
       {children}
     </div>

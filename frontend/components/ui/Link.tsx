@@ -26,18 +26,18 @@ export const CustomLink: React.FC<LinkProps> = ({
     "inline-block font-normal transition-all duration-200",
     "border-b border-black",
     "hover:border-gray-400",
-    
-    size === "lg" && "text-big leading-tight",  
-    size === "sm" && "text-sm leading-normal",  
-    
+
+    size === "lg" && "text-big leading-tight",
+    size === "sm" && "text-sm leading-normal",
+
     disabled && [
       "text-gray-400 border-gray-400",
       "cursor-not-allowed pointer-events-none",
     ],
-    
+
     !disabled && "text-black",
-    
-    className
+
+    className,
   );
 
   if (disabled) {

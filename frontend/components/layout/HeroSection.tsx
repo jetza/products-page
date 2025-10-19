@@ -59,7 +59,7 @@ export function HeroSection({
             priority
             quality={100}
           />
-          
+
           {/* Optional Overlay Content */}
           {overlay && (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -69,11 +69,7 @@ export function HeroSection({
         </div>
 
         {/* Content Section Below Hero */}
-        {children && (
-          <div className={contentBg}>
-            {children}
-          </div>
-        )}
+        {children && <div className={contentBg}>{children}</div>}
       </section>
     </>
   );

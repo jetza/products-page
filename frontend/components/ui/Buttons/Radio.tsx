@@ -37,7 +37,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       <label
         className={cn(
           "inline-flex items-center gap-2 cursor-pointer",
-          disabled && "cursor-not-allowed"
+          disabled && "cursor-not-allowed",
         )}
         onMouseEnter={() => !disabled && setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -56,17 +56,14 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
         </div>
         {label && (
           <span
-            className={cn(
-              "text-sm leading-[1.4]",
-              disabled && "text-gray-400"
-            )}
+            className={cn("text-sm leading-[1.4]", disabled && "text-gray-400")}
           >
             {label}
           </span>
         )}
       </label>
     );
-  }
+  },
 );
 
 Radio.displayName = "Radio";

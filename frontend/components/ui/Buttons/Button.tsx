@@ -28,7 +28,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       style,
       ...props
     },
-    ref
+    ref,
   ) => {
     const isDisabled = disabled || loading;
 
@@ -66,20 +66,24 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             "hover:bg-gray-300",
             "disabled:text-gray-400",
           ],
-          
+
           fullWidth && "w-full",
-          
-          className
+
+          className,
         )}
         {...props}
       >
         {loading && <LoadingSpinner className="animate-spin h-4 w-4" />}
-        {!loading && leftIcon && <span className="flex-shrink-0">{leftIcon}</span>}
+        {!loading && leftIcon && (
+          <span className="flex-shrink-0">{leftIcon}</span>
+        )}
         {children}
-        {!loading && rightIcon && <span className="flex-shrink-0">{rightIcon}</span>}
+        {!loading && rightIcon && (
+          <span className="flex-shrink-0">{rightIcon}</span>
+        )}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

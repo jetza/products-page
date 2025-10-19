@@ -13,11 +13,7 @@ export const Gallery = React.forwardRef<HTMLDivElement, GalleryProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          "inline-flex items-center",
-          "gap-4",
-          className
-        )}
+        className={cn("inline-flex items-center", "gap-4", className)}
       >
         {Array.from({ length: total }, (_, index) => {
           const itemNumber = index + 1;
@@ -40,7 +36,7 @@ export const Gallery = React.forwardRef<HTMLDivElement, GalleryProps>(
                 !isActive && "text-gray-400",
                 !isActive && isClickable && "hover:text-gray-600",
                 "bg-transparent border-0 p-0",
-                "focus:outline-none"
+                "focus:outline-none",
               )}
             >
               {itemNumber}
@@ -49,7 +45,7 @@ export const Gallery = React.forwardRef<HTMLDivElement, GalleryProps>(
         })}
       </div>
     );
-  }
+  },
 );
 
 Gallery.displayName = "Gallery";

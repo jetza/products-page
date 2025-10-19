@@ -7,13 +7,19 @@ interface ColorPickerProps {
   onColorSelect: (color: string) => void;
 }
 
-export function ColorPicker({ colors, selectedColor, onColorSelect }: ColorPickerProps) {
+export function ColorPicker({
+  colors,
+  selectedColor,
+  onColorSelect,
+}: ColorPickerProps) {
   if (colors.length === 0) return null;
 
   return (
     <div className="mb-8 w-[149px] h-[78px]">
       <div className="flex items-center gap-4 mb-4">
-        <h3 className="text-base font-normal text-black">{CONTENT.filters.colors}</h3>
+        <h3 className="text-base font-normal text-black">
+          {CONTENT.filters.colors}
+        </h3>
         <span className="text-base font-normal text-gray-400">
           {selectedColor || colors[0]}
         </span>
@@ -30,9 +36,10 @@ export function ColorPicker({ colors, selectedColor, onColorSelect }: ColorPicke
             />
             <div
               className={`absolute w-8 h-0 top-[46px] border-t transition-all ${
-                selectedColor === colorName || (!selectedColor && colorName === colors[0])
-                  ? 'border-black'
-                  : 'border-transparent'
+                selectedColor === colorName ||
+                (!selectedColor && colorName === colors[0])
+                  ? "border-black"
+                  : "border-transparent"
               }`}
             />
           </div>

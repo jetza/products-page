@@ -61,7 +61,8 @@ export function AboutReflection({
 
           <div className="lg:hidden mt-12">
             <p className="text-big text-gray-700 leading-relaxed">
-              Our commitment to sustainability ensures that our products are not only beautiful but also kind to the planet.
+              Our commitment to sustainability ensures that our products are not
+              only beautiful but also kind to the planet.
             </p>
           </div>
         </div>

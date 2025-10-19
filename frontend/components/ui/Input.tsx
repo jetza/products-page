@@ -11,17 +11,8 @@ export interface InputProps
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    {
-      className,
-      label,
-      helperText,
-      error,
-      disabled,
-      fullWidth,
-      id,
-      ...props
-    },
-    ref
+    { className, label, helperText, error, disabled, fullWidth, id, ...props },
+    ref,
   ) => {
     const generatedId = React.useId();
     const inputId = id || generatedId;
@@ -33,7 +24,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             htmlFor={inputId}
             className={cn(
               "text-sm font-normal text-gray-800",
-              disabled && "text-gray-400"
+              disabled && "text-gray-400",
             )}
           >
             {label}
@@ -50,23 +41,25 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             "transition-all duration-200",
             "focus:outline-none",
             "placeholder:text-gray-400",
-            
-            !error && !disabled && [
-              "border-gray-300 bg-white text-gray-800",
-              "hover:border-gray-400",
-              "focus:border-black",
-            ],
-            error && !disabled && [
-              "border-error bg-white text-gray-800",
-              "focus:border-error",
-            ],
+
+            !error &&
+              !disabled && [
+                "border-gray-300 bg-white text-gray-800",
+                "hover:border-gray-400",
+                "focus:border-black",
+              ],
+            error &&
+              !disabled && [
+                "border-error bg-white text-gray-800",
+                "focus:border-error",
+              ],
             disabled && [
               "border-gray-200 bg-gray-50 text-gray-400",
               "cursor-not-allowed",
             ],
-            
+
             fullWidth && "w-full",
-            className
+            className,
           )}
           {...props}
         />
@@ -75,7 +68,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               "text-sm font-normal",
               error ? "text-error" : "text-gray-500",
-              disabled && "text-gray-400"
+              disabled && "text-gray-400",
             )}
           >
             {helperText}
@@ -83,7 +76,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

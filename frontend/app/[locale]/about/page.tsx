@@ -22,7 +22,7 @@ export default function AboutPage() {
         <AboutReflection {...aboutContent.reflection} />
         <AboutCenter {...aboutContent.center} />
       </main>
-      
+
       <ResponsiveFooter />
     </div>
   );

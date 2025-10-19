@@ -39,14 +39,14 @@ export default function MyAccountPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <ResponsiveHeader />
-      
+
       <main className="flex-1 py-8 md:py-16">
         <div className="md:hidden px-5 mb-8">
           <MobileMenu defaultTab={activeTab} onTabChange={handleTabChange} />
         </div>
 
         <div className="hidden md:grid md:grid-cols-[auto_1fr] md:gap-8 lg:gap-12">
-          <AccountNavigation 
+          <AccountNavigation
             items={navigationItems}
             onLogout={handleLogout}
             className="px-5 lg:pl-[116px] -mt-16"
@@ -63,7 +63,9 @@ export default function MyAccountPage() {
           {activeTab === "orders" && <MyOrders />}
 
           <div className="mt-12 pt-8 border-t border-gray-200">
-            <h3 className="text-base font-medium mb-4">{CONTENT.account.logout}</h3>
+            <h3 className="text-base font-medium mb-4">
+              {CONTENT.account.logout}
+            </h3>
             <button
               onClick={handleLogout}
               className="w-full h-12 bg-white border border-black text-black text-base font-medium rounded-lg hover:bg-gray-50 transition-colors"

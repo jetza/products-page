@@ -29,7 +29,7 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
       discountCode,
       showVatNote = false,
     },
-    ref
+    ref,
   ) => {
     const isMobile = variant === "mobile";
     const textSize = isMobile ? "text-sm" : "text-base";
@@ -42,38 +42,66 @@ export const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
       <div ref={ref} className={className}>
         <div className={spacing}>
           <div className={cn("flex justify-between", textSize)}>
-            <span className="text-gray-600">{CONTENT.order.summary.subtotal}</span>
-            <span className="font-medium">{currency}{subtotal.toFixed(2)}</span>
+            <span className="text-gray-600">
+              {CONTENT.order.summary.subtotal}
+            </span>
+            <span className="font-medium">
+              {currency}
+              {subtotal.toFixed(2)}
+            </span>
           </div>
           <div className={cn("flex justify-between", textSize)}>
-            <span className="text-gray-600">{CONTENT.order.summary.shipping}</span>
-            <span className="font-medium">{currency}{shipping.toFixed(2)}</span>
+            <span className="text-gray-600">
+              {CONTENT.order.summary.shipping}
+            </span>
+            <span className="font-medium">
+              {currency}
+              {shipping.toFixed(2)}
+            </span>
           </div>
           <div className={cn("flex justify-between", textSize)}>
             <span className="text-gray-600">{CONTENT.order.summary.taxes}</span>
-            <span className="font-medium">{currency}{taxes.toFixed(2)}</span>
+            <span className="font-medium">
+              {currency}
+              {taxes.toFixed(2)}
+            </span>
           </div>
           {discountAmount && discountAmount > 0 && (
-            <div className={cn("flex justify-between", textSize, "text-green-600")}>
-              <span>{CONTENT.order.summary.discount} {discountCode && `(${discountCode})`}:</span>
-              <span className="font-medium">-{currency}{discountAmount.toFixed(2)}</span>
+            <div
+              className={cn("flex justify-between", textSize, "text-green-600")}
+            >
+              <span>
+                {CONTENT.order.summary.discount}{" "}
+                {discountCode && `(${discountCode})`}:
+              </span>
+              <span className="font-medium">
+                -{currency}
+                {discountAmount.toFixed(2)}
+              </span>
             </div>
           )}
         </div>
 
-        {isMobile && <div className={cn("h-px bg-gray-200", separatorMargin)} />}
+        {isMobile && (
+          <div className={cn("h-px bg-gray-200", separatorMargin)} />
+        )}
 
         <div className={cn("flex justify-between", totalSize, totalMargin)}>
           <span className="font-semibold">{CONTENT.order.summary.total}</span>
-          <span className="font-bold">{currency}{total.toFixed(2)}</span>
+          <span className="font-bold">
+            {currency}
+            {total.toFixed(2)}
+          </span>
         </div>
 
         {showVatNote && (
-          <p className="text-xs text-gray-500 mt-2">{CONTENT.order.summary.includingVAT}</p>
+          <p className="text-xs text-gray-500 mt-2">
+            {CONTENT.order.summary.includingVAT}
+          </p>
         )}
       </div>
     );
-  }
+  },
 );
 
 OrderSummary.displayName = "OrderSummary";

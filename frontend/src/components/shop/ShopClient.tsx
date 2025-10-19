@@ -11,7 +11,13 @@ import { ProductCardProps } from "@/components/shop/ProductCard";
 import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
 import { PlusIcon } from "@/components/icons";
 import { useProductFilter } from "@/lib/hooks/useProductFilter";
-import { COLLECTIONS, CATEGORIES, TYPES, SORT_OPTIONS, MATERIALS, COLORS_FILTER, PRODUCT_METADATA } from "@/lib/constants/filter-options.config";
+import {
+  COLLECTIONS,
+  CATEGORIES,
+  TYPES,
+  SORT_OPTIONS,
+  PRODUCT_METADATA,
+} from "@/lib/constants/filter-options.config";
 import { CONTENT } from "@/lib/constants/content";
 
 interface ShopClientProps {
@@ -24,8 +30,12 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
-  
-  const { filteredProducts: baseFilteredProducts, filters, sort } = useProductFilter(shopItems, {
+
+  const {
+    filteredProducts: baseFilteredProducts,
+    filters,
+    sort,
+  } = useProductFilter(shopItems, {
     enableCollectionFilter: true,
   });
 
@@ -44,20 +54,29 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
     let filtered = [...baseFilteredProducts];
 
     filtered = filtered.filter(
-      (product) => product.price >= priceRange[0] && product.price <= priceRange[1]
+      (product) =>
+        product.price >= priceRange[0] && product.price <= priceRange[1],
     );
 
     if (selectedMaterials.length > 0) {
       filtered = filtered.filter((product) => {
         const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
-        return metadata && selectedMaterials.some((material) => metadata.materials.includes(material));
+        return (
+          metadata &&
+          selectedMaterials.some((material) =>
+            metadata.materials.includes(material),
+          )
+        );
       });
     }
 
     if (selectedColors.length > 0) {
       filtered = filtered.filter((product) => {
         const metadata = product.slug ? PRODUCT_METADATA[product.slug] : null;
-        return metadata && selectedColors.some((color) => metadata.colors.includes(color));
+        return (
+          metadata &&
+          selectedColors.some((color) => metadata.colors.includes(color))
+        );
       });
     }
 
@@ -72,8 +91,8 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
           onClick={() => setIsFilterOpen(!isFilterOpen)}
           variant="filter"
           customIcon={
-            <PlusIcon 
-              className={`w-4 h-4 transition-transform ${isFilterOpen ? 'rotate-45' : ''}`} 
+            <PlusIcon
+              className={`w-4 h-4 transition-transform ${isFilterOpen ? "rotate-45" : ""}`}
             />
           }
         >
@@ -141,8 +160,7 @@ export function ShopClient({ products: shopItems }: ShopClientProps) {
         onMaterialsChange={setSelectedMaterials}
         onColorsChange={setSelectedColors}
         onPriceChange={setPriceRange}
-        onApply={() => {
-        }}
+        onApply={() => {}}
       />
 
       <MobileSortDrawer

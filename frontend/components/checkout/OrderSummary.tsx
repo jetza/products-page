@@ -40,7 +40,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
   shipping,
   taxes,
   total,
-  isMobile = false
+  isMobile = false,
 }) => {
   const locale = getCurrentLocale();
   const imageSize = isMobile ? 80 : 132;
@@ -54,7 +54,9 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
           onClick={() => setIsExpanded(!isExpanded)}
           className="flex items-center justify-between mb-6 w-full"
         >
-          <h2 className="text-body font-medium">{CONTENT.checkout.orderSummary}</h2>
+          <h2 className="text-body font-medium">
+            {CONTENT.checkout.orderSummary}
+          </h2>
           <div className="flex items-center gap-2">
             <span className="text-body font-medium">€{total.toFixed(0)}</span>
             {isExpanded ? (
@@ -68,69 +70,83 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
         {isExpanded && (
           <>
             <div className="flex items-center justify-between mb-6">
-          <p className="text-sm font-medium">{CONTENT.checkout.orderItems(items.length)}</p>
-          <Link href={getHref("/cart", locale)} className="text-xs font-semibold underline">
-            Edit cart
-          </Link>
-        </div>
-
-        <div className="space-y-4 mb-6">
-          {items.map((item) => (
-            <div key={item.id} className="flex gap-4">
-              <div
-                className="relative flex-shrink-0 rounded overflow-hidden bg-gray-100"
-                style={{ width: `${imageSize}px`, height: `${imageHeight}px` }}
+              <p className="text-sm font-medium">
+                {CONTENT.checkout.orderItems(items.length)}
+              </p>
+              <Link
+                href={getHref("/cart", locale)}
+                className="text-xs font-semibold underline"
               >
-                <Image
-                  src={item.image || 'https://placehold.co/600x400'}
-                  alt={item.imageAlt || item.title || 'Product image'}
-                  fill
-                  className="object-cover"
-                  sizes={`${imageSize}px`}
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-sm font-medium flex-1">{item.title}</h3>
-                  <p className="text-sm font-medium ml-4">€{item.price.toFixed(0)}</p>
-                </div>
-                {item.variant && (
-                  <p className="text-xs text-gray-600 mb-1">
-                    Variant: {item.variant}
-                  </p>
-                )}
-                <p className="text-xs text-gray-600">{CONTENT.product.quantity}: {item.quantity}</p>
-              </div>
+                Edit cart
+              </Link>
             </div>
-          ))}
-        </div>
 
-        <div className="mb-6">
-          <Input
-            type="text"
-            placeholder="Discount code"
-            value={discountCode}
-            onChange={(e) => onDiscountCodeChange(e.target.value)}
-            fullWidth
-            className="mb-2"
-          />
-          <Button
-            variant="secondary"
-            size="md"
-            disabled={!discountCode.trim()}
-            className="w-full"
-          >
-            Apply
-          </Button>
-        </div>
+            <div className="space-y-4 mb-6">
+              {items.map((item) => (
+                <div key={item.id} className="flex gap-4">
+                  <div
+                    className="relative flex-shrink-0 rounded overflow-hidden bg-gray-100"
+                    style={{
+                      width: `${imageSize}px`,
+                      height: `${imageHeight}px`,
+                    }}
+                  >
+                    <Image
+                      src={item.image || "https://placehold.co/600x400"}
+                      alt={item.imageAlt || item.title || "Product image"}
+                      fill
+                      className="object-cover"
+                      sizes={`${imageSize}px`}
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="text-sm font-medium flex-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm font-medium ml-4">
+                        €{item.price.toFixed(0)}
+                      </p>
+                    </div>
+                    {item.variant && (
+                      <p className="text-xs text-gray-600 mb-1">
+                        Variant: {item.variant}
+                      </p>
+                    )}
+                    <p className="text-xs text-gray-600">
+                      {CONTENT.product.quantity}: {item.quantity}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-        <OrderSummary
-          subtotal={subtotal}
-          shipping={shipping}
-          taxes={taxes}
-          total={total}
-          variant="mobile"
-        />
+            <div className="mb-6">
+              <Input
+                type="text"
+                placeholder="Discount code"
+                value={discountCode}
+                onChange={(e) => onDiscountCodeChange(e.target.value)}
+                fullWidth
+                className="mb-2"
+              />
+              <Button
+                variant="secondary"
+                size="md"
+                disabled={!discountCode.trim()}
+                className="w-full"
+              >
+                Apply
+              </Button>
+            </div>
+
+            <OrderSummary
+              subtotal={subtotal}
+              shipping={shipping}
+              taxes={taxes}
+              total={total}
+              variant="mobile"
+            />
           </>
         )}
       </div>
@@ -141,9 +157,12 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
     <div>
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-body font-medium">
-          Order - {items.length} {items.length === 1 ? 'item' : 'items'}
+          Order - {items.length} {items.length === 1 ? "item" : "items"}
         </h2>
-        <Link href={getHref("/cart", locale)} className="text-xs font-semibold underline">
+        <Link
+          href={getHref("/cart", locale)}
+          className="text-xs font-semibold underline"
+        >
           Edit cart
         </Link>
       </div>
@@ -156,8 +175,8 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
               style={{ width: `${imageSize}px`, height: `${imageHeight}px` }}
             >
               <Image
-                src={item.image || 'https://placehold.co/600x400'}
-                alt={item.imageAlt || item.title || 'Product image'}
+                src={item.image || "https://placehold.co/600x400"}
+                alt={item.imageAlt || item.title || "Product image"}
                 fill
                 className="object-cover"
                 sizes={`${imageSize}px`}
@@ -166,7 +185,9 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
             <div className="flex-1 min-w-0 flex flex-col">
               <div className="flex items-start justify-between mb-auto">
                 <h3 className="text-body font-medium">{item.title}</h3>
-                <p className="text-body font-medium ml-4">${item.price.toFixed(2)}</p>
+                <p className="text-body font-medium ml-4">
+                  ${item.price.toFixed(2)}
+                </p>
               </div>
               <div className="mt-auto">
                 {item.variant && (

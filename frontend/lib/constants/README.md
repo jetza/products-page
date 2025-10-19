@@ -38,7 +38,9 @@ constants/
 ## 🎯 Usage Guidelines
 
 ### UI Text (`content.ts`)
+
 Use for **all user-facing text** that needs translation:
+
 ```typescript
 import { CONTENT } from "@/lib/constants/content";
 
@@ -52,21 +54,27 @@ import { CONTENT } from "@/lib/constants/content";
 ```
 
 ### Configuration (`*.config.ts`)
+
 Use for **settings and options**:
+
 ```typescript
 import { getColorValue } from "@/lib/constants/colors.config";
 import { FILTER_OPTIONS } from "@/lib/constants/filter-options.config";
 ```
 
 ### Data (`*.data.ts`)
+
 Use for **structured data**:
+
 ```typescript
 import { collections } from "@/lib/constants/collections.data";
 import { mockOrders } from "@/lib/constants/mock-orders.data";
 ```
 
 ### Page Content (`pages/*.content.ts`)
+
 Use for **page-specific content** (images, sections):
+
 ```typescript
 import { homeContent } from "@/lib/constants/pages/home.content";
 ```
@@ -83,6 +91,7 @@ The `content.ts` file is the **single source of truth** for all UI text. When im
 ## 🔄 Migration Notes
 
 **Previous → New naming:**
+
 - `collections.ts` → `collections.data.ts`
 - `mockOrders.ts` → `mock-orders.data.ts`
 - `mock-data.ts` → `mock-email-order.data.ts`
@@ -97,5 +106,6 @@ The `content.ts` file is the **single source of truth** for all UI text. When im
 - `inspiration/inspiration-content.ts` → `pages/inspiration.content.ts`
 
 **Deleted files:**
+
 - `index.ts` - Unused barrel export
 - `collection-details.ts` - Unused collection details

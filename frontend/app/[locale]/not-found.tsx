@@ -30,10 +30,10 @@ export default function NotFound() {
               <p className="text-big font-normal leading-normal mb-8">
                 {CONTENT.errors.notFound.description}
               </p>
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 size="lg"
-                onClick={() => router.push(getHref('/', locale))}
+                onClick={() => router.push(getHref("/", locale))}
               >
                 {CONTENT.errors.notFound.button}
               </Button>

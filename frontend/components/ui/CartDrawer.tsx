@@ -10,7 +10,7 @@ import { CONTENT } from "@/lib/constants/content";
 interface CartDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  items?: Omit<CartItemProps, 'onQuantityChange' | 'onRemove'>[];
+  items?: Omit<CartItemProps, "onQuantityChange" | "onRemove">[];
   onQuantityChange?: (id: string, newQuantity: number) => void;
   onRemoveItem?: (id: string) => void;
   className?: string;
@@ -24,7 +24,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onRemoveItem,
   className,
 }) => {
-  const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const total = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
 
   if (!isOpen) return null;
 
@@ -37,7 +40,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       <div
         className={cn(
           "fixed top-0 right-0 bottom-0 bg-white z-[70] flex flex-col shadow-2xl w-[557px]",
-          className
+          className,
         )}
       >
         <div className="flex items-center justify-between px-12 pt-[132px] pb-8">

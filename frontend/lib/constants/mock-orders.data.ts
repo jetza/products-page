@@ -19,7 +19,11 @@ export const mockOrders: Order[] = [
     items: [
       { id: "1", image: "/products/nordic-haven.jpg", title: "Nordic Haven" },
       { id: "2", image: "/products/everly-estate.jpg", title: "Everly Estate" },
-      { id: "3", image: "/products/camden-retreat.jpg", title: "Camden Retreat" },
+      {
+        id: "3",
+        image: "/products/camden-retreat.jpg",
+        title: "Camden Retreat",
+      },
       { id: "4", image: "/products/sutton-royale.jpg", title: "Sutton Royale" },
     ],
   },
@@ -31,7 +35,11 @@ export const mockOrders: Order[] = [
     items: [
       { id: "1", image: "/products/astrid-curve.png", title: "Astrid Curve" },
       { id: "2", image: "/products/paloma-haven.jpg", title: "Paloma Haven" },
-      { id: "3", image: "/products/belime-haven-arm-chair.png", title: "Belime Haven Armchair" },
+      {
+        id: "3",
+        image: "/products/belime-haven-arm-chair.png",
+        title: "Belime Haven Armchair",
+      },
     ],
   },
   {
@@ -42,8 +50,12 @@ export const mockOrders: Order[] = [
     items: [
       { id: "1", image: "/products/nordic-haven.jpg", title: "Nordic Haven" },
       { id: "2", image: "/products/everly-estate.jpg", title: "Everly Estate" },
-      { id: "3", image: "/products/sofa8.png", title: "Sofa" },
-      { id: "4", image: "/products/astrid-curve-gray.jpg", title: "Astrid Curve Gray" },
+      { id: "3", image: "/products/sutton-royale.jpg", title: "Sutton Royale" },
+      {
+        id: "4",
+        image: "/products/astrid-curve-gray.jpg",
+        title: "Astrid Curve Gray",
+      },
     ],
   },
   {
@@ -52,12 +64,20 @@ export const mockOrders: Order[] = [
     date: "23 December 2024",
     status: "Packing",
     items: [
-      { id: "1", image: "/products/camden-retreat.jpg", title: "Camden Retreat" },
-      { id: "2", image: "/products/sofa4.png", title: "Sofa" },
-      { id: "3", image: "/products/paloma-haven-arm-chair.jpg", title: "Paloma Haven Armchair" },
-      { id: "4", image: "/products/sofa6.png", title: "Sofa" },
-      { id: "5", image: "/products/sofa7.png", title: "Sofa" },
-      { id: "6", image: "/products/sofa8.png", title: "Sofa" },
+      {
+        id: "1",
+        image: "/products/camden-retreat.jpg",
+        title: "Camden Retreat",
+      },
+      { id: "2", image: "/products/everly-estate.jpg", title: "Everly Estate" },
+      {
+        id: "3",
+        image: "/products/paloma-haven-arm-chair.jpg",
+        title: "Paloma Haven Armchair",
+      },
+      { id: "4", image: "/products/astrid-curve.png", title: "Astrid Curve" },
+      { id: "5", image: "/products/nordic-haven.jpg", title: "Nordic Haven" },
+      { id: "6", image: "/products/sutton-royale.jpg", title: "Sutton Royale" },
     ],
   },
 ];

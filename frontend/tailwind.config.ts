@@ -33,7 +33,7 @@ const config: Config = {
         product: {
           "light-gray": "var(--color-product-light-gray)",
           "dark-gray": "var(--color-product-dark-gray)",
-          "black": "var(--color-product-black)",
+          black: "var(--color-product-black)",
         },
         button: {
           primary: {

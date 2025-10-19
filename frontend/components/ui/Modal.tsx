@@ -13,16 +13,46 @@ type ModalStyleConfig = {
 
 const MODAL_STYLES: Record<string, Record<string, ModalStyleConfig>> = {
   "popup-1": {
-    desktop: { width: "616px", minHeight: "530px", gap: "40px", padding: "24px" },
-    mobile: { width: "344px", minHeight: "538px", gap: "32px", padding: "24px 16px" },
+    desktop: {
+      width: "616px",
+      minHeight: "530px",
+      gap: "40px",
+      padding: "24px",
+    },
+    mobile: {
+      width: "344px",
+      minHeight: "538px",
+      gap: "32px",
+      padding: "24px 16px",
+    },
   },
   "popup-2": {
-    desktop: { width: "616px", minHeight: "482px", gap: "40px", padding: "24px" },
-    mobile: { width: "344px", minHeight: "482px", gap: "40px", padding: "24px" },
+    desktop: {
+      width: "616px",
+      minHeight: "482px",
+      gap: "40px",
+      padding: "24px",
+    },
+    mobile: {
+      width: "344px",
+      minHeight: "482px",
+      gap: "40px",
+      padding: "24px",
+    },
   },
   "popup-3": {
-    desktop: { width: "432px", minHeight: "392px", gap: "40px", padding: "24px" },
-    mobile: { width: "344px", minHeight: "376px", gap: "32px", padding: "24px 16px" },
+    desktop: {
+      width: "432px",
+      minHeight: "392px",
+      gap: "40px",
+      padding: "24px",
+    },
+    mobile: {
+      width: "344px",
+      minHeight: "376px",
+      gap: "32px",
+      padding: "24px 16px",
+    },
   },
   confirmation: {
     desktop: { width: "608px", height: "162px", gap: "32px", padding: "24px" },
@@ -71,10 +101,7 @@ export const Modal: React.FC<ModalProps> = ({
       onClick={onClose}
     >
       <div
-        className={cn(
-          "bg-white rounded flex flex-col relative",
-          className
-        )}
+        className={cn("bg-white rounded flex flex-col relative", className)}
         style={{
           width: modalStyles.width,
           minHeight: modalStyles.minHeight,
@@ -84,14 +111,18 @@ export const Modal: React.FC<ModalProps> = ({
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={cn(
-          "flex items-start justify-between",
-          isConfirmation && device === "desktop" && "justify-center"
-        )}>
-          <h2 className={cn(
-            "text-h4 leading-normal font-semibold text-black",
-            isConfirmation && device === "desktop" && "text-center"
-          )}>
+        <div
+          className={cn(
+            "flex items-start justify-between",
+            isConfirmation && device === "desktop" && "justify-center",
+          )}
+        >
+          <h2
+            className={cn(
+              "text-h4 leading-normal font-semibold text-black",
+              isConfirmation && device === "desktop" && "text-center",
+            )}
+          >
             {title}
           </h2>
           {showCloseButton && !isConfirmation && (
@@ -100,9 +131,7 @@ export const Modal: React.FC<ModalProps> = ({
         </div>
 
         {!isConfirmation && (
-          <div className="flex-1 overflow-y-auto">
-            {children}
-          </div>
+          <div className="flex-1 overflow-y-auto">{children}</div>
         )}
 
         <div className="flex gap-4">

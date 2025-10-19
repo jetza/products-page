@@ -27,14 +27,10 @@ export const OrderItem = React.forwardRef<HTMLDivElement, OrderItemProps>(
       currency = "€",
       className,
     },
-    ref
+    ref,
   ) => {
     return (
-      <div
-        ref={ref}
-        className={cn("flex gap-4 mb-6", className)}
-      >
-
+      <div ref={ref} className={cn("flex gap-4 mb-6", className)}>
         <div className="flex-shrink-0 w-20 h-20 bg-gray-100 rounded overflow-hidden relative">
           <Image
             src={image}
@@ -59,17 +55,19 @@ export const OrderItem = React.forwardRef<HTMLDivElement, OrderItemProps>(
 
         <div className="flex flex-col items-end">
           <span className="text-base font-normal text-black">
-            {currency}{price}
+            {currency}
+            {price}
           </span>
           {originalPrice && (
             <span className="text-sm font-normal text-gray-400 line-through">
-              {currency}{originalPrice}
+              {currency}
+              {originalPrice}
             </span>
           )}
         </div>
       </div>
     );
-  }
+  },
 );
 
 OrderItem.displayName = "OrderItem";

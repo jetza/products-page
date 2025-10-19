@@ -9,19 +9,19 @@ import type { Product } from "@/types/product";
 export async function getProducts(limit: number = 10): Promise<Product[]> {
   try {
     const regionId = await getDefaultRegionId();
-    
+
     // Type assertion needed because SDK types don't include region_id and fields parameters
-    const response = await medusaClient.store.product.list({ 
+    const response = await medusaClient.store.product.list({
       limit,
       region_id: regionId,
-      fields: "+variants.calculated_price,+variants.prices"
+      fields: "+variants.calculated_price,+variants.prices",
     } as Parameters<typeof medusaClient.store.product.list>[0]);
-    
-  // ...removed log...
+
+    // ...removed log...
     if (response.products?.[0]?.variants?.[0]) {
-  // ...removed log...
+      // ...removed log...
     }
-    
+
     return (response.products || []) as Product[];
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -38,22 +38,22 @@ export async function getProducts(limit: number = 10): Promise<Product[]> {
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
     const regionId = await getDefaultRegionId();
-    
+
     // Note: Medusa API uses "handle" parameter, but it represents a URL slug
     // Type assertion needed because SDK types don't include region_id and fields parameters
-    const response = await medusaClient.store.product.list({ 
+    const response = await medusaClient.store.product.list({
       handle: slug,
       region_id: regionId,
-      fields: "+variants.calculated_price,+variants.prices"
+      fields: "+variants.calculated_price,+variants.prices",
     } as Parameters<typeof medusaClient.store.product.list>[0]);
     const product = response.products?.[0];
-    
+
     // Debug logging
-  // ...removed log...
+    // ...removed log...
     if (product?.variants?.[0]) {
-  // ...removed log...
+      // ...removed log...
     }
-    
+
     return (product as Product) || null;
   } catch (error) {
     console.error("Error fetching product by slug:", error);

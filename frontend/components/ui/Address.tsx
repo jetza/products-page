@@ -40,7 +40,7 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
       variant = "desktop",
       className,
     },
-    ref
+    ref,
   ) => {
     if (variant === "desktop") {
       return (
@@ -48,7 +48,7 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
           ref={ref}
           className={cn(
             "w-full p-6 bg-white border border-gray-200 rounded",
-            className
+            className,
           )}
         >
           <div className="flex">
@@ -59,32 +59,52 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
             <div className="flex-1 flex gap-6">
               <div className="flex-1 flex flex-col gap-4">
                 <div className="flex flex-col gap-1">
-                  <span className="text-sm font-normal text-gray-400">{address}</span>
-                  <span className="text-base font-normal text-black">{addressValue}</span>
+                  <span className="text-sm font-normal text-gray-400">
+                    {address}
+                  </span>
+                  <span className="text-base font-normal text-black">
+                    {addressValue}
+                  </span>
                 </div>
                 {apartment && apartmentValue && (
                   <div className="flex flex-col gap-1">
-                    <span className="text-sm font-normal text-gray-400">{apartment}</span>
-                    <span className="text-base font-normal text-black">{apartmentValue}</span>
+                    <span className="text-sm font-normal text-gray-400">
+                      {apartment}
+                    </span>
+                    <span className="text-base font-normal text-black">
+                      {apartmentValue}
+                    </span>
                   </div>
                 )}
                 <div className="flex flex-col gap-1">
-                  <span className="text-sm font-normal text-gray-400">{postalCode}</span>
-                  <span className="text-base font-normal text-black">{postalCodeValue}</span>
+                  <span className="text-sm font-normal text-gray-400">
+                    {postalCode}
+                  </span>
+                  <span className="text-base font-normal text-black">
+                    {postalCodeValue}
+                  </span>
                 </div>
               </div>
 
               <div className="flex-1 flex flex-col gap-4">
                 <div className="flex flex-col gap-1">
-                  <span className="text-sm font-normal text-gray-400">{country}</span>
-                  <span className="text-base font-normal text-black">{countryValue}</span>
+                  <span className="text-sm font-normal text-gray-400">
+                    {country}
+                  </span>
+                  <span className="text-base font-normal text-black">
+                    {countryValue}
+                  </span>
                 </div>
 
                 {apartment && apartmentValue && <div className="h-[47px]" />}
 
                 <div className="flex flex-col gap-1">
-                  <span className="text-sm font-normal text-gray-400">{city}</span>
-                  <span className="text-base font-normal text-black">{cityValue}</span>
+                  <span className="text-sm font-normal text-gray-400">
+                    {city}
+                  </span>
+                  <span className="text-base font-normal text-black">
+                    {cityValue}
+                  </span>
                 </div>
               </div>
             </div>
@@ -92,11 +112,7 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
             <div className="flex items-start gap-2 ml-6">
               {onDelete && <DeleteButton onDelete={onDelete} />}
               {onEdit && (
-                <Button
-                  variant="secondary"
-                  size="md"
-                  onClick={onEdit}
-                >
+                <Button variant="secondary" size="md" onClick={onEdit}>
                   Change
                 </Button>
               )}
@@ -111,7 +127,7 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
         ref={ref}
         className={cn(
           "w-full p-6 bg-white border border-gray-200 rounded",
-          className
+          className,
         )}
       >
         <div className="flex items-start mb-4">
@@ -121,51 +137,65 @@ export const Address = React.forwardRef<HTMLDivElement, AddressProps>(
 
           <div className="flex flex-1 gap-6">
             <div className="flex flex-col flex-1 gap-1">
-              <span className="text-sm font-normal text-gray-400">{address}</span>
-              <span className="text-base font-normal text-black">{addressValue}</span>
+              <span className="text-sm font-normal text-gray-400">
+                {address}
+              </span>
+              <span className="text-base font-normal text-black">
+                {addressValue}
+              </span>
             </div>
 
             <div className="flex flex-col flex-1 gap-1">
-              <span className="text-sm font-normal text-gray-400">{country}</span>
-              <span className="text-base font-normal text-black">{countryValue}</span>
+              <span className="text-sm font-normal text-gray-400">
+                {country}
+              </span>
+              <span className="text-base font-normal text-black">
+                {countryValue}
+              </span>
             </div>
           </div>
         </div>
 
         {apartment && apartmentValue && (
           <div className="flex flex-col mb-4 ml-10 gap-1">
-            <span className="text-sm font-normal text-gray-400">{apartment}</span>
-            <span className="text-base font-normal text-black">{apartmentValue}</span>
+            <span className="text-sm font-normal text-gray-400">
+              {apartment}
+            </span>
+            <span className="text-base font-normal text-black">
+              {apartmentValue}
+            </span>
           </div>
         )}
 
         <div className="flex mb-4 ml-10 gap-6">
           <div className="flex flex-col flex-1 gap-1">
-            <span className="text-sm font-normal text-gray-400">{postalCode}</span>
-            <span className="text-base font-normal text-black">{postalCodeValue}</span>
+            <span className="text-sm font-normal text-gray-400">
+              {postalCode}
+            </span>
+            <span className="text-base font-normal text-black">
+              {postalCodeValue}
+            </span>
           </div>
 
           <div className="flex flex-col flex-1 gap-1">
             <span className="text-sm font-normal text-gray-400">{city}</span>
-            <span className="text-base font-normal text-black">{cityValue}</span>
+            <span className="text-base font-normal text-black">
+              {cityValue}
+            </span>
           </div>
         </div>
 
         <div className="flex items-center gap-2 ml-10">
           {onDelete && <DeleteButton onDelete={onDelete} />}
           {onEdit && (
-            <Button
-              variant="secondary"
-              size="md"
-              onClick={onEdit}
-            >
+            <Button variant="secondary" size="md" onClick={onEdit}>
               Change
             </Button>
           )}
         </div>
       </div>
     );
-  }
+  },
 );
 
 Address.displayName = "Address";

@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/Buttons/Button";
-import { CloseButton } from "@/components/ui/Buttons/CloseButton";
 import type { SortOption } from "./SortDropdown";
 import { CONTENT } from "@/lib/constants/content";
 
@@ -38,15 +37,14 @@ export function MobileSortDrawer({
 
   return (
     <>
-      <div
-        className="fixed inset-0 bg-black/50 z-40"
-        onClick={onClose}
-      />
+      <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
 
       <div className="fixed bottom-0 left-0 right-0 bg-white z-50 rounded-t-3xl overflow-y-auto max-h-[50vh]">
         <div className="flex flex-col h-full">
           <div className="flex-1 px-5 py-8">
-            <h2 className="text-2xl font-medium mb-8">{CONTENT.common.sortBy}</h2>
+            <h2 className="text-2xl font-medium mb-8">
+              {CONTENT.common.sortBy}
+            </h2>
 
             <div className="space-y-4">
               {options.map((option) => (
@@ -64,11 +62,13 @@ export function MobileSortDrawer({
                       onChange={() => setTempSelected(option.id)}
                       className="sr-only"
                     />
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                      tempSelected === option.id
-                        ? "border-black"
-                        : "border-gray-300"
-                    }`}>
+                    <div
+                      className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                        tempSelected === option.id
+                          ? "border-black"
+                          : "border-gray-300"
+                      }`}
+                    >
                       {tempSelected === option.id && (
                         <div className="w-3 h-3 rounded-full bg-black" />
                       )}

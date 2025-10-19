@@ -18,15 +18,7 @@ export interface SortDropdownProps {
 }
 
 export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
-  (
-    {
-      options,
-      selected,
-      onChange,
-      className,
-    },
-    ref
-  ) => {
+  ({ options, selected, onChange, className }, ref) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleSelect = (optionId: string) => {
@@ -42,9 +34,7 @@ export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
           variant="filter"
           className="min-w-[180px]"
         >
-          <span className="text-base flex-1 text-left">
-            Sort By
-          </span>
+          <span className="text-base flex-1 text-left">Sort By</span>
         </DropdownButton>
 
         {isOpen && (
@@ -63,7 +53,7 @@ export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
                   type="button"
                   className={cn(
                     "w-full px-4 py-2 text-left text-base justify-start rounded-none h-auto",
-                    selected === option.id && "bg-gray-100 font-medium"
+                    selected === option.id && "bg-gray-100 font-medium",
                   )}
                 >
                   {option.label}
@@ -74,7 +64,7 @@ export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 SortDropdown.displayName = "SortDropdown";

@@ -13,7 +13,9 @@ interface OrderConfirmationSummaryProps {
   isMobile?: boolean;
 }
 
-export const OrderConfirmationSummary: React.FC<OrderConfirmationSummaryProps> = ({
+export const OrderConfirmationSummary: React.FC<
+  OrderConfirmationSummaryProps
+> = ({
   subtotal,
   shipping,
   taxes,

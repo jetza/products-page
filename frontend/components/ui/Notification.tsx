@@ -7,7 +7,12 @@ interface NotificationProps {
   duration?: number;
 }
 
-export const Notification: React.FC<NotificationProps> = ({ message, isOpen, onClose, duration = 2000 }) => {
+export const Notification: React.FC<NotificationProps> = ({
+  message,
+  isOpen,
+  onClose,
+  duration = 2000,
+}) => {
   React.useEffect(() => {
     if (isOpen) {
       const timer = setTimeout(onClose, duration);

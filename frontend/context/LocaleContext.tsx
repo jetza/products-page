@@ -8,11 +8,14 @@ interface LocaleContextType {
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
-export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [locale, setLocaleState] = useState<string>("en");
 
   useEffect(() => {
-    const stored = typeof window !== "undefined" ? localStorage.getItem("locale") : null;
+    const stored =
+      typeof window !== "undefined" ? localStorage.getItem("locale") : null;
     if (stored) setLocaleState(stored);
   }, []);
 

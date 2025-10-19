@@ -19,10 +19,10 @@ interface HeaderProps {
   className?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ 
+export const Header: React.FC<HeaderProps> = ({
   variant = "desktop",
   theme = "solid",
-  className 
+  className,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -40,7 +40,10 @@ export const Header: React.FC<HeaderProps> = ({
       <>
         <header className={cn(bgClass, borderClass, className)}>
           <div className="flex items-center justify-between px-8 h-16">
-            <Link href={getHref("/", locale)} className={cn("text-button-big font-semibold", textClass)}>
+            <Link
+              href={getHref("/", locale)}
+              className={cn("text-button-big font-semibold", textClass)}
+            >
               {CONTENT.brand.name}
             </Link>
 
@@ -51,7 +54,10 @@ export const Header: React.FC<HeaderProps> = ({
                 aria-label={CONTENT.nav.cart}
               >
                 <BagIcon className={cn("w-6 h-6", textClass)} />
-                <CartBadge count={totalItems} variant={isTransparent ? "light" : "dark"} />
+                <CartBadge
+                  count={totalItems}
+                  variant={isTransparent ? "light" : "dark"}
+                />
               </button>
 
               <button
@@ -130,41 +136,56 @@ export const Header: React.FC<HeaderProps> = ({
     <header className={cn(bgClass, borderClass, className)}>
       <div className="px-5">
         <div className="mx-auto px-24 h-20 flex items-center justify-between">
-          <Link href={getHref("/", locale)} className={cn("text-button-big font-semibold", textClass)}>
+          <Link
+            href={getHref("/", locale)}
+            className={cn("text-button-big font-semibold", textClass)}
+          >
             {CONTENT.brand.name}
           </Link>
 
           <nav className="flex items-center gap-8">
-          <Link href={getHref("/about", locale)} className={cn("text-base hover:opacity-70", textClass)}>
-            {CONTENT.nav.about}
-          </Link>
-          <Link href={getHref("/inspiration", locale)} className={cn("text-base hover:opacity-70", textClass)}>
-            {CONTENT.nav.inspiration}
-          </Link>
-          <Link href={getHref("/shop", locale)} className={cn("text-base hover:opacity-70", textClass)}>
-            {CONTENT.nav.shop}
-          </Link>
+            <Link
+              href={getHref("/about", locale)}
+              className={cn("text-base hover:opacity-70", textClass)}
+            >
+              {CONTENT.nav.about}
+            </Link>
+            <Link
+              href={getHref("/inspiration", locale)}
+              className={cn("text-base hover:opacity-70", textClass)}
+            >
+              {CONTENT.nav.inspiration}
+            </Link>
+            <Link
+              href={getHref("/shop", locale)}
+              className={cn("text-base hover:opacity-70", textClass)}
+            >
+              {CONTENT.nav.shop}
+            </Link>
           </nav>
 
           <div className="flex items-center gap-6">
-          <LanguageSwitcher variant={isTransparent ? "light" : "dark"} />
+            <LanguageSwitcher variant={isTransparent ? "light" : "dark"} />
 
-          <button
-            onClick={() => setIsSearchOpen(!isSearchOpen)}
-            className="p-2"
-            aria-label={CONTENT.common.search}
-          >
-            <SearchIcon className={cn("w-5 h-5", textClass)} />
-          </button>
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="p-2"
+              aria-label={CONTENT.common.search}
+            >
+              <SearchIcon className={cn("w-5 h-5", textClass)} />
+            </button>
 
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="p-2 relative"
-            aria-label={CONTENT.nav.cart}
-          >
-            <BagIcon className={cn("w-5 h-5", textClass)} />
-            <CartBadge count={totalItems} variant={isTransparent ? "light" : "dark"} />
-          </button>
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="p-2 relative"
+              aria-label={CONTENT.nav.cart}
+            >
+              <BagIcon className={cn("w-5 h-5", textClass)} />
+              <CartBadge
+                count={totalItems}
+                variant={isTransparent ? "light" : "dark"}
+              />
+            </button>
           </div>
         </div>
       </div>

@@ -46,7 +46,7 @@ export const PersonalSecurity: React.FC = () => {
         <div className="border border-gray-200 rounded-lg p-4 md:p-6 mb-4">
           <div className="flex flex-col md:flex-row md:items-start gap-4">
             <UserIcon className="w-5 h-5 md:w-6 md:h-6 text-gray-600 flex-shrink-0 mt-1" />
-            
+
             {isEditingName ? (
               <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
@@ -54,9 +54,9 @@ export const PersonalSecurity: React.FC = () => {
                   type="text"
                   value={`${editedFirstName} ${editedLastName}`}
                   onChange={(e) => {
-                    const names = e.target.value.split(' ');
-                    setEditedFirstName(names[0] || '');
-                    setEditedLastName(names.slice(1).join(' ') || '');
+                    const names = e.target.value.split(" ");
+                    setEditedFirstName(names[0] || "");
+                    setEditedLastName(names.slice(1).join(" ") || "");
                   }}
                   fullWidth
                 />
@@ -71,11 +71,17 @@ export const PersonalSecurity: React.FC = () => {
             ) : (
               <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs md:text-sm text-gray-500 mb-1">{CONTENT.account.name}</p>
-                  <p className="text-sm md:text-base text-gray-900">{firstName} {lastName}</p>
+                  <p className="text-xs md:text-sm text-gray-500 mb-1">
+                    {CONTENT.account.name}
+                  </p>
+                  <p className="text-sm md:text-base text-gray-900">
+                    {firstName} {lastName}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-xs md:text-sm text-gray-500 mb-1">{CONTENT.account.number}</p>
+                  <p className="text-xs md:text-sm text-gray-500 mb-1">
+                    {CONTENT.account.number}
+                  </p>
                   <p className="text-sm md:text-base text-gray-900">{phone}</p>
                 </div>
               </div>
@@ -101,9 +107,11 @@ export const PersonalSecurity: React.FC = () => {
         <div className="border border-gray-200 rounded-lg p-4 md:p-6 mb-2">
           <div className="flex items-start gap-4">
             <UserIcon className="w-5 h-5 md:w-6 md:h-6 text-gray-600 flex-shrink-0 mt-1" />
-            
+
             <div className="flex-1">
-              <p className="text-xs md:text-sm text-gray-500 mb-1">{CONTENT.account.email}</p>
+              <p className="text-xs md:text-sm text-gray-500 mb-1">
+                {CONTENT.account.email}
+              </p>
               <p className="text-sm md:text-base text-gray-900">{email}</p>
             </div>
           </div>
@@ -119,11 +127,7 @@ export const PersonalSecurity: React.FC = () => {
           {CONTENT.account.address}
         </h2>
 
-        <Button
-          variant="primary"
-          size="md"
-          className="w-full md:w-auto"
-        >
+        <Button variant="primary" size="md" className="w-full md:w-auto">
           {CONTENT.account.addAddress}
         </Button>
       </div>

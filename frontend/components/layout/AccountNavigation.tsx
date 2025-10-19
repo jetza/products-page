@@ -22,7 +22,6 @@ export const AccountNavigation = React.forwardRef<
   return (
     <div ref={ref} className={cn("account-navigation", className)}>
       <div className="account-navigation-inner">
-
         <h2 className="text-big font-normal text-black">{title}</h2>
 
         <nav className="flex flex-col gap-6">
@@ -35,7 +34,7 @@ export const AccountNavigation = React.forwardRef<
                 "text-left text-base justify-start h-auto p-0 rounded-none",
                 item.active
                   ? "font-bold text-black"
-                  : "font-normal text-black hover:font-bold"
+                  : "font-normal text-black hover:font-bold",
               )}
             >
               {item.label}

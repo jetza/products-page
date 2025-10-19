@@ -7,13 +7,19 @@ interface MaterialsSelectProps {
   onMaterialSelect: (material: string) => void;
 }
 
-export function MaterialsSelect({ materials, selectedMaterial, onMaterialSelect }: MaterialsSelectProps) {
+export function MaterialsSelect({
+  materials,
+  selectedMaterial,
+  onMaterialSelect,
+}: MaterialsSelectProps) {
   if (materials.length === 0) return null;
 
   return (
     <div className="mb-8">
       <div className="flex items-center gap-4 mb-4">
-        <h3 className="text-base font-normal text-black">{CONTENT.filters.materials}</h3>
+        <h3 className="text-base font-normal text-black">
+          {CONTENT.filters.materials}
+        </h3>
         <span className="text-base font-normal text-gray-400">
           {selectedMaterial || materials[0]}
         </span>

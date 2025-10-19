@@ -19,12 +19,7 @@ export function AboutCenter({
     <section className="bg-white py-12 lg:py-16">
       <div className="mb-12 lg:mb-16">
         <div className="relative w-full aspect-[16/9] lg:aspect-[21/9] overflow-hidden">
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            className="object-cover"
-          />
+          <Image src={image} alt={imageAlt} fill className="object-cover" />
         </div>
       </div>
 

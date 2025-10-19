@@ -43,7 +43,10 @@ export const Select: React.FC<SelectProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -71,9 +74,18 @@ export const Select: React.FC<SelectProps> = ({
   };
 
   return (
-    <div ref={selectRef} className={cn("flex flex-col gap-2", fullWidth && "w-full")}>
+    <div
+      ref={selectRef}
+      className={cn("flex flex-col gap-2", fullWidth && "w-full")}
+    >
       {label && (
-        <label htmlFor={selectId} className={cn("text-sm font-normal text-gray-800", disabled && "text-gray-400")}>
+        <label
+          htmlFor={selectId}
+          className={cn(
+            "text-sm font-normal text-gray-800",
+            disabled && "text-gray-400",
+          )}
+        >
           {label}
         </label>
       )}
@@ -91,7 +103,11 @@ export const Select: React.FC<SelectProps> = ({
           </span>
         </DropdownButton>
         {isOpen && !disabled && (
-          <div className={cn("absolute z-50 w-full mt-2 bg-white border border-gray-300 rounded shadow-lg max-h-[448px] overflow-y-auto")}>
+          <div
+            className={cn(
+              "absolute z-50 w-full mt-2 bg-white border border-gray-300 rounded shadow-lg max-h-[448px] overflow-y-auto",
+            )}
+          >
             {options.map((option) => (
               <button
                 key={option.value}
@@ -99,7 +115,7 @@ export const Select: React.FC<SelectProps> = ({
                 onClick={() => handleSelect(option.value)}
                 className={cn(
                   "w-full h-14 px-4 text-left text-base transition-colors duration-150 hover:bg-gray-50 hover:font-semibold focus:outline-none",
-                  option.value === value && "bg-black text-white font-semibold"
+                  option.value === value && "bg-black text-white font-semibold",
                 )}
               >
                 {option.label}
@@ -109,7 +125,13 @@ export const Select: React.FC<SelectProps> = ({
         )}
       </div>
       {helperText && (
-        <p className={cn("text-sm font-normal", error ? "text-error" : "text-gray-500", disabled && "text-gray-400")}>
+        <p
+          className={cn(
+            "text-sm font-normal",
+            error ? "text-error" : "text-gray-500",
+            disabled && "text-gray-400",
+          )}
+        >
           {helperText}
         </p>
       )}

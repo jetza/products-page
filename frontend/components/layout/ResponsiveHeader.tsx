@@ -8,7 +8,10 @@ interface ResponsiveHeaderProps {
   className?: string;
 }
 
-export const ResponsiveHeader: React.FC<ResponsiveHeaderProps> = ({ theme = "solid", className }) => {
+export const ResponsiveHeader: React.FC<ResponsiveHeaderProps> = ({
+  theme = "solid",
+  className,
+}) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {

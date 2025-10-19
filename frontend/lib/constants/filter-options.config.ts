@@ -43,86 +43,89 @@ export const SORT_OPTIONS: FilterOption[] = [
 ];
 
 // Product metadata for filtering
-export const PRODUCT_METADATA: Record<string, { 
-  category: string; 
-  type: string; 
-  collection: string;
-  materials: string[];
-  colors: string[];
-}> = {
+export const PRODUCT_METADATA: Record<
+  string,
+  {
+    category: string;
+    type: string;
+    collection: string;
+    materials: string[];
+    colors: string[];
+  }
+> = {
   // Armchair - One seater
-  "bellaire-haven": { 
-    category: "one-seater", 
-    type: "armchair", 
+  "bellaire-haven": {
+    category: "one-seater",
+    type: "armchair",
     collection: "modern-luxe",
     materials: ["velvet", "leather"],
-    colors: ["black", "gray"]
+    colors: ["black", "gray"],
   },
-  "astrid-curve": { 
-    category: "one-seater", 
-    type: "armchair", 
+  "astrid-curve": {
+    category: "one-seater",
+    type: "armchair",
     collection: "boho-chic",
     materials: ["boucle", "linen"],
-    colors: ["white", "gray"]
+    colors: ["white", "gray"],
   },
-  
+
   // Sofa - Two seater
-  "paloma-haven": { 
-    category: "two-seater", 
-    type: "sofa", 
+  "paloma-haven": {
+    category: "two-seater",
+    type: "sofa",
     collection: "scandinavian-simplicity",
     materials: ["linen", "boucle"],
-    colors: ["white", "gray"]
+    colors: ["white", "gray"],
   },
-  "paloma-haven-armchair": { 
-    category: "two-seater", 
-    type: "sofa", 
+  "paloma-haven-armchair": {
+    category: "two-seater",
+    type: "sofa",
     collection: "scandinavian-simplicity",
     materials: ["linen", "velvet"],
-    colors: ["gray", "white"]
+    colors: ["gray", "white"],
   },
-  "everly-estate": { 
-    category: "two-seater", 
-    type: "sofa", 
+  "everly-estate": {
+    category: "two-seater",
+    type: "sofa",
     collection: "modern-luxe",
     materials: ["velvet", "leather"],
-    colors: ["black", "gray", "red"]
+    colors: ["black", "gray", "red"],
   },
-  "sutton-royale": { 
-    category: "two-seater", 
-    type: "sofa", 
+  "sutton-royale": {
+    category: "two-seater",
+    type: "sofa",
     collection: "timeless-classics",
     materials: ["leather", "velvet"],
-    colors: ["black", "gray"]
+    colors: ["black", "gray"],
   },
-  
+
   // Sofa - Three seater
-  "nordic-haven": { 
-    category: "three-seater", 
-    type: "sofa", 
+  "nordic-haven": {
+    category: "three-seater",
+    type: "sofa",
     collection: "scandinavian-simplicity",
     materials: ["linen", "boucle"],
-    colors: ["white", "gray"]
+    colors: ["white", "gray"],
   },
-  "camden-retreat": { 
-    category: "three-seater", 
-    type: "sofa", 
+  "camden-retreat": {
+    category: "three-seater",
+    type: "sofa",
     collection: "boho-chic",
     materials: ["boucle", "linen"],
-    colors: ["white", "gray", "red"]
+    colors: ["white", "gray", "red"],
   },
-  "astrid-curve-2": { 
-    category: "three-seater", 
-    type: "sofa", 
+  "astrid-curve-2": {
+    category: "three-seater",
+    type: "sofa",
     collection: "boho-chic",
     materials: ["velvet", "boucle"],
-    colors: ["gray", "black"]
+    colors: ["gray", "black"],
   },
-  "astrid-curve-gray": { 
-    category: "three-seater", 
-    type: "sofa", 
+  "astrid-curve-gray": {
+    category: "three-seater",
+    type: "sofa",
     collection: "timeless-classics",
     materials: ["velvet", "leather"],
-    colors: ["gray", "black"]
+    colors: ["gray", "black"],
   },
 };

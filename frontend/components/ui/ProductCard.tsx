@@ -27,7 +27,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
       className,
       onClick,
     },
-    ref
+    ref,
   ) => {
     const isOnSale = originalPrice && originalPrice > price;
 
@@ -39,14 +39,14 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           "flex flex-col cursor-pointer",
           variant === "desktop" && "w-96 gap-6",
           variant === "mobile" && "w-[163px] gap-4",
-          className
+          className,
         )}
       >
         <div
           className={cn(
             "relative bg-gray-100 overflow-hidden",
             variant === "desktop" && "h-[257px]",
-            variant === "mobile" && "h-[139px]"
+            variant === "mobile" && "h-[139px]",
           )}
         >
           <Image
@@ -71,10 +71,12 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           </div>
 
           <div className="flex items-center gap-2">
-            <span className={cn(
-              "text-base font-medium leading-none",
-              isOnSale ? "text-[var(--error)]" : "text-black"
-            )}>
+            <span
+              className={cn(
+                "text-base font-medium leading-none",
+                isOnSale ? "text-[var(--error)]" : "text-black",
+              )}
+            >
               €{price.toFixed(2)}
             </span>
             {isOnSale && originalPrice && (
@@ -86,7 +88,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 ProductCard.displayName = "ProductCard";

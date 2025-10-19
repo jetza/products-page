@@ -12,25 +12,16 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const scrollPosition = container.scrollLeft;
-      const containerWidth = container.offsetWidth;
-      const newIndex = Math.round(scrollPosition / containerWidth);
-      setCurrentIndex(newIndex);
-    }
-  };
-
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const newIndex = direction === "left"
-        ? Math.max(0, currentIndex - 1)
-        : Math.min(images.length - 1, currentIndex + 1);
-      
+      const newIndex =
+        direction === "left"
+          ? Math.max(0, currentIndex - 1)
+          : Math.min(images.length - 1, currentIndex + 1);
+
       setCurrentIndex(newIndex);
-      
+
       const scrollAmount = container.offsetWidth;
       container.scrollTo({
         left: newIndex * scrollAmount,
@@ -44,7 +35,7 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
   return (
     <div className="w-full">
       <div className="relative w-full max-w-full lg:max-w-[934px] h-[400px] lg:h-[612px]">
-        <div 
+        <div
           ref={scrollContainerRef}
           className="flex gap-0 lg:gap-6 overflow-x-auto scrollbar-hide scroll-smooth h-full snap-x snap-mandatory"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
@@ -60,9 +51,17 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
                 width={427}
                 height={532}
                 className={`w-full h-full transition-transform duration-300 ${
-                  index === 0 ? 'object-cover' : index === 1 ? 'object-cover' : 'object-contain'
+                  index === 0
+                    ? "object-cover"
+                    : index === 1
+                      ? "object-cover"
+                      : "object-contain"
                 } lg:p-0`}
-                style={index === 1 ? { transform: 'scale(1.5)', transformOrigin: 'center' } : undefined}
+                style={
+                  index === 1
+                    ? { transform: "scale(1.5)", transformOrigin: "center" }
+                    : undefined
+                }
                 priority={index === 0}
               />
             </div>

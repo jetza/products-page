@@ -28,7 +28,7 @@ interface UseProductFilterReturn {
 
 export function useProductFilter(
   products: ProductCardProps[],
-  options: UseProductFilterOptions = {}
+  options: UseProductFilterOptions = {},
 ): UseProductFilterReturn {
   const { enableCollectionFilter = true } = options;
 
@@ -72,7 +72,14 @@ export function useProductFilter(
     }
 
     return filtered;
-  }, [products, selectedCollections, selectedCategories, selectedTypes, sortBy, enableCollectionFilter]);
+  }, [
+    products,
+    selectedCollections,
+    selectedCategories,
+    selectedTypes,
+    sortBy,
+    enableCollectionFilter,
+  ]);
 
   return {
     filteredProducts,

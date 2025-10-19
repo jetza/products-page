@@ -15,13 +15,13 @@ interface HomeAboutProps {
 
 export default HomeAbout;
 
-export function HomeAbout({ 
-  title, 
-  description, 
+export function HomeAbout({
+  title,
+  description,
   additionalText,
   cta,
-  image, 
-  imageAlt 
+  image,
+  imageAlt,
 }: HomeAboutProps) {
   const locale = getCurrentLocale();
   return (
@@ -33,36 +33,31 @@ export function HomeAbout({
           </h2>
 
           <div className="mb-8 lg:mb-12">
-          <div className="relative w-full aspect-[21/9] overflow-hidden">
-            <Image
-              src={image}
-              alt={imageAlt}
-              fill
-              className="object-cover"
-            />
+            <div className="relative w-full aspect-[21/9] overflow-hidden">
+              <Image src={image} alt={imageAlt} fill className="object-cover" />
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
-          <div className="lg:w-[60%]">
-            <h2 className="text-h3 lg:text-h2 font-semibold text-black leading-tight">
-              {title}
-            </h2>
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+            <div className="lg:w-[60%]">
+              <h2 className="text-h3 lg:text-h2 font-semibold text-black leading-tight">
+                {title}
+              </h2>
+            </div>
+            <div className="lg:w-[40%] space-y-6 pt-[72px]">
+              <p className="text-body text-gray-700 leading-relaxed">
+                {description}
+              </p>
+              <p className="text-body text-gray-700 leading-relaxed">
+                {additionalText}
+              </p>
+              <Link
+                href={getHref("/about", locale)}
+                className="text-body text-black underline hover:no-underline inline-block"
+              >
+                {cta}
+              </Link>
+            </div>
           </div>
-          <div className="lg:w-[40%] space-y-6 pt-[72px]">
-            <p className="text-body text-gray-700 leading-relaxed">
-              {description}
-            </p>
-            <p className="text-body text-gray-700 leading-relaxed">
-              {additionalText}
-            </p>
-            <Link 
-              href={getHref("/about", locale)} 
-              className="text-body text-black underline hover:no-underline inline-block"
-            >
-              {cta}
-            </Link>
-          </div>
-        </div>
         </div>
       </div>
     </section>

@@ -74,7 +74,7 @@ export const Search: React.FC<SearchProps> = ({
 
     setIsSearching(true);
     const query = searchQuery.toLowerCase();
-    
+
     const filtered = allProducts.filter((product) => {
       return (
         product.title?.toLowerCase().includes(query) ||
@@ -123,10 +123,7 @@ export const Search: React.FC<SearchProps> = ({
 
   return (
     <>
-      <div
-        className="fixed inset-0 bg-black/50 z-40"
-        onClick={onClose}
-      />
+      <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
 
       <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-20">
         <div className="bg-white rounded-lg shadow-2xl w-full max-w-2xl mx-4">
@@ -153,18 +150,24 @@ export const Search: React.FC<SearchProps> = ({
             <div className="border-t border-gray-200 max-h-96 overflow-y-auto">
               {isSearching ? (
                 <div className="p-6 text-center">
-                  <p className="text-sm text-gray-500">{CONTENT.common.loading}</p>
+                  <p className="text-sm text-gray-500">
+                    {CONTENT.common.loading}
+                  </p>
                 </div>
               ) : searchResults.length > 0 ? (
                 <div className="p-4">
                   <p className="text-sm text-gray-500 mb-4 px-2">
-                    Found {searchResults.length} product{searchResults.length !== 1 ? 's' : ''}
+                    Found {searchResults.length} product
+                    {searchResults.length !== 1 ? "s" : ""}
                   </p>
                   <div className="space-y-2">
                     {searchResults.map((product) => {
-                      const image = product.images?.[0]?.url || product.thumbnail || "";
-                      const price = product.variants?.[0]?.calculated_price?.calculated_amount 
-                        ? product.variants[0].calculated_price.calculated_amount / 100 
+                      const image =
+                        product.images?.[0]?.url || product.thumbnail || "";
+                      const price = product.variants?.[0]?.calculated_price
+                        ?.calculated_amount
+                        ? product.variants[0].calculated_price
+                            .calculated_amount / 100
                         : 0;
                       return (
                         <Link
