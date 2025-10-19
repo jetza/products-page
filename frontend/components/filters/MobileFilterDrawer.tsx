@@ -36,7 +36,7 @@ interface MobileFilterDrawerProps {
   showCollectionFilter?: boolean;
 }
 
-export function MobileFilterDrawer({
+export const MobileFilterDrawer = React.memo(function MobileFilterDrawer({
   isOpen,
   onClose,
   collections,
@@ -60,6 +60,11 @@ export function MobileFilterDrawer({
   showMaterialFilter = true,
   showCollectionFilter = true,
 }: MobileFilterDrawerProps) {
+  const handleApplyAndClose = React.useCallback(() => {
+    onApply();
+    onClose();
+  }, [onApply, onClose]);
+
   if (!isOpen) return null;
 
   return (
@@ -150,10 +155,7 @@ export function MobileFilterDrawer({
           <Button
             variant="primary"
             size="lg"
-            onClick={() => {
-              onApply();
-              onClose();
-            }}
+            onClick={handleApplyAndClose}
             className="w-full"
           >
             {CONTENT.common.showResults}
@@ -162,4 +164,4 @@ export function MobileFilterDrawer({
       </div>
     </>
   );
-}
+});

@@ -8,32 +8,34 @@ export interface ProductGridProps {
   className?: string;
 }
 
-export const ProductGrid = React.forwardRef<HTMLDivElement, ProductGridProps>(
-  ({ products, className }, ref) => {
-    if (products.length === 0) {
+export const ProductGrid = React.memo(
+  React.forwardRef<HTMLDivElement, ProductGridProps>(
+    ({ products, className }, ref) => {
+      if (products.length === 0) {
+        return (
+          <div className="flex items-center justify-center py-12">
+            <p className="text-gray-500 text-body">
+              {CONTENT.common.noProductsFound}
+            </p>
+          </div>
+        );
+      }
+
       return (
-        <div className="flex items-center justify-center py-12">
-          <p className="text-gray-500 text-body">
-            {CONTENT.common.noProductsFound}
-          </p>
+        <div
+          ref={ref}
+          className={cn(
+            "grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8",
+            className,
+          )}
+        >
+          {products.map((product) => (
+            <ProductCard key={product.id} {...product} />
+          ))}
         </div>
       );
-    }
-
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8",
-          className,
-        )}
-      >
-        {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
-        ))}
-      </div>
-    );
-  },
+    },
+  ),
 );
 
 ProductGrid.displayName = "ProductGrid";

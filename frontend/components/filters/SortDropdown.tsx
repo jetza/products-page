@@ -17,54 +17,64 @@ export interface SortDropdownProps {
   className?: string;
 }
 
-export const SortDropdown = React.forwardRef<HTMLDivElement, SortDropdownProps>(
-  ({ options, selected, onChange, className }, ref) => {
-    const [isOpen, setIsOpen] = useState(false);
+export const SortDropdown = React.memo(
+  React.forwardRef<HTMLDivElement, SortDropdownProps>(
+    ({ options, selected, onChange, className }, ref) => {
+      const [isOpen, setIsOpen] = useState(false);
 
-    const handleSelect = (optionId: string) => {
-      onChange(optionId);
-      setIsOpen(false);
-    };
+      const handleToggle = React.useCallback(() => {
+        setIsOpen((prev) => !prev);
+      }, []);
 
-    return (
-      <div ref={ref} className={cn("relative", className)}>
-        <DropdownButton
-          isOpen={isOpen}
-          onClick={() => setIsOpen(!isOpen)}
-          variant="filter"
-          className="min-w-[180px]"
-        >
-          <span className="text-base flex-1 text-left">Sort By</span>
-        </DropdownButton>
+      const handleClose = React.useCallback(() => {
+        setIsOpen(false);
+      }, []);
 
-        {isOpen && (
-          <>
-            <div
-              className="fixed inset-0 z-10"
-              onClick={() => setIsOpen(false)}
-            />
+      const handleSelect = React.useCallback(
+        (optionId: string) => {
+          onChange(optionId);
+          setIsOpen(false);
+        },
+        [onChange]
+      );
 
-            <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded shadow-lg z-20 min-w-[180px] py-2">
-              {options.map((option) => (
-                <Button
-                  key={option.id}
-                  onClick={() => handleSelect(option.id)}
-                  variant="ghost"
-                  type="button"
-                  className={cn(
-                    "w-full px-4 py-2 text-left text-base justify-start rounded-none h-auto",
-                    selected === option.id && "bg-gray-100 font-medium",
-                  )}
-                >
-                  {option.label}
-                </Button>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-    );
-  },
+      return (
+        <div ref={ref} className={cn("relative", className)}>
+          <DropdownButton
+            isOpen={isOpen}
+            onClick={handleToggle}
+            variant="filter"
+            className="min-w-[180px]"
+          >
+            <span className="text-base flex-1 text-left">Sort By</span>
+          </DropdownButton>
+
+          {isOpen && (
+            <>
+              <div className="fixed inset-0 z-10" onClick={handleClose} />
+
+              <div className="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded shadow-lg z-20 min-w-[180px] py-2">
+                {options.map((option) => (
+                  <Button
+                    key={option.id}
+                    onClick={() => handleSelect(option.id)}
+                    variant="ghost"
+                    type="button"
+                    className={cn(
+                      "w-full px-4 py-2 text-left text-base justify-start rounded-none h-auto",
+                      selected === option.id && "bg-gray-100 font-medium"
+                    )}
+                  >
+                    {option.label}
+                  </Button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      );
+    }
+  )
 );
 
 SortDropdown.displayName = "SortDropdown";

@@ -1,7 +1,8 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export function InspirationProducts() {
+export const InspirationProducts = React.memo(function InspirationProducts() {
   return (
     <section className="bg-white py-12 lg:py-16">
       <div className="px-5">
@@ -179,4 +180,4 @@ export function InspirationProducts() {
       </div>
     </section>
   );
-}
+});

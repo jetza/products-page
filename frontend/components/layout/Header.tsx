@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { cn } from "@/lib/utils/cn";
 import { SearchIcon, MenuIcon, BagIcon } from "@/components/icons";
 import { Search } from "@/components/ui/Search";
@@ -19,7 +19,7 @@ interface HeaderProps {
   className?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({
+export const Header = React.memo<HeaderProps>(({
   variant = "desktop",
   theme = "solid",
   className,
@@ -28,7 +28,18 @@ export const Header: React.FC<HeaderProps> = ({
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { items, updateQuantity, removeFromCart } = useCart();
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+  const totalItems = useMemo(
+    () => items.reduce((sum, item) => sum + item.quantity, 0),
+    [items],
+  );
+
+  const handleToggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
+  const handleCloseMenu = useCallback(() => setIsMenuOpen(false), []);
+  const handleToggleSearch = useCallback(() => setIsSearchOpen((prev) => !prev), []);
+  const handleCloseSearch = useCallback(() => setIsSearchOpen(false), []);
+  const handleOpenCart = useCallback(() => setIsCartOpen(true), []);
+  const handleCloseCart = useCallback(() => setIsCartOpen(false), []);
+
   const isTransparent = theme === "transparent";
   const bgClass = isTransparent ? "bg-transparent" : "bg-white";
   const textClass = isTransparent ? "text-white" : "text-black";
@@ -49,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
 
             <div className="flex items-center gap-2">
               <button
-                onClick={() => setIsCartOpen(true)}
+                onClick={handleOpenCart}
                 className="p-2 relative"
                 aria-label={CONTENT.nav.cart}
               >
@@ -61,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
 
               <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                onClick={handleToggleMenu}
                 className="p-2"
                 aria-label="Toggle menu"
               >
@@ -75,7 +86,7 @@ export const Header: React.FC<HeaderProps> = ({
           <>
             <div
               className="fixed inset-0 bg-black/50 z-40"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleCloseMenu}
             />
 
             <div className="fixed top-0 left-0 bottom-0 w-[280px] bg-black z-50 flex flex-col">
@@ -94,21 +105,21 @@ export const Header: React.FC<HeaderProps> = ({
                 <Link
                   href={getHref("/about", locale)}
                   className="block text-white text-big font-medium mb-6"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleCloseMenu}
                 >
                   {CONTENT.nav.about}
                 </Link>
                 <Link
                   href={getHref("/inspiration", locale)}
                   className="block text-white text-big font-medium mb-6"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleCloseMenu}
                 >
                   {CONTENT.nav.inspiration}
                 </Link>
                 <Link
                   href={getHref("/shop", locale)}
                   className="block text-white text-big font-medium"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleCloseMenu}
                 >
                   {CONTENT.nav.shop}
                 </Link>
@@ -123,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         <CartDrawer
           isOpen={isCartOpen}
-          onClose={() => setIsCartOpen(false)}
+          onClose={handleCloseCart}
           items={items}
           onQuantityChange={updateQuantity}
           onRemoveItem={removeFromCart}
@@ -168,7 +179,7 @@ export const Header: React.FC<HeaderProps> = ({
             <LanguageSwitcher variant={isTransparent ? "light" : "dark"} />
 
             <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              onClick={handleToggleSearch}
               className="p-2"
               aria-label={CONTENT.common.search}
             >
@@ -176,7 +187,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
-              onClick={() => setIsCartOpen(true)}
+              onClick={handleOpenCart}
               className="p-2 relative"
               aria-label={CONTENT.nav.cart}
             >
@@ -193,18 +204,18 @@ export const Header: React.FC<HeaderProps> = ({
       <Search
         variant="desktop"
         isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
+        onClose={handleCloseSearch}
       />
 
       <CartDrawer
         isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
+        onClose={handleCloseCart}
         items={items}
         onQuantityChange={updateQuantity}
         onRemoveItem={removeFromCart}
       />
     </header>
   );
-};
+});
 
 Header.displayName = "Header";

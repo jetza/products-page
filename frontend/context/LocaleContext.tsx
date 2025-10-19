@@ -19,17 +19,20 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({
     if (stored) setLocaleState(stored);
   }, []);
 
-  const setLocale = (newLocale: string) => {
+  const setLocale = React.useCallback((newLocale: string) => {
     setLocaleState(newLocale);
     if (typeof window !== "undefined") {
       localStorage.setItem("locale", newLocale);
     }
-  };
+  }, []);
+
+  const value = React.useMemo(
+    () => ({ locale, setLocale }),
+    [locale, setLocale]
+  );
 
   return (
-    <LocaleContext.Provider value={{ locale, setLocale }}>
-      {children}
-    </LocaleContext.Provider>
+    <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
   );
 };
 

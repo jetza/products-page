@@ -1,3 +1,4 @@
+import React from "react";
 import { getHref } from "@/lib/getHref";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
 import Image from "next/image";
@@ -16,7 +17,7 @@ interface StyleCardProps {
   href: string;
 }
 
-export function InspirationGallery({
+export const InspirationGallery = React.memo(function InspirationGallery({
   title,
   description,
   styles,
@@ -73,4 +74,4 @@ export function InspirationGallery({
       </div>
     </section>
   );
-}
+});

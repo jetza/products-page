@@ -23,7 +23,7 @@ interface CollectionClientProps {
   collectionTitle: string;
 }
 
-export function CollectionClient({
+export const CollectionClient = React.memo(function CollectionClient({
   products,
   collectionTitle,
 }: CollectionClientProps) {
@@ -42,6 +42,22 @@ export function CollectionClient({
   } = filters;
   const { sortBy, setSortBy } = sort;
 
+  const handleFilterToggle = React.useCallback(() => {
+    setIsFilterOpen((prev) => !prev);
+  }, []);
+
+  const handleSortToggle = React.useCallback(() => {
+    setIsSortOpen((prev) => !prev);
+  }, []);
+
+  const handleFilterClose = React.useCallback(() => {
+    setIsFilterOpen(false);
+  }, []);
+
+  const handleSortClose = React.useCallback(() => {
+    setIsSortOpen(false);
+  }, []);
+
   return (
     <section className="bg-white">
       <div className="px-5">
@@ -54,7 +70,7 @@ export function CollectionClient({
           <div className="flex md:hidden items-center justify-between mb-8">
             <DropdownButton
               isOpen={isFilterOpen}
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
+              onClick={handleFilterToggle}
               variant="filter"
               customIcon={
                 <PlusIcon
@@ -67,14 +83,13 @@ export function CollectionClient({
 
             <DropdownButton
               isOpen={isSortOpen}
-              onClick={() => setIsSortOpen(!isSortOpen)}
+              onClick={handleSortToggle}
               variant="filter"
             >
               <span className="text-base">{CONTENT.common.sortBy}</span>
             </DropdownButton>
           </div>
 
-          {/* Desktop - Individual filter dropdowns */}
           <div className="hidden md:flex items-center justify-between mb-8 lg:mb-12">
             <div className="flex items-center gap-4">
               <FilterDropdown label={CONTENT.filters.category}>
@@ -103,7 +118,7 @@ export function CollectionClient({
 
           <MobileFilterDrawer
             isOpen={isFilterOpen}
-            onClose={() => setIsFilterOpen(false)}
+            onClose={handleFilterClose}
             collections={[]}
             categories={FURNITURE_CATEGORIES}
             types={FURNITURE_TYPES}
@@ -128,7 +143,7 @@ export function CollectionClient({
 
           <MobileSortDrawer
             isOpen={isSortOpen}
-            onClose={() => setIsSortOpen(false)}
+            onClose={handleSortClose}
             options={SORT_OPTIONS}
             selected={sortBy}
             onSelect={setSortBy}
@@ -147,4 +162,4 @@ export function CollectionClient({
       </div>
     </section>
   );
-}
+});

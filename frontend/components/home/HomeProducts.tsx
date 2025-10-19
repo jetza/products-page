@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -21,9 +22,12 @@ const categoryDefaultImages = {
   "arm-chairs": "/products/belime-haven-arm-chair.png",
 };
 
-export function HomeProducts({ title, categories }: HomeProductsProps) {
+export const HomeProducts = React.memo(function HomeProducts({
+  title,
+  categories,
+}: HomeProductsProps) {
   const [categoryImages, setCategoryImages] = useState<Record<string, string>>(
-    {},
+    {}
   );
 
   useEffect(() => {
@@ -72,4 +76,4 @@ export function HomeProducts({ title, categories }: HomeProductsProps) {
       </div>
     </section>
   );
-}
+});

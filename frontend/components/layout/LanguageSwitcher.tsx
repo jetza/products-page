@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { locales, localeNames, type Locale } from "@/i18n/config";
 import { ChevronDownIcon } from "@/components/icons";
@@ -18,17 +18,18 @@ export function LanguageSwitcher({
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  const getCurrentLocale = (): Locale => {
+  const currentLocale = useMemo((): Locale => {
     const segments = pathname.split("/").filter(Boolean);
     if (segments.length > 0 && locales.includes(segments[0] as Locale)) {
       return segments[0] as Locale;
     }
     return "en";
-  };
+  }, [pathname]);
 
-  const currentLocale = getCurrentLocale();
+  const handleToggle = useCallback(() => setIsOpen((prev) => !prev), []);
+  const handleClose = useCallback(() => setIsOpen(false), []);
 
-  const handleLocaleChange = (newLocale: Locale) => {
+  const handleLocaleChange = useCallback((newLocale: Locale) => {
     if (newLocale === currentLocale) {
       setIsOpen(false);
       return;
@@ -54,7 +55,7 @@ export function LanguageSwitcher({
     setIsOpen(false);
 
     window.location.href = newPath;
-  };
+  }, [pathname, currentLocale]);
 
   const isLight = variant === "light";
   const textClass = isLight ? "text-white" : "text-black";
@@ -63,7 +64,7 @@ export function LanguageSwitcher({
   return (
     <div className="relative">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         className={cn("flex items-center gap-2 text-base", textClass)}
       >
         <span>{currentLocale.toUpperCase()}</span>
@@ -76,7 +77,7 @@ export function LanguageSwitcher({
         <>
           <div
             className="fixed inset-0 z-40"
-            onClick={() => setIsOpen(false)}
+            onClick={handleClose}
           />
 
           <div

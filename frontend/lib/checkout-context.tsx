@@ -245,96 +245,113 @@ export const CheckoutContext = createContext<CheckoutContextValue | undefined>(
 export function CheckoutProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(checkoutReducer, initialState);
 
-  const setEmail = (email: string, subscribe: boolean) => {
+  const setEmail = React.useCallback((email: string, subscribe: boolean) => {
     dispatch({ type: "SET_EMAIL", payload: { email, subscribe } });
-  };
+  }, []);
 
-  const setDeliveryInfo = (info: DeliveryInfo) => {
+  const setDeliveryInfo = React.useCallback((info: DeliveryInfo) => {
     dispatch({ type: "SET_DELIVERY_INFO", payload: info });
-  };
+  }, []);
 
-  const setShippingMethod = (method: ShippingMethod) => {
+  const setShippingMethod = React.useCallback((method: ShippingMethod) => {
     dispatch({ type: "SET_SHIPPING_METHOD", payload: method });
-  };
+  }, []);
 
-  const setPaymentInfo = (info: PaymentInfo) => {
+  const setPaymentInfo = React.useCallback((info: PaymentInfo) => {
     dispatch({ type: "SET_PAYMENT_INFO", payload: info });
-  };
+  }, []);
 
-  const setBillingInfo = (info: BillingInfo) => {
+  const setBillingInfo = React.useCallback((info: BillingInfo) => {
     dispatch({ type: "SET_BILLING_INFO", payload: info });
-  };
+  }, []);
 
-  const setDiscount = (code: string, amount: number) => {
+  const setDiscount = React.useCallback((code: string, amount: number) => {
     dispatch({ type: "SET_DISCOUNT", payload: { code, amount } });
-  };
+  }, []);
 
-  const removeDiscount = () => {
+  const removeDiscount = React.useCallback(() => {
     dispatch({ type: "REMOVE_DISCOUNT" });
-  };
+  }, []);
 
-  const completeOrder = async (
-    items: OrderItem[],
-    subtotal: number,
-    shipping: number,
-    taxes: number,
-  ) => {
-    try {
-      dispatch({ type: "START_PROCESSING" });
+  const completeOrder = React.useCallback(
+    async (
+      items: OrderItem[],
+      subtotal: number,
+      shipping: number,
+      taxes: number
+    ) => {
+      try {
+        dispatch({ type: "START_PROCESSING" });
 
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+        await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      const orderNumber = `#${Math.floor(100000 + Math.random() * 900000)}`;
+        const orderNumber = `#${Math.floor(100000 + Math.random() * 900000)}`;
 
-      const completedOrder: CompletedOrder = {
-        orderNumber,
-        date: new Date().toISOString(),
-        email: state.email,
-        deliveryInfo: state.deliveryInfo!,
-        billingInfo: state.billingInfo || {
-          ...state.deliveryInfo!,
-          sameAsDelivery: true,
-        },
-        shippingMethod: state.shippingMethod!,
-        paymentInfo: state.paymentInfo || undefined,
-        items,
-        subtotal,
-        shipping,
-        taxes,
-        total: subtotal + shipping + taxes - state.discountAmount,
-        discountCode: state.discountCode || undefined,
-        discountAmount: state.discountAmount || undefined,
-      };
+        const completedOrder: CompletedOrder = {
+          orderNumber,
+          date: new Date().toISOString(),
+          email: state.email,
+          deliveryInfo: state.deliveryInfo!,
+          billingInfo: state.billingInfo || {
+            ...state.deliveryInfo!,
+            sameAsDelivery: true,
+          },
+          shippingMethod: state.shippingMethod!,
+          paymentInfo: state.paymentInfo || undefined,
+          items,
+          subtotal,
+          shipping,
+          taxes,
+          total: subtotal + shipping + taxes - state.discountAmount,
+          discountCode: state.discountCode || undefined,
+          discountAmount: state.discountAmount || undefined,
+        };
 
-      dispatch({ type: "ORDER_SUCCESS", payload: completedOrder });
-    } catch (error) {
-      dispatch({
-        type: "ORDER_ERROR",
-        payload:
-          error instanceof Error ? error.message : "Failed to complete order",
-      });
-    }
-  };
+        dispatch({ type: "ORDER_SUCCESS", payload: completedOrder });
+      } catch (error) {
+        dispatch({
+          type: "ORDER_ERROR",
+          payload:
+            error instanceof Error ? error.message : "Failed to complete order",
+        });
+      }
+    },
+    [state]
+  );
 
-  const resetCheckout = () => {
+  const resetCheckout = React.useCallback(() => {
     dispatch({ type: "RESET_CHECKOUT" });
-  };
+  }, []);
+
+  const value = React.useMemo(
+    () => ({
+      state,
+      setEmail,
+      setDeliveryInfo,
+      setShippingMethod,
+      setPaymentInfo,
+      setBillingInfo,
+      setDiscount,
+      removeDiscount,
+      completeOrder,
+      resetCheckout,
+    }),
+    [
+      state,
+      setEmail,
+      setDeliveryInfo,
+      setShippingMethod,
+      setPaymentInfo,
+      setBillingInfo,
+      setDiscount,
+      removeDiscount,
+      completeOrder,
+      resetCheckout,
+    ]
+  );
 
   return (
-    <CheckoutContext.Provider
-      value={{
-        state,
-        setEmail,
-        setDeliveryInfo,
-        setShippingMethod,
-        setPaymentInfo,
-        setBillingInfo,
-        setDiscount,
-        removeDiscount,
-        completeOrder,
-        resetCheckout,
-      }}
-    >
+    <CheckoutContext.Provider value={value}>
       {children}
     </CheckoutContext.Provider>
   );

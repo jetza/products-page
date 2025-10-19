@@ -10,36 +10,42 @@ export interface FilterDropdownProps {
   className?: string;
 }
 
-export const FilterDropdown = React.forwardRef<
-  HTMLDivElement,
-  FilterDropdownProps
->(({ label, children, className }, ref) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const FilterDropdown = React.memo(
+  React.forwardRef<HTMLDivElement, FilterDropdownProps>(
+    ({ label, children, className }, ref) => {
+      const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <div ref={ref} className={cn("relative", className)}>
-      <DropdownButton
-        isOpen={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-        variant="filter"
-      >
-        <span className="text-base">{label}</span>
-      </DropdownButton>
+      const handleToggle = React.useCallback(() => {
+        setIsOpen((prev) => !prev);
+      }, []);
 
-      {isOpen && (
-        <>
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setIsOpen(false)}
-          />
+      const handleClose = React.useCallback(() => {
+        setIsOpen(false);
+      }, []);
 
-          <div className="absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded shadow-lg z-20 p-6 w-[243px]">
-            {children}
-          </div>
-        </>
-      )}
-    </div>
-  );
-});
+      return (
+        <div ref={ref} className={cn("relative", className)}>
+          <DropdownButton
+            isOpen={isOpen}
+            onClick={handleToggle}
+            variant="filter"
+          >
+            <span className="text-base">{label}</span>
+          </DropdownButton>
+
+          {isOpen && (
+            <>
+              <div className="fixed inset-0 z-10" onClick={handleClose} />
+
+              <div className="absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded shadow-lg z-20 p-6 w-[243px]">
+                {children}
+              </div>
+            </>
+          )}
+        </div>
+      );
+    }
+  )
+);
 
 FilterDropdown.displayName = "FilterDropdown";

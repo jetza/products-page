@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Modal } from "@/components/ui/Modal";
+import { Modal } from "@/components/ui/Modal/Modal";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
 import { useCheckout } from "@/lib/hooks/useCheckout";

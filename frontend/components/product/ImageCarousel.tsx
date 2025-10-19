@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronButton } from "@/components/ui/Buttons/ChevronButton";
 
@@ -8,16 +8,22 @@ interface ImageCarouselProps {
   images: { url: string; alt?: string }[];
 }
 
-export function ImageCarousel({ images }: ImageCarouselProps) {
+export const ImageCarousel = React.memo(function ImageCarousel({
+  images,
+}: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const goToPrevious = () => {
+  const goToPrevious = React.useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
+  }, [images.length]);
 
-  const goToNext = () => {
+  const goToNext = React.useCallback(() => {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
+  }, [images.length]);
+
+  const goToIndex = React.useCallback((index: number) => {
+    setCurrentIndex(index);
+  }, []);
 
   if (!images || images.length === 0) return null;
 
@@ -53,7 +59,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
             {images.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => goToIndex(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
                   index === currentIndex ? "bg-black w-8" : "bg-gray-300"
                 }`}
@@ -65,4 +71,4 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
       )}
     </div>
   );
-}
+});

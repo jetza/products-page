@@ -10,10 +10,9 @@ export interface QuantitySelectorProps {
   disabled?: boolean;
 }
 
-export const QuantitySelector = React.forwardRef<
-  HTMLDivElement,
-  QuantitySelectorProps
->(({ quantity, onDecrease, onIncrease, className, disabled = false }, ref) => {
+export const QuantitySelector = React.memo(
+  React.forwardRef<HTMLDivElement, QuantitySelectorProps>(
+    ({ quantity, onDecrease, onIncrease, className, disabled = false }, ref) => {
   return (
     <div
       ref={ref}
@@ -47,7 +46,9 @@ export const QuantitySelector = React.forwardRef<
         <PlusIcon className="w-4 h-4" />
       </button>
     </div>
-  );
-});
+    );
+  },
+  ),
+);
 
 QuantitySelector.displayName = "QuantitySelector";

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { cn } from "@/lib/utils/cn";
 import { CartItem, CartItemProps } from "@/components/ui/CartItem";
 import { CartSummary } from "@/components/ui/CartSummary";
@@ -16,7 +16,7 @@ interface CartDrawerProps {
   className?: string;
 }
 
-export const CartDrawer: React.FC<CartDrawerProps> = ({
+export const CartDrawer = React.memo<CartDrawerProps>(({
   isOpen,
   onClose,
   items = [],
@@ -24,9 +24,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onRemoveItem,
   className,
 }) => {
-  const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
+  const total = useMemo(
+    () => items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [items],
   );
 
   if (!isOpen) return null;
@@ -80,6 +80,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       </div>
     </>
   );
-};
+});
 
 CartDrawer.displayName = "CartDrawer";

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useRouter } from "next/navigation";
 import { getHref } from "@/lib/getHref";
 import { getCurrentLocale } from "@/lib/getCurrentLocale";
@@ -18,9 +19,15 @@ interface HomeCollectionsProps {
   collections: Collection[];
 }
 
-export function HomeCollections({ collections }: HomeCollectionsProps) {
+export const HomeCollections = React.memo(function HomeCollections({
+  collections,
+}: HomeCollectionsProps) {
   const router = useRouter();
   const locale = getCurrentLocale();
+
+  const handleViewAll = React.useCallback(() => {
+    router.push(getHref("/collection", locale));
+  }, [router, locale]);
 
   return (
     <section className="bg-white">
@@ -35,7 +42,7 @@ export function HomeCollections({ collections }: HomeCollectionsProps) {
               variant="primary"
               size="sm"
               className="text-xs lg:hidden"
-              onClick={() => router.push(getHref("/collection", locale))}
+              onClick={handleViewAll}
             >
               {CONTENT.common.viewAll}
             </Button>
@@ -77,4 +84,4 @@ export function HomeCollections({ collections }: HomeCollectionsProps) {
       </div>
     </section>
   );
-}
+});

@@ -1,3 +1,4 @@
+import React from "react";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ProductCardProps } from "@/components/shop/ProductCard";
 import { CONTENT } from "@/lib/constants/content";
@@ -6,7 +7,9 @@ interface RelatedProductsProps {
   products: ProductCardProps[];
 }
 
-export function RelatedProducts({ products }: RelatedProductsProps) {
+export const RelatedProducts = React.memo(function RelatedProducts({
+  products,
+}: RelatedProductsProps) {
   if (!products || products.length === 0) return null;
 
   return (
@@ -24,4 +27,4 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
       </div>
     </section>
   );
-}
+});

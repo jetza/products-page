@@ -1,64 +1,9 @@
-import React from "react";
+
+import React, { useMemo } from "react";
 import { cn } from "@/lib/utils/cn";
-import { Button } from "./Buttons/Button";
-import { CloseButton } from "./Buttons/CloseButton";
-
-type ModalStyleConfig = {
-  width: string;
-  minHeight?: string;
-  height?: string;
-  gap: string;
-  padding: string;
-};
-
-const MODAL_STYLES: Record<string, Record<string, ModalStyleConfig>> = {
-  "popup-1": {
-    desktop: {
-      width: "616px",
-      minHeight: "530px",
-      gap: "40px",
-      padding: "24px",
-    },
-    mobile: {
-      width: "344px",
-      minHeight: "538px",
-      gap: "32px",
-      padding: "24px 16px",
-    },
-  },
-  "popup-2": {
-    desktop: {
-      width: "616px",
-      minHeight: "482px",
-      gap: "40px",
-      padding: "24px",
-    },
-    mobile: {
-      width: "344px",
-      minHeight: "482px",
-      gap: "40px",
-      padding: "24px",
-    },
-  },
-  "popup-3": {
-    desktop: {
-      width: "432px",
-      minHeight: "392px",
-      gap: "40px",
-      padding: "24px",
-    },
-    mobile: {
-      width: "344px",
-      minHeight: "376px",
-      gap: "32px",
-      padding: "24px 16px",
-    },
-  },
-  confirmation: {
-    desktop: { width: "608px", height: "162px", gap: "32px", padding: "24px" },
-    mobile: { width: "344px", height: "162px", gap: "32px", padding: "24px" },
-  },
-};
+import { Button } from "../Buttons/Button";
+import { CloseButton } from "../Buttons/CloseButton";
+import MODAL_STYLES from "./modalStyles";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -75,7 +20,7 @@ export interface ModalProps {
   className?: string;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+export const Modal = React.memo<ModalProps>(({
   isOpen,
   onClose,
   title,
@@ -89,11 +34,14 @@ export const Modal: React.FC<ModalProps> = ({
   showCloseButton = true,
   className,
 }) => {
-  if (!isOpen) return null;
-
   const isConfirmation = variant === "confirmation";
   const isMobile = device === "mobile";
-  const modalStyles = MODAL_STYLES[variant][isMobile ? "mobile" : "desktop"];
+  const modalStyles = useMemo(
+    () => MODAL_STYLES[variant][isMobile ? "mobile" : "desktop"],
+    [variant, isMobile],
+  );
+  
+  if (!isOpen) return null;
 
   return (
     <div
@@ -155,6 +103,6 @@ export const Modal: React.FC<ModalProps> = ({
       </div>
     </div>
   );
-};
+});
 
 Modal.displayName = "Modal";

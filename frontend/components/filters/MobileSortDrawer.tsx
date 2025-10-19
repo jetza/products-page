@@ -13,7 +13,7 @@ interface MobileSortDrawerProps {
   onSelect: (sortId: string) => void;
 }
 
-export function MobileSortDrawer({
+export const MobileSortDrawer = React.memo(function MobileSortDrawer({
   isOpen,
   onClose,
   options,
@@ -28,10 +28,14 @@ export function MobileSortDrawer({
     }
   }, [isOpen, selected]);
 
-  const handleApply = () => {
+  const handleApply = React.useCallback(() => {
     onSelect(tempSelected);
     onClose();
-  };
+  }, [onSelect, tempSelected, onClose]);
+
+  const handleTempChange = React.useCallback((optionId: string) => {
+    setTempSelected(optionId);
+  }, []);
 
   if (!isOpen) return null;
 
@@ -59,7 +63,7 @@ export function MobileSortDrawer({
                       name="sort"
                       value={option.id}
                       checked={tempSelected === option.id}
-                      onChange={() => setTempSelected(option.id)}
+                      onChange={() => handleTempChange(option.id)}
                       className="sr-only"
                     />
                     <div
@@ -93,4 +97,4 @@ export function MobileSortDrawer({
       </div>
     </>
   );
-}
+});

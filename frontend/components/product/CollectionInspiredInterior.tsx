@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { CONTENT } from "@/lib/constants/content";
 import Link from "next/link";
@@ -10,12 +11,13 @@ interface CollectionInspiredInteriorProps {
   collectionTitle?: string;
 }
 
-export function CollectionInspiredInterior({
-  title,
-  collectionName,
-  collectionTitle,
-}: CollectionInspiredInteriorProps) {
-  const locale = getCurrentLocale();
+export const CollectionInspiredInterior = React.memo(
+  function CollectionInspiredInterior({
+    title,
+    collectionName,
+    collectionTitle,
+  }: CollectionInspiredInteriorProps) {
+    const locale = getCurrentLocale();
   return (
     <section className="py-12 md:py-20 bg-white">
       <div className="px-8 md:px-5">
@@ -77,4 +79,5 @@ export function CollectionInspiredInterior({
       </div>
     </section>
   );
-}
+  }
+);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 
@@ -8,27 +8,43 @@ interface ProductImageCarouselProps {
   images: { url: string; alt?: string }[];
 }
 
-export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
+export const ProductImageCarousel = React.memo(function ProductImageCarousel({
+  images,
+}: ProductImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = React.useCallback(
+    (direction: "left" | "right") => {
+      if (scrollContainerRef.current) {
+        const container = scrollContainerRef.current;
+        const newIndex =
+          direction === "left"
+            ? Math.max(0, currentIndex - 1)
+            : Math.min(images.length - 1, currentIndex + 1);
+
+        setCurrentIndex(newIndex);
+
+        const scrollAmount = container.offsetWidth;
+        container.scrollTo({
+          left: newIndex * scrollAmount,
+          behavior: "smooth",
+        });
+      }
+    },
+    [currentIndex, images.length]
+  );
+
+  const scrollToIndex = React.useCallback((index: number) => {
+    setCurrentIndex(index);
     if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const newIndex =
-        direction === "left"
-          ? Math.max(0, currentIndex - 1)
-          : Math.min(images.length - 1, currentIndex + 1);
-
-      setCurrentIndex(newIndex);
-
-      const scrollAmount = container.offsetWidth;
-      container.scrollTo({
-        left: newIndex * scrollAmount,
+      const scrollAmount = scrollContainerRef.current.offsetWidth;
+      scrollContainerRef.current.scrollTo({
+        left: index * scrollAmount,
         behavior: "smooth",
       });
     }
-  };
+  }, []);
 
   if (!images || images.length === 0) return null;
 
@@ -95,16 +111,7 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
           {images.map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                setCurrentIndex(index);
-                if (scrollContainerRef.current) {
-                  const scrollAmount = scrollContainerRef.current.offsetWidth;
-                  scrollContainerRef.current.scrollTo({
-                    left: index * scrollAmount,
-                    behavior: "smooth",
-                  });
-                }
-              }}
+              onClick={() => scrollToIndex(index)}
               className={`text-sm font-medium transition-colors ${
                 index === currentIndex
                   ? "text-black font-semibold"
@@ -118,4 +125,4 @@ export function ProductImageCarousel({ images }: ProductImageCarouselProps) {
       )}
     </div>
   );
-}
+});

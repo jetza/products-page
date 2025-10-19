@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback, useMemo } from "react";
 
 interface PriceSliderProps {
   min?: number;
@@ -9,52 +9,59 @@ interface PriceSliderProps {
   onChange: (value: [number, number]) => void;
 }
 
-export function PriceSlider({
-  min = 0,
-  max = 10000,
-  value,
-  onChange,
-}: PriceSliderProps) {
+export const PriceSlider = ({ min = 0, max = 10000, value, onChange }: PriceSliderProps) => {
   const [isDragging, setIsDragging] = useState<"min" | "max" | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const updateValue = (clientX: number) => {
-    if (!sliderRef.current || !isDragging) return;
+  const updateValue = useCallback(
+    (clientX: number) => {
+      if (!sliderRef.current || !isDragging) return;
 
-    const rect = sliderRef.current.getBoundingClientRect();
-    const percent = Math.max(
-      0,
-      Math.min(1, (clientX - rect.left) / rect.width),
-    );
-    const newValue = Math.round(min + percent * (max - min));
+      const rect = sliderRef.current.getBoundingClientRect();
+      const percent = Math.max(
+        0,
+        Math.min(1, (clientX - rect.left) / rect.width)
+      );
+      const newValue = Math.round(min + percent * (max - min));
 
-    if (isDragging === "min" && newValue <= value[1]) {
-      onChange([newValue, value[1]]);
-    } else if (isDragging === "max" && newValue >= value[0]) {
-      onChange([value[0], newValue]);
-    }
-  };
+      if (isDragging === "min" && newValue <= value[1]) {
+        onChange([newValue, value[1]]);
+      } else if (isDragging === "max" && newValue >= value[0]) {
+        onChange([value[0], newValue]);
+      }
+    },
+    [isDragging, min, max, value, onChange]
+  );
 
-  const handleMouseDown = (type: "min" | "max") => {
+  const handleMouseDown = useCallback((type: "min" | "max") => {
     setIsDragging(type);
-  };
+  }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    updateValue(e.clientX);
-  };
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      updateValue(e.clientX);
+    },
+    [updateValue]
+  );
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (e.touches.length > 0) {
-      updateValue(e.touches[0].clientX);
-    }
-  };
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      if (e.touches.length > 0) {
+        updateValue(e.touches[0].clientX);
+      }
+    },
+    [updateValue]
+  );
 
-  const handleEnd = () => {
+  const handleEnd = useCallback(() => {
     setIsDragging(null);
-  };
+  }, []);
 
-  const minPercent = ((value[0] - min) / (max - min)) * 100;
-  const maxPercent = ((value[1] - min) / (max - min)) * 100;
+  const { minPercent, maxPercent } = useMemo(() => {
+    const minPercent = ((value[0] - min) / (max - min)) * 100;
+    const maxPercent = ((value[1] - min) / (max - min)) * 100;
+    return { minPercent, maxPercent };
+  }, [value, min, max]);
 
   return (
     <div className="py-4">
@@ -96,4 +103,4 @@ export function PriceSlider({
       </div>
     </div>
   );
-}
+};

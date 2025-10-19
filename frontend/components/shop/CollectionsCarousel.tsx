@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +16,7 @@ export function CollectionsCarousel() {
   const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = useCallback((direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const firstCard = scrollContainerRef.current.querySelector("a");
       if (firstCard) {
@@ -30,7 +30,7 @@ export function CollectionsCarousel() {
         });
       }
     }
-  };
+  }, []);
 
   return (
     <div className="py-8 md:py-12">
