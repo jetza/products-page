@@ -1,7 +1,7 @@
 import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
 import { HeroSection } from "@/components/layout/HeroSection";
 import { HomeProducts } from "@/components/home/HomeProducts";
-import { HomeAbout } from "@/components/home/HomeAbout";
+import HomeAbout from "@/components/home/HomeAbout";
 import { homeContent } from "@/lib/constants/pages/home.content";
 import Link from "next/link";
 import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
@@ -46,7 +46,7 @@ export default function Home() {
       <main>
         <HomeProducts {...homeContent.products} />
         <CollectionsCarousel />
-        <HomeAbout {...homeContent.about} />
+  <HomeAbout {...homeContent.about} />
       </main>
       
       <ResponsiveFooter />

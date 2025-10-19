@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FadeInOnScroll } from "../ui/FadeInOnScroll";
 
 interface ProductCategory {
   title: string;
@@ -15,7 +16,6 @@ interface HomeProductsProps {
   categories: ProductCategory[];
 }
 
-// Lista slika po kategorijama (fiksne slike)
 const categoryDefaultImages = {
   sofas: "/products/sutton-royale.jpg",
   "arm-chairs": "/products/belime-haven-arm-chair.png",
@@ -25,7 +25,6 @@ export function HomeProducts({ title, categories }: HomeProductsProps) {
   const [categoryImages, setCategoryImages] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    // Koristi fiksne slike bez shuffle-a
     const images: Record<string, string> = {};
     categories.forEach((category) => {
       images[category.slug] = categoryDefaultImages[category.folder];
@@ -59,9 +58,11 @@ export function HomeProducts({ title, categories }: HomeProductsProps) {
                   />
                 )}
               </div>
-              <h3 className="text-big text-black mt-4 group-hover:text-gray-700 transition-colors">
-                {category.title}
-              </h3>
+                <FadeInOnScroll>
+                  <h3 className="text-big text-black mt-4 group-hover:text-gray-700 transition-colors">
+                    {category.title}
+                  </h3>
+                </FadeInOnScroll>
             </Link>
           ))}
         </div>

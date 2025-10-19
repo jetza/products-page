@@ -36,16 +36,12 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className="antialiased flex flex-col min-h-screen" suppressHydrationWarning>
-        <NextIntlClientProvider messages={messages}>
-          <CartProvider>
-            <CheckoutProvider>
-              {children}
-            </CheckoutProvider>
-          </CartProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <CartProvider>
+        <CheckoutProvider>
+          {children}
+        </CheckoutProvider>
+      </CartProvider>
+    </NextIntlClientProvider>
   );
 }

@@ -13,6 +13,8 @@ interface HomeAboutProps {
   imageAlt: string;
 }
 
+export default HomeAbout;
+
 export function HomeAbout({ 
   title, 
   description, 
