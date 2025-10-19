@@ -28,7 +28,7 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const value = React.useMemo(
     () => ({ locale, setLocale }),
-    [locale, setLocale]
+    [locale, setLocale],
   );
 
   return (

@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo, useLayoutEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useLayoutEffect,
+} from "react";
 import { Notification } from "@/components/ui/Notification";
 import { useDebouncedValue } from "@/lib/hooks/useDebouncedValue";
 import { cn } from "@/lib/utils/cn";
@@ -37,10 +43,13 @@ export const Search: React.FC<SearchProps> = ({
   const debouncedQuery = useDebouncedValue(searchQuery, 600);
 
   const handleCloseNotification = React.useCallback(() => setError(""), []);
-  
-  const handleInputChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  }, []);
+
+  const handleInputChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchQuery(e.target.value);
+    },
+    [],
+  );
 
   useEffect(() => {
     if (!debouncedQuery.trim()) {
@@ -85,7 +94,6 @@ export const Search: React.FC<SearchProps> = ({
     }
   }, [isOpen]);
 
-
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -99,10 +107,11 @@ export const Search: React.FC<SearchProps> = ({
   const filteredResults = useMemo(() => {
     if (!debouncedQuery.trim()) return [];
     const query = debouncedQuery.toLowerCase();
-    return allProducts.filter((product) =>
-      product.title?.toLowerCase().includes(query) ||
-      product.collection?.title?.toLowerCase().includes(query) ||
-      product.description?.toLowerCase().includes(query)
+    return allProducts.filter(
+      (product) =>
+        product.title?.toLowerCase().includes(query) ||
+        product.collection?.title?.toLowerCase().includes(query) ||
+        product.description?.toLowerCase().includes(query),
     );
   }, [debouncedQuery, allProducts]);
 
@@ -116,13 +125,16 @@ export const Search: React.FC<SearchProps> = ({
     return () => clearTimeout(timeout);
   }, [debouncedQuery]);
 
-
   if (!isOpen) return null;
 
   if (variant === "mobile") {
     return (
       <div className={cn("px-4 pb-4 bg-black", className)}>
-        <Notification message={error} isOpen={!!error} onClose={handleCloseNotification} />
+        <Notification
+          message={error}
+          isOpen={!!error}
+          onClose={handleCloseNotification}
+        />
         <form>
           <div className="relative">
             <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white" />
@@ -148,7 +160,11 @@ export const Search: React.FC<SearchProps> = ({
 
   return (
     <>
-      <Notification message={error} isOpen={!!error} onClose={handleCloseNotification} />
+      <Notification
+        message={error}
+        isOpen={!!error}
+        onClose={handleCloseNotification}
+      />
       <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
 
       <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-20">

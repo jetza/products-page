@@ -155,8 +155,8 @@ export const CollectionClient = React.memo(function CollectionClient({
               </p>
             </div>
           ) : (
-            <ProductGrid 
-              products={filteredProducts} 
+            <ProductGrid
+              products={filteredProducts}
               useVirtualScroll={filteredProducts.length >= 100}
             />
           )}

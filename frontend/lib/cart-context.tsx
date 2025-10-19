@@ -116,12 +116,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const totalItems = React.useMemo(
     () => items.reduce((sum, item) => sum + item.quantity, 0),
-    [items]
+    [items],
   );
 
   const totalPrice = React.useMemo(
     () => items.reduce((sum, item) => sum + item.price * item.quantity, 0),
-    [items]
+    [items],
   );
 
   const value = React.useMemo(
@@ -134,12 +134,18 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       totalItems,
       totalPrice,
     }),
-    [items, addToCart, removeFromCart, updateQuantity, clearCart, totalItems, totalPrice]
+    [
+      items,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+      clearCart,
+      totalItems,
+      totalPrice,
+    ],
   );
 
-  return (
-    <CartContext.Provider value={value}>{children}</CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 
 export const useCart = () => {

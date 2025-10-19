@@ -35,7 +35,7 @@ export const SortDropdown = React.memo(
           onChange(optionId);
           setIsOpen(false);
         },
-        [onChange]
+        [onChange],
       );
 
       return (
@@ -62,7 +62,7 @@ export const SortDropdown = React.memo(
                     type="button"
                     className={cn(
                       "w-full px-4 py-2 text-left text-base justify-start rounded-none h-auto",
-                      selected === option.id && "bg-gray-100 font-medium"
+                      selected === option.id && "bg-gray-100 font-medium",
                     )}
                   >
                     {option.label}
@@ -73,8 +73,8 @@ export const SortDropdown = React.memo(
           )}
         </div>
       );
-    }
-  )
+    },
+  ),
 );
 
 SortDropdown.displayName = "SortDropdown";

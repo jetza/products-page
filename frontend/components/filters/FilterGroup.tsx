@@ -15,7 +15,7 @@ export const FilterGroup = React.memo(
   React.forwardRef<HTMLDivElement, FilterGroupProps>(
     (
       { title, children, collapsible = true, defaultOpen = true, className },
-      ref
+      ref,
     ) => {
       const [isOpen, setIsOpen] = useState(defaultOpen);
 
@@ -37,14 +37,14 @@ export const FilterGroup = React.memo(
             type="button"
             className={cn(
               "w-full flex items-center justify-between mb-4 h-auto p-0 rounded-none",
-              collapsible ? "cursor-pointer" : "cursor-default"
+              collapsible ? "cursor-pointer" : "cursor-default",
             )}
             rightIcon={
               collapsible ? (
                 <ChevronDownIcon
                   className={cn(
                     "w-5 h-5 text-gray-600 transition-transform",
-                    isOpen ? "rotate-180" : "rotate-0"
+                    isOpen ? "rotate-180" : "rotate-0",
                   )}
                 />
               ) : undefined
@@ -58,8 +58,8 @@ export const FilterGroup = React.memo(
           )}
         </div>
       );
-    }
-  )
+    },
+  ),
 );
 
 FilterGroup.displayName = "FilterGroup";

@@ -30,9 +30,11 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
   // Delete all existing inventory items first
   logger.info("🗑️  Deleting existing inventory items...");
   try {
-    const existingInventory = await inventoryModuleService.listInventoryItems({});
+    const existingInventory = await inventoryModuleService.listInventoryItems(
+      {},
+    );
     if (existingInventory.length > 0) {
-      const inventoryIds = existingInventory.map(i => i.id);
+      const inventoryIds = existingInventory.map((i) => i.id);
       await inventoryModuleService.deleteInventoryItems(inventoryIds);
       logger.info(`✅ Deleted ${inventoryIds.length} existing inventory items`);
     }
@@ -44,7 +46,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
   logger.info("🗑️  Deleting existing products...");
   const existingProducts = await productModuleService.listProducts();
   if (existingProducts.length > 0) {
-    const productIds = existingProducts.map(p => p.id);
+    const productIds = existingProducts.map((p) => p.id);
     await productModuleService.deleteProducts(productIds);
     logger.info(`✅ Deleted ${productIds.length} existing products`);
   }
@@ -52,9 +54,10 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
   // Delete all existing collections
   logger.info("🗑️  Deleting existing collections...");
   try {
-    const existingCollections = await productModuleService.listProductCollections({});
+    const existingCollections =
+      await productModuleService.listProductCollections({});
     if (existingCollections.length > 0) {
-      const collectionIds = existingCollections.map(c => c.id);
+      const collectionIds = existingCollections.map((c) => c.id);
       await productModuleService.deleteProductCollections(collectionIds);
       logger.info(`✅ Deleted ${collectionIds.length} existing collections`);
     } else {
@@ -71,40 +74,49 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
       title: "Scandinavian Simplicity",
       handle: "scandinavian-simplicity",
       metadata: {
-        image_url: "http://localhost:9000/collections/image.png"
-      }
+        image_url: "http://localhost:9000/collections/image.png",
+      },
     },
     {
       title: "Modern Luxe",
       handle: "modern-luxe",
       metadata: {
-        image_url: "http://localhost:9000/collections/image1.png"
-      }
+        image_url: "http://localhost:9000/collections/image1.png",
+      },
     },
     {
       title: "Boho Chic",
       handle: "boho-chic",
       metadata: {
-        image_url: "http://localhost:9000/collections/image2.png"
-      }
+        image_url: "http://localhost:9000/collections/image2.png",
+      },
     },
     {
       title: "Timeless Classics",
       handle: "timeless-classics",
       metadata: {
-        image_url: "http://localhost:9000/collections/image3.png"
-      }
-    }
+        image_url: "http://localhost:9000/collections/image3.png",
+      },
+    },
   ];
 
-  const createdCollections = await productModuleService.createProductCollections(collectionsData);
+  const createdCollections =
+    await productModuleService.createProductCollections(collectionsData);
   logger.info(`✅ Created ${createdCollections.length} collections`);
 
   // Map collections by handle for easy lookup
-  const scandinavianCollection = createdCollections.find(c => c.handle === "scandinavian-simplicity");
-  const modernLuxeCollection = createdCollections.find(c => c.handle === "modern-luxe");
-  const bohoChicCollection = createdCollections.find(c => c.handle === "boho-chic");
-  const timelessCollection = createdCollections.find(c => c.handle === "timeless-classics");
+  const scandinavianCollection = createdCollections.find(
+    (c) => c.handle === "scandinavian-simplicity",
+  );
+  const modernLuxeCollection = createdCollections.find(
+    (c) => c.handle === "modern-luxe",
+  );
+  const bohoChicCollection = createdCollections.find(
+    (c) => c.handle === "boho-chic",
+  );
+  const timelessCollection = createdCollections.find(
+    (c) => c.handle === "timeless-classics",
+  );
 
   // Get or create default sales channel
   const [store] = await storeModuleService.listStores();
@@ -114,7 +126,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
 
   if (!defaultSalesChannel.length) {
     const { result: salesChannelResult } = await createSalesChannelsWorkflow(
-      container
+      container,
     ).run({
       input: {
         salesChannelsData: [
@@ -157,45 +169,59 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
   // Get existing categories (skip creation as they already exist from previous seed)
   logger.info("Getting existing categories...");
   const allCategories = await productModuleService.listProductCategories();
-  
+
   logger.info(`Found ${allCategories.length} categories`);
   if (allCategories.length > 0) {
-    logger.info(`Category handles: ${allCategories.map(c => c.handle).join(", ")}`);
+    logger.info(
+      `Category handles: ${allCategories.map((c) => c.handle).join(", ")}`,
+    );
   }
 
   const sofasCategory = allCategories.find((cat) => cat.handle === "sofas");
-  const armChairsCategory = allCategories.find((cat) => cat.handle === "arm-chairs");
-  
+  const armChairsCategory = allCategories.find(
+    (cat) => cat.handle === "arm-chairs",
+  );
+
   if (!sofasCategory || !armChairsCategory) {
-    logger.warn("⚠️  Required categories not found. Using any available categories as fallback.");
-    logger.info("This is expected if you're running seed for the first time. Categories will be created manually or through admin.");
+    logger.warn(
+      "⚠️  Required categories not found. Using any available categories as fallback.",
+    );
+    logger.info(
+      "This is expected if you're running seed for the first time. Categories will be created manually or through admin.",
+    );
   }
-  
-  logger.info(`Using categories: Sofas (${sofasCategory?.id || "not found"}), Arm Chairs (${armChairsCategory?.id || "not found"})`);
+
+  logger.info(
+    `Using categories: Sofas (${sofasCategory?.id || "not found"}), Arm Chairs (${armChairsCategory?.id || "not found"})`,
+  );
 
   // Standard colors and materials for ALL products
   const COLORS = ["Light Gray", "Dark Gray", "Black"];
   const MATERIALS = ["Velvet", "Linen", "Boucle", "Leather"];
-  
-  logger.info(`Using region for pricing: ${defaultRegion.name} (${defaultRegion.currency_code})`);
+
+  logger.info(
+    `Using region for pricing: ${defaultRegion.name} (${defaultRegion.currency_code})`,
+  );
 
   // Helper to create variants for multiple materials
   const createVariants = (sku: string, basePrice: number) => {
     const variants: any[] = [];
-    MATERIALS.forEach(material => {
-      COLORS.forEach(color => {
+    MATERIALS.forEach((material) => {
+      COLORS.forEach((color) => {
         variants.push({
           title: `${color} / ${material}`,
-          sku: `${sku}-${color.replace(/\s+/g, '-').toUpperCase()}-${material.toUpperCase()}`,
+          sku: `${sku}-${color.replace(/\s+/g, "-").toUpperCase()}-${material.toUpperCase()}`,
           options: {
             Color: color,
             Material: material,
           },
-          prices: [{
-            amount: basePrice,
-            currency_code: defaultRegion.currency_code,
-            rules: { region_id: defaultRegion.id }
-          }],
+          prices: [
+            {
+              amount: basePrice,
+              currency_code: defaultRegion.currency_code,
+              rules: { region_id: defaultRegion.id },
+            },
+          ],
         });
       });
     });
@@ -204,7 +230,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
 
   // Create products
   logger.info("Creating products...");
-  
+
   await createProductsWorkflow(container).run({
     input: {
       products: [
@@ -241,7 +267,11 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "bellaire-haven",
           description: "Modern Luxe",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/belime-haven-arm-chair.png" }],
+          images: [
+            {
+              url: "http://localhost:9000/products/belime-haven-arm-chair.png",
+            },
+          ],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
@@ -255,7 +285,9 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "camden-retreat",
           description: "Boho Chic",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/camden-retreat.jpg" }],
+          images: [
+            { url: "http://localhost:9000/products/camden-retreat.jpg" },
+          ],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
@@ -283,7 +315,9 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "astrid-curve-2",
           description: "Scandinavian Simplicity",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/astrid-curve-gray.jpg" }],
+          images: [
+            { url: "http://localhost:9000/products/astrid-curve-gray.jpg" },
+          ],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
@@ -311,7 +345,11 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "paloma-haven-armchair",
           description: "Modern Luxe",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/paloma-haven-arm-chair.jpg" }],
+          images: [
+            {
+              url: "http://localhost:9000/products/paloma-haven-arm-chair.jpg",
+            },
+          ],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
@@ -339,5 +377,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
   });
 
   logger.info("✅ Sofa Society Co. seed completed!");
-  logger.info("🛋️  9 products with 3 color variants each (Light Gray, Dark Gray, Black)");
+  logger.info(
+    "🛋️  9 products with 3 color variants each (Light Gray, Dark Gray, Black)",
+  );
 }

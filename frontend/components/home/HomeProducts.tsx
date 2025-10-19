@@ -27,7 +27,7 @@ export const HomeProducts = React.memo(function HomeProducts({
   categories,
 }: HomeProductsProps) {
   const [categoryImages, setCategoryImages] = useState<Record<string, string>>(
-    {}
+    {},
   );
 
   useEffect(() => {

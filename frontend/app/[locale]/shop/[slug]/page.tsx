@@ -23,9 +23,21 @@ import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 import React from "react";
 
 // Lazy load heavy components
-const ProductImageCarousel = lazy(() => import("@/components/product/ProductImageCarousel").then(m => ({ default: m.ProductImageCarousel })));
-const CollectionInspiredInterior = lazy(() => import("@/components/product/CollectionInspiredInterior").then(m => ({ default: m.CollectionInspiredInterior })));
-const RelatedProducts = lazy(() => import("@/components/product/RelatedProducts").then(m => ({ default: m.RelatedProducts })));
+const ProductImageCarousel = lazy(() =>
+  import("@/components/product/ProductImageCarousel").then((m) => ({
+    default: m.ProductImageCarousel,
+  })),
+);
+const CollectionInspiredInterior = lazy(() =>
+  import("@/components/product/CollectionInspiredInterior").then((m) => ({
+    default: m.CollectionInspiredInterior,
+  })),
+);
+const RelatedProducts = lazy(() =>
+  import("@/components/product/RelatedProducts").then((m) => ({
+    default: m.RelatedProducts,
+  })),
+);
 export default function ProductPage({
   params,
 }: {
@@ -171,13 +183,21 @@ export default function ProductPage({
                                 No images found! CarouselImages array is empty.
                               </div>
                             ) : (
-                              <Suspense fallback={<div className="w-full aspect-square bg-gray-100 animate-pulse rounded" />}>
+                              <Suspense
+                                fallback={
+                                  <div className="w-full aspect-square bg-gray-100 animate-pulse rounded" />
+                                }
+                              >
                                 <ProductImageCarousel images={carouselImages} />
                               </Suspense>
                             )}
                           </div>
                         </FadeInOnScroll>
-                        <FadeInOnScroll variant="fade-left" duration={800} delay={200}>
+                        <FadeInOnScroll
+                          variant="fade-left"
+                          duration={800}
+                          delay={200}
+                        >
                           <div className="px-8 md:px-5 lg:px-0 py-6 md:py-8 lg:py-0 flex flex-col h-full lg:justify-between">
                             <div>
                               <p className="text-xs md:text-sm text-gray-500 mb-2">
@@ -224,14 +244,24 @@ export default function ProductPage({
                       </div>
                     </div>
                   </div>
-                  <Suspense fallback={<div className="w-full h-96 bg-gray-100 animate-pulse" />}>
+                  <Suspense
+                    fallback={
+                      <div className="w-full h-96 bg-gray-100 animate-pulse" />
+                    }
+                  >
                     <CollectionInspiredInterior
                       title={`The ${product.title} sofa is a masterpiece of minimalism and luxury.`}
-                      collectionName={product.collection?.handle || "modern-luxe"}
+                      collectionName={
+                        product.collection?.handle || "modern-luxe"
+                      }
                       collectionTitle={product.collection?.title}
                     />
                   </Suspense>
-                  <Suspense fallback={<div className="w-full h-64 bg-gray-100 animate-pulse" />}>
+                  <Suspense
+                    fallback={
+                      <div className="w-full h-64 bg-gray-100 animate-pulse" />
+                    }
+                  >
                     <RelatedProducts products={relatedProducts} />
                   </Suspense>
                 </>

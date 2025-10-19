@@ -23,20 +23,18 @@ export default function Home() {
           <div className="mx-auto px-4 lg:px-24 py-12 lg:py-16">
             <div className="flex flex-col lg:flex-row lg:gap-16 space-y-6 lg:space-y-0">
               <FadeInOnScroll variant="fade-right" duration={1000}>
-                <div className="lg:w-[60%]">
-                  <h1 className="text-[32px] lg:text-[48px] font-semibold text-black leading-tight">
-                    {homeContent.hero.title}
-                  </h1>
-                </div>
+                <h1 className="text-[32px] lg:text-[48px] font-semibold text-black leading-tight flex-1">
+                  {homeContent.hero.title}
+                </h1>
               </FadeInOnScroll>
               <FadeInOnScroll variant="fade-left" duration={1000} delay={200}>
-                <div className="lg:w-[40%] flex flex-col gap-4">
-                  <p className="text-[18px] lg:text-[24px] text-gray-700 leading-relaxed">
+                <div className="lg:w-full flex flex-col gap-4">
+                  <p className="text-[18px] lg:text-[24px] text-gray-700 leading-relaxed whitespace-normal">
                     {homeContent.hero.subtitle}
                   </p>
                   <Link
                     href={getHref("/shop", locale)}
-                    className="text-[18px] lg:text-[24px] text-black underline hover:no-underline inline-block"
+                    className="text-[18px] lg:text-[24px] text-black underline hover:no-underline block w-full whitespace-nowrap"
                   >
                     {homeContent.hero.cta}
                   </Link>

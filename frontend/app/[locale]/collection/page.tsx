@@ -71,8 +71,8 @@ export default async function CollectionsPage() {
                       and understated aesthetic.
                     </p>
                     <p className="text-body text-gray-700 leading-relaxed">
-                      This collection brings the essence of Scandinavian elegance
-                      to your living room.
+                      This collection brings the essence of Scandinavian
+                      elegance to your living room.
                     </p>
                   </div>
                 </FadeInOnScroll>

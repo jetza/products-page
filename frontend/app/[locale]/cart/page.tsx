@@ -61,7 +61,9 @@ export default function CartPage() {
                     </h1>
                     {items.map((item, index) => (
                       <React.Fragment key={item.id}>
-                        {index === 0 && <div className="h-px bg-gray-200 mb-8" />}
+                        {index === 0 && (
+                          <div className="h-px bg-gray-200 mb-8" />
+                        )}
                         <CartItem
                           {...item}
                           onQuantityChange={updateQuantity}
@@ -88,7 +90,9 @@ export default function CartPage() {
                     <DiscountCodeInput
                       value={discountCode}
                       onChange={(e) => setDiscountCode(e.target.value)}
-                      onApply={() => console.log("Apply discount:", discountCode)}
+                      onApply={() =>
+                        console.log("Apply discount:", discountCode)
+                      }
                       className="mb-6"
                     />
 

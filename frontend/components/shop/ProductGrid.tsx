@@ -21,16 +21,19 @@ export const ProductGrid = React.memo(
 
         const handleScroll = () => {
           if (!containerRef.current) return;
-          
+
           const scrollTop = window.scrollY;
           const itemHeight = 400;
           const viewportHeight = window.innerHeight;
           const buffer = 10;
 
-          const start = Math.max(0, Math.floor(scrollTop / itemHeight) - buffer);
+          const start = Math.max(
+            0,
+            Math.floor(scrollTop / itemHeight) - buffer,
+          );
           const end = Math.min(
             products.length,
-            Math.ceil((scrollTop + viewportHeight) / itemHeight) + buffer
+            Math.ceil((scrollTop + viewportHeight) / itemHeight) + buffer,
           );
 
           setVisibleRange({ start, end });
@@ -53,13 +56,15 @@ export const ProductGrid = React.memo(
         return products;
       }, [products, useVirtualScroll, visibleRange]);
 
-      const paddingTop = useVirtualScroll && products.length >= 100 
-        ? visibleRange.start * 200
-        : 0;
+      const paddingTop =
+        useVirtualScroll && products.length >= 100
+          ? visibleRange.start * 200
+          : 0;
 
-      const paddingBottom = useVirtualScroll && products.length >= 100
-        ? Math.max(0, (products.length - visibleRange.end) * 200)
-        : 0;
+      const paddingBottom =
+        useVirtualScroll && products.length >= 100
+          ? Math.max(0, (products.length - visibleRange.end) * 200)
+          : 0;
 
       if (products.length === 0) {
         return (
@@ -82,11 +87,11 @@ export const ProductGrid = React.memo(
             )}
           >
             {visibleProducts.map((product, index) => (
-              <FadeInOnScroll 
-                key={product.id} 
-                variant="fade-up" 
+              <FadeInOnScroll
+                key={product.id}
+                variant="fade-up"
                 duration={600}
-                delay={index % 6 * 100}
+                delay={(index % 6) * 100}
               >
                 <ProductCard {...product} />
               </FadeInOnScroll>

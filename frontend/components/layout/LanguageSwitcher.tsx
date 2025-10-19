@@ -29,33 +29,36 @@ export function LanguageSwitcher({
   const handleToggle = useCallback(() => setIsOpen((prev) => !prev), []);
   const handleClose = useCallback(() => setIsOpen(false), []);
 
-  const handleLocaleChange = useCallback((newLocale: Locale) => {
-    if (newLocale === currentLocale) {
+  const handleLocaleChange = useCallback(
+    (newLocale: Locale) => {
+      if (newLocale === currentLocale) {
+        setIsOpen(false);
+        return;
+      }
+
+      const segments = pathname.split("/").filter(Boolean);
+      const hasLocaleInPath =
+        segments.length > 0 && locales.includes(segments[0] as Locale);
+      const pathWithoutLocale = hasLocaleInPath
+        ? `/${segments.slice(1).join("/")}`
+        : pathname;
+
+      let newPath: string;
+      if (newLocale === "en") {
+        newPath = pathWithoutLocale || "/";
+      } else {
+        newPath =
+          pathWithoutLocale === "/"
+            ? `/${newLocale}`
+            : `/${newLocale}${pathWithoutLocale}`;
+      }
+
       setIsOpen(false);
-      return;
-    }
 
-    const segments = pathname.split("/").filter(Boolean);
-    const hasLocaleInPath =
-      segments.length > 0 && locales.includes(segments[0] as Locale);
-    const pathWithoutLocale = hasLocaleInPath
-      ? `/${segments.slice(1).join("/")}`
-      : pathname;
-
-    let newPath: string;
-    if (newLocale === "en") {
-      newPath = pathWithoutLocale || "/";
-    } else {
-      newPath =
-        pathWithoutLocale === "/"
-          ? `/${newLocale}`
-          : `/${newLocale}${pathWithoutLocale}`;
-    }
-
-    setIsOpen(false);
-
-    window.location.href = newPath;
-  }, [pathname, currentLocale]);
+      window.location.href = newPath;
+    },
+    [pathname, currentLocale],
+  );
 
   const isLight = variant === "light";
   const textClass = isLight ? "text-white" : "text-black";
@@ -75,10 +78,7 @@ export function LanguageSwitcher({
 
       {isOpen && (
         <>
-          <div
-            className="fixed inset-0 z-40"
-            onClick={handleClose}
-          />
+          <div className="fixed inset-0 z-40" onClick={handleClose} />
 
           <div
             className={cn(

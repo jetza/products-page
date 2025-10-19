@@ -1,12 +1,12 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 
-export type AnimationVariant = 
-  | "fade-up" 
-  | "fade-down" 
-  | "fade-left" 
-  | "fade-right" 
-  | "scale" 
+export type AnimationVariant =
+  | "fade-up"
+  | "fade-down"
+  | "fade-left"
+  | "fade-right"
+  | "scale"
   | "slide-up"
   | "slide-down";
 
@@ -37,7 +37,7 @@ const variantStyles = {
     hidden: "opacity-0 -translate-x-12",
     visible: "opacity-100 translate-x-0",
   },
-  "scale": {
+  scale: {
     hidden: "opacity-0 scale-95",
     visible: "opacity-100 scale-100",
   },
@@ -51,63 +51,65 @@ const variantStyles = {
   },
 };
 
-export const FadeInOnScroll = React.memo<FadeInOnScrollProps>(({
-  children,
-  className = "",
-  delay = 0,
-  duration = 700,
-  variant = "fade-up",
-  threshold = 0.1,
-  once = true,
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+export const FadeInOnScroll = React.memo<FadeInOnScrollProps>(
+  ({
+    children,
+    className = "",
+    delay = 0,
+    duration = 700,
+    variant = "fade-up",
+    threshold = 0.1,
+    once = true,
+  }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
+    useEffect(() => {
+      const element = ref.current;
+      if (!element) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), delay);
-          if (once) {
-            observer.unobserve(element);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => setIsVisible(true), delay);
+            if (once) {
+              observer.unobserve(element);
+            }
+          } else if (!once) {
+            setIsVisible(false);
           }
-        } else if (!once) {
-          setIsVisible(false);
+        },
+        {
+          threshold,
+          rootMargin: "0px 0px -50px 0px",
+        },
+      );
+
+      observer.observe(element);
+
+      return () => {
+        if (element) {
+          observer.unobserve(element);
         }
-      },
-      {
-        threshold,
-        rootMargin: "0px 0px -50px 0px",
-      }
+      };
+    }, [delay, threshold, once]);
+
+    const styles = variantStyles[variant];
+
+    return (
+      <div
+        ref={ref}
+        className={`transition-all ease-out ${className} ${
+          isVisible ? styles.visible : styles.hidden
+        }`}
+        style={{
+          transitionDuration: `${duration}ms`,
+        }}
+      >
+        {children}
+      </div>
     );
-
-    observer.observe(element);
-
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
-  }, [delay, threshold, once]);
-
-  const styles = variantStyles[variant];
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all ease-out ${className} ${
-        isVisible ? styles.visible : styles.hidden
-      }`}
-      style={{
-        transitionDuration: `${duration}ms`,
-      }}
-    >
-      {children}
-    </div>
-  );
-});
+  },
+);
 
 FadeInOnScroll.displayName = "FadeInOnScroll";

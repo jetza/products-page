@@ -32,7 +32,7 @@ export const ProductImageCarousel = React.memo(function ProductImageCarousel({
         });
       }
     },
-    [currentIndex, images.length]
+    [currentIndex, images.length],
   );
 
   const scrollToIndex = React.useCallback((index: number) => {

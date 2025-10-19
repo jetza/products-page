@@ -7,16 +7,23 @@ import fs from "fs";
 const serveStaticImages = (req: Request, res: Response, next: NextFunction) => {
   // Use originalUrl which contains the full path
   const urlPath = req.originalUrl || req.url || req.path;
-  
+
   // Only handle image file requests under /products/ or /collections/
-  const match = urlPath.match(/^\/(products|collections)\/(.+\.(png|jpg|jpeg|webp|gif))(\?.*)?$/i);
-  
+  const match = urlPath.match(
+    /^\/(products|collections)\/(.+\.(png|jpg|jpeg|webp|gif))(\?.*)?$/i,
+  );
+
   if (!match) {
     return next();
   }
 
   const [, folder, filename] = match;
-  const filePath = path.join(process.cwd(), "public", folder, path.basename(filename));
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    folder,
+    path.basename(filename),
+  );
 
   // Check if file exists
   if (!fs.existsSync(filePath)) {
@@ -25,11 +32,16 @@ const serveStaticImages = (req: Request, res: Response, next: NextFunction) => {
 
   // Determine content type
   const ext = path.extname(filePath).toLowerCase();
-  const contentType = ext === ".png" ? "image/png"
-    : ext === ".jpg" || ext === ".jpeg" ? "image/jpeg"
-    : ext === ".webp" ? "image/webp"
-    : ext === ".gif" ? "image/gif"
-    : "application/octet-stream";
+  const contentType =
+    ext === ".png"
+      ? "image/png"
+      : ext === ".jpg" || ext === ".jpeg"
+        ? "image/jpeg"
+        : ext === ".webp"
+          ? "image/webp"
+          : ext === ".gif"
+            ? "image/gif"
+            : "application/octet-stream";
 
   // Set headers and send file
   res.setHeader("Content-Type", contentType);

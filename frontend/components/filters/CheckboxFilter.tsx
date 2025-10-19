@@ -28,7 +28,7 @@ export const CheckboxFilter = React.memo(
             onChange([...selected, optionId]);
           }
         },
-        [selected, onChange]
+        [selected, onChange],
       );
 
       return (
@@ -47,8 +47,8 @@ export const CheckboxFilter = React.memo(
           })}
         </div>
       );
-    }
-  )
+    },
+  ),
 );
 
 CheckboxFilter.displayName = "CheckboxFilter";

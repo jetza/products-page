@@ -16,70 +16,72 @@ interface CartDrawerProps {
   className?: string;
 }
 
-export const CartDrawer = React.memo<CartDrawerProps>(({
-  isOpen,
-  onClose,
-  items = [],
-  onQuantityChange,
-  onRemoveItem,
-  className,
-}) => {
-  const total = useMemo(
-    () => items.reduce((sum, item) => sum + item.price * item.quantity, 0),
-    [items],
-  );
+export const CartDrawer = React.memo<CartDrawerProps>(
+  ({
+    isOpen,
+    onClose,
+    items = [],
+    onQuantityChange,
+    onRemoveItem,
+    className,
+  }) => {
+    const total = useMemo(
+      () => items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+      [items],
+    );
 
-  if (!isOpen) return null;
+    if (!isOpen) return null;
 
-  return (
-    <>
-      <div
-        className="fixed inset-0 bg-black/50 z-[60] transition-opacity"
-        onClick={onClose}
-      />
-      <div
-        className={cn(
-          "fixed top-0 right-0 bottom-0 bg-white z-[70] flex flex-col shadow-2xl w-[557px]",
-          className,
-        )}
-      >
-        <div className="flex items-center justify-between px-12 pt-[132px] pb-8">
-          <h2 className="text-big font-semibold">{CONTENT.cart.cart}</h2>
-          <CloseButton onClose={onClose} />
-        </div>
+    return (
+      <>
+        <div
+          className="fixed inset-0 bg-black/50 z-[60] transition-opacity"
+          onClick={onClose}
+        />
+        <div
+          className={cn(
+            "fixed top-0 right-0 bottom-0 bg-white z-[70] flex flex-col shadow-2xl w-[557px]",
+            className,
+          )}
+        >
+          <div className="flex items-center justify-between px-12 pt-[132px] pb-8">
+            <h2 className="text-big font-semibold">{CONTENT.cart.cart}</h2>
+            <CloseButton onClose={onClose} />
+          </div>
 
-        <div className="flex-1 overflow-y-auto px-12">
-          {items.length === 0 ? (
-            <div className="flex items-center justify-center h-full">
-              <p className="text-gray-500">{CONTENT.cart.empty}</p>
-            </div>
-          ) : (
-            <div>
-              {items.map((item, index) => (
-                <React.Fragment key={item.id}>
-                  <CartItem
-                    {...item}
-                    onQuantityChange={onQuantityChange}
-                    onRemove={onRemoveItem}
-                  />
-                  {index < items.length - 1 && (
-                    <div className="w-[461px] h-px bg-gray-200 my-8" />
-                  )}
-                </React.Fragment>
-              ))}
+          <div className="flex-1 overflow-y-auto px-12">
+            {items.length === 0 ? (
+              <div className="flex items-center justify-center h-full">
+                <p className="text-gray-500">{CONTENT.cart.empty}</p>
+              </div>
+            ) : (
+              <div>
+                {items.map((item, index) => (
+                  <React.Fragment key={item.id}>
+                    <CartItem
+                      {...item}
+                      onQuantityChange={onQuantityChange}
+                      onRemove={onRemoveItem}
+                    />
+                    {index < items.length - 1 && (
+                      <div className="w-[461px] h-px bg-gray-200 my-8" />
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {items.length > 0 && (
+            <div className="px-12 pb-8">
+              <div className="w-[461px] h-px bg-gray-200 mb-8" />
+              <CartSummary total={total} />
             </div>
           )}
         </div>
-
-        {items.length > 0 && (
-          <div className="px-12 pb-8">
-            <div className="w-[461px] h-px bg-gray-200 mb-8" />
-            <CartSummary total={total} />
-          </div>
-        )}
-      </div>
-    </>
-  );
-});
+      </>
+    );
+  },
+);
 
 CartDrawer.displayName = "CartDrawer";

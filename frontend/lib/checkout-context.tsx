@@ -278,7 +278,7 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
       items: OrderItem[],
       subtotal: number,
       shipping: number,
-      taxes: number
+      taxes: number,
     ) => {
       try {
         dispatch({ type: "START_PROCESSING" });
@@ -316,7 +316,7 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
         });
       }
     },
-    [state]
+    [state],
   );
 
   const resetCheckout = React.useCallback(() => {
@@ -347,7 +347,7 @@ export function CheckoutProvider({ children }: { children: ReactNode }) {
       removeDiscount,
       completeOrder,
       resetCheckout,
-    ]
+    ],
   );
 
   return (

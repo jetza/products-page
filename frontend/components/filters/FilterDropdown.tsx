@@ -44,8 +44,8 @@ export const FilterDropdown = React.memo(
           )}
         </div>
       );
-    }
-  )
+    },
+  ),
 );
 
 FilterDropdown.displayName = "FilterDropdown";

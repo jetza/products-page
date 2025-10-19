@@ -9,7 +9,12 @@ interface PriceSliderProps {
   onChange: (value: [number, number]) => void;
 }
 
-export const PriceSlider = ({ min = 0, max = 10000, value, onChange }: PriceSliderProps) => {
+export const PriceSlider = ({
+  min = 0,
+  max = 10000,
+  value,
+  onChange,
+}: PriceSliderProps) => {
   const [isDragging, setIsDragging] = useState<"min" | "max" | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -20,7 +25,7 @@ export const PriceSlider = ({ min = 0, max = 10000, value, onChange }: PriceSlid
       const rect = sliderRef.current.getBoundingClientRect();
       const percent = Math.max(
         0,
-        Math.min(1, (clientX - rect.left) / rect.width)
+        Math.min(1, (clientX - rect.left) / rect.width),
       );
       const newValue = Math.round(min + percent * (max - min));
 
@@ -30,7 +35,7 @@ export const PriceSlider = ({ min = 0, max = 10000, value, onChange }: PriceSlid
         onChange([value[0], newValue]);
       }
     },
-    [isDragging, min, max, value, onChange]
+    [isDragging, min, max, value, onChange],
   );
 
   const handleMouseDown = useCallback((type: "min" | "max") => {
@@ -41,7 +46,7 @@ export const PriceSlider = ({ min = 0, max = 10000, value, onChange }: PriceSlid
     (e: React.MouseEvent<HTMLDivElement>) => {
       updateValue(e.clientX);
     },
-    [updateValue]
+    [updateValue],
   );
 
   const handleTouchMove = useCallback(
@@ -50,7 +55,7 @@ export const PriceSlider = ({ min = 0, max = 10000, value, onChange }: PriceSlid
         updateValue(e.touches[0].clientX);
       }
     },
-    [updateValue]
+    [updateValue],
   );
 
   const handleEnd = useCallback(() => {

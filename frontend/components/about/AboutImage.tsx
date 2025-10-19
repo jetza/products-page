@@ -11,10 +11,10 @@ export function AboutImage({ image, imageAlt }: AboutImageProps) {
       <div className="px-5">
         <div className="mx-auto px-4 lg:px-24 py-12 lg:py-16">
           <div className="relative w-full aspect-[4/3] lg:aspect-[16/9] overflow-hidden px-8 lg:px-0">
-            <Image 
-              src={image} 
-              alt={imageAlt} 
-              fill 
+            <Image
+              src={image}
+              alt={imageAlt}
+              fill
               sizes="(max-width: 1024px) 100vw, 90vw"
               className="object-cover"
               loading="lazy"

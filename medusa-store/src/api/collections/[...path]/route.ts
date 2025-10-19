@@ -2,12 +2,10 @@ import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http";
 import fs from "fs";
 import path from "path";
 
-export async function GET(
-  req: MedusaRequest,
-  res: MedusaResponse
-) {
+export async function GET(req: MedusaRequest, res: MedusaResponse) {
   try {
-    const after = (req.url?.split("/collections/")[1] || "").split("?")[0] || "";
+    const after =
+      (req.url?.split("/collections/")[1] || "").split("?")[0] || "";
     let relPath = decodeURIComponent(after).replace(/^\/+|\/+$/g, "");
 
     const baseDir = path.join(process.cwd(), "public", "collections");
@@ -26,10 +24,10 @@ export async function GET(
       ext === ".png"
         ? "image/png"
         : ext === ".jpg" || ext === ".jpeg"
-        ? "image/jpeg"
-        : ext === ".webp"
-        ? "image/webp"
-        : "application/octet-stream";
+          ? "image/jpeg"
+          : ext === ".webp"
+            ? "image/webp"
+            : "application/octet-stream";
 
     const fileBuffer = fs.readFileSync(fullPath);
     res.setHeader("Content-Type", contentType);
@@ -37,6 +35,11 @@ export async function GET(
     res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
     return res.send(fileBuffer);
   } catch (error: any) {
-    return res.status(500).json({ message: "Error serving file", error: String(error?.message || error) });
+    return res
+      .status(500)
+      .json({
+        message: "Error serving file",
+        error: String(error?.message || error),
+      });
   }
 }
