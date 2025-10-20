@@ -30,7 +30,7 @@ export default function RegisterPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 flex-1">
         <div className="hidden lg:block relative">
           <Image
-            src="/collections/image.png"
+            src="/Collections/Image.png"
             alt="Modern living room with grey sofa"
             fill
             className="object-cover"
