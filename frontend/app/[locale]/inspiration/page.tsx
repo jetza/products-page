@@ -14,7 +14,7 @@ export default function InspirationPage() {
       />
 
       <main>
-        <FadeInOnScroll variant="fade-up" duration={800}>
+        <FadeInOnScroll variant="fade-up" duration={800} threshold={0} delay={0}>
           <InspirationProducts />
         </FadeInOnScroll>
         <FadeInOnScroll variant="scale" duration={800}>

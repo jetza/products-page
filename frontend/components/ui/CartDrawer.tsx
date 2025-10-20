@@ -40,16 +40,16 @@ export const CartDrawer = React.memo<CartDrawerProps>(
         />
         <div
           className={cn(
-            "fixed top-0 right-0 bottom-0 bg-white z-[70] flex flex-col shadow-2xl w-[557px]",
+            "fixed top-0 right-0 bottom-0 bg-white z-[70] flex flex-col shadow-2xl w-full sm:w-[557px]",
             className,
           )}
         >
-          <div className="flex items-center justify-between px-12 pt-[132px] pb-8">
-            <h2 className="text-big font-semibold">{CONTENT.cart.cart}</h2>
+          <div className="flex items-center justify-between px-5 sm:px-12 pt-20 sm:pt-[132px] pb-8">
+            <h2 className="text-base sm:text-big font-semibold">{CONTENT.cart.cart}</h2>
             <CloseButton onClose={onClose} />
           </div>
 
-          <div className="flex-1 overflow-y-auto px-12">
+          <div className="flex-1 overflow-y-auto px-5 sm:px-12">
             {items.length === 0 ? (
               <div className="flex items-center justify-center h-full">
                 <p className="text-gray-500">{CONTENT.cart.empty}</p>
@@ -64,7 +64,7 @@ export const CartDrawer = React.memo<CartDrawerProps>(
                       onRemove={onRemoveItem}
                     />
                     {index < items.length - 1 && (
-                      <div className="w-[461px] h-px bg-gray-200 my-8" />
+                      <div className="w-full sm:w-[461px] h-px bg-gray-200 my-8" />
                     )}
                   </React.Fragment>
                 ))}
@@ -73,8 +73,8 @@ export const CartDrawer = React.memo<CartDrawerProps>(
           </div>
 
           {items.length > 0 && (
-            <div className="px-12 pb-8">
-              <div className="w-[461px] h-px bg-gray-200 mb-8" />
+            <div className="px-5 sm:px-12 pb-8">
+              <div className="w-full sm:w-[461px] h-px bg-gray-200 mb-8" />
               <CartSummary total={total} />
             </div>
           )}

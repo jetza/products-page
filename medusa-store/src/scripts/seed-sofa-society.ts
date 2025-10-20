@@ -69,33 +69,34 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
 
   // Create collections with images
   logger.info("Creating collections...");
+  const backendUrl = process.env.BACKEND_URL || "http://localhost:9000";
   const collectionsData = [
     {
       title: "Scandinavian Simplicity",
       handle: "scandinavian-simplicity",
       metadata: {
-        image_url: "http://localhost:9000/collections/image.png",
+        image_url: `${backendUrl}/collections/image.png`,
       },
     },
     {
       title: "Modern Luxe",
       handle: "modern-luxe",
       metadata: {
-        image_url: "http://localhost:9000/collections/image1.png",
+        image_url: `${backendUrl}/collections/image1.png`,
       },
     },
     {
       title: "Boho Chic",
       handle: "boho-chic",
       metadata: {
-        image_url: "http://localhost:9000/collections/image2.png",
+        image_url: `${backendUrl}/collections/image2.png`,
       },
     },
     {
       title: "Timeless Classics",
       handle: "timeless-classics",
       metadata: {
-        image_url: "http://localhost:9000/collections/image3.png",
+        image_url: `${backendUrl}/collections/image3.png`,
       },
     },
   ];
@@ -239,7 +240,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "nordic-haven",
           description: "Scandinavian Simplicity",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/nordic-haven.jpg" }],
+          images: [{ url: `${backendUrl}/products/nordic-haven.jpg` }],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
@@ -253,7 +254,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "everly-estate",
           description: "Timeless Splendor",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/everly-estate.jpg" }],
+          images: [{ url: `${backendUrl}/products/everly-estate.jpg` }],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
@@ -269,7 +270,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           status: ProductStatus.PUBLISHED,
           images: [
             {
-              url: "http://localhost:9000/products/belime-haven-arm-chair.png",
+              url: `${backendUrl}/products/belime-haven-arm-chair.png`,
             },
           ],
           options: [
@@ -286,7 +287,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           description: "Boho Chic",
           status: ProductStatus.PUBLISHED,
           images: [
-            { url: "http://localhost:9000/products/camden-retreat.jpg" },
+            { url: `${backendUrl}/products/camden-retreat.jpg` },
           ],
           options: [
             { title: "Color", values: COLORS },
@@ -301,7 +302,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "astrid-curve",
           description: "Scandinavian Simplicity",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/astrid-curve.png" }],
+          images: [{ url: `${backendUrl}/products/astrid-curve.png` }],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
@@ -316,7 +317,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           description: "Scandinavian Simplicity",
           status: ProductStatus.PUBLISHED,
           images: [
-            { url: "http://localhost:9000/products/astrid-curve-gray.jpg" },
+            { url: `${backendUrl}/products/astrid-curve-gray.jpg` },
           ],
           options: [
             { title: "Color", values: COLORS },
@@ -331,7 +332,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "paloma-haven",
           description: "Modern Luxe",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/paloma-haven.jpg" }],
+          images: [{ url: `${backendUrl}/products/paloma-haven.jpg` }],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
@@ -347,7 +348,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           status: ProductStatus.PUBLISHED,
           images: [
             {
-              url: "http://localhost:9000/products/paloma-haven-arm-chair.jpg",
+              url: `${backendUrl}/products/paloma-haven-arm-chair.jpg`,
             },
           ],
           options: [
@@ -363,7 +364,7 @@ export default async function seedSofaSocietyData({ container }: ExecArgs) {
           handle: "sutton-royale",
           description: "Modern Luxe",
           status: ProductStatus.PUBLISHED,
-          images: [{ url: "http://localhost:9000/products/sutton-royale.jpg" }],
+          images: [{ url: `${backendUrl}/products/sutton-royale.jpg` }],
           options: [
             { title: "Color", values: COLORS },
             { title: "Material", values: MATERIALS },
