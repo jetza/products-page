@@ -8,7 +8,7 @@ import {
   FilterOption,
   MATERIALS,
   COLORS_FILTER,
-} from "@/lib/constants/filter-options.config";
+} from "@/lib/constants/filters/filter-options.config";
 import { CONTENT } from "@/lib/constants/content";
 
 interface MobileFilterDrawerProps {

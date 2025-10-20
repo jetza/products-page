@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { locales, localeNames, type Locale } from "@/i18n/config";
-import { ChevronDownIcon } from "@/components/icons";
+import { ChevronDownIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils/cn";
 
 interface LanguageSwitcherProps {
@@ -55,9 +55,12 @@ export function LanguageSwitcher({
 
       setIsOpen(false);
 
+      // Set cookie before navigation so middleware can use it
+      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
+
       window.location.href = newPath;
     },
-    [pathname, currentLocale],
+    [pathname, currentLocale]
   );
 
   const isLight = variant === "light";
@@ -84,7 +87,7 @@ export function LanguageSwitcher({
             className={cn(
               "absolute right-0 border border-gray-200 rounded shadow-lg w-[200px] z-50",
               position === "top" ? "bottom-full mb-2" : "top-full mt-2",
-              dropdownBgClass,
+              dropdownBgClass
             )}
           >
             {locales.map((locale) => (
@@ -95,7 +98,7 @@ export function LanguageSwitcher({
                   "block w-full text-left px-4 py-3 text-sm hover:bg-gray-50",
                   currentLocale === locale
                     ? "text-black font-medium"
-                    : "text-gray-700",
+                    : "text-gray-700"
                 )}
               >
                 {localeNames[locale]}

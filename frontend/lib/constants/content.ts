@@ -252,6 +252,108 @@ export const CONTENT = {
       postalCodeRequired: "Postal code is required",
       countryRequired: "Country is required",
     },
+    // Error modal
+    errorModal: {
+      title: "Order Failed",
+      message: "Failed to complete order. Please try again.",
+      button: "OK",
+    },
+  },
+
+  // Collections
+  collections: {
+    scandinavianSimplicity: {
+      title: "Scandinavian Simplicity:",
+      subtitle: "Effortless elegance, timeless comfort",
+      description1:
+        "Minimalistic designs, neutral colors, and high-quality textures. Perfect for those who seek comfort with a clean and understated aesthetic.",
+      description2:
+        "This collection brings the essence of Scandinavian elegance to your living room.",
+    },
+  },
+
+  // Privacy Policy
+  privacyPolicy: {
+    title: "Privacy Policy for Sofa Society",
+    intro:
+      "At Sofa Society, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, disclose, and safeguard your data when you interact with our website, services, and products. By using our platform, you consent to the practices described in this policy.",
+    sections: {
+      informationWeCollect: {
+        title: "1. Information We Collect:",
+        description:
+          "We may collect personal information you provide directly to us, such as:",
+        items: [
+          "Name, email address, and contact details when you sign up for an account.",
+          "Billing and shipping addresses when you make a purchase.",
+          "Payment information (processed securely through third-party payment processors).",
+          "Personal preferences and fashion interests you share with us.",
+        ],
+        additionalInfo:
+          "Additionally, we may automatically collect certain information when you access or use our website, including:",
+        additionalItems: [
+          "IP address, browser type, operating system, and device information.",
+          "Usage data, such as pages visited, time spent on our platform, and referring website.",
+        ],
+      },
+      howWeUse: {
+        title: "2. How We Use Your Information:",
+        description:
+          "We may use your personal information for various purposes, including but not limited to:",
+        items: [
+          "Processing and managing your account, purchases, and orders.",
+          "Customizing your shopping experience and suggesting relevant products.",
+          "Sending transactional emails, order updates, and customer support (you can opt-out anytime).",
+          "Analyzing user behavior to improve our website and services.",
+          "Complying with legal obligations and enforcing our Terms of Service.",
+        ],
+      },
+      cookies: {
+        title: "3. Cookies and Similar Technologies:",
+        description:
+          "We use cookies and similar technologies to collect information about your browsing activity on our devices. These technologies help us analyze usage patterns, personalize content, remember your preferences, and measure performance through your browser settings.",
+      },
+      dataSharing: {
+        title: "4. Data Sharing and Disclosure:",
+        description:
+          "We may share your personal information with third parties under certain circumstances, including:",
+        items: [
+          "Service providers who assist us in operating our business and delivering services.",
+          "Legal authorities or government agencies as required by law.",
+        ],
+        note: "We do not sell or rent your personal information to third parties for their marketing purposes.",
+      },
+      dataSecurity: {
+        title: "5. Data Security:",
+        description:
+          "We implement reasonable security measures to protect your personal information from unauthorized access, alteration, or disclosure. However, no method of transmission over the internet or electronic storage is completely secure.",
+      },
+      yourChoices: {
+        title: "6. Your Choices:",
+        description: "You have the right to:",
+        items: [
+          "Review and update your personal information in your account settings.",
+          "Opt out of receiving marketing communications.",
+          "Delete your account (subject to applicable laws and regulations).",
+        ],
+      },
+      childrensPrivacy: {
+        title: "7. Children's Privacy:",
+        description:
+          "Our services are not intended for individuals under the age of 18. If we become aware that we have collected personal information from children without parental consent, we will take prompt action to delete such data.",
+      },
+      changes: {
+        title: "8. Changes to this Privacy Policy:",
+        description:
+          "We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes via email or by prominently posting a notice on our website.",
+      },
+      contactUs: {
+        title: "9. Contact Us:",
+        description:
+          "If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your personal information, please contact us at:",
+        email: "Email: privacy@sofasociety.com",
+        address: "Address: Storgothögen 12, 134 65 Stockholm",
+      },
+    },
   },
 
   // Authentication

@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { ChevronDownIcon } from "@/components/icons";
+import { ChevronDownIcon } from "@/components/ui/icons";
 
 export interface DropdownButtonProps {
   children: React.ReactNode;
@@ -32,7 +32,7 @@ export const DropdownButton = React.forwardRef<
       size = "lg",
       customIcon,
     },
-    ref,
+    ref
   ) => {
     const baseStyles = "inline-flex items-center transition-colors bg-white";
 
@@ -50,7 +50,7 @@ export const DropdownButton = React.forwardRef<
         !disabled && ["hover:bg-gray-50"],
         disabled && [
           "border-gray-300 text-gray-400 bg-gray-50 cursor-not-allowed",
-        ],
+        ]
       ),
     };
 
@@ -70,7 +70,7 @@ export const DropdownButton = React.forwardRef<
               ],
             disabled && [
               "border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed",
-            ],
+            ]
           )
         : "";
 
@@ -84,7 +84,7 @@ export const DropdownButton = React.forwardRef<
           baseStyles,
           variantStyles[variant],
           selectStateStyles,
-          className,
+          className
         )}
         type="button"
       >
@@ -98,13 +98,13 @@ export const DropdownButton = React.forwardRef<
                 ? "transition-transform duration-200"
                 : "w-4 h-4 transition-transform",
               isOpen && "rotate-180",
-              disabled && "text-gray-400",
+              disabled && "text-gray-400"
             )}
           />
         )}
       </button>
     );
-  },
+  }
 );
 
 DropdownButton.displayName = "DropdownButton";

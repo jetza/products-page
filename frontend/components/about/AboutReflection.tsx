@@ -44,6 +44,7 @@ export function AboutReflection({
                   src={smallImage}
                   alt={smallImageAlt}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                   className="object-cover object-center"
                 />
               </div>

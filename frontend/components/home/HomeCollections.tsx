@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import Link from "next/link";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 import { Button } from "@/components/ui/Buttons/Button";
@@ -23,7 +23,7 @@ export const HomeCollections = React.memo(function HomeCollections({
   collections,
 }: HomeCollectionsProps) {
   const router = useRouter();
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
 
   const handleViewAll = React.useCallback(() => {
     router.push(getHref("/collection", locale));

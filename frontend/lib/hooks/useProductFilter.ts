@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { ProductCardProps } from "@/components/shop/ProductCard";
-import { PRODUCT_METADATA } from "@/lib/constants/filter-options.config";
+import { PRODUCT_METADATA } from "@/lib/constants/filters/filter-options.config";
 
 interface UseProductFilterOptions {
   enableCollectionFilter?: boolean;
@@ -28,7 +28,7 @@ interface UseProductFilterReturn {
 
 export function useProductFilter(
   products: ProductCardProps[],
-  options: UseProductFilterOptions = {},
+  options: UseProductFilterOptions = {}
 ): UseProductFilterReturn {
   const { enableCollectionFilter = true } = options;
 

@@ -1,4 +1,5 @@
-import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+"use client";
+import { ResponsiveFooter } from "@/components/layout/Footer/ResponsiveFooter";
 import { HeroSection } from "@/components/layout/HeroSection";
 import { HomeProducts } from "@/components/home/HomeProducts";
 import HomeAbout from "@/components/home/HomeAbout";
@@ -6,11 +7,11 @@ import { homeContent } from "@/lib/constants/pages/home.content";
 import Link from "next/link";
 import { CollectionsCarousel } from "@/components/shop/CollectionsCarousel";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
-import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
+import { useLocale } from "@/lib/hooks/useLocale";
+import { FadeInOnScroll } from "@/components/ui/Content/FadeInOnScroll";
 
 export default function Home() {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
 
   return (
     <div className="min-h-screen bg-white">

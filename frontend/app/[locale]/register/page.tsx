@@ -3,15 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import Image from "next/image";
 import { Button } from "@/components/ui/Buttons/Button";
-import { Input } from "@/components/ui/Input";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
+import { Input } from "@/components/ui/Form/Input";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function RegisterPage() {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,12 +30,11 @@ export default function RegisterPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 flex-1">
         <div className="hidden lg:block relative">
           <Image
-            src="/collections/image.png"
+            src="/Collections/Image.png"
             alt="Modern living room with grey sofa"
             fill
             className="object-cover"
             priority
-            quality={100}
           />
         </div>
 

@@ -23,20 +23,6 @@ export function getProductColors(product: Product): string[] {
 }
 
 /**
- * Extract unique size values from product variants
- */
-export function getProductSizes(product: Product): string[] {
-  if (!product.variants) return [];
-
-  const sizes = product.variants
-    .flatMap((variant) => variant.options || [])
-    .filter((option) => option.option.title === "Size")
-    .map((option) => option.value);
-
-  return Array.from(new Set(sizes));
-}
-
-/**
  * Extract unique material values from product variants
  */
 export function getProductMaterials(product: Product): string[] {
@@ -80,7 +66,7 @@ export function getProductPrice(product: Product): number {
  */
 export function formatPrice(
   priceInCents: number,
-  currency: string = "€",
+  currency: string = "€"
 ): string {
   const priceInUnits = priceInCents / 100;
   return `${currency}${priceInUnits.toFixed(2)}`;

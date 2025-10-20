@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { TrashIcon } from "@/components/icons";
+import { TrashIcon } from "@/components/ui/icons";
 
 export interface DeleteButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -30,7 +30,7 @@ export const DeleteButton = React.forwardRef<
           "hover:bg-gray-50",
         ],
         variant === "ghost" && ["w-11 h-11", "hover:bg-gray-100 rounded"],
-        className,
+        className
       )}
       {...props}
     >

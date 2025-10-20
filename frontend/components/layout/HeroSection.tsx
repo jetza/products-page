@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
 import { ReactNode } from "react";
 
 interface HeroSectionProps {
@@ -57,7 +57,6 @@ export function HeroSection({
             sizes="100vw"
             className="object-cover"
             priority
-            quality={100}
           />
 
           {/* Optional Overlay Content */}

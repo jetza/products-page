@@ -2,15 +2,15 @@
 
 import { useRouter } from "next/navigation";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import { Button } from "@/components/ui/Buttons/Button";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
-import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
+import { ResponsiveFooter } from "@/components/layout/Footer/ResponsiveFooter";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function NotFound() {
   const router = useRouter();
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   return (
     <div className="min-h-screen flex flex-col">
       <ResponsiveHeader />

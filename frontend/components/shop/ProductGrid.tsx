@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState, useMemo } from "react";
 import { cn } from "@/lib/utils/cn";
 import { ProductCard, ProductCardProps } from "./ProductCard";
 import { CONTENT } from "@/lib/constants/content";
-import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
 
 export interface ProductGridProps {
   products: ProductCardProps[];
@@ -29,11 +28,11 @@ export const ProductGrid = React.memo(
 
           const start = Math.max(
             0,
-            Math.floor(scrollTop / itemHeight) - buffer,
+            Math.floor(scrollTop / itemHeight) - buffer
           );
           const end = Math.min(
             products.length,
-            Math.ceil((scrollTop + viewportHeight) / itemHeight) + buffer,
+            Math.ceil((scrollTop + viewportHeight) / itemHeight) + buffer
           );
 
           setVisibleRange({ start, end });
@@ -83,25 +82,26 @@ export const ProductGrid = React.memo(
             ref={ref}
             className={cn(
               "grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8",
-              className,
+              className
             )}
           >
-            {visibleProducts.map((product, index) => (
-              <FadeInOnScroll
-                key={product.id}
-                variant="fade-up"
-                duration={600}
-                delay={(index % 6) * 100}
-              >
-                <ProductCard {...product} />
-              </FadeInOnScroll>
-            ))}
+            {visibleProducts.map((product, index) => {
+              // Prvi red proizvoda (2 na mobilnom, 3 na desktopu) treba priority za LCP
+              const isPriority = index < 3;
+
+              // Sve produkte renderuj bez animacija za bolje performanse
+              return (
+                <div key={product.id}>
+                  <ProductCard {...product} priority={isPriority} />
+                </div>
+              );
+            })}
           </div>
           {paddingBottom > 0 && <div style={{ height: paddingBottom }} />}
         </div>
       );
-    },
-  ),
+    }
+  )
 );
 
 ProductGrid.displayName = "ProductGrid";

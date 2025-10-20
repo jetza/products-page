@@ -7,14 +7,14 @@ import React, {
   useMemo,
   useLayoutEffect,
 } from "react";
-import { Notification } from "@/components/ui/Notification";
+import { Notification } from "@/components/ui/Feedback/Notification";
 import { useDebouncedValue } from "@/lib/hooks/useDebouncedValue";
 import { cn } from "@/lib/utils/cn";
-import { SearchIcon } from "@/components/icons";
+import { SearchIcon } from "@/components/ui/icons";
 import { CloseButton } from "./Buttons/CloseButton";
 import Link from "next/link";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import Image from "next/image";
 import { getProducts } from "@/lib/products-service";
 import type { Product } from "@/types/product";
@@ -33,7 +33,7 @@ export const Search: React.FC<SearchProps> = ({
   onClose,
   className,
 }) => {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [isProductsLoading, setIsProductsLoading] = useState(false);
@@ -48,7 +48,7 @@ export const Search: React.FC<SearchProps> = ({
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setSearchQuery(e.target.value);
     },
-    [],
+    []
   );
 
   useEffect(() => {
@@ -111,7 +111,7 @@ export const Search: React.FC<SearchProps> = ({
       (product) =>
         product.title?.toLowerCase().includes(query) ||
         product.collection?.title?.toLowerCase().includes(query) ||
-        product.description?.toLowerCase().includes(query),
+        product.description?.toLowerCase().includes(query)
     );
   }, [debouncedQuery, allProducts]);
 

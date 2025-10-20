@@ -1,0 +1,7 @@
+../medusa-store/**
+../../medusa-store/**
+**/src/admin/**
+**/src/auth/**
+**/src/store/**
+**/src/client.ts
+**/src/index.ts

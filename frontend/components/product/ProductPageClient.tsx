@@ -1,10 +1,10 @@
 "use client";
 
-import { ColorPicker } from "@/components/ui/ColorPicker";
-import { MaterialsSelect } from "@/components/ui/MaterialsSelect";
-import { AddToCartSection } from "@/components/ui/AddToCartSection";
-import { Notification } from "@/components/ui/Notification";
-import { useCart } from "@/lib/cart-context";
+import { ColorPicker } from "@/components/ui/Form/ColorPicker";
+import { MaterialsSelect } from "@/components/ui/Form/MaterialsSelect";
+import { AddToCartSection } from "@/components/ui/Cart/AddToCartSection";
+import { Notification } from "@/components/ui/Feedback/Notification";
+import { useCart } from "@/lib/hooks/useCart";
 import { useState, lazy, Suspense } from "react";
 import type { Product } from "@/types/product";
 import {
@@ -12,26 +12,26 @@ import {
   getProductMaterials,
   getProductPrice,
 } from "@/lib/utils/product-utils";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
-import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
+import { ResponsiveFooter } from "@/components/layout/Footer/ResponsiveFooter";
 import { ProductCardProps } from "@/components/shop/ProductCard";
-import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
+import { FadeInOnScroll } from "@/components/ui/Content/FadeInOnScroll";
 
 // Lazy load heavy components
 const ProductImageCarousel = lazy(() =>
   import("@/components/product/ProductImageCarousel").then((m) => ({
     default: m.ProductImageCarousel,
-  })),
+  }))
 );
 const CollectionInspiredInterior = lazy(() =>
   import("@/components/product/CollectionInspiredInterior").then((m) => ({
     default: m.CollectionInspiredInterior,
-  })),
+  }))
 );
 const RelatedProducts = lazy(() =>
   import("@/components/product/RelatedProducts").then((m) => ({
     default: m.RelatedProducts,
-  })),
+  }))
 );
 
 interface ProductPageClientProps {
@@ -60,13 +60,13 @@ export function ProductPageClient({
       const colorMatch =
         !selectedColor ||
         variantOptions.some(
-          (opt) => opt.option.title === "Color" && opt.value === selectedColor,
+          (opt) => opt.option.title === "Color" && opt.value === selectedColor
         );
       const materialMatch =
         !selectedMaterial ||
         variantOptions.some(
           (opt) =>
-            opt.option.title === "Material" && opt.value === selectedMaterial,
+            opt.option.title === "Material" && opt.value === selectedMaterial
         );
       return colorMatch && materialMatch;
     });
@@ -89,7 +89,7 @@ export function ProductPageClient({
           "https://placehold.co/80x80/e7e7e7/666?text=Product",
         imageAlt: product.title,
       },
-      quantity,
+      quantity
     );
     setNotificationOpen(true);
   };

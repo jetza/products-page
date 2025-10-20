@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { XIcon } from "@/components/icons";
+import { XIcon } from "@/components/ui/icons";
 
 export interface CloseButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -28,7 +28,7 @@ export const CloseButton = React.forwardRef<
         ],
         variant === "minimal" && ["text-black hover:text-gray-600"],
         variant === "light" && ["text-white"],
-        className,
+        className
       )}
       aria-label="Close"
       {...props}

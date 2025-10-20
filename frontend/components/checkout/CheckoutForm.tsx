@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import { Button } from "@/components/ui/Buttons/Button";
-import { Input } from "@/components/ui/Input";
+import { Input } from "@/components/ui/Form/Input";
 import { Checkbox } from "@/components/ui/Buttons/Checkbox";
 import { useCheckout } from "@/lib/hooks/useCheckout";
-import { DeliveryInfo } from "@/lib/checkout-context";
+import { DeliveryInfo } from "@/lib/contexts/checkout-context";
 import { DeliveryForm } from "./DeliveryForm";
 import { CONTENT } from "@/lib/constants/content";
 
@@ -29,11 +29,11 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
   onPlaceOrder,
 }) => {
   const { state, setEmail, setDeliveryInfo } = useCheckout();
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   const [currentStep, setCurrentStep] = useState<CheckoutStep>("email");
   const [email, setEmailLocal] = useState(state.email);
   const [subscribeNewsletter, setSubscribeNewsletter] = useState(
-    state.subscribeNewsletter,
+    state.subscribeNewsletter
   );
 
   const handleEmailNext = () => {

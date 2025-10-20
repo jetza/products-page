@@ -2,13 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { InfoIcon } from "@/components/icons";
+import { InfoIcon } from "@/components/ui/icons";
 import { CONTENT } from "@/lib/constants/content";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 
 export const LoginPrompt: React.FC = () => {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   return (
     <div className="flex items-center gap-3 bg-gray-100 rounded p-4 text-sm">
       <InfoIcon className="flex-shrink-0 w-5 h-5 text-gray-600" />

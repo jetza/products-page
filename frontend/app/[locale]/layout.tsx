@@ -4,13 +4,13 @@ import "@fontsource/mona-sans/400.css";
 import "@fontsource/mona-sans/500.css";
 import "@fontsource/mona-sans/600.css";
 import "@fontsource/mona-sans/700.css";
-import { CartProvider } from "@/lib/cart-context";
-import { CheckoutProvider } from "@/lib/checkout-context";
+import { CartProvider } from "@/lib/contexts/cart-context";
+import { CheckoutProvider } from "@/lib/contexts/checkout-context";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales, type Locale } from "@/i18n/config";
-
+import { LocaleProvider } from "@/lib/contexts/locale-context";
 export const metadata: Metadata = {
   title: "Sofa Society Co.",
   description: "Discover our amazing furniture collection",
@@ -37,9 +37,11 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <CartProvider>
-        <CheckoutProvider>{children}</CheckoutProvider>
-      </CartProvider>
+      <LocaleProvider initialLocale={locale}>
+        <CartProvider>
+          <CheckoutProvider>{children}</CheckoutProvider>
+        </CartProvider>
+      </LocaleProvider>
     </NextIntlClientProvider>
   );
 }

@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FadeInOnScroll } from "../ui/FadeInOnScroll";
+import { FadeInOnScroll } from "../ui/Content/FadeInOnScroll";
 
 interface ProductCategory {
   title: string;
@@ -27,7 +27,7 @@ export const HomeProducts = React.memo(function HomeProducts({
   categories,
 }: HomeProductsProps) {
   const [categoryImages, setCategoryImages] = useState<Record<string, string>>(
-    {},
+    {}
   );
 
   useEffect(() => {

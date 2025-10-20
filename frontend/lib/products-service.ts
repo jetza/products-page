@@ -17,9 +17,7 @@ export async function getProducts(limit: number = 10): Promise<Product[]> {
       fields: "+variants.calculated_price,+variants.prices",
     } as Parameters<typeof medusaClient.store.product.list>[0]);
 
-    // ...removed log...
     if (response.products?.[0]?.variants?.[0]) {
-      // ...removed log...
     }
 
     return (response.products || []) as Product[];

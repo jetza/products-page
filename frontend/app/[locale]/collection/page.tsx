@@ -3,11 +3,11 @@ import Image from "next/image";
 import { getProducts } from "@/lib/products-service";
 import { getProductColors, getProductPrice } from "@/lib/utils/product-utils";
 import type { Product } from "@/types/product";
-import { ProductCardProps } from "@/src/components/shop/ProductCard";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
-import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { ProductCardProps } from "@/components/shop/ProductCard";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
+import { ResponsiveFooter } from "@/components/layout/Footer/ResponsiveFooter";
 import { CollectionClient } from "@/components/collections/CollectionClient";
-import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
+import { CONTENT } from "@/lib/constants/content";
 
 export default async function CollectionsPage() {
   const allProducts = await getProducts(50);
@@ -15,7 +15,7 @@ export default async function CollectionsPage() {
   // Filter products by collection "Scandinavian Simplicity"
   const collectionProducts = allProducts.filter(
     (product: Product) =>
-      product.collection?.title === "Scandinavian Simplicity",
+      product.collection?.title === "Scandinavian Simplicity"
   );
 
   const productCards: ProductCardProps[] = collectionProducts.map(
@@ -29,7 +29,7 @@ export default async function CollectionsPage() {
       imageAlt: product.title,
       slug: product.handle,
       colors: getProductColors(product),
-    }),
+    })
   );
 
   return (
@@ -46,7 +46,7 @@ export default async function CollectionsPage() {
             fill
             priority
             className="object-cover"
-            quality={100}
+            sizes="100vw"
           />
         </section>
 
@@ -54,39 +54,30 @@ export default async function CollectionsPage() {
           <div className="px-5">
             <div className="mx-auto px-4 lg:px-24 py-12 lg:py-16">
               <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
-                <FadeInOnScroll variant="fade-right" duration={900}>
-                  <div className="lg:w-[60%]">
-                    <h1 className="text-h3 lg:text-h2 font-semibold text-black leading-tight">
-                      Scandinavian Simplicity:
-                      <br />
-                      Effortless elegance, timeless comfort
-                    </h1>
-                  </div>
-                </FadeInOnScroll>
-                <FadeInOnScroll variant="fade-left" duration={900} delay={200}>
-                  <div className="lg:w-[40%] space-y-6 pt-[72px]">
-                    <p className="text-body text-gray-700 leading-relaxed">
-                      Minimalistic designs, neutral colors, and high-quality
-                      textures. Perfect for those who seek comfort with a clean
-                      and understated aesthetic.
-                    </p>
-                    <p className="text-body text-gray-700 leading-relaxed">
-                      This collection brings the essence of Scandinavian
-                      elegance to your living room.
-                    </p>
-                  </div>
-                </FadeInOnScroll>
+                <div className="lg:w-[60%]">
+                  <h1 className="text-h3 lg:text-h2 font-semibold text-black leading-tight">
+                    {CONTENT.collections.scandinavianSimplicity.title}
+                    <br />
+                    {CONTENT.collections.scandinavianSimplicity.subtitle}
+                  </h1>
+                </div>
+                <div className="lg:w-[40%] space-y-6 pt-0 lg:pt-[72px]">
+                  <p className="text-body text-gray-700 leading-relaxed">
+                    {CONTENT.collections.scandinavianSimplicity.description1}
+                  </p>
+                  <p className="text-body text-gray-700 leading-relaxed">
+                    {CONTENT.collections.scandinavianSimplicity.description2}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <FadeInOnScroll variant="fade-up" duration={800}>
-          <CollectionClient
-            products={productCards}
-            collectionTitle="Scandinavian Simplicity"
-          />
-        </FadeInOnScroll>
+        <CollectionClient
+          products={productCards}
+          collectionTitle="Scandinavian Simplicity"
+        />
       </div>
       <ResponsiveFooter />
     </>

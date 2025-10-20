@@ -15,7 +15,7 @@ export const collections: Collection[] = [
     title: "Scandinavian Simplicity",
     description:
       "Minimalistic designs, neutral colors, and high-quality textures",
-    image: "/collections/image.png",
+    image: "/Collections/Image.png",
     href: "/collection",
   },
   {
@@ -23,7 +23,7 @@ export const collections: Collection[] = [
     title: "Modern Luxe",
     description:
       "Sophisticated and sleek, these sofas blend modern design with luxurious comfort",
-    image: "/collections/image1.png",
+    image: "/Collections/image1.png",
     href: "/collection",
   },
   {
@@ -31,14 +31,14 @@ export const collections: Collection[] = [
     title: "Boho Chic",
     description:
       "Infused with playful textures and patterns with colorful accents",
-    image: "/collections/image2.png",
+    image: "/Collections/image2.png",
     href: "/collection",
   },
   {
     id: "4",
     title: "Timeless Classics",
     description: "Elegant and enduring designs that never go out of style",
-    image: "/collections/image3.png",
+    image: "/Collections/image3.png",
     href: "/collection",
   },
 ];

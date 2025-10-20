@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/components/ui/icons";
 
 export interface ChevronButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -22,7 +22,7 @@ export const ChevronButton = React.forwardRef<
       disabled,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <button
@@ -41,7 +41,7 @@ export const ChevronButton = React.forwardRef<
           size === "md" && "w-10 h-10 md:w-12 md:h-12",
           size === "lg" && "w-12 h-12 md:w-14 md:h-14",
 
-          className,
+          className
         )}
         {...props}
       >
@@ -50,7 +50,7 @@ export const ChevronButton = React.forwardRef<
             className={cn(
               size === "sm" && "w-4 h-4",
               size === "md" && "w-5 h-5 md:w-6 md:h-6",
-              size === "lg" && "w-6 h-6 md:w-7 md:h-7",
+              size === "lg" && "w-6 h-6 md:w-7 md:h-7"
             )}
           />
         ) : (
@@ -58,13 +58,13 @@ export const ChevronButton = React.forwardRef<
             className={cn(
               size === "sm" && "w-4 h-4",
               size === "md" && "w-5 h-5 md:w-6 md:h-6",
-              size === "lg" && "w-6 h-6 md:w-7 md:h-7",
+              size === "lg" && "w-6 h-6 md:w-7 md:h-7"
             )}
           />
         )}
       </button>
     );
-  },
+  }
 );
 
 ChevronButton.displayName = "ChevronButton";

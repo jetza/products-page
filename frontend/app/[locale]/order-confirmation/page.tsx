@@ -3,16 +3,16 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
-import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { useLocale } from "@/lib/hooks/useLocale";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
+import { ResponsiveFooter } from "@/components/layout/Footer/ResponsiveFooter";
 import { useCheckout } from "@/lib/hooks/useCheckout";
 import { OrderConfirmation } from "@/components/order/OrderConfirmation";
-import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
+import { LoadingOverlay } from "@/components/ui/Feedback/LoadingOverlay";
 
 export default function OrderConfirmationPage() {
   const router = useRouter();
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   const { state, resetCheckout } = useCheckout();
   const order = state.completedOrder;
 

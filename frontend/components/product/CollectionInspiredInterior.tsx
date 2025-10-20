@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { CONTENT } from "@/lib/constants/content";
 import Link from "next/link";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 
 interface CollectionInspiredInteriorProps {
   title: string;
@@ -17,7 +18,7 @@ export const CollectionInspiredInterior = React.memo(
     collectionName,
     collectionTitle,
   }: CollectionInspiredInteriorProps) {
-    const locale = getCurrentLocale();
+    const { locale } = useLocale();
     return (
       <section className="py-12 md:py-20 bg-white">
         <div className="px-8 md:px-5">
@@ -82,5 +83,5 @@ export const CollectionInspiredInterior = React.memo(
         </div>
       </section>
     );
-  },
+  }
 );

@@ -5,14 +5,14 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import { ArrowButton } from "@/components/ui/Buttons/ArrowButton";
 import { Button } from "@/components/ui/Buttons/Button";
 import { collections } from "@/lib/constants/collections.data";
 import { CONTENT } from "@/lib/constants/content";
 
 export function CollectionsGrid() {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -74,7 +74,7 @@ export function CollectionsGrid() {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div className="flex gap-3 md:grid md:grid-cols-4 md:gap-6">
-              {collections.map((collection, index) => {
+              {collections.map((collection) => {
                 const href = getHref(collection.href, locale);
                 return (
                   <Link
@@ -89,8 +89,7 @@ export function CollectionsGrid() {
                         fill
                         sizes="(max-width: 768px) 70vw, (max-width: 1024px) 280px, 25vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        priority={index < 2}
-                        loading={index < 2 ? undefined : "lazy"}
+                        loading="lazy"
                       />
                     </div>
                     <div className="space-y-1">

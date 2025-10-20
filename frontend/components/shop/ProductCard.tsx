@@ -1,5 +1,6 @@
+"use client";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import React from "react";
 import { cn } from "@/lib/utils/cn";
 import Link from "next/link";
@@ -15,6 +16,7 @@ export interface ProductCardProps {
   imageAlt?: string;
   slug: string;
   className?: string;
+  priority?: boolean;
 }
 
 export const ProductCard = React.memo(
@@ -29,10 +31,11 @@ export const ProductCard = React.memo(
         imageAlt,
         slug,
         className,
+        priority = false,
       },
-      ref,
+      ref
     ) => {
-      const locale = getCurrentLocale();
+      const { locale } = useLocale();
       const href = getHref(`/shop/${slug}`, locale);
       return (
         <Link
@@ -40,7 +43,7 @@ export const ProductCard = React.memo(
           ref={ref}
           className={cn(
             "group block bg-white overflow-hidden transition-all",
-            className,
+            className
           )}
         >
           <div className="relative w-full aspect-square bg-gray-100 overflow-hidden mb-2 md:mb-4">
@@ -48,8 +51,10 @@ export const ProductCard = React.memo(
               src={image}
               alt={imageAlt || title}
               fill
-              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 70vw, (max-width: 1024px) 280px, 25vw"
+              className="object-cover md:group-hover:scale-105 md:transition-transform md:duration-300"
+              priority={priority}
+              loading={priority ? "eager" : "lazy"}
             />
           </div>
 
@@ -71,8 +76,8 @@ export const ProductCard = React.memo(
           </div>
         </Link>
       );
-    },
-  ),
+    }
+  )
 );
 
 ProductCard.displayName = "ProductCard";

@@ -5,7 +5,7 @@ import {
   RadioSelected,
   RadioHover,
   RadioSelectedHoverDark,
-} from "@/components/icons";
+} from "@/components/ui/icons";
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
@@ -37,7 +37,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       <label
         className={cn(
           "inline-flex items-center gap-2 cursor-pointer",
-          disabled && "cursor-not-allowed",
+          disabled && "cursor-not-allowed"
         )}
         onMouseEnter={() => !disabled && setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -63,7 +63,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
         )}
       </label>
     );
-  },
+  }
 );
 
 Radio.displayName = "Radio";

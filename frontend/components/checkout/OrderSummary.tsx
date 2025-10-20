@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import { Button } from "@/components/ui/Buttons/Button";
-import { Input } from "@/components/ui/Input";
+import { Input } from "@/components/ui/Form/Input";
 import { OrderSummary } from "@/components/ui/OrderSummary";
-import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
+import { ChevronDownIcon, ChevronUpIcon } from "@/components/ui/icons";
 import { CONTENT } from "@/lib/constants/content";
 
 interface CartItem {
@@ -42,7 +42,7 @@ export const CheckoutOrderSummary: React.FC<CheckoutOrderSummaryProps> = ({
   total,
   isMobile = false,
 }) => {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   const imageSize = isMobile ? 80 : 132;
   const imageHeight = isMobile ? 80 : 160;
   const [isExpanded, setIsExpanded] = useState(true);

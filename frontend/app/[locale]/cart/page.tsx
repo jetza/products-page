@@ -2,29 +2,29 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
-import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
-import { useCart } from "@/lib/cart-context";
-import { CartItem } from "@/components/ui/CartItem";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
+import { ResponsiveFooter } from "@/components/layout/Footer/ResponsiveFooter";
+import { useCart } from "@/lib/hooks/useCart";
+import { CartItem } from "@/components/ui/Cart/CartItem";
 import { Button } from "@/components/ui/Buttons/Button";
-import { DiscountCodeInput } from "@/components/ui/DiscountCodeInput";
+import { DiscountCodeInput } from "@/components/ui/Form/DiscountCodeInput";
 import { LoginPrompt } from "@/components/ui/LoginPrompt";
 import { OrderSummary } from "@/components/ui/OrderSummary";
 import Link from "next/link";
 import { CONTENT } from "@/lib/constants/content";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
-import { FadeInOnScroll } from "@/components/ui/FadeInOnScroll";
+import { useLocale } from "@/lib/hooks/useLocale";
+import { FadeInOnScroll } from "@/components/ui/Content/FadeInOnScroll";
 
 export default function CartPage() {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   const router = useRouter();
   const { items, updateQuantity, removeFromCart } = useCart();
   const [discountCode, setDiscountCode] = useState("");
 
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0,
+    0
   );
   const shipping = 0;
   const taxes = 0;

@@ -2,10 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
-import { mockOrders } from "@/lib/constants/mock-orders.data";
+import { mockOrders } from "@/lib/constants/mock-data/mock-orders.data";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Buttons/Button";
-import { PackageIcon, TruckIcon, CheckmarkIcon } from "@/components/icons";
+import { PackageIcon, TruckIcon, CheckmarkIcon } from "@/components/ui/icons";
 import { CONTENT } from "@/lib/constants/content";
 
 const statusIcons = {
@@ -35,7 +35,7 @@ export const MyOrders: React.FC = () => {
             "Display:",
             displayItems.length,
             "Remaining:",
-            remainingCount,
+            remainingCount
           );
 
           return (

@@ -9,13 +9,13 @@ import { MobileSortDrawer } from "@/components/filters/MobileSortDrawer";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { ProductCardProps } from "@/components/shop/ProductCard";
 import { DropdownButton } from "@/components/ui/Buttons/DropdownButton";
-import { PlusIcon } from "@/components/icons";
+import { PlusIcon } from "@/components/ui/icons";
 import { useProductFilter } from "@/lib/hooks/useProductFilter";
 import {
-  FURNITURE_CATEGORIES,
-  FURNITURE_TYPES,
-} from "@/lib/constants/furniture-filters.config";
-import { SORT_OPTIONS } from "@/lib/constants/filter-options.config";
+  CATEGORIES,
+  TYPES,
+} from "@/lib/constants/filters/filter-options.config";
+import { SORT_OPTIONS } from "@/lib/constants/filters/filter-options.config";
 import { CONTENT } from "@/lib/constants/content";
 
 interface CollectionClientProps {
@@ -73,7 +73,9 @@ export const CollectionClient = React.memo(function CollectionClient({
               variant="filter"
               customIcon={
                 <PlusIcon
-                  className={`w-4 h-4 transition-transform ${isFilterOpen ? "rotate-45" : ""}`}
+                  className={`w-4 h-4 transition-transform ${
+                    isFilterOpen ? "rotate-45" : ""
+                  }`}
                 />
               }
             >
@@ -93,7 +95,7 @@ export const CollectionClient = React.memo(function CollectionClient({
             <div className="flex items-center gap-4">
               <FilterDropdown label={CONTENT.filters.category}>
                 <CheckboxFilter
-                  options={FURNITURE_CATEGORIES}
+                  options={CATEGORIES}
                   selected={selectedCategories}
                   onChange={setSelectedCategories}
                 />
@@ -101,7 +103,7 @@ export const CollectionClient = React.memo(function CollectionClient({
 
               <FilterDropdown label={CONTENT.filters.type}>
                 <CheckboxFilter
-                  options={FURNITURE_TYPES}
+                  options={TYPES}
                   selected={selectedTypes}
                   onChange={setSelectedTypes}
                 />
@@ -119,8 +121,8 @@ export const CollectionClient = React.memo(function CollectionClient({
             isOpen={isFilterOpen}
             onClose={handleFilterClose}
             collections={[]}
-            categories={FURNITURE_CATEGORIES}
-            types={FURNITURE_TYPES}
+            categories={CATEGORIES}
+            types={TYPES}
             selectedCollections={[]}
             selectedCategories={selectedCategories}
             selectedTypes={selectedTypes}

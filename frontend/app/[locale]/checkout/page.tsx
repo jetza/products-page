@@ -3,17 +3,17 @@
 import React, { useState } from "react";
 import { Modal } from "@/components/ui/Modal/Modal";
 import { useRouter } from "next/navigation";
-import { useCart } from "@/lib/cart-context";
+import { useCart } from "@/lib/hooks/useCart";
 import { useCheckout } from "@/lib/hooks/useCheckout";
 import Link from "next/link";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import { CheckoutOrderSummary } from "@/components/checkout/OrderSummary";
 import { CheckoutForm } from "@/components/checkout/CheckoutForm";
 import { CONTENT } from "@/lib/constants/content";
 
 export default function CheckoutPage() {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   const router = useRouter();
   const { items } = useCart();
   const { state, completeOrder } = useCheckout();
@@ -22,7 +22,7 @@ export default function CheckoutPage() {
 
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0,
+    0
   );
   const shipping = 30.0;
   const taxes = 0;
@@ -103,13 +103,13 @@ export default function CheckoutPage() {
       <Modal
         isOpen={errorModalOpen}
         onClose={() => setErrorModalOpen(false)}
-        title="Order Failed"
-        primaryButtonLabel="OK"
+        title={CONTENT.checkout.errorModal.title}
+        primaryButtonLabel={CONTENT.checkout.errorModal.button}
         showCloseButton={true}
         variant="confirmation"
       >
         <div className="text-center text-gray-700">
-          Failed to complete order. Please try again.
+          {CONTENT.checkout.errorModal.message}
         </div>
       </Modal>
     </>

@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { LoadingSpinner } from "@/components/icons";
+import { LoadingSpinner } from "@/components/ui/icons";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -28,7 +28,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       style,
       ...props
     },
-    ref,
+    ref
   ) => {
     const isDisabled = disabled || loading;
 
@@ -69,7 +69,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
           fullWidth && "w-full",
 
-          className,
+          className
         )}
         {...props}
       >
@@ -83,7 +83,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </button>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";

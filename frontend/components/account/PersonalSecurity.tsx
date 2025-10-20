@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/Buttons/Button";
-import { Input } from "@/components/ui/Input";
-import { UserIcon } from "@/components/icons";
+import { Input } from "@/components/ui/Form/Input";
+import { UserIcon } from "@/components/ui/icons";
 import { useCheckout } from "@/lib/hooks/useCheckout";
 import { CONTENT } from "@/lib/constants/content";
 

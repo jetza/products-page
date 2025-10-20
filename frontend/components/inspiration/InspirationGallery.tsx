@@ -1,6 +1,7 @@
+"use client";
 import React from "react";
 import { getHref } from "@/lib/getHref";
-import { getCurrentLocale } from "@/lib/getCurrentLocale";
+import { useLocale } from "@/lib/hooks/useLocale";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,7 +23,7 @@ export const InspirationGallery = React.memo(function InspirationGallery({
   description,
   styles,
 }: InspirationGalleryProps) {
-  const locale = getCurrentLocale();
+  const { locale } = useLocale();
   return (
     <section className="bg-white">
       <div className="px-5">

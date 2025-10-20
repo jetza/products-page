@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Input } from "@/components/ui/Input";
-import { Select } from "@/components/ui/Select";
+import { Input } from "@/components/ui/Form/Input";
+import { Select } from "@/components/ui/Form/Select";
 import { Button } from "@/components/ui/Buttons/Button";
-import { DeliveryInfo } from "@/lib/checkout-context";
+import { DeliveryInfo } from "@/lib/contexts/checkout-context";
 import { countries } from "@/lib/constants/countries.config";
 import { CONTENT } from "@/lib/constants/content";
 

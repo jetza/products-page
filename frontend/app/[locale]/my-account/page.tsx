@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
-import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
+import { ResponsiveFooter } from "@/components/layout/Footer/ResponsiveFooter";
 import { AccountNavigation } from "@/components/layout/AccountNavigation";
 import { MobileMenu, MobileMenuTab } from "@/components/layout/MobileMenuTab";
 import { PersonalSecurity } from "@/components/account/PersonalSecurity";

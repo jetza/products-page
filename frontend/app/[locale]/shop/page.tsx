@@ -1,9 +1,9 @@
 import React from "react";
-import { ShopClient } from "@/src/components/shop/ShopClient";
-import { getShopProducts } from "@/src/lib/shop/get-shop-products";
+import { ShopClient } from "@/components/shop/ShopClient";
+import { getShopProducts } from "@/lib/shop/get-shop-products";
 import { CollectionsGrid } from "@/components/shop/CollectionsGrid";
-import { ResponsiveHeader } from "@/components/layout/ResponsiveHeader";
-import { ResponsiveFooter } from "@/components/layout/ResponsiveFooter";
+import { ResponsiveHeader } from "@/components/layout/Header/ResponsiveHeader";
+import { ResponsiveFooter } from "@/components/layout/Footer/ResponsiveFooter";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { CONTENT } from "@/lib/constants/content";
 

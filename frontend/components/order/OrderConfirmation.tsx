@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/Buttons/Button";
 import { OrderConfirmationSummary } from "./OrderConfirmationSummary";
-import { CompletedOrder } from "@/lib/checkout-context";
-import { ReceiptIcon, CreditCardIcon, MapPinIcon } from "@/components/icons";
+import { CompletedOrder } from "@/lib/contexts/checkout-context";
+import { ReceiptIcon, CreditCardIcon, MapPinIcon } from "@/components/ui/icons";
 import { CONTENT } from "@/lib/constants/content";
 
 interface OrderConfirmationProps {
@@ -99,7 +99,9 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         {order.items.map((item, index) => (
           <div
             key={item.id}
-            className={`p-4 md:p-6 ${index !== order.items.length - 1 ? "border-b border-gray-200" : ""}`}
+            className={`p-4 md:p-6 ${
+              index !== order.items.length - 1 ? "border-b border-gray-200" : ""
+            }`}
           >
             <div className="flex items-start gap-4 md:gap-6">
               <div className="relative w-[120px] h-[200px] md:w-[176px] md:h-[232px] bg-gray-100 flex-shrink-0 overflow-hidden">

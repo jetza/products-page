@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
-import { ArrowLeftIcon, ArrowRightIcon } from "@/components/icons";
+import { ArrowLeftIcon, ArrowRightIcon } from "@/components/ui/icons";
 
 export interface ArrowButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -22,7 +22,7 @@ export const ArrowButton = React.forwardRef<
       disabled,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <button
@@ -53,7 +53,7 @@ export const ArrowButton = React.forwardRef<
             "disabled:border-gray-300 disabled:text-gray-300 disabled:cursor-not-allowed",
           ],
 
-          className,
+          className
         )}
         {...props}
       >
@@ -64,7 +64,7 @@ export const ArrowButton = React.forwardRef<
         )}
       </button>
     );
-  },
+  }
 );
 
 ArrowButton.displayName = "ArrowButton";
