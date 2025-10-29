@@ -50,6 +50,11 @@ const nextConfig: NextConfig = {
         hostname: "placehold.co",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "*.azurewebsites.net",
+        pathname: "/**",
+      }
     ],
     qualities: [100],
   },

@@ -1,3 +1,5 @@
+const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
+
 export interface Order {
   id: string;
   orderNumber: string;
@@ -17,14 +19,14 @@ export const mockOrders: Order[] = [
     date: "23 December 2024",
     status: "Packing",
     items: [
-      { id: "1", image: "/products/nordic-haven.jpg", title: "Nordic Haven" },
-      { id: "2", image: "/products/everly-estate.jpg", title: "Everly Estate" },
+      { id: "1", image: `${BACKEND_URL}/products/nordic-haven.jpg`, title: "Nordic Haven" },
+      { id: "2", image: `${BACKEND_URL}/products/everly-estate.jpg`, title: "Everly Estate" },
       {
         id: "3",
-        image: "/products/camden-retreat.jpg",
+        image: `${BACKEND_URL}/products/camden-retreat.jpg`,
         title: "Camden Retreat",
       },
-      { id: "4", image: "/products/sutton-royale.jpg", title: "Sutton Royale" },
+      { id: "4", image: `${BACKEND_URL}/products/sutton-royale.jpg`, title: "Sutton Royale" },
     ],
   },
   {
@@ -33,11 +35,11 @@ export const mockOrders: Order[] = [
     date: "23 December 2024",
     status: "Delivering",
     items: [
-      { id: "1", image: "/products/astrid-curve.png", title: "Astrid Curve" },
-      { id: "2", image: "/products/paloma-haven.jpg", title: "Paloma Haven" },
+      { id: "1", image: `${BACKEND_URL}/products/astrid-curve.png`, title: "Astrid Curve" },
+      { id: "2", image: `${BACKEND_URL}/products/paloma-haven.jpg`, title: "Paloma Haven" },
       {
         id: "3",
-        image: "/products/belime-haven-arm-chair.png",
+        image: `${BACKEND_URL}/products/belime-haven-arm-chair.png`,
         title: "Belime Haven Armchair",
       },
     ],
@@ -48,12 +50,12 @@ export const mockOrders: Order[] = [
     date: "23 December 2024",
     status: "Delivered",
     items: [
-      { id: "1", image: "/products/nordic-haven.jpg", title: "Nordic Haven" },
-      { id: "2", image: "/products/everly-estate.jpg", title: "Everly Estate" },
-      { id: "3", image: "/products/sutton-royale.jpg", title: "Sutton Royale" },
+      { id: "1", image: `${BACKEND_URL}/products/nordic-haven.jpg`, title: "Nordic Haven" },
+      { id: "2", image: `${BACKEND_URL}/products/everly-estate.jpg`, title: "Everly Estate" },
+      { id: "3", image: `${BACKEND_URL}/products/sutton-royale.jpg`, title: "Sutton Royale" },
       {
         id: "4",
-        image: "/products/astrid-curve-gray.jpg",
+        image: `${BACKEND_URL}/products/astrid-curve-gray.jpg`,
         title: "Astrid Curve Gray",
       },
     ],
@@ -66,18 +68,18 @@ export const mockOrders: Order[] = [
     items: [
       {
         id: "1",
-        image: "/products/camden-retreat.jpg",
+        image: `${BACKEND_URL}/products/camden-retreat.jpg`,
         title: "Camden Retreat",
       },
-      { id: "2", image: "/products/everly-estate.jpg", title: "Everly Estate" },
+      { id: "2", image: `${BACKEND_URL}/products/everly-estate.jpg`, title: "Everly Estate" },
       {
         id: "3",
-        image: "/products/paloma-haven-arm-chair.jpg",
+        image: `${BACKEND_URL}/products/paloma-haven-arm-chair.jpg`,
         title: "Paloma Haven Armchair",
       },
-      { id: "4", image: "/products/astrid-curve.png", title: "Astrid Curve" },
-      { id: "5", image: "/products/nordic-haven.jpg", title: "Nordic Haven" },
-      { id: "6", image: "/products/sutton-royale.jpg", title: "Sutton Royale" },
+      { id: "4", image: `${BACKEND_URL}/products/astrid-curve.png`, title: "Astrid Curve" },
+      { id: "5", image: `${BACKEND_URL}/products/nordic-haven.jpg`, title: "Nordic Haven" },
+      { id: "6", image: `${BACKEND_URL}/products/sutton-royale.jpg`, title: "Sutton Royale" },
     ],
   },
 ];

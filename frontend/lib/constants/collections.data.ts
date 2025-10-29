@@ -1,6 +1,8 @@
 // import { getCurrentLocale } from "@/lib/getCurrentLocale";
 // import { getHref } from "@/lib/getHref";
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
+
 export interface Collection {
   id: string;
   title: string;
@@ -15,7 +17,7 @@ export const collections: Collection[] = [
     title: "Scandinavian Simplicity",
     description:
       "Minimalistic designs, neutral colors, and high-quality textures",
-    image: "/Collections/Image.png",
+    image: `${BACKEND_URL}/collections/image.png`,
     href: "/collection",
   },
   {
@@ -23,7 +25,7 @@ export const collections: Collection[] = [
     title: "Modern Luxe",
     description:
       "Sophisticated and sleek, these sofas blend modern design with luxurious comfort",
-    image: "/Collections/image1.png",
+    image: `${BACKEND_URL}/collections/image1.png`,
     href: "/collection",
   },
   {
@@ -31,14 +33,14 @@ export const collections: Collection[] = [
     title: "Boho Chic",
     description:
       "Infused with playful textures and patterns with colorful accents",
-    image: "/Collections/image2.png",
+    image: `${BACKEND_URL}/collections/image2.png`,
     href: "/collection",
   },
   {
     id: "4",
     title: "Timeless Classics",
     description: "Elegant and enduring designs that never go out of style",
-    image: "/Collections/image3.png",
+    image: `${BACKEND_URL}/collections/image3.png`,
     href: "/collection",
   },
 ];

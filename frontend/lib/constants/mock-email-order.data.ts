@@ -1,3 +1,5 @@
+const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
+
 export const MOCK_ORDER = {
   orderNumber: "100002",
   items: [
@@ -8,7 +10,7 @@ export const MOCK_ORDER = {
       color: "Gray",
       quantity: 1,
       price: 30,
-      image: "/Products/paloma-haven.jpg",
+      image: `${BACKEND_URL}/products/paloma-haven.jpg`,
     },
     {
       id: 2,
@@ -17,7 +19,7 @@ export const MOCK_ORDER = {
       color: "Gray",
       quantity: 1,
       price: 30,
-      image: "/Products/nordic-haven.jpg",
+      image: `${BACKEND_URL}/products/nordic-haven.jpg`,
     },
     {
       id: 3,
@@ -26,7 +28,7 @@ export const MOCK_ORDER = {
       color: "Red",
       quantity: 1,
       price: 30,
-      image: "/Products/everly-estate.jpg",
+      image: `${BACKEND_URL}/products/everly-estate.jpg`,
     },
     {
       id: 4,
@@ -35,7 +37,7 @@ export const MOCK_ORDER = {
       color: "Gray",
       quantity: 1,
       price: 30,
-      image: "/Products/astrid-curve.png",
+      image: `${BACKEND_URL}/products/astrid-curve.png`,
     },
   ],
   deliveryAddress: {

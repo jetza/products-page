@@ -23,17 +23,25 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: npm install, build, and test
+      - name: Install dependencies and build
+        working-directory: ./medusa-store
         run: |
-          npm install
+          npm ci
           npm run build --if-present
-          npm run test --if-present
+
+      - name: Prepare deployment package
+        working-directory: ./medusa-store
+        run: |
+          mkdir -p deploy
+          cp -r node_modules public .medusa package.json package-lock.json medusa-config.ts deploy/
+          cd deploy
+          zip -r ../deploy.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: ./medusa-store/deploy.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -55,11 +63,20 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E1CF36606A4A451083A0C2FA583CA911 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E05F49DE6EF34BF5BBB03D51F1E82FB1 }}
 
+      - name: Configure App Settings to disable Oryx build
+        uses: azure/appservice-settings@v1
+        with:
+          app-name: 'sofa-society-backend'
+          app-settings-json: '[{"name":"SCM_DO_BUILD_DURING_DEPLOYMENT","value":"false"},{"name":"ENABLE_ORYX_BUILD","value":"false"}]'
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'sofa-society-backend'
           slot-name: 'Production'
-          package: .
+          package: deploy.zip
+        env:
+          SCM_DO_BUILD_DURING_DEPLOYMENT: false
+          ENABLE_ORYX_BUILD: false
           

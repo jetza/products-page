@@ -65,15 +65,21 @@ export default async function CollectionsPage() {
                 </FadeInOnScroll>
                 <FadeInOnScroll variant="fade-left" duration={900} delay={200}>
                   <div className="lg:w-[40%] space-y-6 pt-[72px]">
-                    <p className="text-body text-gray-700 leading-relaxed">
-                      Minimalistic designs, neutral colors, and high-quality
-                      textures. Perfect for those who seek comfort with a clean
-                      and understated aesthetic.
-                    </p>
-                    <p className="text-body text-gray-700 leading-relaxed">
-                      This collection brings the essence of Scandinavian
-                      elegance to your living room.
-                    </p>
+                      <p className="text-body text-gray-700 leading-relaxed">
+                        Doživite suštinu skandinavske elegancije kroz kolekciju koja spaja jednostavnost, funkcionalnost i bezvremenski stil. Ova linija nameštaja osmišljena je za one koji cene miran ambijent, pročišćene linije i suptilnu sofisticiranost u svakom kutku svog doma.
+                      </p>
+                      <p className="text-body text-gray-700 leading-relaxed">
+                        Uživajte u prostoru koji odiše nenametljivom lepotom i udobnošću koja traje. Skandinavski dizajn je poznat po svojoj sposobnosti da stvori atmosferu opuštenosti i topline, bez viška detalja, ali sa pažljivo biranim elementima koji podižu kvalitet svakodnevnog života.
+                      </p>
+                      <p className="text-body text-gray-700 leading-relaxed">
+                        Kolekcija se odlikuje minimalističkim formama koje unose red i harmoniju u enterijer. Neutralne boje – od nežnih bež tonova, preko toplih sivih, do klasične bele – omogućavaju lako uklapanje sa različitim stilovima i dekoracijama. Svaki komad izrađen je od vrhunskih materijala, sa naglaskom na teksture koje pozivaju na dodir i pružaju osećaj luksuza.
+                      </p>
+                      <p className="text-body text-gray-700 leading-relaxed">
+                        Idealna za one koji žele da njihov dom bude utočište mira, udobnosti i jednostavne lepote. Skandinavska filozofija dizajna stavlja akcenat na funkcionalnost, ali ne zanemaruje estetiku – svaki detalj je promišljen, svaki oblik ima svoju svrhu, a svaki materijal doprinosi ukupnom osećaju prijatnosti.
+                      </p>
+                      <p className="text-body text-gray-700 leading-relaxed">
+                        Unesite duh severa u svoj dnevni boravak. Ova kolekcija transformiše prostor u oazu svetlosti, prostranosti i topline, inspirišući vas da uživate u svakom trenutku kod kuće. Bilo da se opuštate sami, provodite vreme sa porodicom ili primate goste, Scandinavian Simplicity kolekcija stvara savršenu pozadinu za život ispunjen stilom i udobnošću.
+                      </p>
                   </div>
                 </FadeInOnScroll>
               </div>
