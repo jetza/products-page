@@ -1,4 +1,4 @@
-const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "https://sofa-society-backend-dpbce8hhgkh8evfa.canadacentral-01.azurewebsites.net";
 
 export const MOCK_ORDER = {
   orderNumber: "100002",

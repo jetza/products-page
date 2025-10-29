@@ -1,7 +1,7 @@
 // import { getCurrentLocale } from "@/lib/getCurrentLocale";
 // import { getHref } from "@/lib/getHref";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "https://sofa-society-backend-dpbce8hhgkh8evfa.canadacentral-01.azurewebsites.net";
 
 export interface Collection {
   id: string;

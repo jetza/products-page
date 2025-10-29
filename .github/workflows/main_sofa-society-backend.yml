@@ -76,6 +76,7 @@ jobs:
           app-name: 'sofa-society-backend'
           slot-name: 'Production'
           package: deploy.zip
+          startup-command: 'node .medusa/server/medusa-config.js'
         env:
           SCM_DO_BUILD_DURING_DEPLOYMENT: false
           ENABLE_ORYX_BUILD: false
