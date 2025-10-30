@@ -56,6 +56,9 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       }
     ],
+    domains: [
+      'sofa-society-backend-dpbce8hhgkh8evfa.canadacentral-01.azurewebsites.net'
+    ],
     qualities: [100],
   },
   webpack: (config) => {
