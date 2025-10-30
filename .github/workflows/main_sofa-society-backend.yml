@@ -79,4 +79,20 @@ jobs:
         env:
           SCM_DO_BUILD_DURING_DEPLOYMENT: false
           ENABLE_ORYX_BUILD: false
+      
+      - name: 'Run Database Migrations'
+        run: |
+          az webapp ssh --name sofa-society-backend --resource-group sofa-society-backend_group || echo "SSH not available, trying Kudu API..."
+          
+          # Get Kudu credentials
+          CREDS=$(az webapp deployment list-publishing-profiles --name sofa-society-backend --resource-group sofa-society-backend_group --query "[?publishMethod=='MSDeploy']|[0].[userName, userPWD]" -o tsv)
+          USERNAME=$(echo "$CREDS" | cut -f1)
+          PASSWORD=$(echo "$CREDS" | cut -f2)
+          
+          # Run migrations via Kudu API
+          curl -X POST "https://sofa-society-backend-dpbce8hhgkh8evfa.scm.canadacentral-01.azurewebsites.net/api/command" \
+            -u "$USERNAME:$PASSWORD" \
+            -H "Content-Type: application/json" \
+            -d '{"command":"node node_modules/@medusajs/medusa/dist/commands/db/migrate.js","dir":"/home/site/wwwroot"}' \
+            --max-time 300
           
