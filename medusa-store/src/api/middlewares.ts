@@ -10,27 +10,19 @@ export default defineMiddlewares({
     {
       matcher: "/products/*",
       middlewares: [
-        (req, res, next) => {
-          // Rewrite /products/image.jpg to /public/products/image.jpg
-          req.url = req.url.replace(/^\/products/, "/products");
-          express.static(publicPath, {
-            maxAge: "1y",
-            immutable: true,
-          })(req, res, next);
-        },
+        express.static(publicPath, {
+          maxAge: "1y",
+          immutable: true,
+        }),
       ],
     },
     {
       matcher: "/collections/*",
       middlewares: [
-        (req, res, next) => {
-          // Rewrite /collections/image.jpg to /public/collections/image.jpg
-          req.url = req.url.replace(/^\/collections/, "/collections");
-          express.static(publicPath, {
-            maxAge: "1y",
-            immutable: true,
-          })(req, res, next);
-        },
+        express.static(publicPath, {
+          maxAge: "1y",
+          immutable: true,
+        }),
       ],
     },
   ],

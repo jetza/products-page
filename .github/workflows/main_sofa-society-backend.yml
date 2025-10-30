@@ -33,7 +33,7 @@ jobs:
         working-directory: ./medusa-store
         run: |
           mkdir -p deploy
-          cp -r node_modules public .medusa package.json package-lock.json medusa-config.ts deploy/
+          cp -r node_modules public .medusa package.json package-lock.json medusa-config.ts start-server.js deploy/
           cd deploy
           zip -r ../deploy.zip .
 
@@ -67,7 +67,7 @@ jobs:
         uses: azure/appservice-settings@v1
         with:
           app-name: 'sofa-society-backend'
-          app-settings-json: '[{"name":"SCM_DO_BUILD_DURING_DEPLOYMENT","value":"false"},{"name":"ENABLE_ORYX_BUILD","value":"false"}]'
+          app-settings-json: '[{"name":"SCM_DO_BUILD_DURING_DEPLOYMENT","value":"false"},{"name":"ENABLE_ORYX_BUILD","value":"false"},{"name":"DISABLE_MEDUSA_ADMIN","value":"true"}]'
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -76,7 +76,6 @@ jobs:
           app-name: 'sofa-society-backend'
           slot-name: 'Production'
           package: deploy.zip
-          startup-command: 'node .medusa/server/medusa-config.js'
         env:
           SCM_DO_BUILD_DURING_DEPLOYMENT: false
           ENABLE_ORYX_BUILD: false
