@@ -61,4 +61,7 @@ desktop.ini
 .pnp.js
 .medusa
 
+# Deployment files
+medusa-deploy.zip
+
 # Keep lockfiles (do not ignore): package-lock.json, yarn.lock, pnpm-lock.yaml
